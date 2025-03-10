@@ -1,0 +1,4 @@
+[submodule "aaronmoreycom_content"]
+	path = aaronmoreycom_content
+	url = git@github.com:aaronmfmorey/aaronmoreycom_content.git
+    branch = astro-conversion

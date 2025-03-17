@@ -1,7 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Home Page";
+const pageTitle = "Aaron Morey";
+import { Image } from 'astro:assets';
+import bookAndLaptop from '../assets/images/BookAndLaptopBitmoji.png';
+import AboutLinks from "../components/AboutLinks.astro";
 ---
 <BaseLayout pageTitle={pageTitle}>
-	<h2>My awesome blog subtitle</h2>
+	<Image src={bookAndLaptop} alt="A caricature of me reading a book in front of a laptop" />
+	<h2>Modern Tools, Web 1.0 Attitude</h2>
+	<p>There was a time when the internet was a series of web pages, owned and operated by individuals. Sites were
+		populated with miscellany, the things that person happened to be interested in. It wasn’t always cohesive.
+		It wasn’t always even interesting! But it was a glimpse into tne mind of the person behind it.</p>
+	<p>Technology has advanced; there’s no going back. But we can keep the spirit of Web 1.0 alive.</p>
+	<h2>You can also find me at:</h2>
+	<AboutLinks />
 </BaseLayout>

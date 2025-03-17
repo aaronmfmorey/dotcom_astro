@@ -1,0 +1,20 @@
+---
+import linkCollection from '../../aaronmoreycom_content/content/data/aboutlinks.json';
+---
+<p>
+    {
+        linkCollection.map((item, index) => <span><i class={item.icon}></i><a href={item.url}>{item.title}</a><br/></span>)
+    }
+</p>
+
+<style is:global>
+    /* Declare a custom CSS class to make the icon look right */
+    .svg-inline--fa {
+        overflow: visible;
+        box-sizing: content-box;
+        display: inline-block;
+        height: 1em;
+        vertical-align: -0.125em;
+        padding-right: .25em;
+    }
+</style>

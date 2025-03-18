@@ -1,9 +1,11 @@
 ---
+import PostTagList from "./PostTagList.astro";
 const {post, frontmatter} = Astro.props;
 import { createExcerpt } from '../utils/create-excerpt.ts';
 const excerpt = createExcerpt(post.rendered.html);
 ---
 <div>
     <h2><a href={post.id}>{frontmatter.title}</a></h2>
+    <PostTagList tags={frontmatter.tags} />
     <blockquote>{excerpt}</blockquote>
 </div>

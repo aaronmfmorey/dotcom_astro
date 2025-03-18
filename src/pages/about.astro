@@ -4,10 +4,13 @@ import '../styles/global.css';
 const pageTitle = "What's This All About?";
 import AboutText from '../../aaronmoreycom_content/content/data/about-me.html';
 import AboutSiteText from '../../aaronmoreycom_content/content/data/about-me-site.html';
+import AboutLinks from "../components/AboutLinks.astro";
 ---
 <BaseLayout pageTitle={pageTitle}>
     <h2>About Aaron</h2>
     <AboutText />
+    <h3>Find Me At</h3>
+    <AboutLinks />
     <h2>About This Site</h2>
     <AboutSiteText />
 </BaseLayout>

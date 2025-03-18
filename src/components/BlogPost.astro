@@ -1,10 +1,9 @@
 ---
 const {post, frontmatter} = Astro.props;
-import { createExcerpt } from '../utils/create-excerpt';
+import { createExcerpt } from '../utils/create-excerpt.ts';
 const excerpt = createExcerpt(post.rendered.html);
 ---
 <div>
     <h2><a href={post.id}>{frontmatter.title}</a></h2>
     <blockquote>{excerpt}</blockquote>
-
 </div>

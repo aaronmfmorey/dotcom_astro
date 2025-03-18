@@ -1,7 +1,6 @@
 ---
 const {post, frontmatter} = Astro.props;
 import { createExcerpt } from '../utils/create-excerpt';
-console.log("post:", post);
 const excerpt = createExcerpt(post.rendered.html);
 ---
 <div>

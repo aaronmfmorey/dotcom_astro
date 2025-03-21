@@ -1,22 +1,13 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import PostTagList from "../components/PostTagList.astro";
 const { frontmatter } = Astro.props;
-console.log("Markdown page");
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <p><em>{frontmatter.description}</em></p>
+    <PostTagList tags={frontmatter.tags} />
     <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
-
     <p>Written by: {frontmatter.author}</p>
-
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-
-    <div class="tags">
-        {frontmatter.tags.map((tag: string) => (
-                <p class="tag"><a href={`/tags/${tag}/`}>{tag}</a></p>
-        ))}
-    </div>
-
+    <!--TODO AMM Default Author to me unless otherwise noted -->
     <slot />
 </BaseLayout>
 <style>

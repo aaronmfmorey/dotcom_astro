@@ -4,7 +4,6 @@ import PostTagList from "../components/PostTagList.astro";
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <p><em>{frontmatter.description}</em></p>
     <PostTagList tags={frontmatter.tags} />
     <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
     <p>Written by: {frontmatter.author}</p>

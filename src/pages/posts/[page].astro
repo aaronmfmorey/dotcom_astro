@@ -8,14 +8,12 @@ const pageTitle = "Posts";
 export async function getStaticPaths({ paginate }) {
     const allPosts = await getCollection('blog');
     allPosts.sort((a, b) =>
-        new Date(b.rendered.metadata.frontmatter.pubDate) - new Date(a.rendered.metadata.frontmatter.pubDate)
+        new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
     );
     return paginate(allPosts, { pageSize: 10 });
 }
 const { page } = Astro.props;
 ---
 <BaseLayout pageTitle={pageTitle}>
-    <!--<ul>-->
-        {page.data.map((post: any) => <BlogPost post={post} frontmatter={post!.rendered!.metadata!.frontmatter} />)}
-    <!--</ul>-->
+    {page.data.map((post: any) => <BlogPost post={post} frontmatter={post.data} />)}
 </BaseLayout>

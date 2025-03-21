@@ -83,6 +83,11 @@ blockquote p {
     color: var(--lighter-font-color);
 }
 
+pre:has(code) {
+    padding: 10px;
+    border-radius: 5px;
+}
+
 /* nav styles */
 .hamburger {
     padding-right: 20px;

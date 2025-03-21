@@ -14,6 +14,7 @@
     --link-hover-color: #5AABCC;
     --nav-hover-color: #FF7700;
     --nav-link-hover-color: #FAFEFF;
+    --lighter-font-color: #696969;
 }
 
 html {
@@ -68,6 +69,20 @@ a:hover {
     color: var(--link-hover-color);
 }
 
+blockquote {
+    border-radius: 5px;
+    border-color: #ccc;
+    border-width: 1.5px;
+    padding: 10px;
+    border-left: 5px solid var(--nav-hover-color);
+    background-color: #fff;
+}
+
+blockquote p {
+    margin-bottom: 0px;
+    color: var(--lighter-font-color);
+}
+
 /* nav styles */
 .hamburger {
     padding-right: 20px;
@@ -106,6 +121,10 @@ a:hover {
 .nav-links a:focus {
     background-color: var(--nav-hover-color);
     color: var(--nav-link-hover-color);
+}
+
+.fa-tag-wrapper {
+    color: var(--header-color);
 }
 
 .expanded {

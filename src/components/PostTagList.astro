@@ -1,12 +1,11 @@
 ---
 import PostTag from "./PostTag.astro";
 const {tags} = Astro.props;
-console.log("tags:" , tags);
 ---
-<span>
+<div class="pb-[10px]">
     {
         !!tags ?
-            tags.map(tag => <PostTag tag={tag} />)
+            tags.map((tag :String) => <PostTag tag={tag} />)
             : ""
     }
-</span>
+</div>

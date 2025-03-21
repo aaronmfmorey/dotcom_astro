@@ -7,7 +7,7 @@ const { frontmatter } = Astro.props;
     <PostTagList tags={frontmatter.tags} />
     <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
     <p>Written by: {frontmatter.author}</p>
-    <!--<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />-->
+    <!--TODO AMM Default Author to me unless otherwise noted -->
     <slot />
 </BaseLayout>
 <style>

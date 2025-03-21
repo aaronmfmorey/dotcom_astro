@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
+:root {
+    /* Fonts */
+    --ff-sans-serif: "Quicksand", "Computer Modern Sans", Roboto, Helvetica, sans-serif;
+    --ff-serif: "Cormorant Garamond", "Computer Modern", Garamond, serif;
+    /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
+    --ff-oldstyle: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+
+    /* Colors */
+    --background-color: #FAFEFF;
+    --header-color: #01295F;
+    --link-color: #437F97;
+    --link-hover-color: #5AABCC;
+    --nav-hover-color: #FF7700;
+    --nav-link-hover-color: #FAFEFF;
+}
+
 html {
-    background-color: #f1f5f9;
-    font-family: sans-serif;
+    background-color: var(--background-color);
+    font-family: var(--ff-oldstyle);
+    color: #000;
 }
 
 body {
@@ -17,9 +34,38 @@ body {
     box-sizing: border-box;
 }
 
+p {
+    margin-bottom: 1.5rem;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--ff-sans-serif);
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: .75rem;
+    margin-top: .75rem;
+    color: var(--header-color);
+}
+
 h1 {
     margin: 1rem 0;
+    font-size: 3.5rem;
+}
+
+h2 {
     font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+a, a:visited {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover-color);
 }
 
 /* nav styles */
@@ -43,6 +89,7 @@ h1 {
     background-color: #ff9776;
     display: none;
     margin: 0;
+    font-family: var(--ff-sans-serif);
 }
 
 .nav-links a {
@@ -57,7 +104,8 @@ h1 {
 
 .nav-links a:hover,
 .nav-links a:focus {
-    background-color: #ff9776;
+    background-color: var(--nav-hover-color);
+    color: var(--nav-link-hover-color);
 }
 
 .expanded {

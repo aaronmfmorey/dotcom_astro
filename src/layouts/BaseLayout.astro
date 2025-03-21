@@ -17,10 +17,10 @@ const { pageTitle } = Astro.props;
     <link href="/fontawesome/css/sharp-thin.css" rel="stylesheet" />
     <link href="/fontawesome/css/duotone-thin.css" rel="stylesheet" />
     <link href="/fontawesome/css/sharp-duotone-thin.css" rel="stylesheet" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
 </head>
-<body>
+<body class="text-xl">
 <Header />
 <h1>{pageTitle}</h1>
 <slot />

@@ -104,13 +104,13 @@ pre:has(code) {
 }
 
 .nav-links {
-    width: 100%;
-    top: 5rem;
-    left: 48px;
-    background-color: #ff9776;
+    /*width: 100%;*/
+    /*top: 5rem;*/
+    /*left: 48px;*/
+    /*background-color: #ff9776;*/
     display: none;
-    margin: 0;
-    font-family: var(--ff-sans-serif);
+    /*margin: 0;*/
+    /*font-family: var(--ff-sans-serif);*/
 }
 
 .nav-links a {
@@ -120,13 +120,25 @@ pre:has(code) {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
+    font-family: var(--ff-sans-serif);
+}
+
+.nav-links a.active{
+    background-color: var(--nav-hover-color);
+    color: var(--background-color);
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
+    color: var(--nav-hover-color);
+    /*color: var(--nav-link-hover-color);*/
+    text-decoration: underline;
+}
+
+.nav-links a.active:hover{
     background-color: var(--nav-hover-color);
-    color: var(--nav-link-hover-color);
+    color: var(--background-color);
 }
 
 .fa-tag-wrapper {
@@ -140,7 +152,7 @@ pre:has(code) {
 @media screen and (min-width: 636px) {
     .nav-links {
         margin-left: 5em;
-        display: block;
+        display: flex;
         position: static;
         width: auto;
         background: none;

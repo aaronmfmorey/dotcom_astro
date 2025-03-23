@@ -1,7 +1,12 @@
 ---
+// Credit: https://www.cyishere.dev/blog/astro-active-nav-item
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.split("/")[1];
+console.log("PathName: |", pathname);
+console.log("CurentPath: ", currentPath);
 ---
-<div class="nav-links">
-    <a href="/" class="rounded-full">Home</a>
-    <a href="/about/" class="rounded-full">About</a>
-    <a href="/posts/1" class="rounded-full">Blog</a>
+<div class="flex justify-evenly rounded-sm nav-links">
+    <a href="/" class={`rounded-full ${currentPath == '' ? 'active' : ''}` }>Home</a>
+    <a href="/about/" class={`rounded-full ${currentPath == 'about' ? 'active' : ''}`}>About</a>
+    <a href="/posts/1" class={`rounded-full ${['posts', 'tags'].includes(currentPath) ? 'active' : ''}`}>Blog</a>
 </div>

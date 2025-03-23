@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 const pageTitle = "Aaron Morey";
-import { Image } from 'astro:assets';
+import BitmojiImage from "@components/BitmojiImage.astro"
 import bookAndLaptop from '@assets/images/BookAndLaptopBitmoji.png';
 import AboutText from "@contentsubmodule/data/about-me.html";
 import AboutLinks from "@components/AboutLinks.astro";
 ---
 <BaseLayout pageTitle={pageTitle}>
-	<Image src={bookAndLaptop} alt="A caricature of me reading a book in front of a laptop" max-height="500px" max-width="500px" margins="auto" />
+	<BitmojiImage src={bookAndLaptop} alt="A caricature of me reading a book in front of a laptop" />
 	<h2>About Me</h2>
 	<AboutText/>
 	<AboutLinks/>

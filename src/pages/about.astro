@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AboutText from '@contentsubmodule/about.md';
-import {Image} from 'astro:assets';
+import BitmojiImage from '@components/BitmojiImage.astro';
 import GardenBitmoji from '@assets/images/GardenBitmoji.png'
 const pageTitle = "About This Site";
 ---
 <BaseLayout pageTitle={pageTitle}>
-    <Image src={GardenBitmoji} alt="A caricature of me standing near a potted plant" />
+    <BitmojiImage src={GardenBitmoji} alt="A caricature of me standing near a potted plant" />
     <AboutText />
 </BaseLayout>

@@ -19,13 +19,14 @@ const { pageTitle } = Astro.props;
     <link href="/fontawesome/css/sharp-duotone-thin.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Make RSS discoverable -->
+    <!-- Make Meta pages discoverable -->
     <link
             rel="alternate"
             type="application/rss+xml"
             title="Aaron Morey Dot Com"
             href={new URL("feed.xml", Astro.site)}
     />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <title>{pageTitle}</title>
 </head>

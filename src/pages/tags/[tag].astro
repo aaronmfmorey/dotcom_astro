@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
+import {slugify} from "@utils/utils.ts";
 
 export async function getStaticPaths() {
     const allPosts = await getCollection("blog");
@@ -13,18 +14,20 @@ export async function getStaticPaths() {
         const filteredPosts = allPosts.filter((post) =>
             (post.data.tags ?? []).includes(tag)
         );
+        const originalTag = tag;
+        tag = !!tag ? slugify(tag) : tag;
         return {
             params: { tag },
-            props: { posts: filteredPosts },
+            props: { posts: filteredPosts, originalTag: originalTag },
         };
     });
 }
 
 const { tag } = Astro.params;
-const { posts } = Astro.props;
+const { posts, originalTag } = Astro.props;
 ---
-<BaseLayout pageTitle={tag}>
-    <p>Posts tagged with {tag}</p>
+<BaseLayout pageTitle={originalTag}>
+    <p>Posts tagged with {originalTag}</p>
     <ul>
         {
             posts.map((post) => (

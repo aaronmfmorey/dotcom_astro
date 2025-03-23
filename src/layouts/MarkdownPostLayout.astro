@@ -2,11 +2,27 @@
 import BaseLayout from './BaseLayout.astro';
 import PostTagList from "../components/PostTagList.astro";
 const { frontmatter } = Astro.props;
+
+const humanReadableDate = function(value: String) {
+    const ts = Date.parse(value);
+    if (isNaN(ts)) {
+        return value;
+    } else {
+        return (
+            new Intl.DateTimeFormat(
+                "en-US",
+                {year: "numeric", month: "long", day: "numeric",}
+            )
+        ).format(ts);
+    }
+};
 ---
 <BaseLayout pageTitle={frontmatter.title}>
     <PostTagList tags={frontmatter.tags} />
-    <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
-    <p>Written by: {frontmatter.author}</p>
+    <div class="leading-[3rem] text-gray-500 italic">
+        <span>{humanReadableDate(frontmatter.pubDate.toString())}</span> -
+        <span>Written by: {frontmatter.author ?? "Aaron Morey"}</span>
+    </div>
     <!--TODO AMM Default Author to me unless otherwise noted -->
     <slot />
 </BaseLayout>

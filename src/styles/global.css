@@ -91,16 +91,14 @@ pre:has(code) {
 
 /* nav styles */
 .hamburger {
-    padding-right: 20px;
+    padding-right: 2em;
     cursor: pointer;
+    font-size: 2em;
 }
 
-.hamburger .line {
-    display: block;
-    width: 40px;
-    height: 5px;
-    margin-bottom: 10px;
-    background-color: #ff9776;
+.hamburger i {
+    font-size: .75em;
+    color: var(--link-color);
 }
 
 .nav-links {

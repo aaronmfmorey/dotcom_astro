@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+const pageTitle = "Reading";
+import books from "@contentsubmodule/data/goodreads.json";
+import BookEntry from "@components/BookEntry.astro";
+---
+<BaseLayout pageTitle={pageTitle}>
+    <p>My reading list, as exported from GoodReads.</p>
+    <p>Images come from <a href="https://openlibrary.org/dev/docs/api/covers">The OpenLibrary Books API</a></p>
+    <p>Linked books are Bookshop.org affiliate links, for which I get a percentage if you make a purchase. Be a spendthrift,
+        it goes to a good cause. (I always think "spendthrift" means the opposite of what it actually does — it
+        means "spend freely".)</p>
+
+    <div class="books-container">
+    {
+        books.map((book, i) => {
+            return (
+                <BookEntry book={book} key={i} />
+            )
+        })
+    }
+    </div>
+</BaseLayout>

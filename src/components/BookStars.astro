@@ -1,0 +1,21 @@
+---
+const {rating} = Astro.props;
+const createRatingStars = function(rating: number): Array<String> {
+    let stars = [];
+    for (let i = 0; i < 5; i++) {
+        if (rating > i) {
+            stars.push('<i class="fa-solid fa-star" style="color:goldenrod;"></i>');
+        } else {
+            stars.push('<i class="fa-solid fa-star" style="color:lightgrey;"></i>');
+        }
+    }
+    return stars;
+}
+---
+<span>Rating:
+    {
+        createRatingStars(rating).map((star:String) => {
+            return <Fragment set:html={star} />;
+        })
+    }
+</span>

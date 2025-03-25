@@ -149,6 +149,11 @@ pre:has(code) {
     display: unset;
 }
 
+section.footnotes {
+    border-top: var(--link-color) 1px solid;
+    padding-top: .75em;
+}
+
 @media screen and (min-width: 636px) {
     .nav-links {
         margin-left: 5em;

@@ -1,8 +1,14 @@
 ---
+import {getCollection} from "astro:content";
 import BaseLayout from '@layouts/BaseLayout.astro';
 const pageTitle = "Reading";
 import books from "@contentsubmodule/data/goodreads.json";
 import BookEntry from "@components/BookEntry.astro";
+const allPosts = await getCollection("blog");
+let allTags = allPosts.map((post) => post.data.tags).flat();
+let uniqueTagsForAuthorMatch = [... new Set(allTags)].filter(tag => tag !== null)
+    .map((tag :string) => tag.toLowerCase().replaceAll(" ", ""));
+console.log("unique tags", uniqueTagsForAuthorMatch);
 ---
 <BaseLayout pageTitle={pageTitle}>
     <p>My reading list, as exported from GoodReads.</p>
@@ -15,7 +21,7 @@ import BookEntry from "@components/BookEntry.astro";
     {
         books.map((book, i) => {
             return (
-                <BookEntry book={book} key={i} />
+                <BookEntry book={book} key={i} uniqueTags={uniqueTagsForAuthorMatch} />
             )
         })
     }

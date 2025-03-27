@@ -12,7 +12,7 @@ const createRatingStars = function(rating: number): Array<String> {
     return stars;
 }
 ---
-<span>Rating:
+<span>
     {
         createRatingStars(rating).map((star:String) => {
             return <Fragment set:html={star} />;

@@ -15,6 +15,7 @@
     --nav-hover-color: #FF7700;
     --nav-link-hover-color: #FAFEFF;
     --lighter-font-color: #696969;
+    --darker-font-color: rgba(31, 32, 35, 0.63);
 }
 
 html {
@@ -77,6 +78,10 @@ blockquote {
     border-left: 5px solid var(--nav-hover-color);
     background-color: #fff;
     margin-bottom: 1rem;
+}
+
+blockquote.book-review {
+    color: var(--darker-font-color);
 }
 
 blockquote p {

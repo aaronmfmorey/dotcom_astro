@@ -1,50 +1,54 @@
 ---
-const {book, uniqueTags} = Astro.props;
+import {Image} from "astro:assets";
+const {book, uniqueTags, coverImages} = Astro.props;
 import BookStars from "@components/BookStars.astro";
-import {formatDateLong, slugify, getAllTagsForAuthorMatch} from '@utils/utils.ts';
-import * as linkify from 'linkifyjs';
+import {formatDateLong, slugify} from '@utils/utils.ts';
 import linkifyHtml from 'linkify-html'
 
 const authorMatchesTag = function(authorName :string) {
     return uniqueTags.includes(authorName.toLowerCase().replaceAll(" ", ""));
 };
 
-const coverImages: Array<any> = await Astro.glob("@assets/images/covers/*.jpg")
-console.log("cover images: ", coverImages[1]);
 const coverImageExists = function(isbn: string): boolean {
     return (
-        coverImages.includes(isbn + ".jpg")
+        Object.keys(coverImages).includes("/src/assets/images/covers/" + isbn + ".jpg")
     );
 }
 
+const imagePath:string = `/src/assets/images/covers/${book.isbn}.jpg`;
 ---
 <div class="rounded-md border-2 border-gray-300 bg-white p-3 m-5 flex flex-col">
-    {
-        coverImageExists(book.isbn)
-            ? book.isbn
-            : ""
-    }
-    <h3>
-        <span class="italic">{book.title}</span> -
-        {
-            authorMatchesTag(book.author)
-                ? <a href=`/tags/${slugify(book.author)}/`>{book.author}</a>
-                : book.author
-        }
-        ({book.year_published})
-    </h3>
     <div>
-        Finished: {formatDateLong(book.date_read)}
         {
-            !!book.my_rating && book.my_rating != 0 ?
-                <BookStars rating={book.my_rating} /> :
-                ""
+            coverImageExists(book.isbn)
+                ? <Image src={coverImages[imagePath]()} alt=`Cover image for ${book.title} - /assets/images/covers/${book.isbn}.jpg` />
+                : "Nope :( " + book.isbn + ".jpg"
         }
+        <a href=`/assets/images/covers/${book.isbn}.jpg`>Image Link</a>
     </div>
-    {
-        !!book.my_review
-        ? <blockquote class="book-review italic"><Fragment set:html={linkifyHtml(book.my_review)} /></blockquote>
-            : ""
-    }
-    {JSON.stringify(book, null, 2)}
+    <div class="flex-[2]">
+        <h3>
+            <span class="italic">{book.title}</span> -
+            {
+                authorMatchesTag(book.author)
+                    ? <a href=`/tags/${slugify(book.author)}/`>{book.author}</a>
+                    : book.author
+            }
+            ({book.year_published})
+        </h3>
+        <div>
+            Finished: {formatDateLong(book.date_read)}
+            {
+                !!book.my_rating && book.my_rating != 0 ?
+                    <BookStars rating={book.my_rating} /> :
+                    ""
+            }
+        </div>
+        {
+            !!book.my_review
+            ? <blockquote class="book-review italic"><Fragment set:html={linkifyHtml(book.my_review)} /></blockquote>
+                : ""
+        }
+        {JSON.stringify(book, null, 2)}
+    </div>
 </div>

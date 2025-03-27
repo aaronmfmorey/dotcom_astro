@@ -1,14 +1,17 @@
 ---
+import type { ImageMetadata } from 'astro';
 import {getCollection} from "astro:content";
 import BaseLayout from '@layouts/BaseLayout.astro';
 const pageTitle = "Reading";
 import books from "@contentsubmodule/data/goodreads.json";
 import BookEntry from "@components/BookEntry.astro";
+
 const allPosts = await getCollection("blog");
 let allTags = allPosts.map((post) => post.data.tags).flat();
 let uniqueTagsForAuthorMatch = [... new Set(allTags)].filter(tag => tag !== null)
     .map((tag :string) => tag.toLowerCase().replaceAll(" ", ""));
-console.log("unique tags", uniqueTagsForAuthorMatch);
+
+const coverImages = import.meta.glob<{ default: ImageMetadata }>('@assets/images/covers/*.jpg');
 ---
 <BaseLayout pageTitle={pageTitle}>
     <p>My reading list, as exported from GoodReads.</p>
@@ -21,7 +24,7 @@ console.log("unique tags", uniqueTagsForAuthorMatch);
     {
         books.map((book, i) => {
             return (
-                <BookEntry book={book} key={i} uniqueTags={uniqueTagsForAuthorMatch} />
+                <BookEntry book={book} key={i} uniqueTags={uniqueTagsForAuthorMatch} coverImages={coverImages} />
             )
         })
     }

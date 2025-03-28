@@ -2,7 +2,6 @@
 import MarkdownPostLayout from '@layouts/MarkdownPostLayout.astro';
 import  * as post  from '@contentsubmodule/pages/site-technical-overview.md';
 const Content = post.Content;
-console.log("Post: " , post)
 ---
 <MarkdownPostLayout post={null} frontmatter={post.frontmatter}>
     <Content />

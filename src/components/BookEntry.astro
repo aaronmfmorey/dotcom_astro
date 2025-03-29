@@ -47,15 +47,17 @@ const imagePath:string = `/src/assets/images/covers/${book.isbn}.jpg`;
                 }
                 ({formatPublicationYear(book.original_publication_year)})
             </h3>
-            <div class="pb-5">Finished: {formatDateLong(book.date_read)}</div>
-            {
-                !!book.my_rating && book.my_rating != 0 ?
-                    <BookStars rating={book.my_rating} /> :
-                    ""
-            }
+            <div class="pb-5">
+                <div>Finished: {formatDateLong(book.date_read)}</div>
+                {
+                    !!book.my_rating && book.my_rating != 0 ?
+                        <BookStars rating={book.my_rating} /> :
+                        ""
+                }
+            </div>
             {
                 !!book.my_review
-                ? <blockquote class="book-review italic pl-10"><Fragment set:html={linkifyHtml(book.my_review)} /></blockquote>
+                ? <blockquote class="book-review pl-10"><Fragment set:html={linkifyHtml(book.my_review)} /></blockquote>
                     : ""
             }
             <!--{JSON.stringify(book, null, 2)}-->

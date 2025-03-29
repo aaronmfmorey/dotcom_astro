@@ -82,6 +82,7 @@ blockquote {
 
 blockquote.book-review {
     color: var(--darker-font-color);
+    font-size: .9em;
 }
 
 blockquote p {

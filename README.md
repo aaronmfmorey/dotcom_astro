@@ -10,7 +10,14 @@ git submodule init
 git submodule update --remote
 ```
 
-2. The expected directory layout in the submodule is:
+2. Link your content as needed. For my own purposes I use
+```bash
+# I've figured out how to pull everything except images without symlinks
+# Surely there's a way to do that too, I just haven't looked into it
+ln -s <path_to_submodule_folder>/images src/assets/images
+```
+
+3. The expected directory layout in the submodule is:
 ```
 .
 └── content

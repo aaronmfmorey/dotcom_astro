@@ -1,20 +1,23 @@
 ---
 import linkCollection from '../../aaronmoreycom_content/content/data/aboutlinks.json';
 ---
-<p>
+<h2>Find Me At</h2>
+<div class="table">
     {
-        linkCollection.map((item, index) => <span><i class={item.icon}></i><a href={item.url}>{item.title}</a><br/></span>)
+        linkCollection.map((item, index) => <div class="table-row">
+            <span class="leading-[1.5] table-cell"><i class={item.icon}></i></span>
+            <span class="table-cell pl-[.5em]"><a href={item.url}>{item.title}</a></span>
+        </div>)
     }
-</p>
+</div>
 
-<style is:global>
+<style>
     /* Declare a custom CSS class to make the icon look right */
-    .svg-inline--fa {
+    i {
+        color: #01295F;
         overflow: visible;
         box-sizing: content-box;
         display: inline-block;
-        height: 1em;
-        vertical-align: -0.125em;
-        padding-right: .25em;
+        color: #01295F;
     }
 </style>

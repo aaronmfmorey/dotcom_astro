@@ -1,0 +1,66 @@
+---
+import {Image} from "astro:assets";
+const {book, uniqueTags, coverImages} = Astro.props;
+import BookStars from "@components/BookStars.astro";
+import {formatDateLong, slugify} from '@utils/utils.ts';
+import linkifyHtml from 'linkify-html'
+
+const authorMatchesTag = function(authorName :string) {
+    return uniqueTags.includes(authorName.toLowerCase().replaceAll(" ", ""));
+};
+
+const coverImageExists = function(isbn: string): boolean {
+    return (
+        Object.keys(coverImages).includes("/src/assets/images/covers/" + isbn + ".jpg")
+    );
+}
+
+const formatPublicationYear = function(year :string) {
+    if (!year) {
+        return "";
+    } else {
+        const iYear:number = parseInt(year);
+        if (iYear < 0) {
+            return Math.abs(iYear) + " BC";
+        } else {
+            return iYear;
+        }
+    }
+}
+
+const imagePath:string = `/src/assets/images/covers/${book.isbn}.jpg`;
+---
+<div>
+    <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm bg-white p-3 m-5">
+        {
+            coverImageExists(book.isbn)
+                ?  <div style="min-width: 200px; flex: 1;" class="flex flex-col basis-full"><Image src={coverImages[imagePath]()} alt=`Cover image for ${book.title} - /assets/images/covers/${book.isbn}.jpg` /></div>
+                : ""
+        }
+        <div style="display: flex; flex-direction: column; flex-basis: 100%; flex: 3;">
+            <h3>
+                <span class="italic">{book.title}</span> -
+                {
+                    authorMatchesTag(book.author)
+                        ? <a href=`/tags/${slugify(book.author)}/`>{book.author}</a>
+                        : book.author
+                }
+                ({formatPublicationYear(book.original_publication_year)})
+            </h3>
+            <div class="pb-5">
+                <div>Finished: {formatDateLong(book.date_read)}</div>
+                {
+                    !!book.my_rating && book.my_rating != 0 ?
+                        <BookStars rating={book.my_rating} /> :
+                        ""
+                }
+            </div>
+            {
+                !!book.my_review
+                ? <blockquote class="book-review pl-10"><Fragment set:html={linkifyHtml(book.my_review)} /></blockquote>
+                    : ""
+            }
+            <!--{JSON.stringify(book, null, 2)}-->
+        </div>
+    </div>
+</div>

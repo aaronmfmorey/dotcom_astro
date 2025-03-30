@@ -1,0 +1,6 @@
+---
+import { Image } from 'astro:assets';
+const {src} = Astro.props;
+const {alt} = Astro.props;
+---
+<Image src={src} alt={alt} style="max-width:250px;max-height:250px;" />

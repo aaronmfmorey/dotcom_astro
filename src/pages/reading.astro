@@ -1,0 +1,31 @@
+---
+import type { ImageMetadata } from 'astro';
+import {getCollection} from "astro:content";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import books from "@contentsubmodule/data/goodreads.json";
+const pageTitle = "Reading";
+import BookEntry from "@components/BookEntry.astro";
+const allPosts = await getCollection("blog");
+let allTags = allPosts.map((post) => post.data.tags).flat();
+let uniqueTagsForAuthorMatch = [... new Set(allTags)].filter(tag => tag !== null)
+    .map((tag :string) => tag.toLowerCase().replaceAll(" ", ""));
+
+const coverImages = import.meta.glob<{ default: ImageMetadata }>('@assets/images/covers/*.jpg');
+---
+<BaseLayout pageTitle={pageTitle}>
+    <p>My reading list, as exported from GoodReads.</p>
+    <p>Images come from <a href="https://openlibrary.org/dev/docs/api/covers">The OpenLibrary Books API</a></p>
+    <p>Linked books are Bookshop.org affiliate links, for which I get a percentage if you make a purchase. Be a spendthrift,
+        it goes to a good cause. (I always think "spendthrift" means the opposite of what it actually does — it
+        means "spend freely".)</p>
+
+    <div class="books-container">
+    {
+        books.map((book, i) => {
+            return (
+                <BookEntry book={book} key={i} uniqueTags={uniqueTagsForAuthorMatch} coverImages={coverImages} previousBook={books[i-1]} />
+            )
+        })
+    }
+    </div>
+</BaseLayout>

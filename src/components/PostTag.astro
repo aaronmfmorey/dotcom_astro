@@ -1,5 +1,5 @@
 ---
+import {slugify} from "@utils/utils.ts";
 const {tag} = Astro.props;
 ---
-
-<span><i class="fa fa-tag"/><a href={`/tags/${tag}`}>{tag}</a></span>
+<a class="pr-2" href={`/tags/${slugify(tag)}`}><span class="fa-tag-wrapper"><i class="fa fa-tag pr-1"/></span>{tag}</a>

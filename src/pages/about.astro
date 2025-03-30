@@ -1,16 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
-const pageTitle = "What's This All About?";
-import AboutText from '../../aaronmoreycom_content/content/data/about-me.html';
-import AboutSiteText from '../../aaronmoreycom_content/content/data/about-me-site.html';
-import AboutLinks from "../components/AboutLinks.astro";
+import AboutText from '@contentsubmodule/about.md';
+import BitmojiImage from '@components/BitmojiImage.astro';
+import GardenBitmoji from '@assets/images/GardenBitmoji.png'
+const pageTitle = "About This Site";
 ---
 <BaseLayout pageTitle={pageTitle}>
-    <h2>About Aaron</h2>
+    <div class="float-start">
+        <BitmojiImage src={GardenBitmoji} alt="A caricature of me standing near a potted plant" />
+    </div>
     <AboutText />
-    <h3>Find Me At</h3>
-    <AboutLinks />
-    <h2>About This Site</h2>
-    <AboutSiteText />
 </BaseLayout>
+
+<style is:global>
+    li {
+        margin-left: 1.5em;
+    }
+
+    li::marker {
+        content: "☞"; /* Or use a data URI */
+        font-size: 1.5em;          /* Adjust size as needed */
+        /* Optional: Use transform for positioning */
+        /* transform: translateX(-50%); */
+        color: #696969;
+    }
+</style>

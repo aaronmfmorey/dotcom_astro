@@ -1,11 +1,16 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 const pageTitle = "Aaron Morey";
-import { Image } from 'astro:assets';
-import bookAndLaptop from '../assets/images/BookAndLaptopBitmoji.png';
-import {Content as IndexText} from "../../aaronmoreycom_content/content/index.md";
+import BitmojiImage from "@components/BitmojiImage.astro"
+import bookAndLaptop from '@assets/images/BookAndLaptopBitmoji.png';
+import AboutText from "@contentsubmodule/data/about-me.html";
+import AboutLinks from "@components/AboutLinks.astro";
 ---
 <BaseLayout pageTitle={pageTitle}>
-	<Image src={bookAndLaptop} alt="A caricature of me reading a book in front of a laptop" />
-	<IndexText/>
+	<div class="flex w-full justify-center">
+		<BitmojiImage src={bookAndLaptop} alt="A caricature of me reading a book in front of a laptop" />
+	</div>
+	<h2>About Me</h2>
+	<AboutText/>
+	<AboutLinks/>
 </BaseLayout>

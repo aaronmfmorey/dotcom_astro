@@ -24,10 +24,11 @@ jobs:
           git submodule update --recursive --remote
           git switch main
           git pull
-          ln -s aaronmoreycom_content/content/images src/assets/images
-          echo `ls aaronmoreycom_content/content/posts`
-          echo "PWD:"
-          echo `pwd`
+#          ln -s aaronmoreycom_content/content/images src/assets/images
+#          echo "ls aaronmoreycom_content/content/posts"
+#          echo `ls aaronmoreycom_content/content/posts`
+#          echo "PWD:"
+#          echo `pwd`
 
       - name: Install packages
         run: npm ci

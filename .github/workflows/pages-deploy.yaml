@@ -25,6 +25,7 @@ jobs:
           git switch main
           git pull
           ln -s aaronmoreycom_content/content/images src/assets/images
+          echo `ls aaronmoreycom_content/content`
 
       - name: Install packages
         run: npm ci

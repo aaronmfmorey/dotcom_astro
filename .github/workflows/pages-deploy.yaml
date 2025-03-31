@@ -36,10 +36,10 @@ jobs:
       - name: Run npm build
         run: npm run build
 
-      - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Deploy
+#        uses: cloudflare/wrangler-action@v3
+#        with:
+#          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+#          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+#          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 #          command: pages deploy public # --project-name=dotcom_astro --commit-dirty=true

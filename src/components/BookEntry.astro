@@ -11,7 +11,7 @@ const authorMatchesTag = function(authorName :string) {
 
 const coverImageExists = function(isbn: string): boolean {
     return (
-        Object.keys(coverImages).includes("/src/assets/images/covers/" + isbn + ".jpg")
+        Object.keys(coverImages).includes("../assets/images/covers/" + isbn + ".jpg")
     );
 }
 
@@ -28,7 +28,7 @@ const formatPublicationYear = function(year :string) {
     }
 }
 
-const imagePath:string = `/src/assets/images/covers/${book.isbn}.jpg`;
+const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
 ---
 <div>
     <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm bg-white p-3 m-5">

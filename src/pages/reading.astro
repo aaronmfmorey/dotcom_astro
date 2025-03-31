@@ -23,7 +23,13 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/imag
     {
         books.map((book, i) => {
             return (
-                <BookEntry book={book} key={i} uniqueTags={uniqueTagsForAuthorMatch} coverImages={coverImages} previousBook={books[i-1]} />
+                <BookEntry
+                    book={book}
+                    key={i}
+                    uniqueTags={uniqueTagsForAuthorMatch}
+                    coverImages={coverImages}
+                    previousBook={books[i-1]}
+                />
             )
         })
     }

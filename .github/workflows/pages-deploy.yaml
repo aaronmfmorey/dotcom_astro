@@ -22,10 +22,8 @@ jobs:
         run: |
          # git submodule update --init --recursive
           git submodule update --recursive --remote
-          echo "ls -la aaronmoreycom_content/content/images"
-          echo `ls -la aaronmoreycom_content/content/images`
-          echo "ls -la src"
-          echo `ls -la src`
+          git switch main
+          git pull
           ln -s aaronmoreycom_content/content/images src/assets/images
 
       - name: Install packages

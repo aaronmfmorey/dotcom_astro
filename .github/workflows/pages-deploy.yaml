@@ -20,7 +20,7 @@ jobs:
 
       - name: Checkout main on all submodules
         run: |
-          git submodule update --init --recursive
+         # git submodule update --init --recursive
           git submodule update --recursive --remote
 
       - name: Install packages

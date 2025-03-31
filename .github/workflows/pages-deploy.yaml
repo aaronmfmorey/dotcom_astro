@@ -22,6 +22,7 @@ jobs:
         run: |
          # git submodule update --init --recursive
           git submodule update --recursive --remote
+          ln -s aaronmoreycom_content/content/images src/assets/images
 
       - name: Install packages
         run: npm ci

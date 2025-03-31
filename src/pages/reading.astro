@@ -10,7 +10,7 @@ let allTags = allPosts.map((post) => post.data.tags).flat();
 let uniqueTagsForAuthorMatch = [... new Set(allTags)].filter(tag => tag !== null)
     .map((tag :string) => tag.toLowerCase().replaceAll(" ", ""));
 
-const coverImages = import.meta.glob<{ default: ImageMetadata }>('@assets/images/covers/*.jpg');
+const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/images/covers/*.jpg');
 ---
 <BaseLayout pageTitle={pageTitle}>
     <p>My reading list, as exported from GoodReads.</p>

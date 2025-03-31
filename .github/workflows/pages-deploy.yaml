@@ -22,8 +22,6 @@ jobs:
         run: |
           git submodule update --init --recursive
           git submodule update --recursive --remote
-          cd aaronmoreycom_content
-          git switch astro-conversion
 
       - name: Install packages
         run: npm ci

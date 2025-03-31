@@ -18,6 +18,13 @@ jobs:
           submodules: 'recursive'
           token: ${{ secrets.AARONMOREYCOM_CONTENT_PAT }}
 
+      - name: Checkout main on all submodules
+        run: |
+          git submodule update --init --recursive
+          git submodule update --recursive --remote
+          cd aaronmoreycom_content
+          git switch astro-conversion
+
       - name: Install packages
         run: npm ci
 

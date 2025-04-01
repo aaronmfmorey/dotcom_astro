@@ -1,0 +1,8 @@
+---
+const {nextUrl} = Astro.props;
+---
+{
+    nextUrl
+        ? (<a href={nextUrl} class="pagination-link">&rsaquo;</a>)
+        : (<span class="pagination-link disabled">&rsaquo;</span>)
+}

@@ -1,0 +1,35 @@
+---
+// CREDIT: https://rimdev.io/creating-a-pagination-component-with-astro
+import BlogPaginationFirstLink from "./BlogPaginationFirstLink.astro";
+import BlogPaginationPreviousLink from "./BlogPaginationPreviousLink.astro";
+import BlogPaginationLinksList from "./BlogPaginationLinksList.astro";
+import BlogPaginationNextLink from "./BlogPaginationNextLink.astro";
+import BlogPaginationLastLink from "./BlogPaginationLastLink.astro";
+const {length, currentUrl, currentPage, firstUrl, prevUrl, nextUrl, lastUrl} = Astro.props;
+const paginationList = Array.from({length: `${length}`}, (_, i) => i + 1);
+---
+<div class="grid justify-items-center">
+<nav aria-label="Blog pagination" class="pagination pagination-default con">
+    <BlogPaginationFirstLink firstUrl={firstUrl} currentUrl={currentUrl} />
+    <BlogPaginationPreviousLink prevUrl={prevUrl} />
+    <BlogPaginationLinksList
+            firstUrl={firstUrl}
+            currentPage={currentPage}
+            paginationList={paginationList}
+            baseUrl="/posts"/>
+    <BlogPaginationNextLink nextUrl={nextUrl} />
+    <BlogPaginationLastLink lastUrl={lastUrl} currentUrl={currentUrl} />
+
+    {lastUrl == currentUrl ? (
+            <span class="pagination__link disabled">
+            <i class="pi-angle-right"></i>
+            <i class="pi-angle-right"></i>
+        </span>
+    ) : (
+            <a href={lastUrl} class="pagination__link">
+                <i class="pi-angle-right"></i>
+                <i class="pi-angle-right"></i>
+            </a>
+    )}
+</nav>
+</div>

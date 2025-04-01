@@ -1,0 +1,19 @@
+---
+const {paginationList, currentPage, firstUrl, baseUrl} = Astro.props;
+const formatBaseUrl = function(baseUrl:string, num:number) {
+    return `${baseUrl}/${num}`;
+}
+---
+
+{
+    paginationList.map((num: number) => (
+        currentPage == num
+            ? (<span class="text-white bg-[#FF7700] px-5 py-2 mx-2 rounded-full pagination-link">{num}</span>)
+            : (
+                <a href={`${baseUrl}/${num}`}
+                   class={`pagination-link mx-2 ${currentPage == num ? "disabled active" : ""}`}>
+                    {num}
+                </a>
+            )
+    ))
+}

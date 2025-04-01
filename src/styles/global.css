@@ -2,10 +2,10 @@
 
 :root {
     /* Fonts */
-    --ff-sans-serif: "Quicksand", "Computer Modern Sans", Roboto, Helvetica, sans-serif;
+    --ff-sans-serif: "Josefin Sans", "Righteous", "Quicksand", "Computer Modern Sans", Roboto, Helvetica, sans-serif;
     --ff-serif: "Cormorant Garamond", "Computer Modern", Garamond, serif;
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+    --ff-oldstyle: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
 
     /* Colors */
     --background-color: #FAFEFF;
@@ -38,6 +38,7 @@ body {
 
 p {
     margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -83,6 +84,7 @@ blockquote {
 blockquote.book-review {
     color: var(--darker-font-color);
     font-size: .9em;
+    margin: 1rem;
 }
 
 blockquote p {

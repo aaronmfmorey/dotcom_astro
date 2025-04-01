@@ -34,3 +34,16 @@ export const humanReadableDate = function(value: string) {
         ).format(ts);
     }
 };
+
+export const bookshopAffiliateUrl = function(isbn13: string): string {
+     // TODO AMM Add tooltips?
+    if (isbn13 && isbn13 !== "") {
+        return `<span>
+                    <a data-tooltip-target="bookshop-tooltip" target='_blank' class='bookshop-affiliate-link' href='https://bookshop.org/a/110804/${isbn13}'>
+                        <i class="fa-solid fa-book"></i>
+                    </a>
+                </span>`;
+    } else {
+        return "";
+    }
+};

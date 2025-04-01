@@ -1,10 +1,11 @@
 ---
 import {Image} from "astro:assets";
-const {book, uniqueTags, coverImages} = Astro.props;
 import BookStars from "@components/BookStars.astro";
 import {formatDateLong, slugify} from '@utils/utils.ts';
 import linkifyHtml from 'linkify-html'
+import {bookshopAffiliateUrl} from "../utils/utils";
 
+const {book, uniqueTags, coverImages, previousYearRead} = Astro.props;
 const authorMatchesTag = function(authorName :string) {
     return uniqueTags.includes(authorName.toLowerCase().replaceAll(" ", ""));
 };
@@ -28,13 +29,23 @@ const formatPublicationYear = function(year :string) {
     }
 }
 
+const yearRead = new Date(Date.parse(book.date_read)).getFullYear();
+
 const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
 ---
+    {
+        // Make YearRead hang out at the top untli the next comes along?
+        yearRead !== previousYearRead
+        ? <h2 class="bg-[#FFCC66] drop-shadow-md z-1 p-2 pt-[1rem] w-16 text-center">{yearRead}</h2>
+        :""
+    }
 <div>
-    <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm bg-white p-3 m-5">
+    <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm drop-shadow-2xl bg-white my-5 py-3">
         {
             coverImageExists(book.isbn)
-                ?  <div style="min-width: 200px; flex: 1;" class="flex flex-col basis-full"><Image src={coverImages[imagePath]()} alt=`Cover image for ${book.title} - /assets/images/covers/${book.isbn}.jpg` /></div>
+                ?  <div style="min-width: 200px; flex: 1;" class="flex flex-col basis-full m-2">
+                        <Image src={coverImages[imagePath]()} alt=`Cover image for ${book.title} - /assets/images/covers/${book.isbn}.jpg` />
+                    </div>
                 : ""
         }
         <div style="display: flex; flex-direction: column; flex-basis: 100%; flex: 3;">
@@ -46,6 +57,7 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
                         : book.author
                 }
                 ({formatPublicationYear(book.original_publication_year)})
+                <Fragment set:html={bookshopAffiliateUrl(book.isbn13)} />
             </h3>
             <div class="pb-5">
                 <div>Finished: {formatDateLong(book.date_read)}</div>
@@ -64,3 +76,18 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
         </div>
     </div>
 </div>
+<style>
+    h2 {
+        //position: -webkit-sticky;
+        position: sticky;
+        //height: 50px;
+        top: 0;
+        margin: 0;
+        width: 4em;
+
+        //z-index: 1;
+        //background-color: var(#FF7700);
+        //width: 100%;
+
+    }
+</style>

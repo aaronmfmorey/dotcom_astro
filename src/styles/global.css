@@ -13,10 +13,20 @@
     --link-color: #437F97;
     --link-hover-color: #5AABCC;
     --nav-hover-color: #FF7700;
+    --lighter-highlight: #FFCC66;
     --nav-link-hover-color: #FAFEFF;
     --lighter-font-color: #696969;
     --darker-font-color: rgba(31, 32, 35, 0.63);
 }
+
+/*Color suggestions:*/
+/*i {*/
+/*    color: #FAFEFF;*/
+/*    color: #5AABCC;*/
+/*    color: #696969;*/
+/*    color: #FFD700;*/
+/*    color: #8B4513;*/
+/*}*/
 
 html {
     background-color: var(--background-color);
@@ -76,7 +86,7 @@ blockquote {
     border-color: #ccc;
     border-width: 1.5px;
     padding: 10px;
-    border-left: 5px solid var(--nav-hover-color);
+    border-left: 5px solid var(--lighter-highlight);
     background-color: #fff;
     margin-bottom: 1rem;
 }

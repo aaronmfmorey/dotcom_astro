@@ -40,10 +40,10 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
         :""
     }
 <div>
-    <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm drop-shadow-2xl bg-white my-5 py-3">
+    <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm bg-white my-5 p-5">
         {
             coverImageExists(book.isbn)
-                ?  <div style="min-width: 200px; flex: 1;" class="flex flex-col basis-full m-2">
+                ?  <div style="flex: 1;" class="flex flex-col basis-full m-2 h-full">
                         <Image src={coverImages[imagePath]()} alt=`Cover image for ${book.title} - /assets/images/covers/${book.isbn}.jpg` />
                     </div>
                 : ""
@@ -51,14 +51,16 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
         <div style="display: flex; flex-direction: column; flex-basis: 100%; flex: 3;">
             <h3>
                 <span class="italic">{book.title}</span> -
+                {formatPublicationYear(book.original_publication_year)}
+                <Fragment set:html={bookshopAffiliateUrl(book.isbn13)} />
+            </h3>
+            <h4>
                 {
                     authorMatchesTag(book.author)
                         ? <a href=`/tags/${slugify(book.author)}/`>{book.author}</a>
                         : book.author
                 }
-                ({formatPublicationYear(book.original_publication_year)})
-                <Fragment set:html={bookshopAffiliateUrl(book.isbn13)} />
-            </h3>
+            </h4>
             <div class="pb-5">
                 <div>Finished: {formatDateLong(book.date_read)}</div>
                 {

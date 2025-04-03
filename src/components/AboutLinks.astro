@@ -2,12 +2,13 @@
 import linkCollection from '../../aaronmoreycom_content/content/data/aboutlinks.json';
 ---
 <h2>Find Me At</h2>
-<div class="table">
+<div class="table m-5">
     {
-        linkCollection.map((item, index) => <div class="table-row">
-            <span class="leading-[1.5] table-cell"><i class={item.icon}></i></span>
-            <span class="table-cell pl-[.5em]"><a href={item.url}>{item.title}</a></span>
-        </div>)
+        linkCollection.map((item, index) =>
+            <div class="table-row text-2xl">
+                <span class="leading-[1.5] table-cell"><i class={item.icon}></i></span>
+                <span class="table-cell pl-[.5em]"><a href={item.url}>{item.title}</a></span>
+            </div>)
     }
 </div>
 
@@ -18,6 +19,5 @@ import linkCollection from '../../aaronmoreycom_content/content/data/aboutlinks.
         overflow: visible;
         box-sizing: content-box;
         display: inline-block;
-        color: #01295F;
     }
 </style>

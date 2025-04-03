@@ -110,6 +110,18 @@ pre:has(code) {
     border-radius: 5px;
 }
 
+ruby.stressed-syllable {
+    font-style: italic;
+    position: relative;
+    line-height: .1rem;
+}
+
+ruby.stressed-syllable rt {
+    font-size: 1.5rem;
+    position: relative;
+    top: 1rem;
+}
+
 .blog-post ul {
     list-style: disc;
     margin-left: 1.5em;

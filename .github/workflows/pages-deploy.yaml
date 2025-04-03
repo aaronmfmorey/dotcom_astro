@@ -20,10 +20,10 @@ jobs:
 
       - name: Checkout main on all submodules
         run: |
-         # git submodule update --init --recursive
-          git submodule update --recursive --remote
-          git switch main
-          git pull
+          # Do it all in one shot
+          git submodule update --init --recursive --remote
+          # git switch main
+          # git pull
 
       - name: Install packages
         run: npm ci

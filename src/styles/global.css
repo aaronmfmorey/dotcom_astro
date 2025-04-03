@@ -2,10 +2,10 @@
 
 :root {
     /* Fonts */
-    --ff-sans-serif: "Quicksand", "Computer Modern Sans", Roboto, Helvetica, sans-serif;
+    --ff-sans-serif: "Josefin Sans", "Righteous", "Quicksand", "Computer Modern Sans", Roboto, Helvetica, sans-serif;
     --ff-serif: "Cormorant Garamond", "Computer Modern", Garamond, serif;
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+    --ff-oldstyle: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
 
     /* Colors */
     --background-color: #FAFEFF;
@@ -13,10 +13,20 @@
     --link-color: #437F97;
     --link-hover-color: #5AABCC;
     --nav-hover-color: #FF7700;
+    --lighter-highlight: #FFCC66;
     --nav-link-hover-color: #FAFEFF;
     --lighter-font-color: #696969;
     --darker-font-color: rgba(31, 32, 35, 0.63);
 }
+
+/*Color suggestions:*/
+/*i {*/
+/*    color: #FAFEFF;*/
+/*    color: #5AABCC;*/
+/*    color: #696969;*/
+/*    color: #FFD700;*/
+/*    color: #8B4513;*/
+/*}*/
 
 html {
     background-color: var(--background-color);
@@ -38,6 +48,7 @@ body {
 
 p {
     margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -75,7 +86,7 @@ blockquote {
     border-color: #ccc;
     border-width: 1.5px;
     padding: 10px;
-    border-left: 5px solid var(--nav-hover-color);
+    border-left: 5px solid var(--lighter-highlight);
     background-color: #fff;
     margin-bottom: 1rem;
 }
@@ -83,6 +94,7 @@ blockquote {
 blockquote.book-review {
     color: var(--darker-font-color);
     font-size: .9em;
+    margin: 1rem;
 }
 
 blockquote p {

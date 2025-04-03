@@ -15,13 +15,15 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/imag
 <BaseLayout pageTitle={pageTitle}>
     <p>My reading list, as exported from GoodReads.</p>
     <p>Images come from <a href="https://openlibrary.org/dev/docs/api/covers">The OpenLibrary Books API</a></p>
-    <p>Linked books are Bookshop.org affiliate links, for which I get a percentage if you make a purchase. Be a spendthrift,
-        it goes to a good cause. (I always think "spendthrift" means the opposite of what it actually does — it
-        means "spend freely".)</p>
 
     <div class="books-container">
     {
-        books.map((book, i) => {
+        books.map(function (book, i, allBooks) {
+            const previousYearRead = i > 0
+                ? new Date(Date.parse(allBooks[i-1].date_read)).getFullYear()
+                : 0;
+
+            console.log(book.date_read);
             return (
                 <BookEntry
                     book={book}
@@ -29,9 +31,13 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/imag
                     uniqueTags={uniqueTagsForAuthorMatch}
                     coverImages={coverImages}
                     previousBook={books[i-1]}
+                    previousYearRead={previousYearRead}
                 />
             )
         })
     }
     </div>
+    <p class="italic">Linked books are Bookshop.org affiliate links, for which I get a percentage if you make a purchase. Be a spendthrift,
+        it goes to a good cause. (I always think "spendthrift" means the opposite of what it actually does — it
+        means "spend freely".)</p>
 </BaseLayout>

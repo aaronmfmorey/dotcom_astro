@@ -108,6 +108,10 @@ pre:has(code) {
     border-radius: 5px;
 }
 
+ul {
+    list-style: unset;
+}
+
 /* nav styles */
 .hamburger {
     padding-right: 2em;

@@ -170,6 +170,19 @@ section.footnotes {
     padding-top: .75em;
 }
 
+.pagination-link {
+    font-family: var(--ff-sans-serif);
+    font-weight: 400;
+}
+
+a.pagination-link:hover {
+    color: var(--nav-hover-color);
+}
+
+.pagination-link.disabled {
+    color: var(--lighter-font-color);
+}
+
 @media screen and (min-width: 636px) {
     .nav-links {
         margin-left: 5em;

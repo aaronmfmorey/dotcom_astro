@@ -1,9 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import BlogPost from '../../components/BlogPost.astro';
+import BaseLayout from '@layouts/BaseLayout.astro'
+import BlogPost from '@components/BlogPost.astro';
+import BlogPagination from '@components/BlogPagination.astro';
 import { getCollection, render } from 'astro:content';
 const pageTitle = "Posts";
 
+const allPosts = await getCollection('blog');
 // Credit: https://rimdev.io/creating-a-pagination-component-with-astro
 export async function getStaticPaths({ paginate }) {
     const allPosts = await getCollection('blog');
@@ -13,7 +15,22 @@ export async function getStaticPaths({ paginate }) {
     return paginate(allPosts, { pageSize: 10 });
 }
 const { page } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname.split('/');
+const firstPath = pathname[1];
 ---
 <BaseLayout pageTitle={pageTitle}>
     {page.data.map((post: any) => <BlogPost post={post} frontmatter={post.data} />)}
+    {allPosts.length > 10 ? (
+            <div class="mt-4">
+                <BlogPagination length={page.lastPage}
+                            currentUrl={page.url.current}
+                            currentPage={page.currentPage}
+                            baseUrl={firstPath}
+                            firstUrl={`/${firstPath}/1`}
+                            prevUrl={page.url.prev}
+                            nextUrl={page.url.next}
+                            lastUrl={`/${firstPath}/${page.lastPage}`}
+                />
+            </div>
+    ) : null}
 </BaseLayout>

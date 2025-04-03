@@ -4,5 +4,5 @@ const {frontmatter} = Astro.props;
 ---
 <div class="leading-[3rem] text-gray-500 italic">
     <span>{humanReadableDate(frontmatter.pubDate.toString())}</span> -
-    <span>Written by: {frontmatter.author ?? "Aaron Morey"}</span>
+    <span>{frontmatter.author ?? "Aaron Morey"}</span>
 </div>

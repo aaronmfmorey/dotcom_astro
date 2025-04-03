@@ -8,4 +8,5 @@ const currentPath = pathname.split("/")[1];
     <a href="/about/" class={`rounded-full ${currentPath == 'about' ? 'active' : ''}`}>About</a>
     <a href="/posts/1" class={`rounded-full ${['posts', 'tags'].includes(currentPath) ? 'active' : ''}`}>Blog</a>
     <a href="/reading/" class={`rounded-full ${['reading'].includes(currentPath) ? 'active' : ''}`}>Reading</a>
+    <a href="/etc/" class={`rounded-full ${['reading'].includes(currentPath) ? 'active' : ''}`}>Etc.</a>
 </div>

@@ -5,7 +5,7 @@
     --ff-sans-serif: "Josefin Sans", "Righteous", "Quicksand", "Computer Modern Sans", Roboto, Helvetica, sans-serif;
     --ff-serif: "Cormorant Garamond", "Computer Modern", Garamond, serif;
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+    --ff-oldstyle: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052;
 
     /* Colors */
     --background-color: #FAFEFF;
@@ -30,7 +30,7 @@
 
 html {
     background-color: var(--background-color);
-    font-family: var(--ff-oldstyle);
+    font-family: var(--ff-oldstyle), serif;
     color: #000;
     font-size: 20px;
 }
@@ -44,9 +44,9 @@ body {
     line-height: 1.5;
 }
 
-* {
-    box-sizing: border-box;
-}
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/
 
 p {
     margin-bottom: 1.5rem;
@@ -110,9 +110,14 @@ pre:has(code) {
     border-radius: 5px;
 }
 
-ul, ol {
-    list-style: unset;
-    /*font-size: 1.5em;*/
+.blog-post ul {
+    list-style: disc;
+    margin-left: 1.5em;
+}
+
+.blog-post ol {
+    list-style: decimal;
+    margin-left: 1.5rem;
 }
 
 /* nav styles */

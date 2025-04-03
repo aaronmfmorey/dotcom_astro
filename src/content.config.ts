@@ -13,4 +13,14 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+const etc = defineCollection({
+    loader: glob({ base: 'aaronmoreycom_content/content/pages/etc/', pattern: '*.{md,mdx}' }), //  TODO AMM Extract aaronmoreycom_content path to a config file
+    schema: z.object({
+        title: z.string(),
+        pubDate: z.coerce.date(),
+        // updatedDate: z.coerce.date().optional(),
+        // tags: z.array(z.string()).nullable()
+    }),
+});
+
+export const collections = { blog, etc };

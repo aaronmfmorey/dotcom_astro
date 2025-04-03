@@ -15,8 +15,8 @@ export async function getStaticPaths({ paginate }) {
     return paginate(allPosts, { pageSize: 10 });
 }
 const { page } = Astro.props;
-const pathname = new URL(Astro.request.url).pathname.split('/');
-const firstPath = pathname[1];
+const pathName = new URL(Astro.request.url).pathname.split('/');
+const firstPath = pathName[1];
 ---
 <BaseLayout pageTitle={pageTitle}>
     {page.data.map((post: any) => <BlogPost post={post} frontmatter={post.data} />)}

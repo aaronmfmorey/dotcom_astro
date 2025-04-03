@@ -1,9 +1,10 @@
 ---
 const {lastUrl, currentUrl} = Astro.props;
 ---
-
-{lastUrl == currentUrl
+{
+    lastUrl == currentUrl
     ? (<span class="pagination-link disabled">&raquo;</span>)
     : (
     <a href={lastUrl} class="pagination-link">&raquo;</a>
-    )}
+    )
+}

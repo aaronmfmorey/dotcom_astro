@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import BlogPost from '@components/BlogPost.astro';
+import { getCollection, render } from 'astro:content';
+const pageTitle = "Posts";
+
+const allPosts = await getCollection('etc');
+export async function getStaticPaths() {
+    const allPosts = await getCollection('etc');
+    return allPosts.sort((a, b) =>
+        new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+    );
+}
+const { page } = Astro.props;
+console.log("allPosts: ", allPosts.length);
+---
+<BaseLayout pageTitle={pageTitle}>
+    <ul>
+        {allPosts.map(post => (<li><a href={post.id}>{post.data.title}</a></li>))}
+    </ul>
+</BaseLayout>

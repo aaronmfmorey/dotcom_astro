@@ -1,4 +1,4 @@
-@import url("tailwindcss");
+@import "tailwindcss";
 
 :root {
     /* Fonts */
@@ -17,7 +17,7 @@
     --lighter-highlight: #FC6;
     --nav-link-hover-color: #FAFEFF;
     --lighter-font-color: #696969;
-    --darker-font-color: rgba(31, 32, 35, 63%);
+    --darker-font-color: rgb(31 32 35 / 63%);
 }
 
 html {
@@ -30,19 +30,15 @@ html {
 body {
     margin: 0 auto;
     width: 100%;
+
     /* 80ch was about 100 characters, so this is 80% of 80 */
     max-width: 64ch;
     padding: 1rem;
     line-height: 1.5;
 }
 
-/** {*/
-/*    box-sizing: border-box;*/
-/*}*/
-
 p {
     margin-bottom: 1.5rem;
-    /*font-size: 1.5rem;*/
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -93,7 +89,7 @@ blockquote.book-review {
 }
 
 blockquote p {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     color: var(--lighter-font-color);
 }
 
@@ -191,7 +187,7 @@ a.pagination-link:hover {
     color: var(--lighter-font-color);
 }
 
-@media screen and (min-width: 636px) {
+@media screen and (width >= 636px) {
     .nav-links {
         margin-left: 5em;
         display: flex;

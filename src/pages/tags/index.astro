@@ -4,8 +4,14 @@ import {getCollection} from "astro:content";
 import { slugify } from "@utils/utils.js";
 const pageTitle = "Tag Index";
 const allPosts = await getCollection('blog');
-const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
-tags.sort();
+let tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())]
+    .filter(
+        (tag) => tag != null
+    ).sort(
+        (a, b) => a > b ? 1 : -1
+    );
+// TODO AMM Get counts to include on tag
+//  TODO AMM Maybe sort on count?
 // TODO AMM - Exclude "blog" and "draft"
 ---
 <BaseLayout pageTitle={pageTitle}>

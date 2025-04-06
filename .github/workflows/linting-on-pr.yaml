@@ -33,3 +33,7 @@ jobs:
         uses: untitaker/hyperlink@0.1.44
         with:
           args: dist/ --sources src/
+
+      - name: Lint CSS
+        run: |
+          npx stylelint "src/**/*.css"

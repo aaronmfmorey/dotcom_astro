@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "git submodule update --remote --recursive && astro build",
-    "lint": "git submodule update --remote --recursive && astro build && hyperlink dist/ --sources src/",
+    "lint": "scripts/lint.sh",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -18,5 +18,9 @@
     "linkify-html": "^4.2.0",
     "linkifyjs": "^4.2.0",
     "tailwindcss": "^4.0.15"
+  },
+  "devDependencies": {
+    "stylelint": "^16.17.0",
+    "stylelint-config-standard": "^37.0.0"
   }
 }

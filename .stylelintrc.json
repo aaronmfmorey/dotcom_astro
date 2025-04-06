@@ -1,0 +1,9 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "comment-empty-line-before": null,
+    "import-notation": null,
+    "at-rule-no-deprecated": null,
+    "at-rule-empty-line-before": null
+  }
+}

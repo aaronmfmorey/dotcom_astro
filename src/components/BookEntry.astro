@@ -7,7 +7,7 @@ import {bookshopAffiliateUrl} from "../utils/utils";
 
 const {book, uniqueTags, coverImages, previousYearRead} = Astro.props;
 const authorMatchesTag = function(authorName :string) {
-    return uniqueTags.includes(authorName.toLowerCase().replaceAll(" ", ""));
+    return uniqueTags.includes(slugify(authorName));
 };
 
 const coverImageExists = function(isbn: string): boolean {

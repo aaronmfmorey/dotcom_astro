@@ -1,0 +1,35 @@
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Lint on PR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.AARONMOREYCOM_CONTENT_PAT }}
+
+      - name: Checkout main on all submodules
+        run: |
+          # Do it all in one shot
+          git submodule update --init --recursive --remote
+          # git switch main
+          # git pull
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Run npm build
+        run: npm run build
+
+      - name: Check urls for linting
+        uses: untitaker/hyperlink@0.1.44
+        with:
+          args: dist/ --sources src/

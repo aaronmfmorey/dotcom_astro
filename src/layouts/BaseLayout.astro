@@ -5,7 +5,6 @@ import '../styles/global.css';
 const { pageTitle } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-console.log(canonicalURL);
 ---
 <html lang="en">
 <head>
@@ -26,6 +25,7 @@ console.log(canonicalURL);
             href={new URL("feed.xml", Astro.site)}
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />

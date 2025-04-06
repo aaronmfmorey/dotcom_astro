@@ -22,8 +22,6 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/imag
             const previousYearRead = i > 0
                 ? new Date(Date.parse(allBooks[i-1].date_read)).getFullYear()
                 : 0;
-
-            console.log(book.date_read);
             return (
                 <BookEntry
                     book={book}

@@ -3,6 +3,9 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 const { pageTitle } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+console.log(canonicalURL);
 ---
 <html lang="en">
 <head>

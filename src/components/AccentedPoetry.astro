@@ -1,7 +1,6 @@
 ---
 // Credit: https://cassidysmith.dev/posts/modify-astro-slot-children
 let html = await Astro.slots.render('default')
-console.log(html)
 html = html.replaceAll("@@", "<ruby class='stressed-syllable'>").replaceAll("::", "<rt>´</rt></ruby>");
 ---
 <Fragment set:html={html} />

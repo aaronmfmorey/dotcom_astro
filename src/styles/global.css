@@ -1,32 +1,24 @@
-@import "tailwindcss";
+@import url("tailwindcss");
 
 :root {
     /* Fonts */
-    --ff-sans-serif: "Josefin Sans", "Righteous", "Quicksand", "Computer Modern Sans", Roboto, Helvetica, sans-serif;
-    --ff-serif: "Cormorant Garamond", "Computer Modern", Garamond, serif;
+    --ff-sans-serif: "Josefin Sans", "Righteous", "Quicksand", "Computer Modern Sans", "Roboto", "Helvetica", sans-serif;
+    --ff-serif: "Cormorant Garamond", "Computer Modern", "Garamond", serif;
+
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052;
+    --ff-oldstyle: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
 
     /* Colors */
     --background-color: #FAFEFF;
     --header-color: #01295F;
     --link-color: #437F97;
     --link-hover-color: #5AABCC;
-    --nav-hover-color: #FF7700;
-    --lighter-highlight: #FFCC66;
+    --nav-hover-color: #F70;
+    --lighter-highlight: #FC6;
     --nav-link-hover-color: #FAFEFF;
     --lighter-font-color: #696969;
-    --darker-font-color: rgba(31, 32, 35, 0.63);
+    --darker-font-color: rgba(31, 32, 35, 63%);
 }
-
-/*Color suggestions:*/
-/*i {*/
-/*    color: #FAFEFF;*/
-/*    color: #5AABCC;*/
-/*    color: #696969;*/
-/*    color: #FFD700;*/
-/*    color: #8B4513;*/
-/*}*/
 
 html {
     background-color: var(--background-color);

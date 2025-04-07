@@ -2,7 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogPost from '@components/BlogPost.astro';
 import { getCollection, render } from 'astro:content';
-const pageTitle = "Posts";
+const pageTitle = "Etc.";
 
 const allPosts = await getCollection('etc');
 export async function getStaticPaths() {

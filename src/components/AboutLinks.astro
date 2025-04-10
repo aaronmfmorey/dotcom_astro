@@ -1,23 +1,48 @@
 ---
-import linkCollection from '../../aaronmoreycom_content/content/data/aboutlinks.json';
+import {Image} from 'astro:assets';
+import type {ImageMetadata} from "astro";
+import linkCollection from '@contentsubmodule/data/aboutlinks.json';
+
+const images = import.meta.glob<{default: ImageMetadata}>("@assets/Font-Awesome/svgs/**/*.svg");
+const getFontAwesomePathAsKey = function(iconName: string) {
+    let nameParts = iconName.split(' ');
+    let subDirectory = "";
+    switch (nameParts[0]) {
+        case 'fa-solid':
+            subDirectory = "solid";
+            break;
+        case 'fa-brands':
+            subDirectory = "brands";
+            break;
+        default:
+            subDirectory = "regular";
+            break;
+    }
+
+    return `/src/assets/Font-Awesome/svgs/${subDirectory}/${nameParts[1]}.svg`;
+}
+
 ---
 <h2>Find Me At</h2>
 <div class="table m-5">
     {
         linkCollection.map((item, index) =>
             <div class="table-row text-[1.25em]">
-                <span class="leading-[1.5] table-cell"><i class={item.icon}></i></span>
-                <span class="table-cell pl-[.5em]"><a href={item.url}>{item.title}</a></span>
-            </div>)
+                 <span class="leading-[1.5] table-cell">
+                     <Image src={images[getFontAwesomePathAsKey(item.icon)]()} class="about-links-icon" alt={item.icon} />
+                     <a href={item.url}>{item.title}</a>
+                 </span>
+            </div>
+        )
     }
 </div>
 
 <style>
-    /* Declare a custom CSS class to make the icon look right */
-    i {
-        color: #01295F;
-        overflow: visible;
-        box-sizing: content-box;
+    .about-links-icon {
+        max-width: 1.25em;
+        max-height: 1em;
         display: inline-block;
+        vertical-align: text-top;
+        padding-right: 5px;
     }
 </style>

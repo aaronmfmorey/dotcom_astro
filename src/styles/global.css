@@ -110,6 +110,10 @@ ruby.stressed-syllable rt {
     top: 1rem;
 }
 
+ul {
+    list-style: disc;
+}
+
 .blog-post ul {
     list-style: disc;
     margin-left: 1.5em;

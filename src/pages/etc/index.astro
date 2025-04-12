@@ -15,6 +15,6 @@ const { page } = Astro.props;
 ---
 <BaseLayout pageTitle={pageTitle}>
     <ul>
-        {allPosts.map(post => (<li><a href=`{post.id}/`>{post.data.title}</a></li>))}
+        {allPosts.map(post => (<li><a href={`${post.id}/`}>{post.data.title}</a></li>))}
     </ul>
 </BaseLayout>

@@ -13,6 +13,59 @@ const pageTitle = "Aaron Morey";
 		<BitmojiImage src={bookAndLaptop} alt="A caricature of me reading a book in front of a laptop" />
 	</div>
 	<h2>About Me</h2>
-	<AboutText/>
+	<!--<AboutText/>-->
+	<p>
+		I'm a <span><code>web developer <span class="cursor">▉</span></code></span>  in the Milwaukee area, working as a software development manager.
+	</p>
+	<p>I have over <span class="experience">fifteen years experience</span> across multiple industries including
+		insurance, finance, marketing, and warehousing/logistics. I believe in good code, customer service, strong
+		communication, and the Oxford comma.
+	</p>
 	<AboutLinks/>
 </BaseLayout>
+<style>
+	span:has(code) {
+		padding: 5px;
+		border-radius: 5px;
+		/*background-color: var(--darker-font-color);*/
+		color: #6af549;
+		background-color: black;
+		font-family: monospace;
+		font-size: .8em;
+	}
+
+	span > code::before {
+		content: "> ";
+		font-weight: 800;
+		/*animate: blinker 1s infinite;*/
+	}
+
+	span.experience {
+		font-size: 0.9rem;
+		font-family: monospace;
+		font-style: italic;
+		padding: 7px;
+		padding-bottom: 0px;
+		/*border: 1px var(--lighter-highlight) solid;*/
+		border-bottom: 3px var(--lighter-highlight) solid;
+		border-radius: 3px;
+	}
+
+	span.experience:hover {
+		//font-size: 1rem;
+		font-weight: bold;
+		font-style: italic;
+		border-radius: 3px;
+	}
+
+	.cursor {
+		animation: blink 1.25s infinite;
+		animation-fill-mode: both;
+	}
+
+	@keyframes blink {
+		0% { opacity: 0 }
+		50% { opacity: 1 }
+		100% { opacity: 0 }
+	}
+</style>

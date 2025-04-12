@@ -21,14 +21,11 @@ const getFontAwesomePathAsKey = function(iconName: string) {
 
     return `/Font-Awesome/svgs/${subDirectory}/${nameParts[1]}.svg`;
 }
-
 ---
 <h2>Find Me At</h2>
 <div class="table m-5">
     {
         linkCollection.map(function(item, index) {
-            console.log("Icon: " , item.icon)
-            console.log("Images: ", images);
             return (
                 <div class="table-row text-[1.25em]">
                     <span class="leading-[1.5] table-cell">

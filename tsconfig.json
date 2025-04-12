@@ -9,6 +9,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@assets/*": ["src/assets/*"],
       "@contentsubmodule/*": ["aaronmoreycom_content/content/*"],
+      "@fontawesomesubmodule/*": ["Font-Awesome/*"],
       "@utils/*": ["src/utils/*"],
     }
   }

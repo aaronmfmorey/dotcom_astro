@@ -3,7 +3,7 @@ import {Image} from 'astro:assets';
 import type {ImageMetadata} from "astro";
 import linkCollection from '@contentsubmodule/data/aboutlinks.json';
 
-const images = import.meta.glob<{default: ImageMetadata}>("@assets/Font-Awesome/svgs/**/*.svg");
+const images = import.meta.glob<{default: ImageMetadata}>("@fontawesomesubmodule/svgs/**/*.svg");
 const getFontAwesomePathAsKey = function(iconName: string) {
     let nameParts = iconName.split(' ');
     let subDirectory = "";
@@ -19,7 +19,7 @@ const getFontAwesomePathAsKey = function(iconName: string) {
             break;
     }
 
-    return `/src/assets/Font-Awesome/svgs/${subDirectory}/${nameParts[1]}.svg`;
+    return `/Font-Awesome/svgs/${subDirectory}/${nameParts[1]}.svg`;
 }
 
 ---

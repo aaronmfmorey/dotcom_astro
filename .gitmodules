@@ -2,6 +2,6 @@
 	path = aaronmoreycom_content
 	url = git@github.com:aaronmfmorey/aaronmoreycom_content.git
     branch = main
-[submodule "src/assets/Font-Awesome"]
-	path = src/assets/Font-Awesome
+[submodule "Font-Awesome"]
+	path = Font-Awesome
 	url = git@github.com:FortAwesome/Font-Awesome.git

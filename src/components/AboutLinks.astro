@@ -26,14 +26,17 @@ const getFontAwesomePathAsKey = function(iconName: string) {
 <h2>Find Me At</h2>
 <div class="table m-5">
     {
-        linkCollection.map((item, index) =>
-            <div class="table-row text-[1.25em]">
-                 <span class="leading-[1.5] table-cell">
-                     <Image src={images[getFontAwesomePathAsKey(item.icon)]()} class="about-links-icon" alt={item.icon} />
-                     <a href={item.url}>{item.title}</a>
-                 </span>
-            </div>
-        )
+        linkCollection.map(function(item, index) {
+            console.log("Icon: " , item.icon)
+            return (
+                <div class="table-row text-[1.25em]">
+                    <span class="leading-[1.5] table-cell">
+                        <Image src={images[getFontAwesomePathAsKey(item.icon)]()} class="about-links-icon" alt={item.icon}/>
+                        <a href={item.url}>{item.title}</a>
+                    </span>
+                </div>
+            )
+        })
     }
 </div>
 

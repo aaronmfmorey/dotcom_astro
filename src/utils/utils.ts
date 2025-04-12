@@ -47,3 +47,21 @@ export const bookshopAffiliateUrl = function(isbn13: string): string {
         return "";
     }
 };
+
+export const getFontAwesomePathAsKey = function(iconName: string) {
+    let nameParts = iconName.split(' ');
+    let subDirectory = "";
+    switch (nameParts[0]) {
+        case 'fa-solid':
+            subDirectory = "solid";
+            break;
+        case 'fa-brands':
+            subDirectory = "brands";
+            break;
+        default:
+            subDirectory = "regular";
+            break;
+    }
+
+    return `/Font-Awesome/svgs/${subDirectory}/${nameParts[1]}.svg`;
+};

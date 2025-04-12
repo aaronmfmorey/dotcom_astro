@@ -1,26 +1,11 @@
 ---
 import {Image} from 'astro:assets';
+import {getFontAwesomePathAsKey} from '@utils/utils.ts';
 import type {ImageMetadata} from "astro";
 import linkCollection from '@contentsubmodule/data/aboutlinks.json';
 
 const images = import.meta.glob<{default: ImageMetadata}>("@fontawesomesubmodule/svgs/**/*.svg");
-const getFontAwesomePathAsKey = function(iconName: string) {
-    let nameParts = iconName.split(' ');
-    let subDirectory = "";
-    switch (nameParts[0]) {
-        case 'fa-solid':
-            subDirectory = "solid";
-            break;
-        case 'fa-brands':
-            subDirectory = "brands";
-            break;
-        default:
-            subDirectory = "regular";
-            break;
-    }
 
-    return `/Font-Awesome/svgs/${subDirectory}/${nameParts[1]}.svg`;
-}
 ---
 <h2>Find Me At</h2>
 <div class="table m-5">

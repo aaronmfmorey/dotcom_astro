@@ -1,0 +1,81 @@
+---
+import {Image} from 'astro:assets';
+const {micro, avatar} = Astro.props;
+import {formatDateLong} from '@utils/utils';
+import linkifyHtml from 'linkify-html';
+---
+<div class="micro">
+    <div class="name">
+        <Image src={avatar} alt="A cartoony image of me looking at my phone" class="avatar" />
+        Aaron Morey (aaronmorey.com)
+        <span class="timestamp">{ formatDateLong(micro.date) }</span>
+    </div>
+    <div class="content">
+        { <Fragment set:html={linkifyHtml(micro.body)} /> }
+    </div>
+    <div class="reacts">
+        <span><i class="fa-regular fa-comment"></i></span>
+        <span><i class="fa-regular fa-heart"></i></span>
+        <span><i class="fa-solid fa-retweet"></i></span>
+    </div>
+</div>
+
+<style>
+    div.micro {
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color: #fff;
+        filter: drop-shadow(3px 3px 3px #eee);
+    }
+
+    div.micro span.timestamp {
+        font-size: smaller;
+        color: #888;
+        font-weight: 400;
+        padding-left: 5px;
+        line-height: 2.5em;
+    }
+
+    div.micro div.name {
+        font-weight: 600;
+        /*vertical-align: top;*/
+    }
+
+    div.micro div.content {
+        font-size: .95rem;
+    }
+
+    div.micro div.reacts {
+        display: flex;
+        flex-direction: row;
+        padding-top: 15px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div.micro div.reacts span {
+        color: #ccc;
+        flex: 1;
+        text-align: center;
+    }
+
+    div.micro div.reacts span .fa-comment:hover {
+        color: #A5AAF0;
+    }
+
+    div.micro div.reacts span .fa-heart:hover {
+        color: #F2AF91;
+    }
+
+    div.micro div.reacts span .fa-retweet:hover {
+        color: #84F54E;
+    }
+
+    div.micro div.name img.avatar {
+        height: 3em;
+        width: 3em;
+        vertical-align: text-bottom;
+    }
+</style>

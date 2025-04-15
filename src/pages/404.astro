@@ -1,8 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import BitmojiImage from "@components/BitmojiImage.astro"
+import crazedLaptop from '../assets/img/CrazedLaptop.png';
 ---
 <BaseLayout>
     <h1>404</h1>
-    <p>Something went wrong!</p>
-    <p><a href="/">Go home.</a></p>
+    <p>
+        <BitmojiImage src={crazedLaptop} alt="A caricature of me looking crazed at a problem on my laptop" />
+        <p>Something went wrong! Your best bet is to <a href="/">go home.</a></p>
+    </p>
 </BaseLayout>

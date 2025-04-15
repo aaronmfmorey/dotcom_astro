@@ -3,9 +3,7 @@ import {Image} from 'astro:assets';
 import {getFontAwesomePathAsKey} from '@utils/utils.ts';
 import type {ImageMetadata} from "astro";
 import linkCollection from '@contentsubmodule/data/aboutlinks.json';
-
 const images = import.meta.glob<{default: ImageMetadata}>("@fontawesomesubmodule/svgs/**/*.svg");
-
 ---
 <h2>Find Me At</h2>
 <div class="table m-5">

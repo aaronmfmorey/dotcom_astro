@@ -2,7 +2,7 @@
 import {Image} from "astro:assets";
 import BookStars from "@components/BookStars.astro";
 import {formatDateLong, slugify} from '@utils/utils.ts';
-import linkifyHtml from 'linkify-html'
+import linkifyHtml from 'linkify-html';
 import {bookshopAffiliateUrl} from "../utils/utils";
 
 const {book, uniqueTags, coverImages, previousYearRead} = Astro.props;

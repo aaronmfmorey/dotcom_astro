@@ -17,6 +17,7 @@
     "astro": "^5.4.2",
     "linkify-html": "^4.2.0",
     "linkifyjs": "^4.2.0",
+    "rehype-autolink-headings": "^7.1.0",
     "tailwindcss": "^4.0.15"
   },
   "devDependencies": {

@@ -17,6 +17,7 @@
     --lighter-highlight: #FC6;
     --nav-link-hover-color: #FAFEFF;
     --lighter-font-color: #696969;
+    --barely-visible-grey: #d8d8d8;
     --darker-font-color: rgb(31 32 35 / 63%);
 }
 
@@ -93,9 +94,14 @@ blockquote p {
     color: var(--lighter-font-color);
 }
 
+code {
+    font-size: .8em;
+}
+
 pre:has(code) {
     padding: 10px;
     border-radius: 5px;
+    margin-bottom: 1rem;
 }
 
 ruby.stressed-syllable {
@@ -112,6 +118,19 @@ ruby.stressed-syllable rt {
 
 ul {
     list-style: disc;
+    margin-left: 1.25rem;
+    padding-bottom: 1rem;
+}
+
+.anchor-link, .anchor-link:visited {
+    font-size: .5em;
+    vertical-align: middle;
+    color: var(--barely-visible-grey);
+    padding-left: 5px;
+}
+
+.anchor-link:hover {
+    color: var(--lighter-font-color);
 }
 
 .blog-post ul {

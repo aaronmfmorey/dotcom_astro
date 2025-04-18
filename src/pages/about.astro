@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AboutText from '@contentsubmodule/about.md';
 import BitmojiImage from '@components/BitmojiImage.astro';
-import GardenBitmoji from '../assets/images/GardenBitmoji.png'
+import GardenBitmoji from '../assets/images/GardenBitmoji.png';
+import AnchoredHeader from '@components/AnchoredHeader.astro';
 const pageTitle = "About This Site";
 ---
 <BaseLayout pageTitle={pageTitle}>
@@ -10,6 +11,9 @@ const pageTitle = "About This Site";
         <BitmojiImage src={GardenBitmoji} alt="A caricature of me standing near a potted plant" />
     </div>
     <AboutText />
+    <AnchoredHeader text="About Aaron" hLevel="2" />
+    <AnchoredHeader text="Technical Skills" hLevel="3"></AnchoredHeader>
+
 </BaseLayout>
 
 <style is:global>

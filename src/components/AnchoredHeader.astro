@@ -1,0 +1,10 @@
+---
+import GithubSlugger from 'github-slugger';
+const {hLevel, text} = Astro.props;
+const slugger = new GithubSlugger()
+const slug = slugger.slug(text);
+const tagName = `h${hLevel}`;
+---
+<Fragment set:html={`<${tagName}>`}/>
+    {text}<a class="anchor-link" href={`#${slug}`}>§</a>
+<Fragment set:html={`</${tagName}>`}/>

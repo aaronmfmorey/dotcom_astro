@@ -12,13 +12,70 @@ const pageTitle = "About This Site";
     </div>
     <AboutText />
     <AnchoredHeader text="About Aaron" hLevel="2" />
-    <AnchoredHeader text="Technical Skills" hLevel="3"></AnchoredHeader>
-
+    <AnchoredHeader text="Professional Skills" hLevel="3" />
+    <div class="skills">
+        <blockquote class="skill-container">
+            <h4><i class="fa-solid fa-server"></i> Server Side</h4>
+            <ul>
+                <li>PHP</li>
+                <li>C#/.NET</li>
+                <li>Java</li>
+                <li>Python</li>
+            </ul>
+        </blockquote>
+        <blockquote class="skill-container">
+            <h4><i class="fa-solid fa-globe"></i> Web Technologies</h4>
+            <ul>
+                <li>HTML/CSS</li>
+                <li>Javascript/Typescript</li>
+                <li>ExtJS</li>
+                <li>NextJS</li>
+                <li>Astro Framework</li>
+                <li>RESTful APIs</li>
+            </ul>
+        </blockquote>
+        <blockquote class="skill-container">
+            <h4><i class="fa-solid fa-database"></i> Data</h4>
+            <ul>
+                <li>SQL</li>
+                <li>MongoDB</li>
+            </ul>
+        </blockquote>
+        <blockquote class="skill-container">
+            <h4><i class="fa-solid fa-cloud"></i> Cloud</h4>
+            <ul>
+                <li>AWS</li>
+                <li>Github</li>
+            </ul>
+        </blockquote>
+        <blockquote class="skill-container">
+            <h4><i class="fa-solid fa-building"></i> Industries</h4>
+            <ul>
+                <li>Insurance/Finance</li>
+                <li>Warehousing Logistics</li>
+                <li>Marketing</li>
+            </ul>
+        </blockquote>
+        <blockquote class="skill-container">
+            <h4><i class="fa-solid fa-people-arrows"></i> Soft Skills</h4>
+            <ul>
+                <li>Project Management</li>
+                <li>Product Ownership</li>
+                <li>People Management</li>
+            </ul>
+        </blockquote>
+    </div>
 </BaseLayout>
 
-<style is:global>
-    li {
-        margin-left: 2em;
-        line-height: 1.5em;
+<style>
+    .skills {
+        column-count: auto;
+        column-width: 250px;
+        column-gap: 15px;
+    }
+
+    .skill-container {
+        display: inline-block;
+        width: 100%;
     }
 </style>

@@ -143,6 +143,14 @@ ul {
     margin-left: 1.5rem;
 }
 
+div.micro-container {
+    padding: 10px;
+    border: 1px solid #e1f5fe;
+    border-radius: 5px;
+    background-color: #e1f5fe;
+    margin: 20px 10px 10px;
+}
+
 /* nav styles */
 .hamburger {
     padding-right: 2em;

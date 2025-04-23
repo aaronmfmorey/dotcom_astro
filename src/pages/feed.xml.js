@@ -3,18 +3,27 @@ import { getCollection } from 'astro:content';
 
 export async function GET(context) {
     let blog = await getCollection('blog');
+    let micros = await getCollection('micros');
+    let rssContent = blog.concat(micros);
     // TODO AMM - put date sort into a util function
-    blog.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
-    blog = blog.slice(0,19);
+    rssContent.sort(function (a, b) {
+        const aDate = a.data.pubDate ? new Date(a.data.pubDate) : new Date(a.data.date);
+        const bDate = b.data.pubDate ? new Date(b.data.pubDate) : new Date(b.data.date);
+
+        return bDate.getTime() - aDate.getTime()
+    });
+    rssContent = rssContent.slice(0,19);
+
     return rss({
         // TODO AMM put this into a config?
         title: 'Aaron Morey Dot Com',
         description: 'Posts on AaronMorey.com', // TODO AMM move this to config and make it better
         site: context.site,
-        items: blog.map((post) => ({
-            title: post.data.title,
-            pubDate: post.data.pubDate,
-            link: `/posts/${post.id}/`,
+        items: rssContent.map((post) => ({
+            title: post.data.title ?? "New Micropost",
+            pubDate: post.data.pubDate ?? post.data.date,
+            link: post.data.pubDate ? `/posts/${post.id}/` : `/micros/${post.id}`,
+            description: post.data.body ?? post.body ?? "",
         })),
         customData: `<language>en-us</language>`,
     });

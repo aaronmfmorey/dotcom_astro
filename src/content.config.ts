@@ -1,4 +1,4 @@
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
 const blog = defineCollection({
@@ -18,9 +18,16 @@ const etc = defineCollection({
     schema: z.object({
         title: z.string(),
         pubDate: z.coerce.date(),
-        // updatedDate: z.coerce.date().optional(),
-        // tags: z.array(z.string()).nullable()
     }),
 });
 
-export const collections = { blog, etc };
+const micros = defineCollection({
+    loader: file("aaronmoreycom_content/content/data/micros.json"),
+    schema: z.object({
+        id: z.number(),
+        date: z.coerce.date(),
+        body: z.string(),
+    })
+});
+
+export const collections = { blog, etc, micros };

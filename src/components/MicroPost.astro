@@ -1,6 +1,6 @@
 ---
 import {Image} from 'astro:assets';
-const {micro, avatar} = Astro.props;
+const {micro, avatar, singlePage} = Astro.props;
 import {formatDateLong} from '@utils/utils';
 import linkifyHtml from 'linkify-html';
 ---
@@ -8,10 +8,14 @@ import linkifyHtml from 'linkify-html';
     <div class="name">
         <Image src={avatar} alt="A cartoony image of me looking at my phone" class="avatar" />
         Aaron Morey (aaronmorey.com)
-        <span class="timestamp">{ formatDateLong(micro.date) }</span>
+        {
+            singlePage
+                ? <span class="timestamp">{ formatDateLong(micro.data.date) }</span>
+                : <a class="timestamp" href={`/micros/${micro.data.id}`}><span class="timestamp">{ formatDateLong(micro.data.date) }</span></a>
+        }
     </div>
     <div class="content">
-        { <Fragment set:html={linkifyHtml(micro.body)} /> }
+        { <Fragment set:html={linkifyHtml(micro.data.body)} /> }
     </div>
     <div class="reacts">
         <span><i class="fa-regular fa-comment"></i></span>
@@ -77,5 +81,10 @@ import linkifyHtml from 'linkify-html';
         height: 3em;
         width: 3em;
         vertical-align: text-bottom;
+    }
+
+    a.timestamp:hover {
+        filter: none;
+        text-decoration: underline;
     }
 </style>

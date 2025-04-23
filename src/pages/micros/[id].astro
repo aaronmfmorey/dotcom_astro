@@ -1,0 +1,22 @@
+---
+import {getCollection} from "astro:content";
+import MicroPost from "../../components/MicroPost.astro";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import onTheJohn from "../../../aaronmoreycom_content/content/images/OnTheJohn.png";
+import {formatDateLong} from "../../utils/utils";
+export async function getStaticPaths() {
+    const micros = await getCollection('micros');
+    return micros.map(micro => ({
+            params: { id: micro.data.id },
+            props: { micro: micro },
+        })
+    );
+}
+const {micro} = Astro.props;
+const pageTitle = formatDateLong(micro.data.date);
+---
+<BaseLayout pageTitle={pageTitle}>
+    <div class="micro-container">
+        <MicroPost avatar={onTheJohn} micro={micro} singlePage={false} />
+    <div class="micro-container">
+</BaseLayout>

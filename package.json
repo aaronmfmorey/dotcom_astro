@@ -4,6 +4,7 @@
   "version": "0.0.4",
   "scripts": {
     "dev": "astro dev",
+    "host": "astro dev --host",
     "build": "git submodule update --remote --recursive && astro build",
     "lint": "scripts/lint.sh",
     "preview": "astro preview",

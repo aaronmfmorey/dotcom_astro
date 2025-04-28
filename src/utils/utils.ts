@@ -1,3 +1,6 @@
+import Database from 'better-sqlite3';
+import path from 'path';
+
 export const slugify = (text :string) => {
     if (!text) {
         return text;
@@ -65,3 +68,17 @@ export const getFontAwesomePathAsKey = function(iconName: string) {
 
     return `/Font-Awesome/svgs/${subDirectory}/${nameParts[1]}.svg`;
 };
+
+export const getBooksFromSqlite = function() {
+    const dbPath = path.resolve('aaronmoreycom_content/content/data/goodreads.db');
+    console.log(`DB Path: ${dbPath}`);
+    const db = new Database(dbPath, { readonly: true });
+
+    const query = `
+        SELECT *
+        FROM goodreads
+        ORDER BY date_read DESC;
+    `;
+
+    return db.prepare(query).all();
+}

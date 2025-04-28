@@ -16,6 +16,7 @@
     "@astrojs/sitemap": "^3.3.0",
     "@tailwindcss/vite": "^4.0.15",
     "astro": "^5.4.2",
+    "better-sqlite3": "^11.9.1",
     "linkify-html": "^4.2.0",
     "linkifyjs": "^4.2.0",
     "rehype-autolink-headings": "^7.1.0",

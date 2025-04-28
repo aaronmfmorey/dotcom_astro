@@ -151,6 +151,10 @@ div.micro-container {
     margin: 20px 10px 10px;
 }
 
+h3.book-title {
+    font-size: 1.25rem;
+}
+
 /* nav styles */
 .hamburger {
     padding-right: 2em;
@@ -234,5 +238,9 @@ a.pagination-link:hover {
 
     .hamburger {
         display: none;
+    }
+
+    h3.book-title {
+        font-size: 2em;
     }
 }

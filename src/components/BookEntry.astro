@@ -49,7 +49,7 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
                 : ""
         }
         <div style="display: flex; flex-direction: column; flex-basis: 100%; flex: 3;">
-            <h3>
+            <h3 class="book-title">
                 <span class="italic">{book.title}</span> -
                 {formatPublicationYear(book.original_publication_year)}
                 <Fragment set:html={bookshopAffiliateUrl(book.isbn13)} />
@@ -80,16 +80,15 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
 </div>
 <style>
     h2 {
-        //position: -webkit-sticky;
         position: sticky;
-        //height: 50px;
         top: 0;
         margin: 0;
-        width: 4em;
+        font-size: 1.5em;
+        width: 100%;
+        padding: 5px;
+    }
 
-        //z-index: 1;
-        //background-color: var(#FF7700);
-        //width: 100%;
-
+    div, h3 {
+        hyphens: auto;
     }
 </style>

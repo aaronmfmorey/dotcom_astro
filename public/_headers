@@ -1,7 +1,8 @@
-Access-Control-Allow-Origin: https://aaronmorey.com
-Cross-Origin-Opener-Policy: same-origin
-Cross-Origin-Resource-Policy: same-site
-Cross-Origin-Embedder-Policy: require-corp
-Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
+/
+    Access-Control-Allow-Origin: https://aaronmorey.com
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: same-site
+    Cross-Origin-Embedder-Policy: require-corp
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    X-Content-Type-Options: nosniff
+    X-Frame-Options: DENY

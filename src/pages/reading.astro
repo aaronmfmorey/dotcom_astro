@@ -4,7 +4,6 @@ import {getCollection} from "astro:content";
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { getBooksFromSqlite } from '@utils/utils';
 let books = getBooksFromSqlite();
-console.log("Books", books);
 const pageTitle = "Reading";
 import BookEntry from "@components/BookEntry.astro";
 const allPosts = await getCollection("blog");

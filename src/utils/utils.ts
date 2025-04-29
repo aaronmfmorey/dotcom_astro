@@ -71,7 +71,6 @@ export const getFontAwesomePathAsKey = function(iconName: string) {
 
 export const getBooksFromSqlite = function() {
     const dbPath = path.resolve('aaronmoreycom_content/content/data/goodreads.db');
-    console.log(`DB Path: ${dbPath}`);
     const db = new Database(dbPath, { readonly: true });
 
     const query = `

@@ -5,8 +5,8 @@ const micros = await getCollection("micros");
 micros.sort((a, b) => {
     return a.data.date > b.data.date ? -1 : 1;
 })
-import MicroPost from "../../components/MicroPost.astro";
-import onTheJohn from "../../../aaronmoreycom_content/content/images/OnTheJohn.png";
+import MicroPost from "@components/Micros/MicroPost.astro";
+import onTheJohn from "@contentsubmodule/images/OnTheJohn.png";
 const pageTitle = "Micro Posts";
 ---
 <BaseLayout pageTitle={pageTitle}>

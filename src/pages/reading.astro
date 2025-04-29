@@ -5,7 +5,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { getBooksFromSqlite } from '@utils/utils';
 let books = getBooksFromSqlite();
 const pageTitle = "Reading";
-import BookEntry from "@components/BookEntry.astro";
+import BookEntry from "@components/Reading/BookEntry.astro";
 const allPosts = await getCollection("blog");
 let allTags = allPosts.map((post) => post.data.tags).flat();
 let uniqueTagsForAuthorMatch = [... new Set(allTags)].filter(tag => tag !== null)

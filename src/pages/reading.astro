@@ -2,7 +2,8 @@
 import type { ImageMetadata } from 'astro';
 import {getCollection} from "astro:content";
 import BaseLayout from '@layouts/BaseLayout.astro';
-import books from "@contentsubmodule/data/goodreads.json";
+import { getBooksFromSqlite } from '@utils/utils';
+let books = getBooksFromSqlite();
 const pageTitle = "Reading";
 import BookEntry from "@components/BookEntry.astro";
 const allPosts = await getCollection("blog");
@@ -18,7 +19,7 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/imag
 
     <div class="books-container">
     {
-        books.map(function (book, i, allBooks) {
+        books.map(function (book :object, i :number, allBooks :Array) {
             const previousYearRead = i > 0
                 ? new Date(Date.parse(allBooks[i-1].date_read)).getFullYear()
                 : 0;

@@ -209,6 +209,10 @@ section.footnotes {
     padding-top: .75em;
 }
 
+h2#footnote-label {
+    font-size: 1.25rem;
+}
+
 .pagination-link {
     font-family: var(--ff-sans-serif);
     font-weight: 400;

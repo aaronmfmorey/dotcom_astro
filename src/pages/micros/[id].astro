@@ -1,9 +1,9 @@
 ---
 import {getCollection} from "astro:content";
-import MicroPost from "../../components/MicroPost.astro";
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import onTheJohn from "../../../aaronmoreycom_content/content/images/OnTheJohn.png";
-import {formatDateLong} from "../../utils/utils";
+import MicroPost from "@components/Micros/MicroPost.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import onTheJohn from "@contentsubmodule/images/OnTheJohn.png";
+import {formatDateLong} from "@utils/utils";
 export async function getStaticPaths() {
     const micros = await getCollection('micros');
     return micros.map(micro => ({

@@ -70,7 +70,8 @@ a, a:visited {
 
 a:hover {
     color: var(--link-hover-color);
-    @apply drop-shadow-sm;
+    border-bottom: 3px inset var(--lighter-highlight);
+    font-style: oblique;
 }
 
 blockquote {
@@ -131,6 +132,8 @@ ul {
 
 .anchor-link:hover {
     color: var(--lighter-font-color);
+    border:none;
+    font-style: normal;
 }
 
 .blog-post ul {
@@ -153,6 +156,11 @@ div.micro-container {
 
 h3.book-title {
     font-size: 1.25rem;
+}
+
+a.bookshop-affiliate-link {
+    font-style: normal;
+    border: none;
 }
 
 /* nav styles */
@@ -188,12 +196,15 @@ h3.book-title {
 .nav-links a:hover,
 .nav-links a:focus {
     color: var(--nav-hover-color);
-    @apply drop-shadow-lg;
+    border: none;
+    font-style: normal;
 }
 
 .nav-links a.active:hover{
     background-color: var(--nav-hover-color);
     color: var(--background-color);
+    border: none;
+    font-style: normal;
 }
 
 .fa-tag-wrapper {
@@ -220,6 +231,8 @@ h2#footnote-label {
 
 a.pagination-link:hover {
     color: var(--nav-hover-color);
+    border: none;
+    font-style: normal;
 }
 
 .pagination-link.disabled {

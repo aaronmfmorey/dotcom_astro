@@ -31,6 +31,8 @@ const formatPublicationYear = function(year :string) {
 
 const yearRead = new Date(Date.parse(book.date_read)).getFullYear();
 
+const bookshopSlug = book.bookshop_slug ?? book.isbn13;
+
 const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
 ---
     {
@@ -52,7 +54,11 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
             <h3 class="book-title">
                 <span class="italic">{book.title}</span> -
                 {formatPublicationYear(book.original_publication_year)}
-                <Fragment set:html={bookshopAffiliateUrl(book.isbn13)} />
+                {
+                    1 == book.no_bookshop ?
+                        "":
+                        <Fragment set:html={bookshopAffiliateUrl(bookshopSlug)} />
+                }
             </h3>
             <h4>
                 {

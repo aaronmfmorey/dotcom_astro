@@ -5,6 +5,6 @@ const slugger = new GithubSlugger()
 const slug = slugger.slug(text);
 const tagName = `h${hLevel}`;
 ---
-<Fragment set:html={`<${tagName}>`}/>
+<Fragment set:html={`<${tagName} id="${slug}">`}/>
     {text}<a class="anchor-link" href={`#${slug}`}>§</a>
 <Fragment set:html={`</${tagName}>`}/>

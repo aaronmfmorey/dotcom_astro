@@ -76,6 +76,7 @@ export const getBooksFromSqlite = function() {
     const query = `
         SELECT *
         FROM goodreads
+        LEFT JOIN goodreads_meta ON goodreads_meta.book_id = goodreads.book_id
         ORDER BY date_read DESC;
     `;
 

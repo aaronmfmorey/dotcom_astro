@@ -196,7 +196,6 @@ a.bookshop-affiliate-link {
 .nav-links a:hover,
 .nav-links a:focus {
     color: var(--nav-hover-color);
-    /*@apply drop-shadow-lg;*/
     border: none;
     font-style: normal;
 }

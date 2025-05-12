@@ -75,13 +75,13 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
                         ""
                 }
             </div>
-            {
-                !!book.my_review
-                ? <blockquote class="book-review pl-10"><Fragment set:html={linkifyHtml(book.my_review)} /></blockquote>
-                    : ""
-            }
             <!--{JSON.stringify(book, null, 2)}-->
         </div>
+        {
+            !!book.my_review
+              ? <blockquote class="book-review pl-10"><Fragment set:html={linkifyHtml(book.my_review)} /></blockquote>
+              : ""
+        }
     </div>
 </div>
 <style>

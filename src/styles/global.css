@@ -26,6 +26,7 @@ html {
     font-family: var(--ff-oldstyle), serif;
     color: #000;
     font-size: 20px;
+    hyphens: auto;
 }
 
 body {
@@ -259,5 +260,11 @@ a.pagination-link:hover {
 
     h3.book-title {
         font-size: 2em;
+    }
+}
+
+@media screen and (width <= 636px) {
+    h1 {
+        font-size: 2.25em;
     }
 }

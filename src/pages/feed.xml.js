@@ -19,12 +19,16 @@ export async function GET(context) {
         title: 'Aaron Morey Dot Com',
         description: 'Posts on AaronMorey.com', // TODO AMM move this to config and make it better
         site: context.site,
-        items: rssContent.map((post) => ({
-            title: post.data.title ?? "New Micropost",
-            pubDate: post.data.pubDate ?? post.data.date,
-            link: post.data.pubDate ? `/posts/${post.id}/` : `/micros/${post.id}`,
-            description: post.data.body ?? post.body ?? "",
-        })),
+        items: rssContent.map(function (post) {
+            console.log(post);
+               return ({
+                    title: post.data.title ?? "New Micropost",
+                    pubDate: post.data.pubDate ?? post.data.date,
+                    link: post.data.pubDate ? `/posts/${post.id}/` : `/micros/${post.id}`,
+                    description: post.rendered?.html ?? post.body ?? "",
+                })
+            }
+        ),
         customData: `<language>en-us</language>`,
     });
 }

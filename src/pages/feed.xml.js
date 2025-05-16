@@ -1,5 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import { createExcerpt } from '@utils/create-excerpt.ts';
 
 export async function GET(context) {
     let blog = await getCollection('blog');
@@ -24,7 +25,7 @@ export async function GET(context) {
                 title: post.data.title ?? "New Micropost",
                 pubDate: post.data.pubDate ?? post.data.date,
                 link: post.data.pubDate ? `/posts/${post.id}/` : `/micros/${post.id}`,
-                description: post.rendered?.html ?? post.body ?? "",
+                description: createExcerpt(post.rendered?.html ?? post.body ?? "", "", false),
             })
         }),
         customData: `<language>en-us</language>`,

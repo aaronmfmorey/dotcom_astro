@@ -7,6 +7,8 @@ import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import mdx from '@astrojs/mdx';
 
+import expressiveCode from 'astro-expressive-code';
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://aaronmorey.com",
@@ -42,5 +44,16 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap(), mdx()]
+  integrations: [
+    sitemap(),
+    expressiveCode({
+      themes: ['nord'],
+      styleOverrides: {
+        // You can also override styles
+        borderRadius: '3px',
+        codeFontSize: '0.75rem',
+      },
+    }),
+    mdx()
+  ]
 });

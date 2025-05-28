@@ -1,4 +1,8 @@
 ---
-import CollectionIndex from '../../components/Collection/CollectionIndex.astro';
+import CollectionIndex from '@components/Collection/CollectionIndex.astro';
+const introText = `
+    <div>Various things I'm intested in. It's not exactly writing, 
+    not exactly blog posts. It's miscellaneous.</div>
+`;
 ---
-<CollectionIndex collection="etc" pageTitle="Etc." />
+<CollectionIndex collection="etc" pageTitle="Etc." introText={introText} />

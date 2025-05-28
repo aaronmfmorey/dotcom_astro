@@ -5,9 +5,10 @@ import { getCollection } from 'astro:content';
 export interface Props {
     collection: string;
     pageTitle: string;
+    introText: string;
 }
 
-const { collection, pageTitle } = Astro.props;
+const { collection, pageTitle, introText } = Astro.props;
 
 const allPosts = await getCollection(collection);
 const sortedPosts = allPosts.sort((a, b) =>
@@ -15,6 +16,9 @@ const sortedPosts = allPosts.sort((a, b) =>
 );
 ---
 <BaseLayout pageTitle={pageTitle}>
+    <Fragment set:html={introText} />
+
+    <h2>Entries</h2>
     <ul>
         {sortedPosts.map(post => (<li><a href={`${post.id}/`}>{post.data.title}</a></li>))}
     </ul>

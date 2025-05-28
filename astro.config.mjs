@@ -40,7 +40,6 @@ export default defineConfig({
     resolve: {
         preserveSymlinks: true
     },
-
     plugins: [tailwindcss()]
   },
 

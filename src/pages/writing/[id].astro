@@ -3,7 +3,7 @@ import CollectionEntry from '../../components/Collection/CollectionEntry.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-    const pages = await getCollection('etc');
+    const pages = await getCollection('writing');
     return pages.map(page => ({
         params: { id: page.id },
         props: { page: page },

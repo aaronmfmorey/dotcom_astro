@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content';
+
+export interface Props {
+    collection: string;
+    pageTitle: string;
+}
+
+const { collection, pageTitle } = Astro.props;
+
+const allPosts = await getCollection(collection);
+const sortedPosts = allPosts.sort((a, b) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+---
+<BaseLayout pageTitle={pageTitle}>
+    <ul>
+        {sortedPosts.map(post => (<li><a href={`${post.id}/`}>{post.data.title}</a></li>))}
+    </ul>
+</BaseLayout>

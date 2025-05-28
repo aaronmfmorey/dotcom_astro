@@ -21,6 +21,14 @@ const etc = defineCollection({
     }),
 });
 
+const writing = defineCollection({
+    loader: glob({ base: 'aaronmoreycom_content/content/pages/writing/', pattern: '*.{md,mdx}' }), //  TODO AMM Extract aaronmoreycom_content path to a config file
+    schema: z.object({
+        title: z.string(),
+        pubDate: z.coerce.date(),
+    }),
+});
+
 const micros = defineCollection({
     loader: file("aaronmoreycom_content/content/data/micros.json"),
     schema: z.object({
@@ -30,4 +38,4 @@ const micros = defineCollection({
     })
 });
 
-export const collections = { blog, etc, micros };
+export const collections = { blog, etc, micros, writing };

@@ -2,11 +2,11 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostTagList from "@components/Blog/PostTagList.astro";
 import PostByline from "@components/Blog/PostByline.astro";
-const { frontmatter } = Astro.props;
+const { frontmatter, post } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
     <PostTagList tags={frontmatter.tags} />
-    <PostByline frontmatter={frontmatter} />
+    <PostByline frontmatter={frontmatter}, post={post} />
     <!--TODO AMM Default Author to me unless otherwise noted -->
     <slot />
 </BaseLayout>

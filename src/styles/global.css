@@ -106,6 +106,27 @@ pre:has(code) {
     margin-bottom: 1rem;
 }
 
+:has(table) {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+}
+
+table {
+    min-width: 100%;
+    width: max-content;
+    border-collapse: collapse;
+}
+
+
+td, th {
+    padding-left: 10px;
+    padding-right: 10px;
+    right: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
 ruby.stressed-syllable {
     font-style: italic;
     position: relative;

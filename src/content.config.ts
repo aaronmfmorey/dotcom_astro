@@ -18,6 +18,7 @@ const etc = defineCollection({
     schema: z.object({
         title: z.string(),
         pubDate: z.coerce.date(),
+        showWordCount: z.boolean().optional(),
     }),
 });
 
@@ -26,6 +27,7 @@ const writing = defineCollection({
     schema: z.object({
         title: z.string(),
         pubDate: z.coerce.date(),
+        showWordCount: z.boolean().optional()
     }),
 });
 

@@ -9,6 +9,6 @@ const excerpt = createExcerpt(post.rendered.html, detailUrl);
 <div class="rounded-md border-1 border-gray-200 bg-white p-3 m-5 shadow">
     <h2><a href={detailUrl}>{frontmatter.title}</a></h2>
     <PostTagList tags={frontmatter.tags} />
-    <PostByline frontmatter={frontmatter} post={post} />
+    <PostByline frontmatter={frontmatter} post={post} showWordCount={true} />
     <div class="post-excerpt" set:html={excerpt} />
 </div>

@@ -4,11 +4,32 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.split("/")[1];
 ---
 <div class="flex justify-evenly rounded-sm nav-links">
-    <a href="/" class={`rounded-full ${currentPath == '' ? 'active' : ''}` }>Home</a>
-    <a href="/about/" class={`rounded-full ${currentPath == 'about' ? 'active' : ''}`}>About</a>
-    <a href="/posts/1" class={`rounded-full ${['posts', 'tags'].includes(currentPath) ? 'active' : ''}`}>Blog</a>
-    <a href="/micros/" class={`rounded-full ${['micros'].includes(currentPath) ? 'active' : ''}`}>Micros</a>
-    <a href="/reading/" class={`rounded-full ${['reading'].includes(currentPath) ? 'active' : ''}`}>Reading</a>
-    <a href="/writing/" class={`rounded-full ${['writing'].includes(currentPath) ? 'active' : ''}`}>Writing</a>
-    <a href="/etc/" class={`rounded-full ${['etc'].includes(currentPath) ? 'active' : ''}`}>Etc.</a>
+    <a href="/" aria-label="Home" class={`rounded-full ${currentPath == '' ? 'active' : ''}` }>
+        <span class="icon"><i class="fa-solid fa-house-chimney"></i></span>
+        <span class="full">Home</span>
+    </a>
+    <a href="/about/" aria-label="About" class={`rounded-full ${currentPath == 'about' ? 'active' : ''}`}>
+        <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
+        <span class="full">About</span>
+    </a>
+    <a href="/posts/1" class={`rounded-full ${['posts', 'tags'].includes(currentPath) ? 'active' : ''}`}>
+        <span class="icon"><i class="fa-solid fa-pen-to-square"></i></span>
+        <span class="full">Blog</span>
+    </a>
+    <a href="/micros/" class={`rounded-full ${['micros'].includes(currentPath) ? 'active' : ''}`}>
+        <span class="icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+        <span class="full">Micros</span>
+    </a>
+    <a href="/reading/" class={`rounded-full ${['reading'].includes(currentPath) ? 'active' : ''}`}>
+        <span class="icon"><i class="fa-solid fa-book-open-reader"></i></span>
+        <span class="full">Reading</span>
+    </a>
+    <a href="/writing/" class={`rounded-full ${['writing'].includes(currentPath) ? 'active' : ''}`}>
+        <span class="icon"><i class="fa-solid fa-pen-fancy"></i></span>
+        <span class="full">Writing</span>
+    </a>
+    <a href="/etc/" class={`rounded-full ${['etc'].includes(currentPath) ? 'active' : ''}`}>
+        <span class="icon"><i class="fa-solid fa-minimize"></i></span>
+        <span class="full">Etc.</span>
+    </a>
 </div>

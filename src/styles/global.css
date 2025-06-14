@@ -168,6 +168,11 @@ ul {
     margin-left: 1.5rem;
 }
 
+.markdown-post ol {
+    list-style: decimal !important;
+    margin-left: 1.5rem;
+}
+
 a.read-more {
     color: var(--darker-font-color);
     font-style: italic;

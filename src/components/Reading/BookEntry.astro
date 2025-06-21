@@ -106,7 +106,7 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
     Array.from(openBtns).forEach(btn => {
         btn.addEventListener('click', function() {
             let me = this;
-            const dialog = me.closest("button").previousElementSibling;
+            const dialog = me.previousElementSibling;
             if (dialog && dialog.tagName === 'DIALOG') {
                 dialog.showModal();
             }

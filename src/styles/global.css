@@ -96,6 +96,16 @@ blockquote.book-review {
     backdrop: var(--background-color);
 }
 
+.open-button {
+    color: var(--link-color);
+}
+
+.open-button:hover {
+    color: var(--link-hover-color);
+    border-bottom: 5px inset var(--lighter-highlight);
+    font-style: oblique;
+}
+
 .book-cover-container {
     max-width: 150px;
     margin-right: 10px;

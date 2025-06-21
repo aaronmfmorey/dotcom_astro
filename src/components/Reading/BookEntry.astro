@@ -6,7 +6,7 @@ import linkifyHtml from 'linkify-html';
 import {bookshopAffiliateUrl} from "../../utils/utils";
 import ReviewDialog from "@components/Reading/ReviewDialog.astro";
 
-const {book, uniqueTags, coverImages, previousYearRead} = Astro.props;
+const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
 const authorMatchesTag = function(authorName :string) {
     return uniqueTags.includes(slugify(authorName));
 };
@@ -39,7 +39,7 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
     {
         // Make YearRead hang out at the top untli the next comes along?
         yearRead !== previousYearRead
-        ? <h2 class="bg-[#FFCC66] drop-shadow-md z-1 p-2 pt-[1rem] w-16 text-center">{yearRead}</h2>
+        ? <h2 class="bg-[#FFCC66] drop-shadow-md z-1 p-2 pt-[1rem] w-16 text-center">{yearRead} ({yearCounts[yearRead]})</h2>
         :""
     }
 <div>

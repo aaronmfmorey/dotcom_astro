@@ -11,6 +11,19 @@ let allTags = allPosts.map((post) => post.data.tags).flat();
 let uniqueTagsForAuthorMatch = [... new Set(allTags)].filter(tag => tag !== null)
     .map((tag :string) => tag.toLowerCase().replaceAll(" ", ""));
 
+let yearCounts = {};
+
+books.forEach(b => {
+    const bookYear = new Date(Date.parse(b.date_read)).getFullYear().toString();
+    if (!yearCounts[bookYear]) {
+        yearCounts[bookYear] = 1;
+    } else {
+        yearCounts[bookYear] = yearCounts[bookYear] + 1;
+    }
+})
+
+console.log(yearCounts);
+
 const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/images/covers/*.jpg');
 ---
 <BaseLayout pageTitle={pageTitle}>
@@ -31,6 +44,7 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/imag
                     coverImages={coverImages}
                     previousBook={books[i-1]}
                     previousYearRead={previousYearRead}
+                    yearCounts={yearCounts}
                 />
             )
         })

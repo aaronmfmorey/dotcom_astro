@@ -92,6 +92,10 @@ blockquote.book-review {
     margin: 1rem;
 }
 
+.review-dialog {
+    backdrop: var(--background-color);
+}
+
 .book-cover-container {
     max-width: 150px;
     margin-right: 10px;

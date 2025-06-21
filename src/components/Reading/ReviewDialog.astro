@@ -1,8 +1,10 @@
 ---
 const {reviewContents} = Astro.props;
 ---
-<dialog class="review-dialog">
-    <button autofocus class="close-button">Close</button>
-    <p>{reviewContents}</p>
+<dialog class="review-dialog fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-2 z-50 shadow">
+    <button autofocus class="close-button"><i class="fa-solid fa-close open-button" /></button>
+    <blockquote>
+        <Fragment set:html={reviewContents} />
+    </blockquote>
 </dialog>
 <button><i class="fa-solid fa-maximize open-button"></i> My review</button>

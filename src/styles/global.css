@@ -72,7 +72,7 @@ a, a:visited {
 
 a:hover {
     color: var(--link-hover-color);
-    border-bottom: 3px inset var(--lighter-highlight);
+    border-bottom: 5px inset var(--lighter-highlight);
     font-style: oblique;
 }
 
@@ -90,6 +90,11 @@ blockquote.book-review {
     color: var(--darker-font-color);
     font-size: .9em;
     margin: 1rem;
+}
+
+.book-cover-container {
+    max-width: 150px;
+    margin-right: 10px;
 }
 
 blockquote p {
@@ -194,7 +199,7 @@ div.micro-container {
 }
 
 h3.book-title {
-    font-size: 1.25rem;
+    font-size: 1.1em;
 }
 
 a.bookshop-affiliate-link {
@@ -300,7 +305,13 @@ a.pagination-link:hover {
 
     h3.book-title {
         font-size: 2em;
+        word-break: break-word;
     }
+
+    /*div.book-cover-container img {*/
+    /*    max-width: 10px;*/
+    /*}*/
+
 }
 
 @media screen and (width <= 636px) {
@@ -315,4 +326,10 @@ a.pagination-link:hover {
     div {
         font-size: 1em;
     }
+
+    .book-cover-container {
+        max-width: 100px;
+        margin-right: 10px;
+    }
+
 }

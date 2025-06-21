@@ -2,7 +2,7 @@
 
 :root {
     /* Fonts */
-    --ff-sans-serif: "Josefin Sans", "Righteous", "Quicksand", "Computer Modern Sans", "Roboto", "Helvetica", sans-serif;
+    --ff-sans-serif: "Raleway", "Fjalla One",   "Josefin Sans", "Righteous", "Quicksand", "Computer Modern Sans", "Roboto", "Helvetica", sans-serif;
     --ff-serif: "Cormorant Garamond", "Computer Modern", "Garamond", serif;
 
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
@@ -50,6 +50,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-bottom: .75rem;
     margin-top: .75rem;
     color: var(--header-color);
+    letter-spacing: -1px;
 }
 
 h1 {

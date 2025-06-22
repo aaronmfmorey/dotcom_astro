@@ -4,8 +4,9 @@ import BookStars from "@components/Reading/BookStars.astro";
 import {formatDateLong, slugify} from '../../utils/utils.ts';
 import linkifyHtml from 'linkify-html';
 import {bookshopAffiliateUrl} from "../../utils/utils";
+import ReviewDialog from "@components/Reading/ReviewDialog.astro";
 
-const {book, uniqueTags, coverImages, previousYearRead} = Astro.props;
+const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
 const authorMatchesTag = function(authorName :string) {
     return uniqueTags.includes(slugify(authorName));
 };
@@ -38,19 +39,19 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
     {
         // Make YearRead hang out at the top untli the next comes along?
         yearRead !== previousYearRead
-        ? <h2 class="bg-[#FFCC66] drop-shadow-md z-1 p-2 pt-[1rem] w-16 text-center">{yearRead}</h2>
+        ? <h2 class="bg-[#FFCC66] drop-shadow-md z-1 p-2 pt-[1rem] w-16 text-center">{yearRead} ({yearCounts[yearRead]})</h2>
         :""
     }
 <div>
-    <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm bg-white my-5 p-5">
+    <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm bg-white my-5 p-2 items-stretch">
         {
             coverImageExists(book.isbn)
-                ?  <div style="flex: 1;" class="flex flex-col basis-full m-2 h-full">
-                        <Image src={coverImages[imagePath]()} alt=`Cover image for ${book.title} - /assets/images/covers/${book.isbn}.jpg` />
+                ?  <div class="book-cover-container">
+                        <Image class="h-full object-contain" src={coverImages[imagePath]()} alt=`Cover image for ${book.title} - /assets/images/covers/${book.isbn}.jpg` />
                     </div>
                 : ""
         }
-        <div style="display: flex; flex-direction: column; flex-basis: 100%; flex: 3;">
+        <div style="width: 66%;">
             <h3 class="book-title">
                 <span class="italic">{book.title}</span> -
                 {formatPublicationYear(book.original_publication_year)}
@@ -68,7 +69,7 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
                 }
             </h4>
             <div class="pb-5">
-                <div>Finished: {formatDateLong(book.date_read)}</div>
+                <div>Read: {formatDateLong(book.date_read)}</div>
                 {
                     !!book.my_rating && book.my_rating != 0 ?
                         <BookStars rating={book.my_rating} /> :
@@ -76,12 +77,12 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
                 }
             </div>
             <!--{JSON.stringify(book, null, 2)}-->
+            {
+                !!book.my_review
+                    ? <ReviewDialog reviewContents={linkifyHtml(book.my_review)} />
+                    : ""
+            }
         </div>
-        {
-            !!book.my_review
-              ? <blockquote class="book-review pl-10"><Fragment set:html={linkifyHtml(book.my_review)} /></blockquote>
-              : ""
-        }
     </div>
 </div>
 <style>
@@ -98,3 +99,25 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
         hyphens: auto;
     }
 </style>
+
+<script>
+    const openBtns = document.getElementsByClassName('open-button');
+    const closeBtns = document.getElementsByClassName('close-button');
+    Array.from(openBtns).forEach(btn => {
+        btn.addEventListener('click', function() {
+            let me = this;
+            const dialog = me.previousElementSibling;
+            if (dialog && dialog.tagName === 'DIALOG') {
+                dialog.showModal();
+            }
+        });
+    });
+
+    Array.from(closeBtns).forEach(btn => {
+        btn.addEventListener('click', function() {
+            let me = this;
+            const dialog = me.parentElement;
+            dialog.close();
+        });
+    });
+</script>

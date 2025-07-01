@@ -1,7 +1,7 @@
 {
   "name": "dotcom_astro",
   "type": "module",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "scripts": {
     "dev": "astro dev",
     "host": "astro dev --host",

@@ -3,15 +3,58 @@ import Social from './Social.astro';
 const platform = "github";
 const username = "withastro";
 ---
+<footer>
+    <div class="footer-divider"></div>
+    <div class="footer-content">
+        <div class="social-links">
+            <Social platform="github" />
+            <Social platform="rss" />
+        </div>
+        <div class="copyright">
+            &copy; {new Date().getFullYear()} Aaron Morey
+        </div>
+    </div>
+</footer>
+
 <style>
     footer {
+        margin-top: 3rem;
+        padding-bottom: 2rem;
+    }
+
+    .footer-divider {
+        height: 5px;
+        background: linear-gradient(to right, var(--header-color), var(--link-hover-color));
+        border-radius: 2px;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: rgba(1, 41, 95, 0.05);
+        border-radius: 10px;
+    }
+
+    .social-links {
         display: flex;
         gap: 1rem;
-        margin-top: 2rem;
+        justify-content: center;
+    }
+
+    .copyright {
+        font-family: var(--ff-sans-serif);
+        font-size: 0.8rem;
+        color: var(--lighter-font-color);
+    }
+
+    @media screen and (width >= 636px) {
+        .footer-content {
+            flex-direction: row;
+            justify-content: space-between;
+        }
     }
 </style>
-<footer>
-    <Social platform="twitter" username="astrodotbuild" />
-    <Social platform="github" username="withastro" />
-    <Social platform="youtube" username="astrodotbuild" />
-</footer>

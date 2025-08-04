@@ -2,11 +2,11 @@
 
 :root {
     /* Fonts */
-    --ff-sans-serif: "Raleway", "Fjalla One",   "Josefin Sans", "Righteous", "Quicksand", "Computer Modern Sans", "Roboto", "Helvetica", sans-serif;
-    --ff-serif: "Cormorant Garamond", "Computer Modern", "Garamond", serif;
+    --ff-sans-serif: "Raleway", "Helvetica", sans-serif;
+    --ff-serif: "Cormorant Garamond", serif;
 
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
+    --ff-oldstyle: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
 
     /* Colors */
     --background-color: #FAFEFF;

@@ -1,5 +1,5 @@
 ---
-const { platform, icon, username } = Astro.props;
+const { platform } = Astro.props;
 
 const platformConfig = {
     'rss': {
@@ -41,9 +41,7 @@ const thisPlatform = platformConfig[platform];
 
     .social-link:hover {
         color: var(--background-color);
-        //background-color: var(--link-hover-color);
         border-color: var(--link-hover-color);
-        //transform: translateY(-2px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         font-style: normal;
         height: 3.5em;

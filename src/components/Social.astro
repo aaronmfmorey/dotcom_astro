@@ -1,13 +1,60 @@
 ---
-const { platform, username } = Astro.props;
+const { platform } = Astro.props;
+
+const platformConfig = {
+    'rss': {
+        'icon': 'fa-solid fa-square-rss',
+        'url': '/feed.xml',
+        'title': 'RSS'
+    },
+    'github': {
+        'icon': 'fa-brands fa-github',
+        'url': 'https://github.com/aaronmfmorey',
+        'title': 'Github'
+    },
+}
+
+const thisPlatform = platformConfig[platform];
+
 ---
-<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
+<a href={thisPlatform.url} class="social-link">
+    <i class={thisPlatform.icon}></i>
+    <span>{thisPlatform.title}</span>
+</a>
 
 <style>
-    a {
+    .social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         padding: 0.5rem 1rem;
-        color: white;
-        background-color: #4c1d95;
+        color: var(--link-color);
+        background-color: var(--background-color);
+        border: 2px solid var(--header-color);
+        border-radius: 20px;
         text-decoration: none;
+        font-family: var(--ff-sans-serif);
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        height: 3.5em;
+    }
+
+    .social-link:hover {
+        color: var(--background-color);
+        border-color: var(--link-hover-color);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-style: normal;
+        height: 3.5em;
+
+    }
+
+    .social-link:hover span {
+        color: var(--link-hover-color);
+        border-bottom: 5px inset var(--lighter-highlight);
+        font-style: oblique;
+    }
+
+    .social-link:hover i {
+        color: var(--link-color);
     }
 </style>

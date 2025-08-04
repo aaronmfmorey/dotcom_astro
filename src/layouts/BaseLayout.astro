@@ -1,6 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ClientRouter } from "astro:transitions";
+import { fade } from 'astro:transitions';
 import '../styles/global.css';
 const { pageTitle } = Astro.props;
 
@@ -38,18 +40,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
     <!-- Google Fonts -->
-    <!-- TODO AMM Trim down this font list -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Beth+Ellen&family=Borel&family=Covered+By+Your+Grace&family=Delicious+Handrawn&family=Dr+Sugiyama&family=Faculty+Glyphic&family=Federo&family=Fjalla+One&family=Gabarito:wght@400..900&family=Galdeano&family=Gloria+Hallelujah&family=Grand+Hotel&family=Just+Another+Hand&family=Lexend:wght@100..900&family=Limelight&family=Londrina+Solid:wght@100;300;400;900&family=Mansalva&family=Meddon&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Patrick+Hand&family=Poller+One&family=Raleway:ital,wght@0,100..900;1,100..900&family=Skranji:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
     <title>{pageTitle}</title>
+    <ClientRouter fallback="swap" />
 </head>
 <body>
 <Header />
-<h1>{pageTitle}</h1>
-<slot />
-<!--<Footer />-->
+<main transition:animate={fade({ duration: '0.4s' })}>
+    <h1>{pageTitle}</h1>
+    <slot />
+</main>
+<Footer />
 <script>
     import "../scripts/menu.js";
 </script>

@@ -74,6 +74,7 @@ a:hover {
     color: var(--link-hover-color);
     border-bottom: 5px inset var(--lighter-highlight);
     font-style: oblique;
+    letter-spacing: 0.05em;
 }
 
 blockquote {
@@ -257,6 +258,7 @@ a.bookshop-affiliate-link {
     color: var(--nav-hover-color);
     border: none;
     font-style: normal;
+    letter-spacing: normal;
 }
 
 .nav-links a.active:hover{

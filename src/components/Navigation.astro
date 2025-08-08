@@ -3,7 +3,7 @@
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.split("/")[1];
 ---
-<div class="flex justify-evenly rounded-sm nav-links">
+<div class="flex justify-evenly rounded-sm nav-links full-size-header glassy">
     <a href="/" aria-label="Home" class={`rounded-full ${currentPath == '' ? 'active' : ''}` }>
         <span class="icon"><i class="fa-solid fa-house-chimney"></i></span>
         <span class="full">Home</span>

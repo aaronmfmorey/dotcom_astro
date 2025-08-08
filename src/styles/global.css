@@ -9,16 +9,19 @@
     --ff-oldstyle: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
 
     /* Colors */
-    --background-color: #FAFEFF;
-    --header-color: #01295F;
-    --link-color: #437F97;
-    --link-hover-color: #5AABCC;
-    --nav-hover-color: #F70;
-    --lighter-highlight: #FC6;
-    --nav-link-hover-color: #FAFEFF;
-    --lighter-font-color: #696969;
-    --barely-visible-grey: #d8d8d8;
+    --background-color: rgb(250, 254, 255);
+    --header-color: rgb(1, 41, 95);
+    --link-color: rgb(67, 127, 151);
+    --link-hover-color: rgb(90, 171, 204);
+    --nav-hover-color: rgb(255, 119, 0);
+    --lighter-highlight: rgb(255, 204, 102);
+    --rather-light-highlight: rgb(255, 230, 179);
+    --lightest-highlight: rgb(255, 255, 230);
+    --nav-link-hover-color: rgb(250, 254, 255);
     --darker-font-color: rgb(31 32 35 / 63%);
+    --lighter-font-color: rgb(105, 105, 105);
+    --barely-visible-grey: rgb(216, 216, 216);
+    --glassy-background: rgba(235, 245, 249, .75);
 }
 
 html {
@@ -73,8 +76,16 @@ a, a:visited {
 a:hover {
     color: var(--link-hover-color);
     border-bottom: 5px inset var(--lighter-highlight);
-    font-style: oblique;
-    letter-spacing: 0.05em;
+    filter: drop-shadow(.075em .075em 1px var(--barely-visible-grey));
+}
+
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+    filter: drop-shadow(.075em .075em 1px var(--barely-visible-grey));
 }
 
 blockquote {
@@ -104,7 +115,8 @@ blockquote.book-review {
 .open-button:hover {
     color: var(--link-hover-color);
     border-bottom: 5px inset var(--lighter-highlight);
-    font-style: oblique;
+    margin-bottom: -5px;
+    /*font-style: oblique;*/
 }
 
 .book-cover-container {
@@ -227,11 +239,21 @@ a.bookshop-affiliate-link {
     padding-right: 2em;
     cursor: pointer;
     font-size: 2em;
+    border-radius: 15px;
 }
 
 .hamburger i {
     font-size: .75em;
     color: var(--link-color);
+    border-radius: 50%;
+    padding: 1em;
+    /*background-color: #f00;*/
+    width: 1.5em;
+    height:1.5em;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 .nav-links {
@@ -257,8 +279,6 @@ a.bookshop-affiliate-link {
 .nav-links a:focus {
     color: var(--nav-hover-color);
     border: none;
-    font-style: normal;
-    letter-spacing: normal;
 }
 
 .nav-links a.active:hover{
@@ -279,12 +299,14 @@ a.bookshop-affiliate-link {
     top: 80px;
     left: 10px;
     width: 95%;
-    /*background-color: var(--background-color);*/
-    background-color: none;
-    opacity: 95%;
-    filter: drop-shadow(2px 2px 2px var(--lighter-font-color));
-    border-radius: 20px;
     padding: 5px;
+    /*!* From https://css.glass *!*/
+    /*background: rgba(255, 255, 255, 0.5);*/
+    /*border-radius: 16px;*/
+    /*box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);*/
+    /*backdrop-filter: blur(6.3px);*/
+    /*-webkit-backdrop-filter: blur(6.3px);*/
+    /*border: 1px solid rgba(255, 255, 255, 0.3);*/
 }
 
 section.footnotes {
@@ -311,19 +333,41 @@ a.pagination-link:hover {
     color: var(--lighter-font-color);
 }
 
+.glassy {
+    background: var(--glassy-background);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(6.3px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 @media screen and (width >= 636px) {
     .nav-links {
         margin-left: 5em;
         display: flex;
         position: static;
         width: auto;
-        background: none;
     }
 
     .nav-links a {
         display: inline-block;
         padding: 5px 16px;
         font-size: .8em;
+    }
+
+    .full-size-header {
+        width: 100%;
+        margin-left: 0;
+        padding: 5px;
+        z-index: 1000;
+    }
+
+    header {
+        position:sticky;
+        top: 0;
+        z-index: 10;
+        padding: 5px;
     }
 
     .hamburger {
@@ -357,6 +401,13 @@ a.pagination-link:hover {
     .book-cover-container {
         max-width: 100px;
         margin-right: 10px;
+    }
+
+    header {
+        position:sticky;
+        top: 0;
+        z-index: 10;
+        padding: 5px;
     }
 
 }

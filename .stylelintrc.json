@@ -4,6 +4,7 @@
     "comment-empty-line-before": null,
     "import-notation": null,
     "at-rule-no-deprecated": null,
-    "at-rule-empty-line-before": null
+    "at-rule-empty-line-before": null,
+    "no-descending-specificity": null
   }
 }

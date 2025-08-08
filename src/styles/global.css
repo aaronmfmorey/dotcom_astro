@@ -9,19 +9,19 @@
     --ff-oldstyle: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
 
     /* Colors */
-    --background-color: rgb(250, 254, 255);
-    --header-color: rgb(1, 41, 95);
-    --link-color: rgb(67, 127, 151);
-    --link-hover-color: rgb(90, 171, 204);
-    --nav-hover-color: rgb(255, 119, 0);
-    --lighter-highlight: rgb(255, 204, 102);
-    --rather-light-highlight: rgb(255, 230, 179);
-    --lightest-highlight: rgb(255, 255, 230);
-    --nav-link-hover-color: rgb(250, 254, 255);
+    --background-color: rgb(250 254 255);
+    --header-color: rgb(1 41 95);
+    --link-color: rgb(67 127 151);
+    --link-hover-color: rgb(90 171 204);
+    --nav-hover-color: rgb(255 119 0);
+    --lighter-highlight: rgb(255 204 102);
+    --rather-light-highlight: rgb(255 230 179);
+    --lightest-highlight: rgb(255 255 230);
+    --nav-link-hover-color: rgb(250 254 255);
     --darker-font-color: rgb(31 32 35 / 63%);
-    --lighter-font-color: rgb(105, 105, 105);
-    --barely-visible-grey: rgb(216, 216, 216);
-    --glassy-background: rgba(235, 245, 249, .75);
+    --lighter-font-color: rgb(105 105 105);
+    --barely-visible-grey: rgb(216 216 216);
+    --glassy-background: rgba(235 245 249 .75);
 }
 
 html {
@@ -104,10 +104,6 @@ blockquote.book-review {
     margin: 1rem;
 }
 
-.review-dialog {
-    backdrop: var(--background-color);
-}
-
 .open-button {
     color: var(--link-color);
 }
@@ -116,7 +112,6 @@ blockquote.book-review {
     color: var(--link-hover-color);
     border-bottom: 5px inset var(--lighter-highlight);
     margin-bottom: -5px;
-    /*font-style: oblique;*/
 }
 
 .book-cover-container {
@@ -247,13 +242,11 @@ a.bookshop-affiliate-link {
     color: var(--link-color);
     border-radius: 50%;
     padding: 1em;
-    /*background-color: #f00;*/
     width: 1.5em;
     height:1.5em;
     display: flex;
-    justify-content: center;
-    align-content: center;
     align-items: center;
+    place-content: center;
 }
 
 .nav-links {
@@ -300,13 +293,6 @@ a.bookshop-affiliate-link {
     left: 10px;
     width: 95%;
     padding: 5px;
-    /*!* From https://css.glass *!*/
-    /*background: rgba(255, 255, 255, 0.5);*/
-    /*border-radius: 16px;*/
-    /*box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);*/
-    /*backdrop-filter: blur(6.3px);*/
-    /*-webkit-backdrop-filter: blur(6.3px);*/
-    /*border: 1px solid rgba(255, 255, 255, 0.3);*/
 }
 
 section.footnotes {
@@ -334,12 +320,12 @@ a.pagination-link:hover {
 }
 
 .glassy {
+    /* CREDIT: https://css.glass */
     background: var(--glassy-background);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0 0 0 0.1);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(6.3px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 @media screen and (width >= 636px) {
@@ -378,20 +364,11 @@ a.pagination-link:hover {
         font-size: 2em;
         word-break: break-word;
     }
-
-    /*div.book-cover-container img {*/
-    /*    max-width: 10px;*/
-    /*}*/
-
 }
 
 @media screen and (width <= 636px) {
     h1 {
         font-size: 2.25em;
-    }
-
-    h2 {
-        font-size: 2em;
     }
 
     div {

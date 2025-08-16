@@ -10,10 +10,12 @@
 
     /* Colors */
     --background-color: rgb(250 254 255);
+    --background-color-transparent: hsla(192, 100%, 99%, 0.5);
     --header-color: rgb(1 41 95);
     --link-color: rgb(67 127 151);
     --link-hover-color: rgb(90 171 204);
     --nav-hover-color: rgb(255 119 0);
+    --nav-hover-color-transparent: hsla(28, 100%, 50%, 0.8);
     --lighter-highlight: rgb(255 204 102);
     --rather-light-highlight: rgb(255 230 179);
     --lightest-highlight: rgb(255 255 230);
@@ -21,7 +23,7 @@
     --darker-font-color: rgb(31 32 35 / 63%);
     --lighter-font-color: rgb(105 105 105);
     --barely-visible-grey: rgb(216 216 216);
-    --glassy-background: rgba(235 245 249 .75);
+    --glassy-background: hsla(197, 54%, 95%, 0.75);
     --glassy-background-opaquer: rgba(235 245 249 .95);
 }
 
@@ -265,21 +267,19 @@ a.bookshop-affiliate-link {
 }
 
 .nav-links a.active{
-    background-color: var(--nav-hover-color);
+    background-color: var(--nav-hover-color-transparent);
     color: var(--background-color);
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-    color: var(--nav-hover-color);
     border: none;
 }
 
 .nav-links a.active:hover{
-    background-color: var(--nav-hover-color);
     color: var(--background-color);
-    border: none;
     font-style: normal;
+    filter: drop-shadow(.125em .125em 1px var(--barely-visible-grey));
 }
 
 .fa-tag-wrapper {
@@ -324,8 +324,10 @@ a.pagination-link:hover {
     /* CREDIT: https://css.glass */
     background: var(--glassy-background);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0 0 0 0.1);
-    border: solid 1px rgba(0 0 0 0.3);
+    box-shadow: 0 4px 20px rgb(225 225 225);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(225 225 225);
     backdrop-filter: blur(10px) saturate(30%);
 }
 

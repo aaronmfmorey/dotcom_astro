@@ -331,6 +331,14 @@ a.pagination-link:hover {
     backdrop-filter: blur(10px) saturate(30%);
 }
 
+.my-shadow {
+    filter: drop-shadow(.33em .33em 2px var(--barely-visible-grey));
+}
+
+.my-shadow:hover {
+    filter: drop-shadow(.25em .25em 1px var(--barely-visible-grey));
+}
+
 @media screen and (width >= 636px) {
     .nav-links {
         margin-left: 5em;
@@ -364,7 +372,7 @@ a.pagination-link:hover {
     }
 
     h3.book-title {
-        font-size: 2em;
+        font-size: 1.5em;
         word-break: break-word;
     }
 }

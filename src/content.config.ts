@@ -14,7 +14,7 @@ const blog = defineCollection({
 });
 
 const etc = defineCollection({
-    loader: glob({ base: 'aaronmoreycom_content/content/pages/etc/', pattern: '*.{md,mdx}' }), //  TODO AMM Extract aaronmoreycom_content path to a config file
+    loader: glob({ base: 'aaronmoreycom_content/content/pages/etc/', pattern: '**/*.{md,mdx}' }), //  TODO AMM Extract aaronmoreycom_content path to a config file
     schema: z.object({
         title: z.string(),
         pubDate: z.coerce.date(),
@@ -22,12 +22,12 @@ const etc = defineCollection({
     }),
 });
 
-const writing = defineCollection({
-    loader: glob({ base: 'aaronmoreycom_content/content/pages/writing/', pattern: '*.{md,mdx}' }), //  TODO AMM Extract aaronmoreycom_content path to a config file
+const code = defineCollection({
+    loader: glob({ base: 'aaronmoreycom_content/content/pages/code/', pattern: '**/*.{md,mdx}' }),
     schema: z.object({
         title: z.string(),
         pubDate: z.coerce.date(),
-        showWordCount: z.boolean().optional()
+        showWordCount: z.boolean().optional(),
     }),
 });
 
@@ -40,4 +40,4 @@ const micros = defineCollection({
     })
 });
 
-export const collections = { blog, etc, micros, writing };
+export const collections = { blog, etc, micros, code };

@@ -24,12 +24,12 @@ const currentPath = pathname.split("/")[1];
         <span class="icon"><i class="fa-solid fa-book-open-reader"></i></span>
         <span class="full">Reading</span>
     </a>
-    <a href="/writing/" class={`rounded-full ${['writing'].includes(currentPath) ? 'active' : ''}`}>
-        <span class="icon"><i class="fa-solid fa-pen-fancy"></i></span>
-        <span class="full">Writing</span>
+    <a href="/code/" class={`rounded-full ${['code'].includes(currentPath) ? 'active' : ''}`}>
+        <span class="icon"><i class="fa-solid fa-code"></i></span>
+        <span class="full">Code</span>
     </a>
     <a href="/etc/" class={`rounded-full ${['etc'].includes(currentPath) ? 'active' : ''}`}>
-        <span class="icon"><i class="fa-solid fa-minimize"></i></span>
+        <span class="icon"><i class="fa-solid fa-sink"></i></span>
         <span class="full">Etc.</span>
     </a>
 </div>

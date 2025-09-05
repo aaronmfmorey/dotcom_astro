@@ -22,8 +22,6 @@ books.forEach(b => {
     }
 })
 
-console.log(yearCounts);
-
 const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/images/covers/*.jpg');
 ---
 <BaseLayout pageTitle={pageTitle}>

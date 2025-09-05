@@ -1,25 +1,28 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content';
+import {processSubheadLevels, sortPostsBySubheadAndDate} from '@utils/content_collections';
 
-export interface Props {
-    collection: string;
-    pageTitle: string;
-    introText: string;
-}
-
-const { collection, pageTitle, introText } = Astro.props;
-
+const { collection, pageTitle, introText, includeEntriesHeader = true } = Astro.props;
 const allPosts = await getCollection(collection);
-const sortedPosts = allPosts.sort((a, b) =>
-    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-);
+processSubheadLevels(allPosts);
+const sortedPosts:Array = sortPostsBySubheadAndDate(allPosts);
 ---
 <BaseLayout pageTitle={pageTitle}>
     <Fragment set:html={introText} />
-
-    <h2>Entries</h2>
-    <ul>
-        {sortedPosts.map(post => (<li><a href={`${post.id}/`}>{post.data.title}</a></li>))}
-    </ul>
+    {
+        includeEntriesHeader === true ?
+            <h2>Entries</h2>
+            : ""
+    }
+    {
+        sortedPosts.map(function(post) {
+            const linkFragment:Fragment = <li><a href={`${post.id}/`}>{post.data.title}</a></li>;
+            if (post.indexHeading) {
+                return <h3>{post.indexHeading}</h3><li><a href={`${post.id}/`}>{post.data.title}</a></li>;
+            } else {
+                return linkFragment;
+            }
+        })
+    }
 </BaseLayout>

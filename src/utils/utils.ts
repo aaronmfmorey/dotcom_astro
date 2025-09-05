@@ -38,6 +38,13 @@ export const humanReadableDate = function(value: string) {
     }
 };
 
+export const toTitleCase = function(str:string) {
+    return str.replace(
+        /\w\S*/g,
+        text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
+};
+
 export const bookshopAffiliateUrl = function(isbn13: string): string {
      // TODO AMM Add tooltips?
     if (isbn13 && isbn13 !== "") {

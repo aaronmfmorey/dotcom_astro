@@ -1,9 +1,9 @@
 ---
-import CollectionEntry from '../../components/Collection/CollectionEntry.astro';
+import CollectionEntry from '@components/Collection/CollectionEntry.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-    const pages = await getCollection('writing');
+    const pages = await getCollection('code');
     return pages.map(page => ({
         params: { id: page.id },
         props: { page: page },

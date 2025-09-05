@@ -7,6 +7,7 @@ const { collection, pageTitle, introText, includeEntriesHeader = true } = Astro.
 const allPosts = await getCollection(collection);
 processSubheadLevels(allPosts);
 const sortedPosts:Array = sortPostsBySubheadAndDate(allPosts);
+let previousPageTitle = null;
 ---
 <BaseLayout pageTitle={pageTitle}>
     <Fragment set:html={introText} />
@@ -18,7 +19,8 @@ const sortedPosts:Array = sortPostsBySubheadAndDate(allPosts);
     {
         sortedPosts.map(function(post) {
             const linkFragment:Fragment = <li><a href={`${post.id}/`}>{post.data.title}</a></li>;
-            if (post.indexHeading) {
+            if (post.indexHeading && post.indexHeading !== previousPageTitle) {
+                previousPageTitle = post.indexHeading;
                 return <h3>{post.indexHeading}</h3><li><a href={`${post.id}/`}>{post.data.title}</a></li>;
             } else {
                 return linkFragment;

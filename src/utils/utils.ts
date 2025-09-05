@@ -40,9 +40,9 @@ export const humanReadableDate = function(value: string) {
 
 export const toTitleCase = function(str:string) {
     return str.replace(
-        /\w\S*/g,
-        text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-    );
+        /[^_]+/g,
+        text => " " + text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    ).replace("_", "");
 };
 
 export const bookshopAffiliateUrl = function(isbn13: string): string {

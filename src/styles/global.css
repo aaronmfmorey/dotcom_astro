@@ -137,10 +137,6 @@ pre:has(code) {
     margin-bottom: 1rem;
 }
 
-.expressive-code {
-    margin-bottom: 1rem;
-}
-
 :has(table) {
     overflow-x: auto;
     display: block;

@@ -48,7 +48,7 @@ export default defineConfig({
   integrations: [
     sitemap(),
     expressiveCode({
-      themes: ['nord'],
+      themes: ['solarized-dark'],
       styleOverrides: {
         // You can also override styles
         borderRadius: '3px',

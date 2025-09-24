@@ -10,12 +10,12 @@
 
     /* Colors */
     --background-color: rgb(250 254 255);
-    --background-color-transparent: hsla(192, 100%, 99%, 0.5);
+    --background-color-transparent: hsl(192deg 100% 99% / 50%);
     --header-color: rgb(1 41 95);
     --link-color: rgb(67 127 151);
     --link-hover-color: rgb(90 171 204);
     --nav-hover-color: rgb(255 119 0);
-    --nav-hover-color-transparent: hsla(28, 100%, 50%, 0.8);
+    --nav-hover-color-transparent: hsl(28deg 100% 50% / 80%);
     --lighter-highlight: rgb(255 204 102);
     --rather-light-highlight: rgb(255 230 179);
     --lightest-highlight: rgb(255 255 230);
@@ -23,7 +23,7 @@
     --darker-font-color: rgb(31 32 35 / 63%);
     --lighter-font-color: rgb(105 105 105);
     --barely-visible-grey: rgb(216 216 216);
-    --glassy-background: hsla(197, 54%, 95%, 0.75);
+    --glassy-background: hsl(197deg 54% 95% / 75%);
     --glassy-background-opaquer: rgba(235 245 249 .95);
 }
 
@@ -396,7 +396,6 @@ a.pagination-link:hover {
 
     h3.book-title {
         font-size: 1.5em;
-        word-break: break-word;
     }
 }
 

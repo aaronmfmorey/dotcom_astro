@@ -2,7 +2,7 @@
 const {reviewContents} = Astro.props;
 ---
 <dialog class="review-dialog fixed left-1/4 top-1/3 -translate-x-1/5 w-3/4 -translate-y-1/3 bg-white rounded-lg shadow-lg p-2 z-50 shadow sm:">
-    <button autofocus class="close-button"><i class="fa-solid fa-close open-button" /></button>
+    <button autofocus class="close-button plain-link"><i class="fa-solid fa-close open-button plain-link" /></button>
     <blockquote>
         <Fragment set:html={reviewContents} />
     </blockquote>

@@ -228,6 +228,16 @@ a.read-more:hover {
     text-decoration: underline;
 }
 
+.plain-link {
+    color: var(--darker-font-color);
+}
+
+.plain-link:hover {
+    color: var(--darker-font-color);
+    text-decoration: none;
+    border-bottom: none;
+}
+
 div.micro-container {
     padding: 10px;
     border: 1px solid #e1f5fe;

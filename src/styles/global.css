@@ -185,6 +185,10 @@ ul {
     padding-bottom: 1rem;
 }
 
+li {
+    margin-left: 1.25rem;
+}
+
 .anchor-link, .anchor-link:visited {
     font-size: .5em;
     vertical-align: middle;

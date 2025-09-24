@@ -4,39 +4,62 @@ import {getCollection} from "astro:content";
 import { slugify } from "@utils/utils.js";
 const pageTitle = "Tag Index";
 const allPosts = await getCollection('blog');
-let tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())]
-    .filter(
-        (tag) => tag != null
-    ).sort(
-        (a, b) => a > b ? 1 : -1
-    );
-// TODO AMM Get counts to include on tag
-//  TODO AMM Maybe sort on count?
-// TODO AMM - Exclude "blog" and "draft"
+let tagDict = {};
+
+allPosts.forEach(post => {
+    if (post.data.tags) {
+        post.data.tags.forEach(tag => {
+            if (!tagDict[tag]) {
+                tagDict[tag] = 1;
+            } else {
+                tagDict[tag] += 1;
+            }
+        });
+    }
+})
+
+let sortedTags = Object.keys(tagDict).sort();
 ---
 <BaseLayout pageTitle={pageTitle}>
-    <div class="tags">
-        {tags.map((tag) => (
-                <p class="tag"><a href={`/tags/${slugify(tag)}/`}>{tag}</a></p>
+    <div class="tag-table">
+        {sortedTags.map((tag) => (
+            <div class="tag-table-row">
+                <span class="tag-table-cell-left tag"><a href={`/tags/${slugify(tag)}/`}>{tag}</a></span>
+                <span class="tag-table-cell-middle"></span>
+                <span class="tag-table-cell-right">{tagDict[tag]}</span>
+            </div>
         ))}
     </div>
 </BaseLayout>
 <style>
-    a {
-        color: #00539F;
-    }
 
-    .tags {
+    div.tag-table {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        width: 60%;
     }
 
-    .tag {
-        margin: 0.25em;
-        border: dotted 1px #a1a1a1;
-        border-radius: .5em;
-        padding: .5em 1em;
-        font-size: 1.15em;
-        background-color: #F8FCFD;
+    div.tag-table-row {
+        display: flex;
+        flex-direction: row;
+        line-height: 1.5em;
+        background-color: var(--glassy-background-opaquer);
     }
+
+    span.tag-table-cell-left {
+        width: auto;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    span.tag-table-cell-middle {
+        width: auto;
+        border-bottom: 1px dotted black;
+        flex-grow: 3;
+    }
+    span.tag-table-cell-right {
+      margin-left: 10px;
+    }
+
+
 </style>

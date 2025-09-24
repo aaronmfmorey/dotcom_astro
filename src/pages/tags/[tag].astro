@@ -30,7 +30,7 @@ return a.data.pubDate < b.data.pubDate ? 1 : -1;
 });
 ---
 <BaseLayout pageTitle={originalTag}>
-    <p>Posts tagged with "{originalTag}"</p>
+    <p><a href="/tags/">&laquo; All tags</a></p>
     <ul>
         {
             posts.map((post) => (

@@ -403,7 +403,7 @@ a.pagination-link:hover {
         font-size: 1.25rem;
     }
 
-    div {
+    div, p {
         font-size: 0.9em;
     }
 

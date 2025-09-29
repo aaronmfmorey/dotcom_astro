@@ -406,6 +406,10 @@ a.pagination-link:hover {
     div, p {
         font-size: 0.9em;
     }
+    
+    .nav-links a {
+        font-size: 1.0em;
+    }
 
     .book-cover-container {
         max-width: 100px;

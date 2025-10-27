@@ -23,6 +23,7 @@
     --darker-font-color: rgb(31 32 35 / 63%);
     --lighter-font-color: rgb(105 105 105);
     --barely-visible-grey: rgb(216 216 216);
+    --even-lighter-than-barely-visible: rgb(240 240 240);
     --glassy-background: hsla(197, 54%, 95%, 0.75);
     --glassy-background-opaquer: rgba(235 245 249 .95);
 }
@@ -129,6 +130,13 @@ blockquote p {
 
 code {
     font-size: .8em;
+}
+
+p > code {
+    background-color: var(--even-lighter-than-barely-visible);
+    padding: .25em;
+    border-radius: 5px;
+    color: var(--lighter-font-color);
 }
 
 pre:has(code) {

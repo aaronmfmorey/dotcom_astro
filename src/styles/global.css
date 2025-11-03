@@ -225,15 +225,9 @@ li {
     margin-left: 1.5rem;
 }
 
-a.read-more {
-    color: var(--darker-font-color);
-    font-style: italic;
-}
-
-a.read-more:hover {
-    color: var(--darker-font-color);
-    border: none;
-    text-decoration: underline;
+.post-excerpt p {
+    margin-bottom: .5em;
+    display: inline;
 }
 
 div.micro-container {

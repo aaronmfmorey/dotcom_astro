@@ -16,8 +16,8 @@ const renderedDescription = await renderMarkdown(post.data.description);
     {
         !!post.data.description && post.data.description !== post.data.title
             ? <span>
-                </span><div class="post-excerpt" set:html={renderedDescription} />
-                <a class="read-more" href={detailUrl}>[Read More]</a>
+                <span class="post-excerpt" set:html={renderedDescription} />
+                <a class="read-more" href={detailUrl}>Read More</a>
               </span>
             : ""
     }

@@ -1,5 +1,12 @@
 import Database from 'better-sqlite3';
 import path from 'path';
+import { remark } from 'remark';
+import html from 'remark-html';
+
+export async function renderMarkdown(markdownString:string ) {
+    const processedContent = await remark().use(html).process(markdownString);
+    return String(processedContent);
+}
 
 export const slugify = (text :string) => {
     if (!text) {

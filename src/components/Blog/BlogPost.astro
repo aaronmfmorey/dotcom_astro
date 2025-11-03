@@ -1,12 +1,13 @@
 ---
 import { render } from 'astro:content';
 import { createExcerpt } from '@utils/create-excerpt.ts';
+import { renderMarkdown } from '@utils/utils.js';
 import PostTagList from "@components/Blog/PostTagList.astro";
 import PostByline from "@components/Blog/PostByline.astro";
 const {post, frontmatter} = Astro.props;
 const detailUrl = `/posts/${post.id}/`;
 const excerpt = createExcerpt(post.rendered.html, detailUrl);
-const renderedDescription = await render(post);
+const renderedDescription = await renderMarkdown(post.data.description);
 ---
 <div class="rounded-md border-1 border-gray-200 bg-white p-3 m-5 shadow">
     <h2><a href={detailUrl}>{frontmatter.title}</a></h2>
@@ -14,7 +15,7 @@ const renderedDescription = await render(post);
     <PostByline frontmatter={frontmatter} post={post} showWordCount={true} />
     {
         !!post.data.description && post.data.description.length !== post.data.title
-            ? <div class="post-excerpt" set:html={post.data.description} />
+            ? <div class="post-excerpt" set:html={renderedDescription} />
             : ""
     }
 </div>

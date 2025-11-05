@@ -10,12 +10,12 @@
 
     /* Colors */
     --background-color: rgb(250 254 255);
-    --background-color-transparent: hsla(192, 100%, 99%, 0.5);
+    --background-color-transparent: hsl(192deg 100% 99% / 50%);
     --header-color: rgb(1 41 95);
     --link-color: rgb(67 127 151);
     --link-hover-color: rgb(90 171 204);
     --nav-hover-color: rgb(255 119 0);
-    --nav-hover-color-transparent: hsla(28, 100%, 50%, 0.8);
+    --nav-hover-color-transparent: hsl(28deg 100% 50% / 80%);
     --lighter-highlight: rgb(255 204 102);
     --rather-light-highlight: rgb(255 230 179);
     --lightest-highlight: rgb(255 255 230);
@@ -24,18 +24,17 @@
     --lighter-font-color: rgb(105 105 105);
     --barely-visible-grey: rgb(216 216 216);
     --even-lighter-than-barely-visible: rgb(240 240 240);
-    --glassy-background: hsla(197, 54%, 95%, 0.5);
+    --glassy-background: hsl(197deg 54% 95% / 50%);
     --glassy-background-opaquer: rgba(235 245 249 .95);
 }
 
 html {
-    background-color: var(--background-color);
     font-family: var(--ff-oldstyle), serif;
     color: #000;
     font-size: 20px;
     hyphens: auto;
-    /*font-weight: 100;*/
-    /*background: linear-gradient(135deg, var(--link-hover-color) 0%, var(--header-color) 100%);*/
+    /* font-weight: 100; */
+    /* background: linear-gradient(135deg, var(--link-hover-color) 0%, var(--header-color) 100%); */
     background-color: #FAFAFA;
 }
 
@@ -52,6 +51,7 @@ body {
     @apply rounded-md;
     @apply border-1;
     @apply border-gray-200;
+
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -383,7 +383,6 @@ a.pagination-link:hover {
     }
 
     .nav-links a {
-        /*display: inline-block;*/
         padding: 5px 16px;
         font-size: .9em;
     }

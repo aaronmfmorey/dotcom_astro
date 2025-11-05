@@ -2,20 +2,20 @@
 
 :root {
     /* Fonts */
-    --ff-sans-serif: "Raleway", "Helvetica", sans-serif;
+    --ff-sans-serif: "Rancho", "Oregano", "Bubblegum Sans", "Fredericka the Great", "Helvetica", sans-serif;
     --ff-serif: "Cormorant Garamond", serif;
 
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
+    --ff-oldstyle: 'Assistant', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
 
     /* Colors */
     --background-color: rgb(250 254 255);
-    --background-color-transparent: hsla(192, 100%, 99%, 0.5);
+    --background-color-transparent: hsl(192deg 100% 99% / 50%);
     --header-color: rgb(1 41 95);
     --link-color: rgb(67 127 151);
     --link-hover-color: rgb(90 171 204);
     --nav-hover-color: rgb(255 119 0);
-    --nav-hover-color-transparent: hsla(28, 100%, 50%, 0.8);
+    --nav-hover-color-transparent: hsl(28deg 100% 50% / 80%);
     --lighter-highlight: rgb(255 204 102);
     --rather-light-highlight: rgb(255 230 179);
     --lightest-highlight: rgb(255 255 230);
@@ -24,16 +24,18 @@
     --lighter-font-color: rgb(105 105 105);
     --barely-visible-grey: rgb(216 216 216);
     --even-lighter-than-barely-visible: rgb(240 240 240);
-    --glassy-background: hsla(197, 54%, 95%, 0.75);
+    --glassy-background: hsl(197deg 54% 95% / 50%);
     --glassy-background-opaquer: rgba(235 245 249 .95);
 }
 
 html {
-    background-color: var(--background-color);
     font-family: var(--ff-oldstyle), serif;
     color: #000;
     font-size: 20px;
     hyphens: auto;
+    /* font-weight: 100; */
+    /* background: linear-gradient(135deg, var(--link-hover-color) 0%, var(--header-color) 100%); */
+    background-color: #FAFAFA;
 }
 
 body {
@@ -41,9 +43,17 @@ body {
     width: 100%;
 
     /* 80ch was about 100 characters, so this is 80% of 80 */
-    max-width: 64ch;
+    max-width: 75ch;
     padding: 1rem;
     line-height: 1.5;
+    background-color: #fff;
+    @apply shadow;
+    @apply rounded-md;
+    @apply border-1;
+    @apply border-gray-200;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 p {
@@ -57,12 +67,12 @@ h1,h2,h3,h4,h5,h6 {
     margin-bottom: .75rem;
     margin-top: .75rem;
     color: var(--header-color);
-    letter-spacing: -1px;
 }
 
 h1 {
     margin: 1rem 0;
     font-size: 3rem;
+    font-weight: 800;
 }
 
 h2 {
@@ -230,6 +240,16 @@ li {
     display: inline;
 }
 
+.byline-wrapper {
+    font-size: .8em;
+    margin-left: 10px
+}
+
+a.read-more {
+    font-weight: 500;
+
+}
+
 div.micro-container {
     padding: 10px;
     border: 1px solid #e1f5fe;
@@ -343,7 +363,7 @@ a.pagination-link:hover {
     border-style: solid;
     border-width: 1px;
     border-color: rgb(225 225 225);
-    backdrop-filter: blur(10px) saturate(30%);
+    backdrop-filter: blur(5px) saturate(10%);
 }
 
 .my-shadow {
@@ -363,9 +383,8 @@ a.pagination-link:hover {
     }
 
     .nav-links a {
-        display: inline-block;
         padding: 5px 16px;
-        font-size: .8em;
+        font-size: .9em;
     }
 
     .full-size-header {
@@ -388,7 +407,6 @@ a.pagination-link:hover {
 
     h3.book-title {
         font-size: 1.5em;
-        word-break: break-word;
     }
 }
 

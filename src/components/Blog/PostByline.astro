@@ -1,15 +1,13 @@
 ---
-import {humanReadableDate} from "@utils/utils";
 const {frontmatter, post, showWordCount} = Astro.props;
 const wordCount = post ? post.body.split(' ').length : null;
 const minutes = Math.ceil(wordCount / 200);
 ---
-<div class="leading-[3rem] text-gray-500 italic pb-0.5 leading-0">
-    <span>{humanReadableDate(frontmatter.pubDate.toString())}</span> -
+<span class="leading-[2rem] text-gray-500 italic pb-0.5 byline-wrapper">
     <span>{frontmatter.author ?? "Aaron Morey"}</span>
     {
         showWordCount && wordCount != null
             ? <span> - {wordCount} words ({minutes} minute{minutes == 1 ? "" : "s"})</span>
             : ""
     }
-</div>
+</span>

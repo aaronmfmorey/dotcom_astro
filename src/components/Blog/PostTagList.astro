@@ -2,10 +2,15 @@
 import PostTag from "./PostTag.astro";
 const {tags} = Astro.props;
 ---
-<div class="pb-[10px]">
+<span class="pb-[10px] byline-wrapper">
     {
-        !!tags ?
-            tags.map((tag :String) => <PostTag tag={tag} />)
+        !!tags
+            ? <i class="fa fa-tag pr-1"/>
             : ""
     }
-</div>
+    {
+        !!tags ?
+            tags.map((tag :String, index, arr) => <PostTag tag={tag} index={index} arr={arr} />)
+            : ""
+    }
+</span>

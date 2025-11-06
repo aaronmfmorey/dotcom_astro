@@ -2,7 +2,8 @@
 
 :root {
     /* Fonts */
-    --ff-sans-serif: "Rancho", "Oregano", "Bubblegum Sans", "Fredericka the Great", "Helvetica", sans-serif;
+/*"Gugi", Just for my name?*/
+    --ff-sans-serif: "Slabo 27px", "Helvetica", sans-serif;
     --ff-serif: "Cormorant Garamond", serif;
 
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
@@ -62,7 +63,7 @@ p {
 
 h1,h2,h3,h4,h5,h6 {
     font-family: var(--ff-sans-serif);
-    font-weight: 800;
+    /*font-weight: 800;*/
     line-height: 1.25;
     margin-bottom: .75rem;
     margin-top: .75rem;
@@ -72,7 +73,7 @@ h1,h2,h3,h4,h5,h6 {
 h1 {
     margin: 1rem 0;
     font-size: 3rem;
-    font-weight: 800;
+    /*font-weight: 800;*/
 }
 
 h2 {

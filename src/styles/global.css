@@ -73,7 +73,7 @@ h1,h2,h3,h4,h5,h6 {
 h1 {
     margin: 1rem 0;
     font-size: 3rem;
-    /*font-weight: 800;*/
+    font-weight: 800;
 }
 
 h2 {
@@ -384,7 +384,7 @@ a.pagination-link:hover {
     }
 
     .nav-links a {
-        padding: 5px 16px;
+        padding: 5px 5px;
         font-size: .9em;
     }
 

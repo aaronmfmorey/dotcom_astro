@@ -17,7 +17,7 @@ const platformConfig = {
 const thisPlatform = platformConfig[platform];
 
 ---
-<a href={thisPlatform.url} class="social-link">
+<a href={thisPlatform.url} class="social-link glassy">
     <i class={thisPlatform.icon}></i>
     <span>{thisPlatform.title}</span>
 </a>
@@ -50,7 +50,6 @@ const thisPlatform = platformConfig[platform];
     .social-link:hover span {
         color: var(--link-hover-color);
         border-bottom: 5px inset var(--lighter-highlight);
-        font-style: oblique;
     }
 
     .social-link:hover i {

@@ -1,5 +1,6 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro'
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AnchoredHeader from '@components/AnchoredHeader.astro';
 import { getCollection } from 'astro:content';
 import {processSubheadLevels, sortPostsBySubheadAndDate} from '@utils/content_collections';
 
@@ -8,12 +9,13 @@ const allPosts = await getCollection(collection);
 processSubheadLevels(allPosts);
 const sortedPosts:Array = sortPostsBySubheadAndDate(allPosts);
 let previousPageTitle = null;
+let headingLevel = includeEntriesHeader ? 3 : 2;
 ---
 <BaseLayout pageTitle={pageTitle}>
     <Fragment set:html={introText} />
     {
         includeEntriesHeader === true ?
-            <h2>Entries</h2>
+            <AnchoredHeader hLevel="2" text="Entries" />
             : ""
     }
     {
@@ -21,7 +23,7 @@ let previousPageTitle = null;
             const linkFragment:Fragment = <li><a href={`${post.id}/`}>{post.data.title}</a></li>;
             if (post.indexHeading && post.indexHeading !== previousPageTitle) {
                 previousPageTitle = post.indexHeading;
-                return <h3>{post.indexHeading}</h3><li><a href={`${post.id}/`}>{post.data.title}</a></li>;
+                return <AnchoredHeader hLevel={headingLevel} text={post.indexHeading}></AnchoredHeader><li><a href={`${post.id}/`}>{post.data.title}</a></li>;
             } else {
                 return linkFragment;
             }

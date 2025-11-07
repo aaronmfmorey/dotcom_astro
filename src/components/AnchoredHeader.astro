@@ -2,7 +2,15 @@
 import GithubSlugger from 'github-slugger';
 const {hLevel, text} = Astro.props;
 const slugger = new GithubSlugger()
-const slug = slugger.slug(text);
+let slug = slugger.slug(text);
+if (slug.startsWith("-")) {
+    slug = slug.slice(1, slug.length);
+}
+if (slug.endsWith("-")) {
+    slug = slug.slice(0, slug.length-1);
+}
+console.log("slug",slug);
+console.log("text",text);
 const tagName = `h${hLevel}`;
 ---
 <Fragment set:html={`<${tagName} id="${slug}">`}/>

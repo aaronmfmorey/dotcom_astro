@@ -187,15 +187,15 @@ td, th {
 }
 
 ruby.stressed-syllable {
-    font-style: italic;
+    font-weight: 600;
     position: relative;
     line-height: .1rem;
+    padding-right: .1em;
 }
 
-ruby.stressed-syllable rt {
-    font-size: 1.5rem;
+ruby.unstressed-syllable {
     position: relative;
-    top: 1rem;
+    line-height: .1rem;
 }
 
 ul {
@@ -297,8 +297,7 @@ a.bookshop-affiliate-link {
     text-align: center;
     padding: 5px 0;
     text-decoration: none;
-    font-weight: bold;
-    font-family: var(--ff-sans-serif);
+    font-family: var(--ff-oldstyle);
     font-size: .8em;
 }
 

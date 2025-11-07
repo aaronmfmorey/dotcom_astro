@@ -1,6 +1,7 @@
 ---
 // Credit: https://cassidysmith.dev/posts/modify-astro-slot-children
 let html = await Astro.slots.render('default')
-html = html.replaceAll("@@", "<ruby class='stressed-syllable'>").replaceAll("::", "<rt>´</rt></ruby>");
+html = html.replaceAll("@@", "<ruby class='stressed-syllable'>").replaceAll("::", "<rt>/</rt></ruby>");
+html = html.replaceAll("///", "<ruby class='unstressed-syllable'>").replaceAll("/:/", "<rt>&cup;</rt></ruby>");
 ---
 <Fragment set:html={html} />

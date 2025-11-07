@@ -84,14 +84,47 @@ export const getFontAwesomePathAsKey = function(iconName: string) {
 };
 
 export const getBooksFromSqlite = function() {
+    // TODO AMM move this to env variable
     const dbPath = path.resolve('aaronmoreycom_content/content/data/goodreads.db');
     const db = new Database(dbPath, { readonly: true });
 
     const query = `
-        SELECT *
-        FROM goodreads
-        LEFT JOIN goodreads_meta ON goodreads_meta.book_id = goodreads.book_id
-        ORDER BY date_read DESC;
+        select all_reads.*,
+          ROW_NUMBER() OVER (PARTITION BY all_reads.book_id ORDER BY date_read ) as running_total
+        from (
+          select 
+              g.book_id, 
+              g.title, 
+              g.original_publication_year, 
+              g.isbn, 
+              g.isbn13, 
+              g.date_read,
+              g.my_rating,
+              g.my_review,
+              gm.*
+          from goodreads g
+          left join goodreads_meta gm
+            on g.book_id = gm.book_id
+        
+          UNION ALL
+          
+          select 
+              rr.book_id, 
+              g2.title, 
+              g2.original_publication_year,
+              g2.isbn, 
+              g2.isbn13, 
+              rr.date_read,
+              g2.my_rating,
+              g2.my_review,
+              gm2.*
+          from goodreads_reread as rr
+          join goodreads as g2
+            on g2.book_id = rr.book_id
+          left join goodreads_meta gm2
+            on g2.book_id = gm2.book_id
+            and rr.book_id = g2.book_id
+          ) as all_reads        order by all_reads.date_read desc;
     `;
 
     return db.prepare(query).all();

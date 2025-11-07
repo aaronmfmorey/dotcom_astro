@@ -72,7 +72,13 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
                 }
             </h4>
             <div class="pb-5">
-                <div>Read: {formatDateLong(book.date_read)}</div>
+                <div>{formatDateLong(book.date_read)}
+                {
+                    book.running_total && book.running_total > 1 ?
+                        <span >(Re-read: {book.running_total})</span>
+                        : ""
+                }
+                </div>
                 {
                     !!book.my_rating && book.my_rating != 0 ?
                         <BookStars rating={book.my_rating} /> :

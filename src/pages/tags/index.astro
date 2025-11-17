@@ -4,11 +4,11 @@ import {getCollection} from "astro:content";
 import { slugify } from "@utils/utils.js";
 const pageTitle = "Tag Index";
 const allPosts = await getCollection('blog');
-let tagDict = {};
+let tagDict = new Map<string, string>();
 
 allPosts.forEach(post => {
     if (post.data.tags) {
-        post.data.tags.forEach(tag: string => {
+        post.data.tags.forEach(tag => {
             if (!tagDict[tag]) {
                 tagDict[tag] = 1;
             } else {

@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
+  "exclude": ["dist", "node_modules", ".astro"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -11,7 +11,7 @@
       "@contentsubmodule/*": ["aaronmoreycom_content/content/*"],
       "@fontawesomesubmodule/*": ["Font-Awesome/*"],
       "@utils/*": ["src/utils/*"],
-      "@schemas/*": ["src/schemas/*"],
+      "@schemas/*": ["src/schemas/*"]
     }
   }
 }

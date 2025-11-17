@@ -25,11 +25,12 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 let { posts, originalTag } = Astro.props;
+console.log(posts[0]);
 posts.sort(function (a, b) {
 return a.data.pubDate < b.data.pubDate ? 1 : -1;
 });
 ---
-<BaseLayout pageTitle={originalTag}>
+<BaseLayout pageTitle={`Tagged: ${originalTag}`}>
     <p><a href="/tags/">&laquo; All tags</a></p>
     <ul>
         {

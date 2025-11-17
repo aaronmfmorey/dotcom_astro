@@ -11,6 +11,7 @@
       "@contentsubmodule/*": ["aaronmoreycom_content/content/*"],
       "@fontawesomesubmodule/*": ["Font-Awesome/*"],
       "@utils/*": ["src/utils/*"],
+      "@schemas/*": ["src/schemas/*"],
     }
   }
 }

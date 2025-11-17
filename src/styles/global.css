@@ -32,7 +32,7 @@
 html {
     font-family: var(--ff-oldstyle), serif;
     color: #000;
-    font-size: 20px;
+    font-size: clamp(14px, 3vw, 20px);
     hyphens: auto;
     /* font-weight: 100; */
     /* background: linear-gradient(135deg, var(--link-hover-color) 0%, var(--header-color) 100%); */
@@ -423,9 +423,9 @@ a.pagination-link:hover {
         font-size: 1.25rem;
     }
 
-    div, p {
-        font-size: 0.9em;
-    }
+    /*div, p {*/
+    /*    font-size: 0.9em;*/
+    /*}*/
     
     .nav-links a {
         font-size: 0.9em;

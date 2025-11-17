@@ -7,7 +7,7 @@ import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeTableScroll from './plugins/rehype-table-scroll.js';
 import mdx from '@astrojs/mdx';
-
+import {customImage} from "./plugins/custom-image.mjs";
 import expressiveCode from 'astro-expressive-code';
 
 // https://astro.build/config
@@ -36,6 +36,9 @@ export default defineConfig({
       ],
       rehypeTableScroll,
     ],
+    remarkPlugins: [
+        customImage
+    ]
   },
 
   vite: {

@@ -102,7 +102,8 @@ export const getBooksFromSqlite = function() {
               g.date_read,
               g.my_rating,
               g.my_review,
-              gm.*
+              gm.bookshop_slug,
+              gm.no_bookshop
           from goodreads g
           left join goodreads_meta gm
             on g.book_id = gm.book_id
@@ -119,14 +120,16 @@ export const getBooksFromSqlite = function() {
               rr.date_read,
               g2.my_rating,
               g2.my_review,
-              gm2.*
+              gm2.bookshop_slug,
+              gm2.no_bookshop
           from goodreads_reread as rr
           join goodreads as g2
             on g2.book_id = rr.book_id
           left join goodreads_meta gm2
             on g2.book_id = gm2.book_id
             and rr.book_id = g2.book_id
-          ) as all_reads        order by all_reads.date_read desc;
+          ) as all_reads        
+        order by all_reads.date_read desc;
     `;
 
     return db.prepare(query).all();

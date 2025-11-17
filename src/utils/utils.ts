@@ -95,6 +95,7 @@ export const getBooksFromSqlite = function() {
           select 
               g.book_id, 
               g.title, 
+              g.author,
               g.original_publication_year, 
               g.isbn, 
               g.isbn13, 
@@ -111,6 +112,7 @@ export const getBooksFromSqlite = function() {
           select 
               rr.book_id, 
               g2.title, 
+              g2.author,
               g2.original_publication_year,
               g2.isbn, 
               g2.isbn13, 

@@ -42,6 +42,7 @@ export default defineConfig({
     resolve: {
         preserveSymlinks: true
     },
+      // @ts-ignore
     plugins: [tailwindcss()]
   },
 

@@ -2,16 +2,18 @@
 import type { ImageMetadata } from 'astro';
 import {getCollection} from "astro:content";
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { getBooksFromSqlite } from '@utils/utils';
-let books = getBooksFromSqlite();
-const pageTitle = "Reading";
 import BookEntry from "@components/Reading/BookEntry.astro";
+import { getBooksFromSqlite } from '@utils/utils';
+import { Book } from '@schemas/book';
+
+let books:Array<Book> = getBooksFromSqlite();
+const pageTitle = "Reading";
 const allPosts = await getCollection("blog");
 let allTags = allPosts.map((post) => post.data.tags).flat();
 let uniqueTagsForAuthorMatch = [... new Set(allTags)].filter(tag => tag !== null)
     .map((tag :string) => tag.toLowerCase().replaceAll(" ", ""));
 
-let yearCounts = {};
+let yearCounts:{[id:string]: number} = {};
 
 books.forEach(b => {
     const bookYear = new Date(Date.parse(b.date_read)).getFullYear().toString();
@@ -30,7 +32,7 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/imag
 
     <div class="books-container">
     {
-        books.map(function (book :object, i :number, allBooks :Array) {
+        books.map(function (book: Book, i: number, allBooks: Array) {
             const previousYearRead = i > 0
                 ? new Date(Date.parse(allBooks[i-1].date_read)).getFullYear()
                 : 0;

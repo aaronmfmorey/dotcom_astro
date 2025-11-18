@@ -4,10 +4,17 @@ import AnchoredHeader from '@components/AnchoredHeader.astro';
 import { getCollection } from 'astro:content';
 import {processSubheadLevels, sortPostsBySubheadAndDate} from '@utils/content_collections';
 
+interface Props {
+    collection: string,
+    pageTitle: string,
+    introText: string,
+    includeEntriesHeader: boolean
+}
+
 const { collection, pageTitle, introText, includeEntriesHeader = true } = Astro.props;
 const allPosts = await getCollection(collection);
 processSubheadLevels(allPosts);
-const sortedPosts:Array = sortPostsBySubheadAndDate(allPosts);
+const sortedPosts: Array = sortPostsBySubheadAndDate(allPosts);
 let previousPageTitle = null;
 let headingLevel = includeEntriesHeader ? 3 : 2;
 ---

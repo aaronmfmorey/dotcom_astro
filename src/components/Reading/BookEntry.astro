@@ -1,10 +1,21 @@
 ---
 import {Image} from "astro:assets";
 import BookStars from "@components/Reading/BookStars.astro";
-import {formatDateLong, slugify} from '../../utils/utils.ts';
-import linkifyHtml from 'linkify-html';
-import {bookshopAffiliateUrl} from "../../utils/utils";
 import ReviewDialog from "@components/Reading/ReviewDialog.astro";
+import linkifyHtml from 'linkify-html';
+import {formatDateLong, slugify, bookshopAffiliateUrl} from '@utils/utils.ts';
+import {Book} from '@schemas/book'
+
+interface Props {
+    book: Book,
+    key: number,
+    uniqueTags: Array<string>,
+    coverImages: Array<any>,
+    previousBook: Book,
+    previousYearRead: number,
+    yearCounts: number
+}
+
 
 const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
 const authorMatchesTag = function(authorName :string) {

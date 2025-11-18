@@ -2,7 +2,7 @@
 
 :root {
     /* Fonts */
-/*"Gugi", Just for my name?*/
+    /* "Gugi", Just for my name? */
     --ff-sans-serif: "Slabo 27px", "Helvetica", sans-serif;
     --ff-serif: "Cormorant Garamond", serif;
 
@@ -34,8 +34,6 @@ html {
     color: #000;
     font-size: 20px;
     hyphens: auto;
-    /* font-weight: 100; */
-    /* background: linear-gradient(135deg, var(--link-hover-color) 0%, var(--header-color) 100%); */
     background-color: #FAFAFA;
 }
 
@@ -63,7 +61,6 @@ p {
 
 h1,h2,h3,h4,h5,h6 {
     font-family: var(--ff-sans-serif);
-    /*font-weight: 800;*/
     line-height: 1.25;
     margin-bottom: .75rem;
     margin-top: .75rem;

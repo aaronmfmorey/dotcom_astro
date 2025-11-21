@@ -1,13 +1,10 @@
 ---
-import { render } from 'astro:content';
-import { createExcerpt } from '@utils/create-excerpt.ts';
 import { renderMarkdown } from '@utils/utils.js';
 import PostTagList from "@components/Blog/PostTagList.astro";
 import PostByline from "@components/Blog/PostByline.astro";
 import {humanReadableDate} from "@utils/utils";
 const {post, frontmatter} = Astro.props;
 const detailUrl = `/posts/${post.id}/`;
-const excerpt = createExcerpt(post.rendered.html, detailUrl);
 const renderedDescription = await renderMarkdown(post.data.description);
 ---
 <div class="">

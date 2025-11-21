@@ -6,9 +6,8 @@ const { frontmatter, post } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
     <div class="markdown-post">
-        <PostTagList tags={frontmatter.tags} />
         <PostByline frontmatter={frontmatter} post={post} showWordCount={frontmatter.showWordCount ?? false} />
-        <!--TODO AMM Default Author to me unless otherwise noted -->
+        <PostTagList tags={frontmatter.tags} />
         <slot />
     </div>
 </BaseLayout>

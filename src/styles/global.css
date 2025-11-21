@@ -443,4 +443,13 @@ a.pagination-link:hover {
         padding: 5px;
     }
 
+    .byline-wrapper, .byline-author, .byline-wordcount {
+        display: block;
+        line-height: 1.25em;
+    }
+
+    .byline-separator {
+        display: none;
+    }
+
 }

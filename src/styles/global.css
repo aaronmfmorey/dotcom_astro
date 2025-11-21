@@ -34,9 +34,37 @@ html {
     color: #000;
     font-size: 20px;
     hyphens: auto;
-    /* font-weight: 100; */
-    /* background: linear-gradient(135deg, var(--link-hover-color) 0%, var(--header-color) 100%); */
-    background-color: #FAFAFA;
+
+    background-color: var(--background-color);
+    background-image:
+            linear-gradient(120deg, var(--link-color) 0%, var(--link-hover-color) 100%),
+            url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='40' fill='%23ff6f91' fill-opacity='0.18'/%3E%3Cpolygon points='120,20 180,60 140,120' fill='%23ffd166' fill-opacity='0.18'/%3E%3Ccircle cx='160' cy='160' r='30' fill='%2390c2e7' fill-opacity='0.18'/%3E%3Cpolygon points='40,180 80,140 20,120' fill='%23427f97' fill-opacity='0.18'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: auto, 300px 300px;
+}
+
+html::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+            120deg,
+            rgba(255,255,255,0.22) 0%,
+            rgba(255,255,255,0.10) 40%,
+            rgba(255,255,255,0.55) 55%,
+            rgba(255,255,255,0.10) 70%,
+            rgba(255,255,255,0.22) 100%
+    );
+    mix-blend-mode: lighten;
+    animation: shimmer-move 90s linear infinite;
+    background-size: 300% 300%;
+}
+
+@keyframes shimmer-move {
+    0% { background-position: -100% 50%; }
+    100% { background-position: 200% 50%; }
 }
 
 body {

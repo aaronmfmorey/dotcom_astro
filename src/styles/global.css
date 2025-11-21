@@ -2,7 +2,6 @@
 
 :root {
     /* Fonts */
-/*"Gugi", Just for my name?*/
     --ff-sans-serif: "Slabo 27px", "Helvetica", sans-serif;
     --ff-serif: "Cormorant Garamond", serif;
 
@@ -34,7 +33,6 @@ html {
     color: #000;
     font-size: 20px;
     hyphens: auto;
-
     background-color: var(--background-color);
     background-image:
             linear-gradient(120deg, var(--link-color) 0%, var(--link-hover-color) 100%),
@@ -51,11 +49,11 @@ html::before {
     pointer-events: none;
     background: linear-gradient(
             120deg,
-            rgba(255,255,255,0.22) 0%,
-            rgba(255,255,255,0.10) 40%,
-            rgba(255,255,255,0.55) 55%,
-            rgba(255,255,255,0.10) 70%,
-            rgba(255,255,255,0.22) 100%
+            rgb(255 255 255 / 22%) 0%,
+            rgb(255 255 255 / 10%) 40%,
+            rgb(255 255 255 / 55%) 55%,
+            rgb(255 255 255 / 10%) 70%,
+            rgb(255 255 255 / 22%) 100%
     );
     mix-blend-mode: lighten;
     animation: shimmer-move 90s linear infinite;
@@ -91,7 +89,6 @@ p {
 
 h1,h2,h3,h4,h5,h6 {
     font-family: var(--ff-sans-serif);
-    /*font-weight: 800;*/
     line-height: 1.25;
     margin-bottom: .75rem;
     margin-top: .75rem;

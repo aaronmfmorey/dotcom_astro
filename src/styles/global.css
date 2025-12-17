@@ -160,6 +160,23 @@ blockquote.book-review {
     margin-right: 10px;
 }
 
+.book-cover-container i {
+    font-size: 10cqi;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-left: 10px;
+    color: var(--barely-visible-grey)
+}
+
+.book-cover-container img {
+    color: var(--barely-visible-grey);
+    width: 25cqw;
+}
+
+div.book-author {
+   font-size: clamp(11px, 2.5vw, 1em);
+}
+
 blockquote p {
     margin-bottom: 0;
     color: var(--lighter-font-color);
@@ -286,7 +303,7 @@ div.micro-container {
 }
 
 h3.book-title {
-    font-size: 1.1em;
+    font-size: clamp(14px, 5vw, 1.5em);
 }
 
 a.bookshop-affiliate-link {
@@ -430,10 +447,6 @@ a.pagination-link:hover {
     .hamburger {
         display: none;
     }
-
-    h3.book-title {
-        font-size: 1.5em;
-    }
 }
 
 @media screen and (width <= 636px) {
@@ -457,11 +470,6 @@ a.pagination-link:hover {
         font-size: 0.9em;
     }
 
-    .book-cover-container {
-        max-width: 100px;
-        margin-right: 10px;
-    }
-
     header {
         position:sticky;
         top: 0;
@@ -477,5 +485,4 @@ a.pagination-link:hover {
     .byline-separator {
         display: none;
     }
-
 }

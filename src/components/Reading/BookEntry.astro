@@ -53,9 +53,7 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
                             alt=`Cover image for ${book.title}` />
                     </div>
                 : <div class="book-cover-container">
-                        <i
-                                class="fa-solid fa-book-bookmark h-full object-contain"
-                                style="font-size: 144px; padding-right: 10px; padding-top: 20px; padding-left: 10px; color: var(--barely-visible-grey)" />
+                        <i class="fa-solid fa-book-bookmark" />
                     </div>
         }
         <div style="width: 66%;">
@@ -68,7 +66,7 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
                         <Fragment set:html={bookshopAffiliateUrl(bookshopSlug)} />
                 }
             </h3>
-            <div>
+            <div class="book-author">
                 {
                     authorMatchesTag(book.author)
                         ? <a href=`/tags/${slugify(book.author)}/`>{book.author}</a>

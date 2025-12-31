@@ -1,0 +1,167 @@
+---
+import Database from 'better-sqlite3';
+import path from "path";
+
+const dbPath = path.resolve('aaronmoreycom_content/content/data/goodreads.db');
+const db = new Database(dbPath);
+
+// Query to get total pages per year
+const yearlyPagesQuery = `
+    select
+        strftime('%Y', date_read) as year,
+        sum(number_of_pages) as total_pages,
+        count(*) as books_read
+    from (
+             select
+                 g.date_read,
+                 g.number_of_pages
+             from goodreads g
+             where g.date_read is not null
+               and g.number_of_pages is not null
+
+             UNION ALL
+
+             select
+                 rr.date_read,
+                 g2.number_of_pages
+             from goodreads_reread as rr
+                      join goodreads as g2
+                           on g2.book_id = rr.book_id
+             where rr.date_read is not null
+               and g2.number_of_pages is not null
+         ) as all_reads
+    group by year
+    order by year
+`;
+
+const yearlyData = db.prepare(yearlyPagesQuery).all();
+db.close();
+
+// Prepare data for Chart.js
+const chartData = {
+    years: yearlyData.map(row => row.year),
+    pages: yearlyData.map(row => row.total_pages),
+    bookCounts: yearlyData.map(row => row.books_read)
+};
+---
+
+<div class="chart-container">
+    <h2>Books and Pages</h2>
+    <canvas id="pagesChart"></canvas>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+<script define:vars={{ chartData }}>
+    document.addEventListener('astro:page-load', function() {
+        const ctx = document.getElementById('pagesChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.years,
+                datasets: [
+                    {
+                        label: 'Books Read',
+                        data: chartData.bookCounts,
+                        backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Pages Read',
+                        data: chartData.pages,
+                        type: 'line',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.4,
+                        yAxisID: 'y1',
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.parsed.y.toLocaleString();
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Books Read'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Pages Read'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+    .chart-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #1f2937;
+    }
+
+    canvas {
+        max-height: 400px;
+    }
+</style>

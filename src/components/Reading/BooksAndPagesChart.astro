@@ -52,7 +52,7 @@ const chartData = {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 
 <script define:vars={{ chartData }}>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('astro:page-load', function() {
         const ctx = document.getElementById('pagesChart');
 
         new Chart(ctx, {

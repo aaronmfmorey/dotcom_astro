@@ -1,7 +1,8 @@
 ---
 import Database from 'better-sqlite3';
+import path from "path";
 
-const dbPath = import.meta.env.ASTRO_DB_REMOTE_URL;
+const dbPath = path.resolve('aaronmoreycom_content/content/data/goodreads.db');
 const db = new Database(dbPath);
 
 // Query to get total pages per year

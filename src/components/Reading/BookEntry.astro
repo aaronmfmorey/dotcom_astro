@@ -75,7 +75,7 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
             </div>
             <div class="book-pages">
                 {
-                    book.number_of_pages ? `${book.number_of_pages} pages` : ""
+                    book.number_of_pages ? `${book.number_of_pages.toLocaleString()} pages` : ""
                 }
             </div>
             <div class="pb-5">

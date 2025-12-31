@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "host": "astro dev --host",
     "build": "git submodule update --remote --recursive && astro build",
+    "subm": "git submodule update --remote --recursive",
     "lint": "scripts/lint.sh",
     "preview": "astro preview",
     "astro": "astro"
@@ -18,12 +19,14 @@
     "astro": "^5.4.2",
     "astro-expressive-code": "^0.41.2",
     "better-sqlite3": "^11.9.1",
+    "chart.js": "^4.5.1",
     "linkify-html": "^4.2.0",
     "linkifyjs": "^4.2.0",
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "tailwindcss": "^4.0.15"
+    "tailwindcss": "^4.0.15",
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",

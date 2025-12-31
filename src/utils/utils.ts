@@ -102,6 +102,7 @@ export const getBooksFromSqlite = function() {
               g.date_read,
               g.my_rating,
               g.my_review,
+              g.number_of_pages,
               gm.*
           from goodreads g
           left join goodreads_meta gm
@@ -119,6 +120,7 @@ export const getBooksFromSqlite = function() {
               rr.date_read,
               g2.my_rating,
               g2.my_review,
+              g2.number_of_pages,
               gm2.*
           from goodreads_reread as rr
           join goodreads as g2

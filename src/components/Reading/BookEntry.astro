@@ -73,6 +73,11 @@ const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
                         : book.author
                 }
             </div>
+            <div class="book-pages">
+                {
+                    book.number_of_pages ? `${book.number_of_pages} pages` : ""
+                }
+            </div>
             <div class="pb-5">
                 <div>{formatDateLong(book.date_read)}
                 {

@@ -1,9 +1,9 @@
 ---
 import {Image} from "astro:assets";
 import BookStars from "@components/Reading/BookStars.astro";
-import {formatDateLong, slugify} from '../../utils/utils.ts';
+import {formatDateLong, slugify} from '@utils/utils.ts';
 import linkifyHtml from 'linkify-html';
-import {bookshopAffiliateUrl} from "../../utils/utils";
+import {bookshopAffiliateUrl} from "@utils/utils";
 import ReviewDialog from "@components/Reading/ReviewDialog.astro";
 
 const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
@@ -11,9 +11,10 @@ const authorMatchesTag = function(authorName :string) {
     return uniqueTags.includes(slugify(authorName));
 };
 
+console.log(coverImages);
 const coverImageExists = function(isbn: string): boolean {
     return (
-        Object.keys(coverImages).includes("../assets/images/covers/" + isbn + ".jpg")
+        Object.keys(coverImages).includes("../../assets/images/covers/" + isbn + ".jpg")
     );
 }
 
@@ -34,7 +35,7 @@ const yearRead = new Date(Date.parse(book.date_read)).getFullYear();
 
 const bookshopSlug = book.bookshop_slug ?? book.isbn13;
 
-const imagePath:string = `../assets/images/covers/${book.isbn}.jpg`;
+const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
 ---
     {
         // Make YearRead hang out at the top untli the next comes along?

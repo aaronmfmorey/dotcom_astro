@@ -22,16 +22,16 @@ books.forEach(b => {
     }
 })
 
-const coverImages = import.meta.glob<{ default: ImageMetadata }>('../assets/images/covers/*.jpg');
+const coverImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/images/covers/*.jpg');
 ---
 <BaseLayout pageTitle={pageTitle}>
     <p>My reading list, as exported from GoodReads.</p>
     <p>Images come from <a href="https://openlibrary.org/dev/docs/api/covers">The OpenLibrary Books API</a></p>
-    <p><a href="/readingcharts">View reading stats.</a></p>
+    <p><a href="/reading/charts">View reading stats.</a></p>
 
     <div class="books-container">
     {
-        books.map(function (book :object, i :number, allBooks :Array) {
+        books.map(function(book :object, i :number, allBooks :Array) {
             const previousYearRead = i > 0
                 ? new Date(Date.parse(allBooks[i-1].date_read)).getFullYear()
                 : 0;

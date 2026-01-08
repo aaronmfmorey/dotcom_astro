@@ -1,9 +1,24 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Slabo 27px';
+    src: url('/fonts/Slabo27px-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Assistant';
+    src: url('/fonts/Assistant-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     /* Fonts */
     --ff-sans-serif: "Slabo 27px", "Helvetica", sans-serif;
-    --ff-serif: "Cormorant Garamond", serif;
 
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
     --ff-oldstyle: 'Assistant', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";

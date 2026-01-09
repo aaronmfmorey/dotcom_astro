@@ -11,7 +11,6 @@ const authorMatchesTag = function(authorName :string) {
     return uniqueTags.includes(slugify(authorName));
 };
 
-console.log(coverImages);
 const coverImageExists = function(isbn: string): boolean {
     return (
         Object.keys(coverImages).includes("../../assets/images/covers/" + isbn + ".jpg")

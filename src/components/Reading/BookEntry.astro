@@ -52,6 +52,7 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
                             src={coverImages[imagePath]()}
                             alt=`Cover image for ${book.title}`
                             width={250}
+                            quality={80}
                         />
                     </div>
                 : <div class="book-cover-container">

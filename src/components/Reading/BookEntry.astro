@@ -50,7 +50,9 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
                         <Image
                             class="h-full object-contain my-shadow"
                             src={coverImages[imagePath]()}
-                            alt=`Cover image for ${book.title}` />
+                            alt=`Cover image for ${book.title}`
+                            width={300}
+                        />
                     </div>
                 : <div class="book-cover-container">
                         <i class="fa-solid fa-book-bookmark" />

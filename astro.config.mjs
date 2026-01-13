@@ -56,5 +56,8 @@ export default defineConfig({
       },
     }),
     mdx()
-  ]
+  ],
+  image: {
+      layout: 'full-width',
+  }
 });

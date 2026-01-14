@@ -1,10 +1,237 @@
 ---
 const {reviewContents} = Astro.props;
 ---
-<dialog class="review-dialog fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-2 z-50 shadow">
-    <button autofocus class="close-button"><i class="fa-solid fa-close open-button" /></button>
-    <blockquote>
-        <Fragment set:html={reviewContents} />
-    </blockquote>
+<dialog class="review-dialog">
+    <div class="review-dialog-content">
+        <div class="review-dialog-header">
+            <h3>My Review</h3>
+            <button class="close-button" aria-label="Close dialog">
+                <i class="fa-solid fa-close" />
+            </button>
+        </div>
+        <div class="review-dialog-body">
+            <blockquote>
+                <Fragment set:html={reviewContents} />
+            </blockquote>
+        </div>
+    </div>
 </dialog>
-<button class="open-button"><i class="fa-solid fa-maximize"></i> My review</button>
+<button class="open-button">
+    <i class="fa-solid fa-maximize"></i> My review
+</button>
+
+<style>
+    .review-dialog {
+        position: fixed;
+        inset: 0;
+        margin: 0;
+        padding: 1rem;
+        border: none;
+        background: transparent;
+        max-width: 100vw;
+        max-height: 100vh;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .review-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    .review-dialog[open] {
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    .review-dialog[open] .review-dialog-content {
+        animation: slideUp 0.3s ease-out;
+    }
+
+    .review-dialog-content {
+        position: relative;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        max-width: 90vw;
+        max-height: 90vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    @media screen and (width >= 640px) {
+        .review-dialog-content {
+            max-width: 600px;
+            max-height: 80vh;
+        }
+    }
+
+    @media screen and (width >= 1024px) {
+        .review-dialog-content {
+            max-width: 700px;
+        }
+    }
+
+    .review-dialog-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid var(--barely-visible-grey);
+        flex-shrink: 0;
+    }
+
+    .review-dialog-header h3 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: var(--header-color);
+    }
+
+    .close-button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        color: var(--lighter-font-color);
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        line-height: 1;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        background: var(--even-lighter-than-barely-visible);
+        color: var(--header-color);
+        outline: none;
+    }
+
+    .review-dialog-body {
+        padding: 1.25rem;
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0;
+    }
+
+    .review-dialog-body blockquote {
+        margin: 0;
+        padding: 1rem;
+        border-left: 5px solid var(--lighter-highlight);
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Ensure dialog closes with animation */
+    .review-dialog.closing {
+        animation: fadeOut 0.2s ease-in forwards;
+    }
+
+    .review-dialog.closing .review-dialog-content {
+        animation: slideDown 0.2s ease-in forwards;
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+        }
+    }
+</style>
+
+<script>
+    // Initialize all review dialogs when DOM is ready
+    function initReviewDialogs() {
+        const openButtons = document.querySelectorAll('.open-button');
+        
+        openButtons.forEach((openButton) => {
+            // Find the dialog that's a sibling before the open button
+            const dialog = openButton.previousElementSibling as HTMLDialogElement;
+            if (!dialog || !dialog.classList.contains('review-dialog')) {
+                return;
+            }
+
+            const closeButton = dialog.querySelector('.close-button') as HTMLButtonElement;
+
+            // Open dialog
+            openButton.addEventListener('click', () => {
+                dialog.showModal();
+            });
+
+            // Close button
+            if (closeButton) {
+                closeButton.addEventListener('click', () => {
+                    closeDialogWithAnimation(dialog);
+                });
+            }
+
+            // Close on backdrop click
+            dialog.addEventListener('click', (e) => {
+                // If clicking the backdrop (not the content), close the dialog
+                if (e.target === dialog) {
+                    closeDialogWithAnimation(dialog);
+                }
+            });
+
+            // Close on Escape key (native behavior, but we add animation)
+            dialog.addEventListener('cancel', (e) => {
+                e.preventDefault();
+                closeDialogWithAnimation(dialog);
+            });
+        });
+    }
+
+    function closeDialogWithAnimation(dialog: HTMLDialogElement) {
+        dialog.classList.add('closing');
+        setTimeout(() => {
+            dialog.close();
+            dialog.classList.remove('closing');
+        }, 200); // Match animation duration
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initReviewDialogs);
+    } else {
+        initReviewDialogs();
+    }
+</script>

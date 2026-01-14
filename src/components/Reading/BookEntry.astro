@@ -118,25 +118,3 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
         hyphens: auto;
     }
 </style>
-
-<script>
-    const openBtns = document.getElementsByClassName('open-button');
-    const closeBtns = document.getElementsByClassName('close-button');
-    Array.from(openBtns).forEach(btn => {
-        btn.addEventListener('click', function() {
-            let me = this;
-            const dialog = me.previousElementSibling;
-            if (dialog && dialog.tagName === 'DIALOG') {
-                dialog.showModal();
-            }
-        });
-    });
-
-    Array.from(closeBtns).forEach(btn => {
-        btn.addEventListener('click', function() {
-            let me = this;
-            const dialog = me.parentElement;
-            dialog.close();
-        });
-    });
-</script>

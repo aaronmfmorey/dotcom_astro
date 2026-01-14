@@ -3,12 +3,9 @@ const {reviewContents} = Astro.props;
 ---
 <dialog class="review-dialog">
     <div class="review-dialog-content">
-        <div class="review-dialog-header">
-            <h3>My Review</h3>
-            <button class="close-button" aria-label="Close dialog">
-                <i class="fa-solid fa-close" />
-            </button>
-        </div>
+        <button class="close-button" aria-label="Close dialog">
+            <i class="fa-solid fa-close" />
+        </button>
         <div class="review-dialog-body">
             <blockquote>
                 <Fragment set:html={reviewContents} />
@@ -78,22 +75,10 @@ const {reviewContents} = Astro.props;
         }
     }
 
-    .review-dialog-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 1.25rem;
-        border-bottom: 1px solid var(--barely-visible-grey);
-        flex-shrink: 0;
-    }
-
-    .review-dialog-header h3 {
-        margin: 0;
-        font-size: 1.25rem;
-        color: var(--header-color);
-    }
-
     .close-button {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
         background: transparent;
         border: none;
         cursor: pointer;
@@ -106,6 +91,7 @@ const {reviewContents} = Astro.props;
         border-radius: 4px;
         transition: all 0.2s ease;
         line-height: 1;
+        z-index: 10;
     }
 
     .close-button:hover,

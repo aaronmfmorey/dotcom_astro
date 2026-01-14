@@ -56,24 +56,26 @@ const {reviewContents} = Astro.props;
         background: white;
         border-radius: 8px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        max-width: 90vw;
-        max-height: 90vh;
+        max-width: 75vw;
+        max-height: 75vh;
         width: 100%;
         display: flex;
         flex-direction: column;
         overflow: hidden;
+        margin: auto;
     }
 
     @media screen and (width >= 640px) {
         .review-dialog-content {
-            max-width: 600px;
-            max-height: 80vh;
+            max-width: min(75vw, 600px);
+            max-height: 75vh;
         }
     }
 
     @media screen and (width >= 1024px) {
         .review-dialog-content {
-            max-width: 700px;
+            max-width: min(75vw, 700px);
+            max-height: 75vh;
         }
     }
 

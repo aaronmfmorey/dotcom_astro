@@ -28,16 +28,16 @@ const {reviewContents} = Astro.props;
         padding: 1rem;
         border: none;
         background: transparent;
-        max-width: 100vw;
-        max-height: 100vh;
+        width: 100vw;
+        height: 100vh;
         z-index: 50;
         display: none;
-        align-items: center;
-        justify-content: center;
     }
 
     .review-dialog[open] {
         display: flex;
+        align-items: center;
+        justify-content: center;
         animation: fadeIn 0.2s ease-out;
     }
 
@@ -62,7 +62,6 @@ const {reviewContents} = Astro.props;
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        margin: auto;
     }
 
     @media screen and (width >= 640px) {

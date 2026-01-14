@@ -31,18 +31,19 @@ const {reviewContents} = Astro.props;
         max-width: 100vw;
         max-height: 100vh;
         z-index: 50;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
+    }
+
+    .review-dialog[open] {
+        display: flex;
+        animation: fadeIn 0.2s ease-out;
     }
 
     .review-dialog::backdrop {
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(2px);
-        animation: fadeIn 0.2s ease-out;
-    }
-
-    .review-dialog[open] {
         animation: fadeIn 0.2s ease-out;
     }
 

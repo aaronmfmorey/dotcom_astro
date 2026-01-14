@@ -3,11 +3,11 @@ const {reviewContents} = Astro.props;
 ---
 <dialog class="review-dialog">
     <div class="review-dialog-content">
-        <button class="close-button" aria-label="Close dialog">
-            <i class="fa-solid fa-close" />
-        </button>
         <div class="review-dialog-body">
             <blockquote>
+                <button class="close-button" aria-label="Close dialog">
+                    <i class="fa-solid fa-close" />
+                </button>
                 <Fragment set:html={reviewContents} />
             </blockquote>
         </div>
@@ -76,9 +76,8 @@ const {reviewContents} = Astro.props;
     }
 
     .close-button {
-        position: absolute;
-        top: 0.75rem;
-        right: 0.75rem;
+        float: right;
+        margin: 0 0 0.5rem 0.5rem;
         background: transparent;
         border: none;
         cursor: pointer;
@@ -114,6 +113,13 @@ const {reviewContents} = Astro.props;
         border-left: 5px solid var(--lighter-highlight);
         background-color: #fff;
         border-radius: 5px;
+        position: relative;
+    }
+    
+    .review-dialog-body blockquote::after {
+        content: "";
+        display: table;
+        clear: both;
     }
 
     @keyframes fadeIn {

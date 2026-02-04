@@ -10,10 +10,16 @@ import mdx from '@astrojs/mdx';
 
 import expressiveCode from 'astro-expressive-code';
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://aaronmorey.com",
   trailingSlash: 'ignore',
+
+  redirects: {
+    '/readingcharts/': {
+      status: 301,
+      destination: '/reading/charts'
+    }
+  },
 
   markdown: {
     rehypePlugins: [
@@ -42,6 +48,7 @@ export default defineConfig({
     resolve: {
         preserveSymlinks: true
     },
+    // @ts-ignore
     plugins: [tailwindcss()]
   },
 
@@ -57,6 +64,7 @@ export default defineConfig({
     }),
     mdx()
   ],
+
   image: {
       layout: 'full-width',
   }

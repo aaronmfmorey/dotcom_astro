@@ -2,11 +2,16 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostTagList from "@components/Blog/PostTagList.astro";
 import PostByline from "@components/Blog/PostByline.astro";
-const { frontmatter, post } = Astro.props;
+const { frontmatter, post, showByline, showWordCount } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
     <div class="markdown-post">
-        <PostByline frontmatter={frontmatter} post={post} showWordCount={frontmatter.showWordCount ?? false} />
+        <PostByline
+                frontmatter={frontmatter}
+                post={post}
+                showWordCount={frontmatter.showWordCount ?? showWordCount ?? false}
+                showByline={frontmatter.author ?? showByline ?? false}
+        />
         <PostTagList tags={frontmatter.tags} />
         <slot />
     </div>

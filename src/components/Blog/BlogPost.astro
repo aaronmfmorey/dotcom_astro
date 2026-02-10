@@ -10,7 +10,11 @@ const renderedDescription = await renderMarkdown(post.data.description);
 <div class="">
     <div style="text-align: center; font-style: italic; color: var(--lighter-font-color)">{humanReadableDate(frontmatter.pubDate.toString())}</div>
     <h2><a href={detailUrl}>{frontmatter.title}</a></h2>
-    <PostByline frontmatter={frontmatter} post={post} showWordCount={true} />
+    <PostByline
+            frontmatter={frontmatter}
+            post={post}
+            showWordCount={true}
+            showByline={true} />
     <PostTagList tags={frontmatter.tags} />
     {
         !!post.data.description && post.data.description !== post.data.title

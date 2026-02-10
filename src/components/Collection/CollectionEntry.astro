@@ -4,12 +4,16 @@ import { render } from 'astro:content';
 
 export interface Props {
     page: any;
+    showWordCount: boolean;
 }
 
-const { page } = Astro.props;
+const { page, showWordCount } = Astro.props;
 const frontmatter = page.data;
 const { Content } = await render(page);
 ---
-<MarkdownPostLayout post={page} frontmatter={frontmatter} showWordCount={frontmatter.showWordCount ?? false}>
+<MarkdownPostLayout
+        post={page}
+        frontmatter={frontmatter}
+        showWordCount={frontmatter.showWordCount ?? showWordCount ?? false}>
     <Content />
 </MarkdownPostLayout>

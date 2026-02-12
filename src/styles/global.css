@@ -112,7 +112,6 @@ h1 {
     font-weight: bold;
     color: hsl(from var(--header-color) h calc(h - 50) l);
     text-shadow: 0.02em 0.03em var(--rather-light-highlight), 0.05em 0.06em var(--lighter-highlight);
-    /*font-style: italic;*/
 }
 
 h2 {
@@ -197,7 +196,7 @@ blockquote p {
 
 code {
     font-size: .8em;
-    font-family: 'Google Sans Code';
+    font-family: 'Google Sans Code', monospace;
 }
 
 p > code {

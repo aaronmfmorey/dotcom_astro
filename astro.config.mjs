@@ -60,6 +60,7 @@ export default defineConfig({
         // You can also override styles
         borderRadius: '3px',
         codeFontSize: '0.75rem',
+        codeFontFamily: '"Google Sans Code", monospace'
       },
     }),
     mdx()

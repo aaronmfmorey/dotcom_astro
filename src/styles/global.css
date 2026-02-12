@@ -16,9 +16,25 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Fjalla One";
+    src: url('/fonts/FjallaOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Google Sans Code";
+    src: url('/fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     /* Fonts */
-    --ff-sans-serif: "Slabo 27px", "Helvetica", sans-serif;
+    --ff-sans-serif: "Fjalla One", "Slabo 27px", "Helvetica", sans-serif;
 
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
     --ff-oldstyle: 'Assistant', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
@@ -26,7 +42,7 @@
     /* Colors */
     --background-color: rgb(250 254 255);
     --background-color-transparent: hsl(192deg 100% 99% / 50%);
-    --header-color: rgb(1 41 95);
+    --header-color: hsl(214.47deg 97.92% 18.82%);
     --link-color: rgb(67 127 151);
     --link-hover-color: rgb(90 171 204);
     --nav-hover-color: rgb(255 119 0);
@@ -48,36 +64,7 @@ html {
     color: #000;
     font-size: 20px;
     hyphens: auto;
-    background-color: var(--background-color);
-    background-image:
-            linear-gradient(120deg, var(--link-color) 0%, var(--link-hover-color) 100%),
-            url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='40' fill='%23ff6f91' fill-opacity='0.18'/%3E%3Cpolygon points='120,20 180,60 140,120' fill='%23ffd166' fill-opacity='0.18'/%3E%3Ccircle cx='160' cy='160' r='30' fill='%2390c2e7' fill-opacity='0.18'/%3E%3Cpolygon points='40,180 80,140 20,120' fill='%23427f97' fill-opacity='0.18'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: auto, 300px 300px;
-}
-
-html::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(
-            120deg,
-            rgb(255 255 255 / 22%) 0%,
-            rgb(255 255 255 / 10%) 40%,
-            rgb(255 255 255 / 55%) 55%,
-            rgb(255 255 255 / 10%) 70%,
-            rgb(255 255 255 / 22%) 100%
-    );
-    mix-blend-mode: lighten;
-    animation: shimmer-move 90s linear infinite;
-    background-size: 300% 300%;
-}
-
-@keyframes shimmer-move {
-    0% { background-position: -100% 50%; }
-    100% { background-position: 200% 50%; }
+    background-color: var(--link-hover-color);
 }
 
 body {
@@ -115,6 +102,16 @@ h1 {
     margin: 1rem 0;
     font-size: 3rem;
     font-weight: 800;
+}
+
+/* Credit: https://font-tester.foxcraft.tech/text-effects */
+.sign-painted {
+    font-size: 5rem;
+    line-height: 1;
+    font-weight: bold;
+    color: hsl(from var(--header-color) h calc(h - 50) l);
+    text-shadow: 0.02em 0.03em var(--rather-light-highlight), 0.05em 0.06em var(--lighter-highlight);
+    /*font-style: italic;*/
 }
 
 h2 {
@@ -199,6 +196,7 @@ blockquote p {
 
 code {
     font-size: .8em;
+    font-family: 'Google Sans Code';
 }
 
 p > code {
@@ -216,11 +214,6 @@ pre:has(code) {
 
 .expressive-code {
     margin-bottom: 1rem;
-}
-
-.expressive-code .frame.has-title:not(.is-terminal) .title {
-    font-size: .75em;
-    font-weight: 600;
 }
 
 :has(table) {

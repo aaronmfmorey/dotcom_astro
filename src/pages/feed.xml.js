@@ -25,7 +25,9 @@ export async function GET(context) {
                 title: post.data.title ?? "New Micropost",
                 pubDate: post.data.pubDate ?? post.data.date,
                 link: post.data.pubDate ? `/posts/${post.id}/` : `/micros/${post.id}`,
-                description: createExcerpt(post.rendered?.html ?? post.body ?? post.data?.body ?? "", "", false),
+                description: post.data.pubDate ?
+                    createExcerpt(post.rendered?.html ?? post.body, post.data.pubDate ? `/posts/${post.id}/` : `/micros/${post.id}`, true)
+                    : post.data.body
             })
         }),
         customData: `<language>en-us</language>`,

@@ -9,7 +9,7 @@ export const createExcerpt = function(body :string, detailUrl :string, includeRe
         .replace(/<[^>]+>/g, '') // Remove all HTML tags
         .replace(/&nbsp;/g, ' ') // Replace &nbsp; with space
         .replace(/&[a-z]+;/gi, ' ') // Replace other HTML entities with space
-        .replace("%%LINEBREAK%%", "<br/>")
+        .replace("%%LINEBREAK%%", "<br/><br/>")
         .trim()
         .replace(/\s+/g, ' '); // Normalize whitespace
 

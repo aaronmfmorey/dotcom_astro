@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: 'Slabo 27px';
-    src: url('/fonts/Slabo27px-Regular.ttf') format('truetype');
+    font-family: 'PT Serif';
+    src: url('/fonts/PTSerif-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: Assistant;
-    src: url('/fonts/Assistant-VariableFont_wght.ttf') format('truetype');
+    font-family: 'Bungee';
+    src: url('/fonts/Bungee-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -34,11 +34,11 @@
 
 :root {
     /* Fonts */
-    --ff-sans-serif: "Fjalla One", "Slabo 27px", "Helvetica", sans-serif;
+    --ff-sans-serif: "Bungee", "Fjalla One", "Helvetica", sans-serif;
 
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'Assistant', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
-
+    --ff-oldstyle: 'PT Serif', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
+    font-weight: 300;
     /* Colors */
     --background-color: rgb(250 254 255);
     --background-color-transparent: hsl(192deg 100% 99% / 50%);
@@ -62,7 +62,7 @@
 html {
     font-family: var(--ff-oldstyle), serif;
     color: #000;
-    font-size: 20px;
+    font-size: clamp(18px, 1.75vw, 20px);
     hyphens: auto;
     background-color: var(--link-hover-color);
     scroll-behavior: smooth;
@@ -97,25 +97,31 @@ h1,h2,h3,h4,h5,h6 {
     margin-top: .75rem;
     color: var(--header-color);
     font-weight: 800;
+    font-variant: small-caps;
 }
 
 h1 {
     margin: 1rem 0;
-    font-size: 3rem;
-    font-weight: 800;
+    font-size: 5rem;
+    font-variant: none;
 }
 
 /* Credit: https://font-tester.foxcraft.tech/text-effects */
 .sign-painted {
-    font-size: 5rem;
+    font-size: clamp(.8rem, 10vw, 4rem);
     line-height: 1;
     font-weight: bold;
     color: hsl(from var(--header-color) h calc(h - 50) l);
     text-shadow: 0.02em 0.03em var(--rather-light-highlight), 0.05em 0.06em var(--lighter-highlight);
 }
 
+h3,h4,h5,h6 {
+    font-family: 'Fjalla One';
+    font-variant: none;
+}
+
 h2 {
-    font-size: 2rem;
+    font-size: 2.4rem;
 }
 
 h3 {
@@ -348,8 +354,10 @@ a.bookshop-affiliate-link {
     text-align: center;
     padding: 5px 0;
     text-decoration: none;
-    font-family: var(--ff-oldstyle);
-    font-size: .8em;
+    font-family: var(--ff-sans-serif);
+    font-size: .5em;
+    font-weight: 800;
+    font-variant: small-caps;
 }
 
 .nav-links a.active{

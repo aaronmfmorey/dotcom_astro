@@ -9,7 +9,7 @@
 }
 
 @font-face {
-    font-family: 'Bungee';
+    font-family: Bungee;
     src: url('/fonts/Bungee-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -35,10 +35,9 @@
 :root {
     /* Fonts */
     --ff-sans-serif: "Bungee", "Fjalla One", "Helvetica", sans-serif;
-
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
     --ff-oldstyle: 'PT Serif', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
-    font-weight: 300;
+    --ff-subheads: "Fjalla One", "Helvetica", sans-serif;
     /* Colors */
     --background-color: rgb(250 254 255);
     --background-color-transparent: hsl(192deg 100% 99% / 50%);
@@ -57,6 +56,8 @@
     --even-lighter-than-barely-visible: rgb(240 240 240);
     --glassy-background: hsl(197deg 54% 95% / 50%);
     --glassy-background-opaquer: rgba(235 245 249 .95);
+
+    font-weight: 300;
 }
 
 html {
@@ -116,7 +117,7 @@ h1 {
 }
 
 h3,h4,h5,h6 {
-    font-family: 'Fjalla One';
+    font-family: var(--ff-subheads);
     font-variant: none;
 }
 

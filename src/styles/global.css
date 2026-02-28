@@ -1,14 +1,6 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: 'PT Serif';
-    src: url('/fonts/PTSerif-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
     font-family: Bungee;
     src: url('/fonts/Bungee-Regular.ttf') format('truetype');
     font-weight: normal;
@@ -25,6 +17,14 @@
 }
 
 @font-face {
+    font-family: "Figtree";
+    src: url('/fonts/Figtree-VariableFont_wght.ttf') format('truetype');
+    font-weight: 300, 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Google Sans Code";
     src: url('/fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
@@ -36,7 +36,7 @@
     /* Fonts */
     --ff-sans-serif: "Bungee", "Fjalla One", "Helvetica", sans-serif;
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'PT Serif', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
+    --ff-oldstyle: 'Figtree', 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
     --ff-subheads: "Fjalla One", "Helvetica", sans-serif;
     /* Colors */
     --background-color: rgb(250 254 255);
@@ -62,11 +62,15 @@
 
 html {
     font-family: var(--ff-oldstyle), serif;
-    color: #000;
+    color: oklch(0.40053 0.01365 17.736);
     font-size: clamp(18px, 1.75vw, 20px);
     hyphens: auto;
     background-color: var(--link-hover-color);
     scroll-behavior: smooth;
+}
+
+html strong {
+    font-weight: 800;
 }
 
 body {
@@ -77,7 +81,7 @@ body {
     max-width: 75ch;
     padding: 1rem;
     line-height: 1.5;
-    background-color: #fff;
+    background-color: oklch(0.97948 0.01387 88.682);
     @apply shadow;
     @apply rounded-md;
     @apply border-1;
@@ -470,7 +474,7 @@ a.pagination-link:hover {
     h1 {
         font-size: 2em;
     }
-    
+
     h2 {
         font-size: 1.5rem;
     }
@@ -482,7 +486,7 @@ a.pagination-link:hover {
     div, p {
         font-size: 0.9em;
     }
-    
+
     .nav-links a {
         font-size: 0.9em;
     }

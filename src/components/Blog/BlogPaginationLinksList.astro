@@ -3,6 +3,14 @@ const {paginationList, currentPage, firstUrl, baseUrl} = Astro.props;
 const formatBaseUrl = function(baseUrl:string, num:number) {
     return `${baseUrl}/${num}`;
 }
+const MIN_LIST_ITEMS = 3;
+const SCALE_FACTOR = 2;
+const MIN_FONT_SIZE_REM = .4;
+const calculateLinkOffsetFontSize = function(i: number, currentPage: number) {
+    return Math.max(
+        MIN_FONT_SIZE_REM,
+        1 + (MIN_LIST_ITEMS - (Math.abs(i - currentPage) * SCALE_FACTOR))/10)
+}
 
 let pages = [...paginationList];
 let endReduced = false;
@@ -14,13 +22,13 @@ if (totalPages > 10) {
     let start = 1;
     let end = totalPages;
 
-    if (currentPage > 4) {
-        start = currentPage - 3
+    if (currentPage > MIN_LIST_ITEMS + 1) {
+        start = currentPage - MIN_LIST_ITEMS
         startReduced = true;
     }
 
-    if (currentPage < totalPages - 2) {
-        end = currentPage + 3
+    if (currentPage < totalPages - (MIN_LIST_ITEMS - 1)) {
+        end = currentPage + MIN_LIST_ITEMS
         endReduced = true
     }
 
@@ -28,20 +36,27 @@ if (totalPages > 10) {
 }
 ---
 {
-    startReduced ? <span class="pagination-link disabled">...</span> : ""
+    startReduced ? <span class="pagination-link disabled"
+                         style={`font-size: ${calculateLinkOffsetFontSize(1, currentPage)}rem`}>
+                        ...
+                    </span> : ""
 }
 {
     pages.map((num: number) => (
         currentPage == num
-            ? (<span class="text-white bg-[#FF7700] px-5 py-2 mx-2 rounded-full pagination-link">{num}</span>)
+            ? (<span class="mx-2 rounded-full pagination-link" style={`font-size: 1.${MIN_LIST_ITEMS}rem;`}>{num}</span>)
             : (
                 <a href={`${baseUrl}/${num}`}
-                   class={`pagination-link mx-2 ${currentPage == num ? "disabled active" : ""}`}>
+                   style={`font-size: ${calculateLinkOffsetFontSize(num, currentPage)}rem`}
+                   class={`pagination-link mx-1 ${currentPage == num ? "disabled active" : ""}`}>
                     {num}
                 </a>
             )
     ))
 }
 {
-    endReduced ? <span class="pagination-link disabled">...</span> : ""
+    endReduced ? <span class="pagination-link disabled"
+                       style={`font-size: ${calculateLinkOffsetFontSize(1, currentPage)}rem`}>
+                    ...&nbsp;
+                </span> : ""
 }

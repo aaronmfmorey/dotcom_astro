@@ -18,7 +18,7 @@ allPosts.forEach(post => {
     }
 })
 
-let sortedTags = Object.keys(tagDict).sort();
+let sortedTags = Object.keys(tagDict).sort((a,b) => a.localeCompare(b, {sensitivity: 'base'}));
 ---
 <BaseLayout pageTitle={pageTitle}>
     <div class="tag-table">
@@ -60,6 +60,4 @@ let sortedTags = Object.keys(tagDict).sort();
     span.tag-table-cell-right {
       margin-left: 10px;
     }
-
-
 </style>

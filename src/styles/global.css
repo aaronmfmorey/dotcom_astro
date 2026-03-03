@@ -54,7 +54,7 @@
     --lighter-font-color: rgb(105 105 105);
     --barely-visible-grey: rgb(216 216 216);
     --even-lighter-than-barely-visible: rgb(240 240 240);
-    --glassy-background: hsl(197deg 54% 95% / 50%);
+    --glassy-background: rgba(255, 249, 230, 0.2);
     --glassy-background-opaquer: rgba(235 245 249 .95);
 
     font-weight: 300;

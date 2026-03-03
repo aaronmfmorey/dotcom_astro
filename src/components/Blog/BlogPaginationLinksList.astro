@@ -3,10 +3,35 @@ const {paginationList, currentPage, firstUrl, baseUrl} = Astro.props;
 const formatBaseUrl = function(baseUrl:string, num:number) {
     return `${baseUrl}/${num}`;
 }
----
 
+let pages = [...paginationList];
+let endReduced = false;
+let startReduced = false;
+
+// Only reduce the pagination if there are more than 10 pages
+let totalPages = pages.length;
+if (totalPages > 10) {
+    let start = 1;
+    let end = totalPages;
+
+    if (currentPage > 4) {
+        start = currentPage - 3
+        startReduced = true;
+    }
+
+    if (currentPage < totalPages - 2) {
+        end = currentPage + 3
+        endReduced = true
+    }
+
+    pages = pages.slice(start - 1, end);
+}
+---
 {
-    paginationList.map((num: number) => (
+    startReduced ? <span class="pagination-link disabled">...</span> : ""
+}
+{
+    pages.map((num: number) => (
         currentPage == num
             ? (<span class="text-white bg-[#FF7700] px-5 py-2 mx-2 rounded-full pagination-link">{num}</span>)
             : (
@@ -16,4 +41,7 @@ const formatBaseUrl = function(baseUrl:string, num:number) {
                 </a>
             )
     ))
+}
+{
+    endReduced ? <span class="pagination-link disabled">...</span> : ""
 }

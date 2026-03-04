@@ -44,8 +44,11 @@
     --header-color: hsl(214.47deg 97.92% 18.82%);
     --link-color: rgb(67 127 151);
     --link-hover-color: rgb(90 171 204);
-    --nav-hover-color: rgb(255 119 0);
-    --nav-hover-color-transparent: hsl(28deg 100% 50% / 80%);
+    /*--nav-hover-color: rgb(255 119 0);*/
+    --nav-hover-color: hsl(140deg, 60%, 45%);
+    /*--nav-hover-color-transparent:  hsl(140deg, 60%, 45%);*/
+    /*--nav-hover-color-transparent: hsl(120deg, 42%, 53%);*/
+    --nav-hover-color-transparent: hsl(140deg, 60%, 35%);
     --lighter-highlight: rgb(255 204 102);
     --rather-light-highlight: rgb(255 230 179);
     --lightest-highlight: rgb(255 255 230);
@@ -63,7 +66,7 @@
 html {
     font-family: var(--ff-oldstyle), serif;
     color: oklch(0.40053 0.01365 17.736);
-    font-size: clamp(18px, 1.75vw, 20px);
+    font-size: clamp(18px, 1.75vw, 22px);
     hyphens: auto;
     background-color: var(--link-hover-color);
     scroll-behavior: smooth;
@@ -78,7 +81,7 @@ body {
     width: 100%;
 
     /* 80ch was about 100 characters, so this is 80% of 80 */
-    max-width: 75ch;
+    max-width: 60ch;
     padding: 1rem;
     line-height: 1.5;
     background-color: oklch(0.97948 0.01387 88.682);
@@ -363,11 +366,21 @@ a.bookshop-affiliate-link {
     font-size: .5em;
     font-weight: 800;
     font-variant: small-caps;
+    text-shadow:
+            -1px -1px 0 #fff,
+            0 -1px 0 #fff,
+            1px -1px 0 #fff,
+            1px 0 0 #fff,
+            1px 1px 0 #fff,
+            0 1px 0 #fff,
+            -1px 1px 0 #fff,
+            -1px 0 0 #fff;
 }
 
 .nav-links a.active{
     background-color: var(--nav-hover-color-transparent);
     color: var(--background-color);
+    text-shadow: none;
 }
 
 .nav-links a:hover,
@@ -377,6 +390,7 @@ a.bookshop-affiliate-link {
 
 .nav-links a.active:hover{
     color: var(--background-color);
+    background-color: var(--nav-hover-color);
     font-style: normal;
     filter: drop-shadow(.125em .125em 1px var(--barely-visible-grey));
 }

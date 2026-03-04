@@ -3,14 +3,27 @@ const {paginationList, currentPage, firstUrl, baseUrl} = Astro.props;
 const formatBaseUrl = function(baseUrl:string, num:number) {
     return `${baseUrl}/${num}`;
 }
-const MIN_LIST_ITEMS = 3;
-const SCALE_FACTOR = 2;
+const OFFSET_LIST_ITEMS = 3;
+const FONT_SIZE_SCALE_FACTOR = 2;
 const MIN_FONT_SIZE_REM = .4;
+const OPACITY_SCALE_FACTOR = 15;
 const calculateLinkOffsetFontSize = function(i: number, currentPage: number) {
     return Math.max(
         MIN_FONT_SIZE_REM,
-        1 + (MIN_LIST_ITEMS - (Math.abs(i - currentPage) * SCALE_FACTOR))/10)
-}
+        1 + (OFFSET_LIST_ITEMS - (Math.abs(i - currentPage) * FONT_SIZE_SCALE_FACTOR))/10
+    );
+};
+
+const calculateOffsetFontColorOpacity = function(i: number, currentPage: number) {
+    const OFFSET = Math.abs(i - currentPage);
+
+    let opacity = Math.min(
+        1,
+        1 - ((OFFSET * OPACITY_SCALE_FACTOR) / 100)
+    );
+    console.log(`i: ${i}, currentPage: ${currentPage}, opacity: ${opacity}`)
+    return opacity;
+};
 
 let pages = [...paginationList];
 let endReduced = false;
@@ -22,13 +35,13 @@ if (totalPages > 10) {
     let start = 1;
     let end = totalPages;
 
-    if (currentPage > MIN_LIST_ITEMS + 1) {
-        start = currentPage - MIN_LIST_ITEMS
+    if (currentPage > OFFSET_LIST_ITEMS + 1) {
+        start = currentPage - OFFSET_LIST_ITEMS
         startReduced = true;
     }
 
-    if (currentPage < totalPages - (MIN_LIST_ITEMS - 1)) {
-        end = currentPage + MIN_LIST_ITEMS
+    if (currentPage < totalPages - (OFFSET_LIST_ITEMS - 1)) {
+        end = currentPage + OFFSET_LIST_ITEMS
         endReduced = true
     }
 
@@ -44,10 +57,13 @@ if (totalPages > 10) {
 {
     pages.map((num: number) => (
         currentPage == num
-            ? (<span class="mx-2 rounded-full pagination-link" style={`font-size: 1.${MIN_LIST_ITEMS}rem;`}>{num}</span>)
+            ? (<span class="mx-2 rounded-full pagination-link" style={`font-size: 1.${OFFSET_LIST_ITEMS}rem;`}>{num}</span>)
             : (
                 <a href={`${baseUrl}/${num}`}
-                   style={`font-size: ${calculateLinkOffsetFontSize(num, currentPage)}rem`}
+                   style={`
+                        font-size: ${calculateLinkOffsetFontSize(num, currentPage)}rem;
+                        opacity: ${calculateOffsetFontColorOpacity(num, currentPage)};
+                    `}
                    class={`pagination-link mx-1 ${currentPage == num ? "disabled active" : ""}`}>
                     {num}
                 </a>
@@ -56,7 +72,7 @@ if (totalPages > 10) {
 }
 {
     endReduced ? <span class="pagination-link disabled"
-                       style={`font-size: ${calculateLinkOffsetFontSize(1, currentPage)}rem`}>
+                       style={`font-size: ${calculateLinkOffsetFontSize(1, currentPage)}rem;`}>
                     ...&nbsp;
                 </span> : ""
 }

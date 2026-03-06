@@ -23,9 +23,10 @@ const formatYear = function(year: number): string {
     <tbody>
     {
         centuryDate.map(
-            function(centuryRow) {
+            function(centuryRow, i: number) {
+                let style = i % 2 == 0 ? 'even' : 'odd';
                 return (
-                    <tr>
+                    <tr class={style}>
                         <td>{formatYear(centuryRow.century)}</td>
                         <td>{centuryRow.total_books}</td>
                     </tr>
@@ -40,6 +41,9 @@ const formatYear = function(year: number): string {
     thead {
         background-color: var(--medium-blue);
         color: var(--nearly-white);
+    }
+    tbody tr.odd {
+        background-color: var(--not-quite-nearly-white);
     }
 </style>
 

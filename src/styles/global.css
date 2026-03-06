@@ -44,6 +44,7 @@
     --green:  hsl(140deg, 60%, 45%);
     --darker-green: hsl(140deg, 60%, 35%);
     --nearly-white: rgb(250 254 255);
+    --not-quite-nearly-white: rgb(245 249 250);
     --brightest-yellow: rgb(255 204 102);
 
     /* Applied Colors */

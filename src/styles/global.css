@@ -40,19 +40,24 @@
     --ff-subheads: "Fjalla One", "Helvetica", sans-serif;
     /* Colors */
     --darkest-blue: hsl(214.47deg 97.92% 18.82%);
+    --medium-blue: rgb(67 127 151);
     --green:  hsl(140deg, 60%, 45%);
     --darker-green: hsl(140deg, 60%, 35%);
-    --background-color: rgb(250 254 255);
+    --nearly-white: rgb(250 254 255);
+    --brightest-yellow: rgb(255 204 102);
+
+    /* Applied Colors */
+    --background-color: var(--nearly-white);
     --background-color-transparent: hsl(192deg 100% 99% / 50%);
     --header-color: var(--darkest-blue);
-    --link-color: rgb(67 127 151);
+    --link-color: var(--medium-blue);
     --link-hover-color: rgb(90 171 204);
     --nav-hover-color:var(--green);
     --nav-hover-color-transparent: var(--darker-green);
-    --lighter-highlight: rgb(255 204 102);
+    --lighter-highlight: var(--brightest-yellow);
     --rather-light-highlight: rgb(255 230 179);
     --lightest-highlight: rgb(255 255 230);
-    --nav-link-hover-color: rgb(250 254 255);
+    --nav-link-hover-color: var(--nearly-white);
     --darker-font-color: rgb(31 32 35 / 63%);
     --lighter-font-color: rgb(105 105 105);
     --barely-visible-grey: rgb(216 216 216);
@@ -213,11 +218,13 @@ div.reading-widget {
 }
 
 div.reading-widget .title-field {
-    border-bottom: solid 4px var(--lighter-highlight);
+    font-weight: bold;
+    color: var(--nearly-white);
 }
 
 div.reading-widget .number-field {
     font-size: 2.5rem;
+    font-family: var(--ff-sans-serif);
 }
 
 .hflex {

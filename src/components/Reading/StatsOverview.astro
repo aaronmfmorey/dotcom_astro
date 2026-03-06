@@ -6,21 +6,13 @@ console.log(booksAndPagesSummaryData);
 ---
 <div class="hflex">
     <StatsOverviewIndividual
-            title="Total Books"
+            title="Books"
             value={booksAndPagesSummaryData.total_books_read}
-            underlineColor="var(--lighter-highlight)" />
+            backgroundColor="var(--medium-blue)" />
     <StatsOverviewIndividual
-            title="Total Pages"
+            title="Pages"
             value={booksAndPagesSummaryData.total_pages_read}
-            underlineColor="var(--nav-hover-color)" />
-    <div class="hflex-item reading-widget">
-        <div class="title-field">
-            Total Books Read
-        </div>
-        <div class="number-field">
-            {booksAndPagesSummaryData.total_books_read}
-        </div>
-    </div>
+            backgroundColor="var(--darker-green)" />
 </div>
 
 <style>

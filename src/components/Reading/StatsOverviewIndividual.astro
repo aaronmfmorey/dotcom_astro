@@ -1,8 +1,8 @@
 ---
-const {title, value, underlineColor} = Astro.props;
+const {title, value, backgroundColor} = Astro.props;
 ---
 <div class="hflex-item reading-widget">
-    <div class="title-field" style={`border-bottom: solid 4px ${underlineColor};`}>
+    <div class="title-field" style={`background-color: ${backgroundColor};`}>
         {title}
     </div>
     <div class="number-field">

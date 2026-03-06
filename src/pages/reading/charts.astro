@@ -2,6 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BooksAndPagesChart from "@components/Reading/BooksAndPagesChart.astro";
 import StatsOverview from '@components/Reading/StatsOverview.astro'
+import BooksByCentury from "@components/Reading/BooksByCentury.astro";
 ---
 
 <BaseLayout pageTitle={'Reading Stats'}>
@@ -11,5 +12,6 @@ import StatsOverview from '@components/Reading/StatsOverview.astro'
     <br />
     <StatsOverview />
     <BooksAndPagesChart />
+    <BooksByCentury />
     <!--<PagesPerDayChart />-->
 </BaseLayout>

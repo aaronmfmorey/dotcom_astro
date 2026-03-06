@@ -23,6 +23,12 @@ export const formatDateLong = function(date: Date): String {
     return new Date(date).toLocaleDateString("en-US", dateOptions);
 }
 
+export const intToOrdinal = function(i: number): string {
+    const rules = new Intl.PluralRules('en', { type: 'ordinal' });
+    const suffixes = { one: 'st', two: 'nd', few: 'rd', other: 'th' };
+    return i + suffixes[rules.select(i)];
+};
+
 export const getAllTagsForAuthorMatch = function(allPosts: Array<any>): Array<string> {
     let allTags = allPosts.map((post) => post.data.tags).flat();
     return [... new Set(allTags)].filter(tag => tag !== null)

@@ -1,0 +1,45 @@
+---
+import {runSqliteQuery, QUERIES} from "@utils/db-operations.ts";
+import {intToOrdinal} from "@utils/utils.ts";
+const centuryDate = runSqliteQuery(QUERIES.BOOKS_BY_CENTURY);
+
+const formatYear = function(year: number): string {
+    return year > 0 ?
+        intToOrdinal(year)
+        : intToOrdinal(year * -1) + " BC";
+}
+---
+<table>
+    <thead>
+        <tr>
+            <td>
+                Century
+            </td>
+            <td>
+                Books Read
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+    {
+        centuryDate.map(
+            function(centuryRow) {
+                return (
+                    <tr>
+                        <td>{formatYear(centuryRow.century)}</td>
+                        <td>{centuryRow.total_books}</td>
+                    </tr>
+                )
+            }
+        )
+    }
+    </tbody>
+</table>
+
+<style>
+    thead {
+        background-color: var(--medium-blue);
+        color: var(--nearly-white);
+    }
+</style>
+

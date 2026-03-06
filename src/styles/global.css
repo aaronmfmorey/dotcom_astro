@@ -279,8 +279,14 @@ table {
     min-width: 100%;
     width: max-content;
     border-collapse: collapse;
+    background-color: var(--nearly-white);
 }
 
+
+
+thead {
+    font-weight: bold;
+}
 
 td, th {
     padding-left: 10px;

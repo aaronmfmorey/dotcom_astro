@@ -88,5 +88,22 @@ export const QUERIES = {
             and rr.book_id = g2.book_id
           ) as all_reads        
         order by all_reads.date_read desc;
+    `,
+    BOOKS_BY_CENTURY: `
+        select 
+            CASE
+               WHEN original_publication_year > 0 AND original_publication_year < 100
+                   THEN 1
+               WHEN original_publication_year < 0 AND original_publication_year > -100
+                   THEN -1
+               WHEN (original_publication_year / 100) > 0
+                   THEN (original_publication_year / 100) + 1
+               ELSE (original_publication_year / 100) - 1
+               END 
+            AS century,
+           count(*) AS total_books
+        from goodreads
+        group by 1
+        order by 1 desc;
     `
 };

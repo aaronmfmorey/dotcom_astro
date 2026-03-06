@@ -5,7 +5,10 @@ import StatsOverview from '@components/Reading/StatsOverview.astro'
 ---
 
 <BaseLayout pageTitle={'Reading Stats'}>
-    <a href="/reading/">&laquo; Reading List</a>
+    <div>
+        <a href="/reading/">&laquo; Reading List</a>
+    </div>
+    <br />
     <StatsOverview />
     <BooksAndPagesChart />
     <!--<PagesPerDayChart />-->

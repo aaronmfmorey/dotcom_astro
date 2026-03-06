@@ -40,14 +40,22 @@
     --ff-subheads: "Fjalla One", "Helvetica", sans-serif;
 
     /* Colors */
+    --nearly-black: rgb(31 32 35 / 63%);
     --darkest-blue: hsl(214.47deg 97.92% 18.82%);
     --medium-blue: rgb(67 127 151);
     --lightest-blue: rgb(90 171 204);
-    --green:  hsl(140deg, 60%, 45%);
     --darker-green: hsl(140deg, 60%, 35%);
-    --nearly-white: rgb(250 254 255);
-    --not-quite-nearly-white: rgb(245 249 250);
+    --green:  hsl(140deg, 60%, 45%);
     --brightest-yellow: rgb(255 204 102);
+    --rather-light-highlight: rgb(255 230 179);
+    --lightest-highlight: rgb(255 255 230);
+    --barely-visible-grey: rgb(216 216 216);
+    --even-lighter-than-barely-visible: rgb(240 240 240);
+    --not-quite-nearly-white: rgb(245 249 250);
+    --nearly-white: rgb(250 254 255);
+
+    --glassy-background: rgba(255, 249, 230, 0.2);
+    --glassy-background-opaquer: rgba(235 245 249 .95);
 
     /* Applied Colors */
     --background-color: var(--nearly-white);
@@ -58,15 +66,9 @@
     --nav-hover-color:var(--green);
     --nav-hover-color-transparent: var(--darker-green);
     --lighter-highlight: var(--brightest-yellow);
-    --rather-light-highlight: rgb(255 230 179);
-    --lightest-highlight: rgb(255 255 230);
     --nav-link-hover-color: var(--nearly-white);
-    --darker-font-color: rgb(31 32 35 / 63%);
+    --darker-font-color: var(--nearly-black);
     --lighter-font-color: rgb(105 105 105);
-    --barely-visible-grey: rgb(216 216 216);
-    --even-lighter-than-barely-visible: rgb(240 240 240);
-    --glassy-background: rgba(255, 249, 230, 0.2);
-    --glassy-background-opaquer: rgba(235 245 249 .95);
 
     font-weight: 300;
 }

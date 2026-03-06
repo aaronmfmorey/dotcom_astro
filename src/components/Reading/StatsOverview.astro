@@ -1,0 +1,30 @@
+---
+import {runSqliteQuery, QUERIES} from '@utils/db-operations.ts';
+import StatsOverviewIndividual from "@components/Reading/StatsOverviewIndividual.astro";
+const booksAndPagesSummaryData = runSqliteQuery(QUERIES.BOOKS_AND_PAGES_SUMMARY)[0];
+console.log(booksAndPagesSummaryData);
+---
+<div class="hflex">
+    <StatsOverviewIndividual
+            title="Total Books"
+            value={booksAndPagesSummaryData.total_books_read}
+            underlineColor="var(--lighter-highlight)" />
+    <StatsOverviewIndividual
+            title="Total Pages"
+            value={booksAndPagesSummaryData.total_pages_read}
+            underlineColor="var(--nav-hover-color)" />
+    <div class="hflex-item reading-widget">
+        <div class="title-field">
+            Total Books Read
+        </div>
+        <div class="number-field">
+            {booksAndPagesSummaryData.total_books_read}
+        </div>
+    </div>
+</div>
+
+<style>
+    .brick div {
+        display: block;
+    }
+</style>

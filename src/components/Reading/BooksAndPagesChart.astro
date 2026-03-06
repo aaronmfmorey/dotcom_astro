@@ -1,41 +1,6 @@
 ---
-import Database from 'better-sqlite3';
-import path from "path";
-
-const dbPath = path.resolve('aaronmoreycom_content/content/data/goodreads.db');
-const db = new Database(dbPath);
-
-// Query to get total pages per year
-const yearlyPagesQuery = `
-    select
-        strftime('%Y', date_read) as year,
-        sum(number_of_pages) as total_pages,
-        count(*) as books_read
-    from (
-             select
-                 g.date_read,
-                 g.number_of_pages
-             from goodreads g
-             where g.date_read is not null
-               and g.number_of_pages is not null
-
-             UNION ALL
-
-             select
-                 rr.date_read,
-                 g2.number_of_pages
-             from goodreads_reread as rr
-                      join goodreads as g2
-                           on g2.book_id = rr.book_id
-             where rr.date_read is not null
-               and g2.number_of_pages is not null
-         ) as all_reads
-    group by year
-    order by year
-`;
-
-const yearlyData = db.prepare(yearlyPagesQuery).all();
-db.close();
+import {runSqliteQuery, QUERIES} from '@utils/db-operations.ts';
+const yearlyData = runSqliteQuery(QUERIES.BOOKS_AND_PAGES_CHART_DATA);
 
 // Prepare data for Chart.js
 const chartData = {
@@ -44,9 +9,8 @@ const chartData = {
     bookCounts: yearlyData.map(row => row.books_read)
 };
 ---
-
 <div class="chart-container">
-    <h2>Books and Pages</h2>
+    <h2>Reading By Year</h2>
     <canvas id="pagesChart"></canvas>
 </div>
 

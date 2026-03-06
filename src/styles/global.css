@@ -39,16 +39,16 @@
     --ff-oldstyle: 'Figtree', 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
     --ff-subheads: "Fjalla One", "Helvetica", sans-serif;
     /* Colors */
+    --darkest-blue: hsl(214.47deg 97.92% 18.82%);
+    --green:  hsl(140deg, 60%, 45%);
+    --darker-green: hsl(140deg, 60%, 35%);
     --background-color: rgb(250 254 255);
     --background-color-transparent: hsl(192deg 100% 99% / 50%);
-    --header-color: hsl(214.47deg 97.92% 18.82%);
+    --header-color: var(--darkest-blue);
     --link-color: rgb(67 127 151);
     --link-hover-color: rgb(90 171 204);
-    /*--nav-hover-color: rgb(255 119 0);*/
-    --nav-hover-color: hsl(140deg, 60%, 45%);
-    /*--nav-hover-color-transparent:  hsl(140deg, 60%, 45%);*/
-    /*--nav-hover-color-transparent: hsl(120deg, 42%, 53%);*/
-    --nav-hover-color-transparent: hsl(140deg, 60%, 35%);
+    --nav-hover-color:var(--green);
+    --nav-hover-color-transparent: var(--darker-green);
     --lighter-highlight: rgb(255 204 102);
     --rather-light-highlight: rgb(255 230 179);
     --lightest-highlight: rgb(255 255 230);
@@ -161,7 +161,7 @@ blockquote {
     border-width: 1.5px;
     padding: 10px;
     border-left: 5px solid var(--lighter-highlight);
-    background-color: #fff;
+    background-color: var(--background-color);
     margin-bottom: 1rem;
 }
 
@@ -201,6 +201,38 @@ blockquote.book-review {
 
 div.book-author {
    font-size: clamp(11px, 2.5vw, 1em);
+}
+
+div.reading-widget {
+    background-color: var(--background-color);
+    border-radius: 10px;
+    border-color: #ccc;
+    border-width: 1px;
+    @apply shadow;
+    @apply border;
+}
+
+div.reading-widget .title-field {
+    border-bottom: solid 4px var(--lighter-highlight);
+}
+
+div.reading-widget .number-field {
+    font-size: 2.5rem;
+}
+
+.hflex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.hflex-item {
+    flex: 1 1 200px;
+    text-align: center; /* centers text horizontally */
+    display: block;
+    align-items: center; /* centers vertically */
+    justify-content: center; /* ensures any inline elements center */
 }
 
 blockquote p {

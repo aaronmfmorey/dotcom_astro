@@ -1,0 +1,11 @@
+---
+const {title, value, underlineColor} = Astro.props;
+---
+<div class="hflex-item reading-widget">
+    <div class="title-field" style={`border-bottom: solid 4px ${underlineColor};`}>
+        {title}
+    </div>
+    <div class="number-field">
+        {new Intl.NumberFormat('en-US').format(value)}
+    </div>
+</div>

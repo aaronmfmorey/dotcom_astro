@@ -2,8 +2,8 @@
 import type { ImageMetadata } from 'astro';
 import {getCollection} from "astro:content";
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { getBooksFromSqlite } from '@utils/utils';
-let books = getBooksFromSqlite();
+import { runSqliteQuery, QUERIES } from '@utils/db-operations.ts';
+let books = runSqliteQuery(QUERIES.BOOKS_FOR_READING_LIST);
 const pageTitle = "Reading";
 import BookEntry from "@components/Reading/BookEntry.astro";
 const allPosts = await getCollection("blog");

@@ -38,9 +38,11 @@
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
     --ff-oldstyle: 'Figtree', 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
     --ff-subheads: "Fjalla One", "Helvetica", sans-serif;
+
     /* Colors */
     --darkest-blue: hsl(214.47deg 97.92% 18.82%);
     --medium-blue: rgb(67 127 151);
+    --lightest-blue: rgb(90 171 204);
     --green:  hsl(140deg, 60%, 45%);
     --darker-green: hsl(140deg, 60%, 35%);
     --nearly-white: rgb(250 254 255);
@@ -52,7 +54,7 @@
     --background-color-transparent: hsl(192deg 100% 99% / 50%);
     --header-color: var(--darkest-blue);
     --link-color: var(--medium-blue);
-    --link-hover-color: rgb(90 171 204);
+    --link-hover-color: var(--lightest-blue);
     --nav-hover-color:var(--green);
     --nav-hover-color-transparent: var(--darker-green);
     --lighter-highlight: var(--brightest-yellow);
@@ -74,7 +76,7 @@ html {
     color: oklch(0.40053 0.01365 17.736);
     font-size: clamp(18px, 1.75vw, 22px);
     hyphens: auto;
-    background-color: var(--link-hover-color);
+    background-color: var(--lightest-blue);
     scroll-behavior: smooth;
 }
 

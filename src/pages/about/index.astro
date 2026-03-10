@@ -1,9 +1,11 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import AboutText from '@contentsubmodule/about.md';
+import FavoriteLinks from '@contentsubmodule/favorite_links.md';
 import BitmojiImage from '@components/BitmojiImage.astro';
-import GardenBitmoji from '../assets/images/GardenBitmoji.png';
+import GardenBitmoji from '@contentsubmodule/images/GardenBitmoji.png';
 import AnchoredHeader from '@components/AnchoredHeader.astro';
+import SiteStats from './SiteStats.astro';
 const pageTitle = "About This Site";
 ---
 <BaseLayout pageTitle={pageTitle}>
@@ -12,6 +14,8 @@ const pageTitle = "About This Site";
         <BitmojiImage src={GardenBitmoji} alt="A caricature of me standing near a potted plant" />
     </div>
     <AboutText />
+    <SiteStats />
+    <FavoriteLinks />
     <AnchoredHeader text="About Aaron" hLevel="2" />
     <AnchoredHeader text="Professional Skills" hLevel="3" />
     <div class="skills">

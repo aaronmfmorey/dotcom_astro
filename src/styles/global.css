@@ -5,7 +5,7 @@
     src: url('/fonts/Bungee-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
 }
 
 @font-face {
@@ -13,7 +13,7 @@
     src: url('/fonts/FjallaOne-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
 }
 
 @font-face {
@@ -21,7 +21,7 @@
     src: url('/fonts/Figtree-VariableFont_wght.ttf') format('truetype');
     font-weight: 300, 700;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
 }
 
 @font-face {
@@ -29,7 +29,7 @@
     src: url('/fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
 }
 
 :root {
@@ -38,33 +38,37 @@
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
     --ff-oldstyle: 'Figtree', 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
     --ff-subheads: "Fjalla One", "Helvetica", sans-serif;
+
     /* Colors */
+    --nearly-black: rgb(31 32 35 / 63%);
     --darkest-blue: hsl(214.47deg 97.92% 18.82%);
     --medium-blue: rgb(67 127 151);
-    --green:  hsl(140deg, 60%, 45%);
+    --lightest-blue: rgb(90 171 204);
     --darker-green: hsl(140deg, 60%, 35%);
-    --nearly-white: rgb(250 254 255);
-    --not-quite-nearly-white: rgb(245 249 250);
+    --green:  hsl(140deg, 60%, 45%);
     --brightest-yellow: rgb(255 204 102);
+    --rather-light-highlight: rgb(255 230 179);
+    --lightest-highlight: rgb(255 255 230);
+    --barely-visible-grey: rgb(216 216 216);
+    --even-lighter-than-barely-visible: rgb(240 240 240);
+    --not-quite-nearly-white: rgb(245 249 250);
+    --nearly-white: rgb(250 254 255);
+
+    --glassy-background: rgba(255, 249, 230, 0.2);
+    --glassy-background-opaquer: rgba(235 245 249 .95);
 
     /* Applied Colors */
     --background-color: var(--nearly-white);
     --background-color-transparent: hsl(192deg 100% 99% / 50%);
     --header-color: var(--darkest-blue);
     --link-color: var(--medium-blue);
-    --link-hover-color: rgb(90 171 204);
+    --link-hover-color: var(--lightest-blue);
     --nav-hover-color:var(--green);
     --nav-hover-color-transparent: var(--darker-green);
     --lighter-highlight: var(--brightest-yellow);
-    --rather-light-highlight: rgb(255 230 179);
-    --lightest-highlight: rgb(255 255 230);
     --nav-link-hover-color: var(--nearly-white);
-    --darker-font-color: rgb(31 32 35 / 63%);
+    --darker-font-color: var(--nearly-black);
     --lighter-font-color: rgb(105 105 105);
-    --barely-visible-grey: rgb(216 216 216);
-    --even-lighter-than-barely-visible: rgb(240 240 240);
-    --glassy-background: rgba(255, 249, 230, 0.2);
-    --glassy-background-opaquer: rgba(235 245 249 .95);
 
     font-weight: 300;
 }
@@ -74,7 +78,7 @@ html {
     color: oklch(0.40053 0.01365 17.736);
     font-size: clamp(18px, 1.75vw, 22px);
     hyphens: auto;
-    background-color: var(--link-hover-color);
+    background-color: var(--lightest-blue);
     scroll-behavior: smooth;
 }
 

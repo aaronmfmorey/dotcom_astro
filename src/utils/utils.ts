@@ -1,5 +1,9 @@
-import { remark } from 'remark';
+import {remark} from 'remark';
 import html from 'remark-html';
+import {exec} from 'node:child_process';
+import {promisify} from "node:util";
+
+const execAsync = promisify(exec);
 
 export async function renderMarkdown(markdownString:string ) {
     const processedContent = await remark().use(html).process(markdownString);
@@ -86,3 +90,32 @@ export const getFontAwesomePathAsKey = function(iconName: string) {
 
     return `/Font-Awesome/svgs/${subDirectory}/${nameParts[1]}.svg`;
 };
+
+export const getFileCount = async function(
+    path: string,
+    fileExtension: string
+): Promise<number> {
+    const numPostResult =
+        await execAsync(`find ${path} -iname "${fileExtension}" | wc -l`);
+    return parseInt(numPostResult.stdout.trim());
+};
+
+export const getFileWordCount = async function(
+    path: string,
+    fileExtension: string
+): Promise<number> {
+    let wordsResult = await execAsync(
+        `find ${path} -type f -iname "${fileExtension}" -exec cat {} \\; | wc -w`);
+    let trimmedCount =wordsResult.stdout.trim();
+    return parseInt(trimmedCount);
+};
+
+export const getFileLineCount = async function(
+    path: string,
+    fileExtension: string
+): Promise<number> {
+    let wordsResult = await execAsync(
+        `find ${path} -type f -iname "${fileExtension}" -exec cat {} \\; | wc -l`);
+    let trimmedCount = wordsResult.stdout.trim();
+    return parseInt(trimmedCount);
+}

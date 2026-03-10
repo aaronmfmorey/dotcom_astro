@@ -1,0 +1,44 @@
+---
+import StatsContainer from "@components/Stats/StatsContainer.astro";
+import StatsOverviewIndividual from '@components/Stats/StatsOverviewIndividual.astro';
+import {getFileCount, getFileWordCount, getFileLineCount} from "@utils/utils.ts";
+import AnchoredHeader from "@components/AnchoredHeader.astro";
+
+let numPosts = await getFileCount('aaronmoreycom_content/content/posts', "*.md");
+let numPages = await getFileCount('aaronmoreycom_content/content/pages', "*.md");
+let astroComponents = await getFileCount('src/components', "*.astro");
+
+const postWords = await getFileWordCount('aaronmoreycom_content/content/posts', "*.md");
+const pageWords = await getFileWordCount('aaronmoreycom_content/content/pages', "*.md");
+
+const astroLines = await getFileLineCount('src/', "*.astro");
+const jsLines = await getFileLineCount('src/', "*.js");
+const tsLines = await getFileLineCount('src/', "*.ts");
+const cssLines = await getFileLineCount('src/', "*.css");
+const loc = astroLines + jsLines + tsLines + cssLines;
+---
+<AnchoredHeader
+    hLevel="2"
+    text="Site Stats" />
+<StatsContainer>
+    <StatsOverviewIndividual
+            title="Lines of Code"
+            value={loc}
+            backgroundColor="var(--darker-font-color)" />
+    <StatsOverviewIndividual
+            title="Astro Components"
+            value={astroComponents}
+            backgroundColor="var(--green)" />
+    <StatsOverviewIndividual
+            title="Blog Posts"
+            value={numPosts}
+            backgroundColor="var(--medium-blue)" />
+    <StatsOverviewIndividual
+            title="Other Pages"
+            value={numPages}
+            backgroundColor="var(--brightest-yellow)" />
+    <StatsOverviewIndividual
+            title="Words Written"
+            value={postWords + pageWords}
+            backgroundColor="var(--darkest-blue)" />
+</StatsContainer>

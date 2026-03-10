@@ -5,7 +5,7 @@
     src: url('/fonts/Bungee-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
 }
 
 @font-face {
@@ -13,7 +13,7 @@
     src: url('/fonts/FjallaOne-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
 }
 
 @font-face {
@@ -21,7 +21,7 @@
     src: url('/fonts/Figtree-VariableFont_wght.ttf') format('truetype');
     font-weight: 300, 700;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
 }
 
 @font-face {
@@ -29,7 +29,7 @@
     src: url('/fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
 }
 
 :root {

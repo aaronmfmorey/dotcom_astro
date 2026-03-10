@@ -9,8 +9,7 @@ if (slug.startsWith("-")) {
 if (slug.endsWith("-")) {
     slug = slug.slice(0, slug.length-1);
 }
-console.log("slug",slug);
-console.log("text",text);
+
 const tagName = `h${hLevel}`;
 ---
 <Fragment set:html={`<${tagName} id="${slug}">`}/>

@@ -1,10 +1,10 @@
 ---
 import {runSqliteQuery, QUERIES} from '@utils/db-operations.ts';
-import StatsOverviewIndividual from "@components/Reading/StatsOverviewIndividual.astro";
-const booksAndPagesSummaryData = runSqliteQuery(QUERIES.BOOKS_AND_PAGES_SUMMARY)[0];
-console.log(booksAndPagesSummaryData);
+import StatsOverviewIndividual from "@components/Stats/StatsOverviewIndividual.astro";
+import StatsContainer from "@components/Stats/StatsContainer.astro";
+const booksAndPagesSummaryData: any = runSqliteQuery(QUERIES.BOOKS_AND_PAGES_SUMMARY)[0];
 ---
-<div class="hflex">
+<StatsContainer>
     <StatsOverviewIndividual
             title="Books"
             value={booksAndPagesSummaryData.total_books_read}
@@ -13,10 +13,4 @@ console.log(booksAndPagesSummaryData);
             title="Pages"
             value={booksAndPagesSummaryData.total_pages_read}
             backgroundColor="var(--darker-green)" />
-</div>
-
-<style>
-    .brick div {
-        display: block;
-    }
-</style>
+</StatsContainer>

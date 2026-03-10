@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import StatsContainer from "@components/Stats/StatsContainer.astro";
 import StatsOverviewIndividual from '@components/Stats/StatsOverviewIndividual.astro';
+import {getFileCount} from "@utils/utils.ts";
 const pageTitle = 'Site Stats';
 
 import { exec } from 'node:child_process';
@@ -9,14 +10,14 @@ import { promisify } from 'node:util';
 
 const execAsync = promisify(exec);
 
-// Example: run a command during build
-const numPostResult =
-    await execAsync('find aaronmoreycom_content/content/posts -iname "*.md" | wc -l');
-let numPosts = numPostResult.stdout.trim();
+let numPosts = await getFileCount('aaronmoreycom_content/content/posts', "md");
+let numPages = await getFileCount('aaronmoreycom_content/content/pages', "md");
 
 const postWordsResult =
     await execAsync('find aaronmoreycom_content/content/posts -type f -iname "*.md" -exec cat {} \\; | wc -w');
 let postWords = postWordsResult.stdout.trim();
+
+
 ---
 <BaseLayout pageTitle={pageTitle}>
 <h2>Blog</h2>
@@ -24,6 +25,17 @@ let postWords = postWordsResult.stdout.trim();
         <StatsOverviewIndividual
                 title="Posts"
                 value={numPosts}
+                backgroundColor="var(--medium-blue)" />
+        <StatsOverviewIndividual
+                title="Words"
+                value={postWords}
+                backgroundColor="var(--green)" />
+    </StatsContainer>
+<h2>Other Pages</h2>
+    <StatsContainer>
+        <StatsOverviewIndividual
+                title="Pages"
+                value={numPages}
                 backgroundColor="var(--medium-blue)" />
         <StatsOverviewIndividual
                 title="Words"

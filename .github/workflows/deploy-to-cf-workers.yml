@@ -8,14 +8,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - uses: actions/checkout@v4
         with:
           submodules: recursive
           token: ${{ secrets.AARONMOREYCOM_CONTENT_PAT }}
-      
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
       
       - run: npm ci
       - run: npm run build

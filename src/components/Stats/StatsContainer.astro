@@ -1,14 +1,5 @@
 ---
-import {runSqliteQuery, QUERIES} from '@utils/db-operations.ts';
-import StatsOverviewIndividual from "@components/Stats/StatsOverviewIndividual.astro";
-const booksAndPagesSummaryData: any = runSqliteQuery(QUERIES.BOOKS_AND_PAGES_SUMMARY)[0];
 ---
 <div class="hflex">
    <slot />
 </div>
-
-<style>
-    .brick div {
-        display: block;
-    }
-</style>

@@ -6,21 +6,27 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.AARONMOREYCOM_CONTENT_PAT }}
       
       - name: Checkout submodules
         run: |
-          git config --global url."https://${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com/".insteadOf "https://github.com/"
-          git submodule update --init --recursive
+          git submodule init
+          git config submodule.aaronmoreycom_content.url "https://x-access-token:${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com/aaronmfmorey/aaronmoreycom_content.git"
+          git submodule update --recursive
       
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
       
-      - run: npm ci
-      - run: npm run build
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build
+        run: npm run build
       
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3

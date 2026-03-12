@@ -12,11 +12,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/rss": "^4.0.14",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/mdx": "^5.0.0-beta.12",
+    "@astrojs/rss": "^4.0.15-beta.4",
+    "@astrojs/sitemap": "^3.6.1-beta.3",
     "@tailwindcss/vite": "^4.0.15",
-    "astro": "^5.16.6",
+    "astro": "^6.0.0-beta.20",
     "astro-expressive-code": "^0.41.2",
     "better-sqlite3": "^11.9.1",
     "chart.js": "^4.5.1",

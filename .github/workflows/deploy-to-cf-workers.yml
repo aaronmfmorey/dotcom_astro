@@ -1,17 +1,19 @@
 name: Deploy to Cloudflare Workers
-
 on:
   push:
     branches: [feature/astro-6.0-upgrade]
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: recursive
           token: ${{ secrets.AARONMOREYCOM_CONTENT_PAT }}
+      
+      - name: Checkout submodules
+        run: |
+          git config --global url."https://${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com/".insteadOf "https://github.com/"
+          git submodule update --init --recursive
       
       - uses: actions/setup-node@v4
         with:

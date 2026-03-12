@@ -7,7 +7,7 @@ import {formatDateLong} from "@utils/utils";
 export async function getStaticPaths() {
     const micros = await getCollection('micros');
     return micros.map(micro => ({
-            params: { id: micro.data.id },
+            params: { id: micro.data.id.toString() },
             props: { micro: micro },
         })
     );

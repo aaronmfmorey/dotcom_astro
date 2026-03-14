@@ -13,10 +13,9 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
-      - name: Configure git credentials for private submodule
+      - name: Configure git for submodule authentication
         run: |
-          git config --global credential.helper store
-          echo "https://${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com" > ~/.git-credentials
+          git config --global url."https://${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com/aaronmfmorey/".insteadOf "https://github.com/aaronmfmorey/"
 
       - name: Checkout main repository with submodules
         uses: actions/checkout@v4

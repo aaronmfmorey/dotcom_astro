@@ -20,10 +20,10 @@ jobs:
           token: ${{ secrets.AMDOTCOM_CLOUDFLARE_WORKERS }}
           persist-credentials: true
 
-      - name: Main
+      - name: Debug
         run: |
           echo "DOING AN LS"
-          ls
+          ls aaronmoreycom_content/content
           echo "THAT WAS THE LS"
 
       - name: Setup Node.js

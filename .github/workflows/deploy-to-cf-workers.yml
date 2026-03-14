@@ -13,16 +13,19 @@ jobs:
     steps:
       - name: Checkout main repository
         uses: actions/checkout@v4
+        with:
+          submodules: 'false'
 
       - name: Checkout private submodule
         run: |
-          git config --global url."https://${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com/".insteadOf "git@github.com:"
+          git config --global credential.helper store
+          echo "https://${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com" > ~/.git-credentials
           git submodule update --init --recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install dependencies

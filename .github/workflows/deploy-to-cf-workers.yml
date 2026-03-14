@@ -22,7 +22,6 @@ jobs:
 
       - name: Main
         run: |
-          - echo "DOING AN LS"
           - ls
 
       - name: Setup Node.js

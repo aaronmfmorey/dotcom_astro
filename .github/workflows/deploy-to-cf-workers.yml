@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
-          token: ${{ secrets.AARONMOREYCOM_CONTENT_PAT }}
+          token: ${{ secrets.AMDOTCOM_CLOUDFLARE_WORKERS }}
           persist-credentials: true
 
       - name: Setup Node.js

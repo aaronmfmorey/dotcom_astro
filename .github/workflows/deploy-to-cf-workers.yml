@@ -13,11 +13,7 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
-      - name: Configure git for submodule authentication
-        run: |
-          git config --global url."https://${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com/aaronmfmorey/".insteadOf "https://github.com/aaronmfmorey/"
-
-      - name: Checkout main repository with submodules
+      - name: Checkout repository with submodules
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
@@ -35,10 +31,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          secrets: |
-            CLOUDFLARE_ACCOUNT_ID
-            CLOUDFLARE_API_TOKEN
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

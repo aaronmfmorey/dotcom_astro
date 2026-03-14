@@ -13,16 +13,16 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
-      - name: Checkout main repository
+      - name: Checkout main repository with submodules
         uses: actions/checkout@v4
         with:
-          submodules: 'false'
+          submodules: 'recursive'
+          token: ${{ secrets.AARONMOREYCOM_CONTENT_PAT }}
 
-      - name: Checkout private submodule
+      - name: Configure git credentials for private submodule
         run: |
           git config --global credential.helper store
           echo "https://${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com" > ~/.git-credentials
-          git submodule update --init --recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

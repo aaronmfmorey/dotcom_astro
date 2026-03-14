@@ -22,7 +22,9 @@ jobs:
 
       - name: Main
         run: |
-          - ls
+          echo "DOING AN LS"
+          ls
+          echo "THAT WAS THE LS"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

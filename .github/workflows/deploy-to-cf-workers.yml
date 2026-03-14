@@ -18,6 +18,7 @@ jobs:
         with:
           submodules: 'recursive'
           token: ${{ secrets.AARONMOREYCOM_CONTENT_PAT }}
+          persist-credentials: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

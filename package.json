@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "host": "astro dev --host",
-    "build": "git submodule update --init --recursive && astro build",
+    "build": "git submodule update --init --recursive && ls -la && astro build",
     "subm": "git submodule update --remote --recursive",
     "lint": "scripts/lint.sh",
     "preview": "astro preview",

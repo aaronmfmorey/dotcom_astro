@@ -4,6 +4,10 @@ account_id = "6909c7d53a200815cdd8147f34680b4b"
 workers_dev = true
 route = ""
 zone_id = ""
+compatibility_date = "2026-03-14"
+
+[assets]
+directory = "./dist"
 
 [env.production]
 name = "aaronmorey-com-workers"

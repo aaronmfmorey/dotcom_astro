@@ -1,34 +1,43 @@
 name: Deploy to Cloudflare Workers
 on:
   push:
-    branches: [feature/astro-6.0-upgrade]
+    branches:
+      - main
+      - feature/astro-6.0-upgrade
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository with submodules
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.AARONMOREYCOM_CONTENT_PAT }}
-      
-      - name: Checkout submodules
+          submodules: 'recursive'
+          token: ${{ secrets.AMDOTCOM_CLOUDFLARE_WORKERS }}
+          persist-credentials: true
+
+      - name: Debug
         run: |
-          git submodule init
-          git config submodule.aaronmoreycom_content.url "https://x-access-token:${{ secrets.AARONMOREYCOM_CONTENT_PAT }}@github.com/aaronmfmorey/aaronmoreycom_content.git"
-          git submodule update --recursive
-      
+          echo "DOING AN LS"
+          ls aaronmoreycom_content/content
+          echo "THAT WAS THE LS"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-      
+          node-version: '24'
+          cache: 'npm'
+
       - name: Install dependencies
-        run: npm ci
-      
-      - name: Build
+        run: npm install
+
+      - name: Build Astro site
         run: npm run build
-      
+
       - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler deploy --env production
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKERS_TOKEN }}

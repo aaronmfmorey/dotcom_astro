@@ -1,22 +1,22 @@
 {
   "name": "dotcom_astro",
   "type": "module",
-  "version": "0.0.74",
+  "version": "1.0.6",
   "scripts": {
     "dev": "astro dev",
     "host": "astro dev --host",
-    "build": "git submodule update --remote --recursive && astro build",
+    "build": "git submodule update --init --recursive && ls -la && astro build",
     "subm": "git submodule update --remote --recursive",
     "lint": "scripts/lint.sh",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/rss": "^4.0.14",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
     "@tailwindcss/vite": "^4.0.15",
-    "astro": "^5.16.6",
+    "astro": "^6.0.4",
     "astro-expressive-code": "^0.41.2",
     "better-sqlite3": "^11.9.1",
     "chart.js": "^4.5.1",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "stylelint": "^16.17.0",
-    "stylelint-config-standard": "^37.0.0"
+    "stylelint-config-standard": "^37.0.0",
+    "wrangler": "^4.72.0"
   }
 }

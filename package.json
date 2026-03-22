@@ -18,7 +18,7 @@
     "@tailwindcss/vite": "^4.0.15",
     "astro": "^6.0.4",
     "astro-expressive-code": "^0.41.2",
-    "better-sqlite3": "^11.9.1",
+    "better-sqlite3": "^12.8.0",
     "chart.js": "^4.5.1",
     "linkify-html": "^4.2.0",
     "linkifyjs": "^4.2.0",

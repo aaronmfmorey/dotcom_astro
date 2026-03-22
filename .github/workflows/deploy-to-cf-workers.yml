@@ -19,7 +19,10 @@ jobs:
           persist-credentials: true
 
       - name: Update submodules to latest remote
+        env:
+          GIT_TOKEN: ${{ secrets.AMDOTCOM_CLOUDFLARE_WORKERS }}
         run: |
+          git config --global url."https://${GIT_TOKEN}@github.com/".insteadOf "https://github.com/"
           git submodule sync --recursive
           git submodule update --remote --merge --recursive
 

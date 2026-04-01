@@ -17,10 +17,16 @@
 }
 
 @font-face {
-    font-family: "Figtree";
-    src: url('/fonts/Figtree-VariableFont_wght.ttf') format('truetype');
-    font-weight: 300, 700;
+    font-family: "Lora";
+    src: url('/fonts/Lora-VariableFont_wght.ttf') format('truetype');
     font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "Lora";
+    src: url('/fonts/Lora-Italic-VariableFont_wght.ttf') format('truetype');
+    font-style: italic, oblique;
     font-display: fallback;
 }
 
@@ -36,7 +42,7 @@
     /* Fonts */
     --ff-sans-serif: "Bungee", "Fjalla One", "Helvetica", sans-serif;
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'Figtree', 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
+    --ff-oldstyle: 'Lora', 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052";
     --ff-subheads: "Fjalla One", "Helvetica", sans-serif;
 
     /* Colors */
@@ -225,6 +231,7 @@ div.reading-widget {
 div.reading-widget .title-field {
     font-weight: bold;
     color: var(--nearly-white);
+    font-family: var(--ff-subheads);
 }
 
 div.reading-widget .number-field {

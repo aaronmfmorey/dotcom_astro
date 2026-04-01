@@ -3,9 +3,16 @@ import type { ImageMetadata } from 'astro';
 import {getCollection} from "astro:content";
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { runSqliteQuery, QUERIES } from '@utils/db-operations.ts';
+
+import BookEntry from "@components/Reading/BookEntry.astro";
+import BooksAndPagesChart from "@components/Reading/BooksAndPagesChart.astro";
+import StatsOverview from '@components/Reading/ReadingStatsOverview.astro';
+import BooksByCentury from "@components/Reading/BooksByCentury.astro";
+import BooksByAuthor from "@components/Reading/BooksByAuthor.astro";
+import AnchoredHeader from "@components/AnchoredHeader.astro";
+
 let books = runSqliteQuery(QUERIES.BOOKS_FOR_READING_LIST);
 const pageTitle = "Reading";
-import BookEntry from "@components/Reading/BookEntry.astro";
 const allPosts = await getCollection("blog");
 let allTags = allPosts.map((post) => post.data.tags).flat();
 let uniqueTagsForAuthorMatch = [... new Set(allTags)].filter(tag => tag !== null)
@@ -28,7 +35,7 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/i
     <p>My reading list, as exported from GoodReads.</p>
     <p>Images come from <a href="https://openlibrary.org/dev/docs/api/covers">The OpenLibrary Books API</a>,
         freely available images, or my own photos.</p>
-    <p><a href="/reading/charts">View reading stats.</a></p>
+    <p><a href="/reading/#reading-stats">&#8595; Reading stats</a></p>
 
     <div class="books-container">
     {
@@ -53,4 +60,10 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/i
     <p class="italic">Linked books are Bookshop.org affiliate links, for which I get a percentage if you make a purchase. Be a spendthrift,
         it goes to a good cause. (I always think "spendthrift" means the opposite of what it actually does — it
         means "spend freely".)</p>
+
+    <AnchoredHeader hLevel="2" text="Reading Stats" />
+    <StatsOverview />
+    <BooksAndPagesChart />
+    <BooksByAuthor />
+    <BooksByCentury />
 </BaseLayout>

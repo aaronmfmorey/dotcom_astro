@@ -1,0 +1,43 @@
+---
+import {runSqliteQuery, QUERIES} from "@utils/db-operations.ts";
+import {intToOrdinal} from "@utils/utils.ts";
+const authorResults = runSqliteQuery(QUERIES.BOOKS_BY_AUTHOR);
+---
+<table>
+    <thead>
+        <tr>
+            <td>
+                Author
+            </td>
+            <td>
+                Books Read
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+    {
+        authorResults.map(
+            function(authorRow, i: number) {
+                let style = i % 2 == 0 ? 'even' : 'odd';
+                return (
+                    <tr class={style}>
+                        <td>{authorRow.author}</td>
+                        <td>{authorRow.total_books}</td>
+                    </tr>
+                )
+            }
+        )
+    }
+    </tbody>
+</table>
+<br />
+<style>
+    thead {
+        background-color: var(--medium-blue);
+        color: var(--nearly-white);
+    }
+    tbody tr.odd {
+        background-color: var(--not-quite-nearly-white);
+    }
+</style>
+

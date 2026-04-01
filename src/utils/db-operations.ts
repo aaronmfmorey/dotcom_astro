@@ -105,5 +105,34 @@ export const QUERIES = {
         from goodreads
         group by 1
         order by 1 desc;
+    `,
+    BOOKS_BY_AUTHOR: `
+        SELECT 
+            *
+        FROM (
+            SELECT 
+                goodreads.author,
+                COUNT(*) AS total_books
+            FROM goodreads
+            GROUP BY 1
+            HAVING COUNT(*) > 1
+
+            UNION
+
+            SELECT
+                'Other' AS author,
+                SUM(singles.total_books) as total_books
+            FROM (
+                SELECT 
+                    goodreads.author,
+                    COUNT(*) AS total_books
+                FROM goodreads
+                GROUP BY 1
+                HAVING COUNT(*) = 1
+            ) AS singles
+        ) AS summed_books
+        ORDER BY 
+            CASE WHEN summed_books.author = 'Other' THEN 1 ELSE 0 END ASC,
+            2 DESC;
     `
 };

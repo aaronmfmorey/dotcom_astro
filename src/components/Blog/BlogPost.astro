@@ -21,5 +21,5 @@ const renderedDescription = await renderMarkdown(post.data.description);
             ? <div class="post-excerpt" set:html={renderedDescription} />
             : ""
     }
-    <p style="text-align: center; margin:1em; color:var(--lighter-font-color)">&#x26EC;</p>
+    <div class="separator" style="margin:1em;" />
 </div>

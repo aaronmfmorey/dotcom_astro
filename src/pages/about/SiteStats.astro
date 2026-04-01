@@ -17,11 +17,12 @@ const tsLines = await getFileLineCount('src/', "*.ts");
 const cssLines = await getFileLineCount('src/', "*.css");
 const loc = astroLines + jsLines + tsLines + cssLines;
 ---
+<div class="pb-5">
+
 <AnchoredHeader
     hLevel="2"
-    text="Site Stats" />
-<a href="/code/writing/site-technical-overview/">Technical Details</a>
-<br /><br />
+    text="Site Details" />
+
 <StatsContainer>
     <StatsOverviewIndividual
             title="Lines of Code"
@@ -44,3 +45,6 @@ const loc = astroLines + jsLines + tsLines + cssLines;
             value={postWords + pageWords}
             backgroundColor="var(--darkest-blue)" />
 </StatsContainer>
+<br />
+Want to see <em>how</em> I built this site? The <a href="/code/writing/site-technical-overview/">technical details</a> are here.
+</div>

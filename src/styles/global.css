@@ -146,7 +146,7 @@ h3,h4,h5,h6 {
 
 h2 {
     font-size: 2.4rem;
-    padding-top: 25px;
+    padding-top: 10px;
 }
 
 h3 {
@@ -186,6 +186,15 @@ blockquote.book-review {
     color: var(--darker-font-color);
     font-size: .9em;
     margin: 1rem;
+}
+
+.separator::before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f141";
+    display: block;
+    text-align: center;
+    font-size: 1.25em;
+    color: var(--lighter-font-color);
 }
 
 .open-button {

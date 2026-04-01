@@ -26,7 +26,7 @@
 @font-face {
     font-family: "Lora";
     src: url('/fonts/Lora-Italic-VariableFont_wght.ttf') format('truetype');
-    font-style: italic, oblique;
+    font-style: italic;
     font-display: fallback;
 }
 
@@ -146,6 +146,7 @@ h3,h4,h5,h6 {
 
 h2 {
     font-size: 2.4rem;
+    padding-top: 25px;
 }
 
 h3 {

@@ -4,9 +4,10 @@ import Footer from '../components/Footer.astro';
 import { ClientRouter } from "astro:transitions";
 import { fade } from 'astro:transitions';
 import '../styles/global.css';
-const { pageTitle } = Astro.props;
+const { pageTitle, excludeFromStaticSearch } = Astro.props;
 import bookAndLaptop from '@assets/images/BookAndLaptopBitmoji.png';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
 ---
 <html lang="en">
 <head>
@@ -45,12 +46,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:image:width" content="398"/>
     <meta property="og:image:height" content="398"/>
 
+    <!-- PageFind -->
+    <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet">
+    <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
+
     <title>{pageTitle}</title>
-    <ClientRouter fallback="swap" />
 </head>
 <body>
 <Header />
-<main transition:animate={fade({ duration: '0.4s' })}>
+<main
+    {...(excludeFromStaticSearch ? {} : { 'data-pagefind-body': '' })}
+>
     <h1 class="sign-painted">{pageTitle}</h1>
     <slot />
 </main>

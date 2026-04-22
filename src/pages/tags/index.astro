@@ -21,7 +21,7 @@ allPosts.forEach(post => {
 let sortedTags = Object.keys(tagDict)
     .sort((a,b) => a.localeCompare(b, {sensitivity: 'base'}));
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} excludeFromStaticSearch={true}>
     <div class="tag-table">
         {sortedTags.map((tag) => (
             <div class="tag-table-row">

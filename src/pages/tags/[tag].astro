@@ -29,7 +29,7 @@ posts.sort(function (a, b) {
 return a.data.pubDate < b.data.pubDate ? 1 : -1;
 });
 ---
-<BaseLayout pageTitle={originalTag}>
+<BaseLayout pageTitle={originalTag} excludeFromStaticSearch={true}>
     <p><a href="/tags/">&laquo; All tags</a></p>
     <ul>
         {

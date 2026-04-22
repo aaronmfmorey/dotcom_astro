@@ -18,7 +18,7 @@ const { page } = Astro.props;
 const pathName = new URL(Astro.request.url).pathname.split('/');
 const firstPath = pathName[1];
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} excludeFromStaticSearch={true}>
     {page.data.map((post: any) => <BlogPost post={post} frontmatter={post.data} class="blog-post" />)}
     {allPosts.length > 10 ? (
             <div class="mt-4">

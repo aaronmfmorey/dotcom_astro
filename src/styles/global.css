@@ -86,6 +86,7 @@ html {
     hyphens: auto;
     background-color: var(--lightest-blue);
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
 }
 
 html strong {

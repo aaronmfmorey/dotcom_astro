@@ -5,6 +5,7 @@ import BitmojiImage from "@components/BitmojiImage.astro";
 import bookAndLaptop from '../assets/images/BookAndLaptopBitmoji.png';
 import AboutText from "@contentsubmodule/data/about-me.html";
 import AboutLinks from "@components/AboutLinks.astro";
+import TypewriterInlineBlock from '@components/TypewriterInlineBlock.astro';
 const pageTitle = "Aaron Morey";
 
 ---
@@ -15,7 +16,7 @@ const pageTitle = "Aaron Morey";
 	<h2>About Me</h2>
 	<!--<AboutText/>-->
 	<p>
-		I'm a <span><code>web developer <span class="cursor">▉</span></code></span>  in the Milwaukee area, working as a software development manager.
+		I'm a <TypewriterInlineBlock text="web developer" />  in the Milwaukee area, working as a software development manager.
 	</p>
 	<p>I have over <span class="experience">fifteen years experience</span> across multiple industries including
 		insurance, finance, marketing, and warehousing/logistics. I believe in good code, customer service, strong
@@ -24,22 +25,6 @@ const pageTitle = "Aaron Morey";
 	<AboutLinks/>
 </BaseLayout>
 <style>
-	span:has(code) {
-		padding: 5px;
-		border-radius: 5px;
-		/*background-color: var(--darker-font-color);*/
-		color: #6af549;
-		background-color: black;
-		font-family: monospace;
-		font-size: .8em;
-	}
-
-	span > code::before {
-		content: "> ";
-		font-weight: 800;
-		/*animate: blinker 1s infinite;*/
-	}
-
 	span.experience {
 		font-size: 0.9rem;
 		font-family: monospace;

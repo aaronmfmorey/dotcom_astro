@@ -27,23 +27,33 @@ const loc = astroLines + jsLines + tsLines + cssLines;
     <StatsOverviewIndividual
             title="Lines of Code"
             value={loc}
-            backgroundColor="var(--darker-font-color)" />
+            backgroundColor="var(--darker-font-color)"
+            animationClass="pop"
+    />
     <StatsOverviewIndividual
             title="Astro Components"
             value={astroComponents}
-            backgroundColor="var(--green)" />
+            backgroundColor="var(--green)"
+            animationClass="pop"
+    />
     <StatsOverviewIndividual
             title="Blog Posts"
             value={numPosts}
-            backgroundColor="var(--medium-blue)" />
+            backgroundColor="var(--medium-blue)"
+            animationClass="pop"
+    />
     <StatsOverviewIndividual
             title="Other Pages"
             value={numPages}
-            backgroundColor="var(--brightest-yellow)" />
+            backgroundColor="var(--brightest-yellow)"
+            animationClass="pop"
+    />
     <StatsOverviewIndividual
             title="Words Written"
             value={postWords + pageWords}
-            backgroundColor="var(--darkest-blue)" />
+            backgroundColor="var(--darkest-blue)"
+            animationClass="pop"
+    />
 </StatsContainer>
 <br />
 Want to see <em>how</em> I built this site? The <a href="/code/writing/site-technical-overview/">technical details</a> are here.

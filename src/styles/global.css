@@ -396,6 +396,7 @@ div.micro-container {
 
 h3.book-title {
     font-size: clamp(14px, 5vw, 1.5em);
+    text-wrap: unset;
 }
 
 a.bookshop-affiliate-link {
@@ -521,6 +522,29 @@ a.pagination-link:hover {
 .my-shadow:hover {
     filter: drop-shadow(.25em .25em 1px var(--barely-visible-grey));
 }
+
+/* ANIMATIONS */
+/* CREDIT: https://css-tricks.com/a-handy-little-system-for-animated-entrances-in-css/ */
+.pop {
+    animation-duration: 1s;
+    animation-name: animate-pop;
+    animation-timeline: view();
+    animation-range: cover 0% cover 50%;
+}
+
+@keyframes animate-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+/* Media Queries */
 
 @media screen and (width >= 636px) {
     .nav-links {

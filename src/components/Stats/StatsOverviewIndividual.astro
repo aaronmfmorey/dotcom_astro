@@ -1,7 +1,7 @@
 ---
-const {title, value, backgroundColor} = Astro.props;
+const {title, value, backgroundColor, animationClass} = Astro.props;
 ---
-<div class="hflex-item reading-widget">
+<div class=`hflex-item reading-widget ${animationClass}`>
     <div class="title-field" style={`background-color: ${backgroundColor};`}>
         {title}
     </div>

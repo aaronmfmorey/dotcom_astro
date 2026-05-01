@@ -1,6 +1,6 @@
 [submodule "aaronmoreycom_content"]
 	path = aaronmoreycom_content
-	url = https://github.com/aaronmfmorey/aaronmoreycom_content.git
+	url = git@github.com:aaronmfmorey/aaronmoreycom_content.git
     branch = main
 [submodule "Font-Awesome"]
 	path = Font-Awesome

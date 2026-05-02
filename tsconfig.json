@@ -8,6 +8,7 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@assets/*": ["src/assets/*"],
+      "@data/*": ["src/data/*"],
       "@contentsubmodule/*": ["aaronmoreycom_content/content/*"],
       "@fontawesomesubmodule/*": ["Font-Awesome/*"],
       "@utils/*": ["src/utils/*"],

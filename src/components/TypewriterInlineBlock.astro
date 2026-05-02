@@ -1,0 +1,183 @@
+---
+const {text} = Astro.props;
+const textLength = text.length;
+const escapedText = text.replaceAll("\n", "<br />");
+---
+<div class="expressive-code">
+    <!-- HTML -->
+    <div class="mac-window">
+        <div class="mac-window-controls">
+            <button class="control-btn close" aria-label="Close"></button>
+            <button class="control-btn minimize" aria-label="Minimize"></button>
+            <button class="control-btn maximize" aria-label="Maximize"></button>
+            <span class="title-bar">About Aaron</span>
+        </div>
+        <code class="typewriter-disable">
+            <div id="typewritten-text-container" class="crt-screen"></div>
+        </code>
+    </div>
+</div>
+
+<style>
+
+    /* CSS */
+    .mac-window {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .mac-window-controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 8px 12px;
+        background: #f5f5f5;
+        border-bottom: 1px solid #d0d0d0;
+    }
+
+    .control-btn {
+        width: 12px;
+        height: 12px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        opacity: 0.6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .control-btn:hover {
+        opacity: 1;
+    }
+
+    .control-btn.close {
+        background: #FF5F56;
+    }
+
+    .control-btn.close:hover {
+        box-shadow: 0 0 8px rgba(255, 95, 86, 0.6);
+    }
+
+    .control-btn.minimize {
+        background: #FFBD2E;
+    }
+
+    .control-btn.minimize:hover {
+        box-shadow: 0 0 8px rgba(255, 189, 46, 0.6);
+    }
+
+    .control-btn.maximize {
+        background: #27C93F;
+    }
+
+    .control-btn.maximize:hover {
+        box-shadow: 0 0 8px rgba(39, 201, 63, 0.6);
+    }
+
+    .mac-window-content {
+        background: white;
+        padding: 20px;
+        /* Add your content styling here */
+    }
+
+    .title-bar {
+        font-family: 'Google Sans Code', monospace;
+        font-size: .75em;
+        padding-left: 10px;
+    }
+
+    .typewriter {
+        padding: 10px;
+        background-color: slategray;
+    }
+
+    .crt-screen-disable {
+        filter: blur(0.75px);
+        border-radius: 20px; /* Simulates curved edges */
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    }
+
+    .crt-filter::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .crt-filter::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(18, 16, 16, 0.1);
+        opacity: 0;
+        z-index: 2;
+        pointer-events: none;
+        animation: flicker 0.15s infinite;
+    }
+
+    @keyframes flicker {
+        0% {
+            opacity: 0.02;
+        }
+        50% {
+            opacity: 0.04;
+        }
+        100% {
+            opacity: 0.02;
+        }
+    }
+
+    #typewritten-text-container {
+        display: block;
+        height: 250px;
+        overflow: scroll;
+        flex-direction: column-reverse;
+        background-color: black;
+        color: greenyellow;
+        padding: 10px;
+    }
+
+    #typewritten-text-container::after {
+        content: "|";
+    }
+</style>
+
+<script define:vars={{text}}>
+    let i = 0;
+    let speed = 50; /* The speed/duration of the effect in milliseconds */
+
+    function typeWriter() {
+        if (i < text.length) {
+            let nextLetter = text.charAt(i);
+            if (nextLetter === "\n") {
+                nextLetter = "<br />";
+            }
+            if (nextLetter === "&") {
+                console.log("Inside ampersand section");
+                while (!nextLetter.endsWith(";")) {
+                    i++;
+                    nextLetter += text.charAt(i);
+                    console.log(nextLetter)
+                }
+            }
+            document.getElementById("typewritten-text-container").innerHTML += nextLetter;
+            i++;
+            const scrollContainer = document.getElementById('typewritten-text-container');
+            scrollContainer.scrollTop = scrollContainer.scrollHeight;
+            const randomFloat = Math.random() * (.75 * speed - 1.25 * speed) + speed;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    typeWriter();
+</script>
+

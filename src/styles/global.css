@@ -59,12 +59,15 @@
     --even-lighter-than-barely-visible: rgb(240 240 240);
     --not-quite-nearly-white: rgb(245 249 250);
     --nearly-white: rgb(250 254 255);
+    --creamy-off-white: oklch(0.97948 0.01387 88.682);
+    --dark-red: hsl(0, 74%, 40%);
 
-    --glassy-background: rgba(255, 249, 230, 0.2);
+    --glassy-background: rgba(216, 216, 216, 0.2);
     --glassy-background-opaquer: rgba(235 245 249 .95);
 
     /* Applied Colors */
     --background-color: var(--nearly-white);
+    --body-background: var(--nearly-white);
     --background-color-transparent: hsl(192deg 100% 99% / 50%);
     --header-color: var(--darkest-blue);
     --link-color: var(--medium-blue);
@@ -86,6 +89,7 @@ html {
     hyphens: auto;
     background-color: var(--lightest-blue);
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
 }
 
 html strong {
@@ -100,7 +104,7 @@ body {
     max-width: 60ch;
     padding: 1rem;
     line-height: 1.5;
-    background-color: oklch(0.97948 0.01387 88.682);
+    background-color: var(--body-background);
     @apply shadow;
     @apply rounded-md;
     @apply border-1;
@@ -112,6 +116,7 @@ body {
 
 p {
     margin-bottom: 1.5rem;
+    text-wrap: pretty;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -122,6 +127,7 @@ h1,h2,h3,h4,h5,h6 {
     color: var(--header-color);
     font-weight: 800;
     font-variant: small-caps;
+    text-wrap: balance;
 }
 
 h1 {
@@ -207,6 +213,20 @@ blockquote.book-review {
     margin-bottom: -5px;
 }
 
+.book-entry {
+    margin: 10px;
+    box-shadow:
+            0px 0px 0px 1px rgba(0, 0, 0, 0.06),
+            0px 1px 2px -1px rgba(0, 0, 0, 0.06),
+            0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+    width: 98%;
+    border-radius: 10px;
+}
+
+.book-entry div {
+    background-color: var(--creamy-off-white);
+}
+
 .book-cover-container {
     max-width: 150px;
     margin-right: 10px;
@@ -227,26 +247,6 @@ blockquote.book-review {
 
 div.book-author {
    font-size: clamp(11px, 2.5vw, 1em);
-}
-
-div.reading-widget {
-    background-color: var(--background-color);
-    border-radius: 10px;
-    border-color: #ccc;
-    border-width: 1px;
-    @apply shadow;
-    @apply border;
-}
-
-div.reading-widget .title-field {
-    font-weight: bold;
-    color: var(--nearly-white);
-    font-family: var(--ff-subheads);
-}
-
-div.reading-widget .number-field {
-    font-size: 2.5rem;
-    font-family: var(--ff-sans-serif);
 }
 
 .hflex {
@@ -393,6 +393,7 @@ div.micro-container {
 
 h3.book-title {
     font-size: clamp(14px, 5vw, 1.5em);
+    text-wrap: unset;
 }
 
 a.bookshop-affiliate-link {
@@ -518,6 +519,29 @@ a.pagination-link:hover {
 .my-shadow:hover {
     filter: drop-shadow(.25em .25em 1px var(--barely-visible-grey));
 }
+
+/* ANIMATIONS */
+/* CREDIT: https://css-tricks.com/a-handy-little-system-for-animated-entrances-in-css/ */
+.pop {
+    animation-duration: 1s;
+    animation-name: animate-pop;
+    animation-timeline: view();
+    animation-range: cover 0% cover 50%;
+}
+
+@keyframes animate-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+/* Media Queries */
 
 @media screen and (width >= 636px) {
     .nav-links {

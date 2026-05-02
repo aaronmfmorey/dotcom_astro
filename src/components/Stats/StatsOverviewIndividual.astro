@@ -22,6 +22,7 @@ const {title, value, backgroundColor, animationClass} = Astro.props;
         font-weight: bold;
         color: contrast-color(var(--backgroundColor));
         font-family: var(--ff-subheads);
+        font-size: clamp(16px, 1em, 20px);
     }
 
     div.stats-widget .number-field {

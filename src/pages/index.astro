@@ -7,20 +7,23 @@ import AboutText from "@contentsubmodule/data/about-me.html";
 import AboutLinks from "@components/AboutLinks.astro";
 import TypewriterInlineBlock from '@components/TypewriterInlineBlock.astro';
 const pageTitle = "Aaron Morey";
-
+const typewrittenText = `# I Am:
+&nbsp;- A web developer in the Milwaukee area
+&nbsp;- Working as a software development manager
+ # I Have:
+ &nbsp;- Over _fifteen years' experience_ across industries, including:
+&nbsp;&nbsp;&nbsp;- Insurance, Finance, Marketing, and Warehousing/Logistics
+ # I Believe In The Big C's:
+ &nbsp;- Code, Customer service, Communication, and the Oxford [C]omma
+ <Esc>:wq`;
 ---
 <BaseLayout pageTitle={pageTitle}>
 	<div class="flex w-full justify-center">
 		<BitmojiImage src={bookAndLaptop} alt="A caricature of me reading a book in front of a laptop" />
 	</div>
-	<h2>About Me</h2>
 	<!--<AboutText/>-->
 	<p>
-		I'm a <TypewriterInlineBlock text="web developer" />  in the Milwaukee area, working as a software development manager.
-	</p>
-	<p>I have over <span class="experience">fifteen years experience</span> across multiple industries including
-		insurance, finance, marketing, and warehousing/logistics. I believe in good code, customer service, strong
-		communication, and the Oxford comma.
+		<TypewriterInlineBlock text={typewrittenText} client:visible />
 	</p>
 	<AboutLinks/>
 </BaseLayout>

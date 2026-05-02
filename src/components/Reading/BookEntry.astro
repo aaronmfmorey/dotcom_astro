@@ -42,7 +42,7 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
         ? <h2 class="bg-[#FFCC66] drop-shadow-md z-1 p-2 pt-[1rem] w-16 text-center">{yearRead} ({yearCounts[yearRead]})</h2>
         :""
     }
-<div>
+<div class="book-entry">
     <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm bg-white my-5 p-2 items-stretch">
         {
             coverImageExists(book.isbn)

@@ -59,13 +59,15 @@
     --even-lighter-than-barely-visible: rgb(240 240 240);
     --not-quite-nearly-white: rgb(245 249 250);
     --nearly-white: rgb(250 254 255);
+    --creamy-off-white: oklch(0.97948 0.01387 88.682);
     --dark-red: hsl(0, 74%, 40%);
 
-    --glassy-background: rgba(255, 249, 230, 0.2);
+    --glassy-background: rgba(216, 216, 216, 0.2);
     --glassy-background-opaquer: rgba(235 245 249 .95);
 
     /* Applied Colors */
     --background-color: var(--nearly-white);
+    --body-background: var(--nearly-white);
     --background-color-transparent: hsl(192deg 100% 99% / 50%);
     --header-color: var(--darkest-blue);
     --link-color: var(--medium-blue);
@@ -102,7 +104,7 @@ body {
     max-width: 60ch;
     padding: 1rem;
     line-height: 1.5;
-    background-color: oklch(0.97948 0.01387 88.682);
+    background-color: var(--body-background);
     @apply shadow;
     @apply rounded-md;
     @apply border-1;

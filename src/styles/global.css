@@ -59,6 +59,7 @@
     --even-lighter-than-barely-visible: rgb(240 240 240);
     --not-quite-nearly-white: rgb(245 249 250);
     --nearly-white: rgb(250 254 255);
+    --dark-red: hsl(0, 74%, 40%);
 
     --glassy-background: rgba(255, 249, 230, 0.2);
     --glassy-background-opaquer: rgba(235 245 249 .95);
@@ -230,26 +231,6 @@ blockquote.book-review {
 
 div.book-author {
    font-size: clamp(11px, 2.5vw, 1em);
-}
-
-div.reading-widget {
-    background-color: var(--background-color);
-    border-radius: 10px;
-    border-color: #ccc;
-    border-width: 1px;
-    @apply shadow;
-    @apply border;
-}
-
-div.reading-widget .title-field {
-    font-weight: bold;
-    color: var(--nearly-white);
-    font-family: var(--ff-subheads);
-}
-
-div.reading-widget .number-field {
-    font-size: 2.5rem;
-    font-family: var(--ff-sans-serif);
 }
 
 .hflex {

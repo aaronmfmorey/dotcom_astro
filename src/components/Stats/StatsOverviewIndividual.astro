@@ -1,11 +1,32 @@
 ---
 const {title, value, backgroundColor, animationClass} = Astro.props;
 ---
-<div class=`hflex-item reading-widget ${animationClass}`>
-    <div class="title-field" style={`background-color: ${backgroundColor};`}>
+<div class=`hflex-item reading-widget shadow border ${animationClass}`>
+    <div class="title-field">
         {title}
     </div>
     <div class="number-field">
         {new Intl.NumberFormat('en-US').format(value)}
     </div>
 </div>
+
+<style define:vars={{backgroundColor}}>
+    div.reading-widget {
+        border-radius: 10px;
+        border-color: #ccc;
+        border-width: 1px;
+    }
+
+    div.reading-widget .title-field {
+        background-color: var(--backgroundColor);
+        font-weight: bold;
+        color: contrast-color(var(--backgroundColor));
+        font-family: var(--ff-subheads);
+    }
+
+    div.reading-widget .number-field {
+        font-size: 2.5rem;
+        font-family: var(--ff-sans-serif);
+    }
+
+</style>

@@ -1,7 +1,7 @@
 ---
 const {title, value, backgroundColor, animationClass} = Astro.props;
 ---
-<div class=`hflex-item reading-widget shadow border ${animationClass}`>
+<div class=`hflex-item stats-widget shadow border ${animationClass}`>
     <div class="title-field">
         {title}
     </div>
@@ -11,20 +11,20 @@ const {title, value, backgroundColor, animationClass} = Astro.props;
 </div>
 
 <style define:vars={{backgroundColor}}>
-    div.reading-widget {
+    div.stats-widget {
         border-radius: 10px;
         border-color: #ccc;
         border-width: 1px;
     }
 
-    div.reading-widget .title-field {
+    div.stats-widget .title-field {
         background-color: var(--backgroundColor);
         font-weight: bold;
         color: contrast-color(var(--backgroundColor));
         font-family: var(--ff-subheads);
     }
 
-    div.reading-widget .number-field {
+    div.stats-widget .number-field {
         font-size: 2.5rem;
         font-family: var(--ff-sans-serif);
     }

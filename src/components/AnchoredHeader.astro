@@ -1,6 +1,6 @@
 ---
 import GithubSlugger from 'github-slugger';
-const {hLevel, text} = Astro.props;
+const {hLevel, text, cssClass} = Astro.props;
 const slugger = new GithubSlugger()
 let slug = slugger.slug(text);
 if (slug.startsWith("-")) {
@@ -12,6 +12,6 @@ if (slug.endsWith("-")) {
 
 const tagName = `h${hLevel}`;
 ---
-<Fragment set:html={`<${tagName} id="${slug}">`}/>
+<Fragment set:html={`<${tagName} id="${slug}" class="${cssClass}">`}/>
     {text}<a class="anchor-link" href={`#${slug}`}>§</a>
 <Fragment set:html={`</${tagName}>`}/>

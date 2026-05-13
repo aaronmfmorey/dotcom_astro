@@ -328,6 +328,19 @@ details > summary {
     list-style-type: "";
 }
 
+details[open]::details-content {
+    background-color: var(--nearly-white);
+    color: var(--lighter-font-color);
+    padding: 5px;
+    font-size: .75em;
+    border-radius: 5px;
+    border-color: var(--barely-visible-grey);
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 2px 2px 10px var(--barely-visible-grey);
+    width: 95%;
+}
+
 ruby.stressed-syllable {
     font-weight: 600;
     position: relative;

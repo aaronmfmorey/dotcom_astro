@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const {micro} = Astro.props;
 const pageTitle = formatDateLong(micro.data.date);
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} indexStatus="noindex">
     <div class="micro-container">
         <MicroPost avatar={onTheJohn} micro={micro} singlePage={false} />
     <div class="micro-container">

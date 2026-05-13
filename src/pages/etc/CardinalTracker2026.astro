@@ -2,6 +2,7 @@
 import AnchoredHeader from "@components/AnchoredHeader.astro";
 const title = "Cardinals Win Tracker - 2026";
 import BaseLayout from "@layouts/BaseLayout.astro";
+
 const WINS = 24;
 const LOSSES = 17;
 const RS = 192;
@@ -115,6 +116,14 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
             <td>{toExceed500.winPercentToExceed}</td>
         </tr>
     </table>
+    <details>
+        <summary><i class="fa-solid fa-circle-question"></i></summary>
+        <p>
+            This table contains the pre-season projections for Cardinals wins from various sources.
+            This is compared to the number of wins needed to exceed that projection given the team's
+            current record, and the winning percentage that would require.
+        </p>
+    </details>
 
     <AnchoredHeader hLevel="2" text="Wins Assuming True Talent" />
     <table>
@@ -160,6 +169,13 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
             <td>{pythagRos.restOfSeasonWins}</td>
             <td>{pythagRos.totalWins}</td>
         </tr>
-
     </table>
+    <details>
+        <summary><i class="fa-solid fa-circle-question"></i></summary>
+        <p>
+            This table calculates the number of wins the Cardinals would reach if they
+            played the rest of the season at the "true talent" winning percentage assumed by the given
+            projection. That number is added to the number of wins they have "banked" up to this point.
+        </p>
+    </details>
 </BaseLayout>

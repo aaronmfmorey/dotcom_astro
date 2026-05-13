@@ -304,8 +304,6 @@ table {
     background-color: var(--nearly-white);
 }
 
-
-
 thead {
     font-weight: bold;
 }
@@ -316,6 +314,10 @@ td, th {
     right: 5px;
     border: 1px solid #ccc;
     text-align: center;
+}
+
+details > summary {
+    list-style-type: "";
 }
 
 ruby.stressed-syllable {

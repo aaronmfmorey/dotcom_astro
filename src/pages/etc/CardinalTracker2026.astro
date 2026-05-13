@@ -17,22 +17,20 @@ const ME = 77;
 const FIVE_HUNDRED = 81;
 
 let currentPaceWins = (WINS / (WINS + LOSSES)) * GAMES_IN_SEASON;
-let currentPaceWinsFormatted = new Intl.NumberFormat(
-    "en-US",
-    { maximumSignificantDigits: 3 }).format(
-    currentPaceWins,
-);
+function formatToThreeSigFigs(decimal: number) {
+    return new Intl.NumberFormat(
+        "en-US",
+        { maximumSignificantDigits: 3 }
+    ).format(decimal);
+}
+let currentPaceWinsFormatted = formatToThreeSigFigs(currentPaceWins)
 
 function winningPercentageToExceed(totalToExceed: number) {
     let winsRemaining = Math.ceil(totalToExceed + 1 - WINS);
     let winPercentToExceed = winsRemaining / (GAMES_IN_SEASON - WINS - LOSSES);
     return {
         winsRemaining: winsRemaining,
-        winPercentToExceed: new Intl.NumberFormat(
-            "en-US",
-            { maximumSignificantDigits: 3 }).format(
-            winPercentToExceed,
-        )
+        winPercentToExceed: formatToThreeSigFigs(winPercentToExceed)
     };
 }
 
@@ -44,22 +42,12 @@ const toExceed500 = winningPercentageToExceed(FIVE_HUNDRED);
 
 function winsAssumingTrueTalent(trueTalentWins: number) {
     let trueTalentWinPercent = trueTalentWins / GAMES_IN_SEASON;
-    console.log("Win Percent", trueTalentWinPercent)
     let restOfSeasonWins = (162 - WINS - LOSSES) * trueTalentWinPercent;
-    console.log("ROS Wins", restOfSeasonWins);
     let totalWins = restOfSeasonWins + WINS;
-    console.log("totalWins", totalWins)
     return {
-        restOfSeasonWins: new Intl.NumberFormat(
-            "en-US",
-            { maximumSignificantDigits: 3 }).format(
-            restOfSeasonWins,
-        ),
-        totalWins: new Intl.NumberFormat(
-            "en-US",
-            { maximumSignificantDigits: 3 }).format(
-            totalWins,
-        )};
+        restOfSeasonWins: formatToThreeSigFigs(restOfSeasonWins),
+        totalWins:formatToThreeSigFigs(totalWins)
+    };
 }
 
 const pecotaRos = winsAssumingTrueTalent(PECOTA);
@@ -70,11 +58,7 @@ const fiveHundredRos = winsAssumingTrueTalent(FIVE_HUNDRED);
 const paceRos = winsAssumingTrueTalent((currentPaceWins));
 const pythagWinPct = (Math.pow(RS, PYTHAG_EXPONENT)) / (Math.pow(RS, PYTHAG_EXPONENT) + Math.pow(RA, PYTHAG_EXPONENT));
 const pythagProjectedWins = pythagWinPct * GAMES_IN_SEASON;
-const pythagProjectedWinsFormatted = new Intl.NumberFormat(
-    "en-US",
-    { maximumSignificantDigits: 3 }).format(
-    pythagProjectedWins,
-);
+const pythagProjectedWinsFormatted = formatToThreeSigFigs(pythagProjectedWins);
 const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
 
 ---

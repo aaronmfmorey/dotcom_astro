@@ -2,6 +2,8 @@
 import AnchoredHeader from "@components/AnchoredHeader.astro";
 const title = "Cardinals Win Tracker - 2026";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import StatsContainer from "@components/Stats/StatsContainer.astro";
+import StatsOverviewIndividual from "@components/Stats/StatsOverviewIndividual.astro";
 
 const WINS = 24;
 const LOSSES = 17;
@@ -63,6 +65,14 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
 
 ---
 <BaseLayout pageTitle={title}>
+    <AnchoredHeader hLevel="2" text="Actual Record" />
+    <StatsContainer>
+        <StatsOverviewIndividual title="Wins" value={`${WINS}`} backgroundColor="var(--cardinal-red)" />
+        <StatsOverviewIndividual title="Losses" value={`${LOSSES}`} backgroundColor="var(--darkest-blue)" />
+        <StatsOverviewIndividual title="Win %" value={`${WINS / (WINS + LOSSES)}`} backgroundColor="var(--darker-green)" />
+        <StatsOverviewIndividual title="Runs Scored" value={`${RS}`} backgroundColor="var(--brightest-yellow)" />
+        <StatsOverviewIndividual title="Runs Allowed" value={`${RA}`} backgroundColor="var(--lighter-font-color)" />
+    </StatsContainer>
     <AnchoredHeader hLevel="2" text="Wins Required to Beat Projections" />
     <table>
         <thead style="background-color: var(--cardinal-red);">

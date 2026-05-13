@@ -59,6 +59,7 @@
     --even-lighter-than-barely-visible: rgb(240 240 240);
     --not-quite-nearly-white: rgb(245 249 250);
     --nearly-white: rgb(250 254 255);
+    --cardinal-red: #C41E3A;
 
     --glassy-background: rgba(255, 249, 230, 0.2);
     --glassy-background-opaquer: rgba(235 245 249 .95);
@@ -305,7 +306,14 @@ table {
 }
 
 thead {
-    font-weight: bold;
+    background-color: var(--medium-blue);
+    color: var(--nearly-white);
+    font-family: var(--ff-subheads);
+}
+
+thead td {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 td, th {

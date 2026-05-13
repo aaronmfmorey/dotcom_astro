@@ -63,43 +63,81 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
 
 ---
 <BaseLayout pageTitle={title}>
-
-<AnchoredHeader hLevel="2" text="Wins Required to Beat Projections" />
+    <AnchoredHeader hLevel="2" text="Wins Required to Beat Projections" />
     <table>
-        <thead>
+        <thead style="background-color: var(--cardinal-red);">
             <tr>
-                <td></td>
-                <td>PECOTA</td>
-                <td>Vegas</td>
-                <td>ZiPS</td>
-                <td>Me</td>
-                <td>.500</td>
+                <td>Projection</td>
+                <td>Projected Wins</td>
+                <td>Wins To Beat Projection</td>
+                <td>Winning %</td>
             </tr>
+            <!--<tr>-->
+            <!--    <td></td>-->
+            <!--    <td>PECOTA</td>-->
+            <!--    <td>Vegas</td>-->
+            <!--    <td>ZiPS</td>-->
+            <!--    <td>Me</td>-->
+            <!--    <td>.500</td>-->
+            <!--</tr>-->
         </thead>
         <tr>
-            <td>Projection</td>
+            <td>PECOTA</td>
             <td>{PECOTA}</td>
-            <td>{VEGAS}</td>
-            <td>{ZIPS}</td>
-            <td>{ME}</td>
-            <td>{FIVE_HUNDRED}</td>
-        </tr>
-        <tr>
-            <td>Wins To Beat Projection</td>
             <td>{toExceedPecota.winsRemaining}</td>
-            <td>{toExceedVegas.winsRemaining}</td>
-            <td>{toExceedZips.winsRemaining}</td>
-            <td>{toExceedMe.winsRemaining}</td>
-            <td>{toExceed500.winsRemaining}</td>
+            <td>{toExceedPecota.winPercentToExceed}</td>
         </tr>
         <tr>
-            <td>Winning % To Beat</td>
-            <td>{toExceedPecota.winPercentToExceed}</td>
+            <td>Vegas</td>
+            <td>{VEGAS}</td>
+            <td>{toExceedVegas.winsRemaining}</td>
             <td>{toExceedVegas.winPercentToExceed}</td>
+        </tr>
+        <tr>
+            <td>ZiPS</td>
+            <td>{ZIPS}</td>
+            <td>{toExceedZips.winsRemaining}</td>
             <td>{toExceedZips.winPercentToExceed}</td>
+        </tr>
+        <tr>
+            <td>Me</td>
+            <td>{ME}</td>
+            <td>{toExceedMe.winsRemaining}</td>
             <td>{toExceedMe.winPercentToExceed}</td>
+        </tr>
+        <tr>
+            <td>.500</td>
+            <td>{FIVE_HUNDRED}</td>
+            <td>{toExceed500.winsRemaining}</td>
             <td>{toExceed500.winPercentToExceed}</td>
         </tr>
+        <tr>
+            <td>Me</td>
+            <td>{ME}</td>
+            <td>{toExceedMe.winsRemaining}</td>
+            <td>{toExceedMe.winPercentToExceed}</td>
+        </tr>
+        <!--<tr>-->
+
+        <!--    <td>{VEGAS}</td>-->
+        <!--    <td>{ZIPS}</td>-->
+        <!--    <td>{ME}</td>-->
+        <!--    <td>{FIVE_HUNDRED}</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+
+        <!--    <td>{toExceedVegas.winsRemaining}</td>-->
+        <!--    <td>{toExceedZips.winsRemaining}</td>-->
+        <!--    <td>{toExceedMe.winsRemaining}</td>-->
+        <!--    <td>{toExceed500.winsRemaining}</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--    <td>{toExceedPecota.winPercentToExceed}</td>-->
+        <!--    <td>{toExceedVegas.winPercentToExceed}</td>-->
+        <!--    <td>{toExceedZips.winPercentToExceed}</td>-->
+        <!--    <td>{toExceedMe.winPercentToExceed}</td>-->
+        <!--    <td>{toExceed500.winPercentToExceed}</td>-->
+        <!--</tr>-->
     </table>
     <details>
         <summary><i class="fa-solid fa-circle-question"></i></summary>
@@ -112,9 +150,9 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
 
     <AnchoredHeader hLevel="2" text="Wins Assuming True Talent" />
     <table>
-        <thead>
+        <thead style="background-color: var(--cardinal-red);">
             <tr>
-                <td>"True" Talent Wins</td>
+                <td>True Talent</td>
                 <td>Rest of Season Wins</td>
                 <td>Total Wins</td>
             </tr>
@@ -169,6 +207,16 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
         <li>
             <a href="https://blogs.fangraphs.com/the-official-and-hopefully-not-too-erroneous-2026-zips-projected-standings/">
                 2026 Team ZiPS
+            </a>
+        </li>
+        <li>
+            <a href="https://sports.yahoo.com/articles/mlb-projected-win-totals-over-144600071.html">
+                2026 Vegas Over/Under
+            </a>
+        </li>
+        <li>
+            <a href="https://www.stlsportscentral.com/2026/02/12/the-bernie-show-2-12-26">
+                2026 PECOTA
             </a>
         </li>
     </ul>

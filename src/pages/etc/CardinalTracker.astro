@@ -1,0 +1,165 @@
+---
+import AnchoredHeader from "@components/AnchoredHeader.astro";
+const title = "Cardinals Win Tracker";
+import BaseLayout from "@layouts/BaseLayout.astro";
+const WINS = 24;
+const LOSSES = 17;
+const RS = 192;
+const RA = 187;
+
+const GAMES_IN_SEASON = 162;
+const PECOTA = 66;
+const VEGAS = 69.5;
+const ZIPS = 76;
+const ME = 77;
+const FIVE_HUNDRED = 81;
+
+let currentPaceWins = (WINS / (WINS + LOSSES)) * GAMES_IN_SEASON;
+let currentPaceWinsFormatted = new Intl.NumberFormat(
+    "en-US",
+    { maximumSignificantDigits: 3 }).format(
+    currentPaceWins,
+);
+
+function winningPercentageToExceed(totalToExceed: number) {
+    let winsRemaining = Math.ceil(totalToExceed + 1 - WINS);
+    let winPercentToExceed = winsRemaining / (GAMES_IN_SEASON - WINS - LOSSES);
+    return {
+        winsRemaining: winsRemaining,
+        winPercentToExceed: new Intl.NumberFormat(
+            "en-US",
+            { maximumSignificantDigits: 3 }).format(
+            winPercentToExceed,
+        )
+    };
+}
+
+const toExceedPecota = winningPercentageToExceed(PECOTA);
+const toExceedVegas = winningPercentageToExceed(VEGAS);
+const toExceedZips = winningPercentageToExceed(ZIPS);
+const toExceedMe = winningPercentageToExceed(ME);
+const toExceed500 = winningPercentageToExceed(FIVE_HUNDRED);
+
+function winsAssumingTrueTalent(trueTalentWins: number) {
+    let trueTalentWinPercent = trueTalentWins / GAMES_IN_SEASON;
+    console.log("Win Percent", trueTalentWinPercent)
+    let restOfSeasonWins = (162 - WINS - LOSSES) * trueTalentWinPercent;
+    console.log("ROS Wins", restOfSeasonWins);
+    let totalWins = restOfSeasonWins + WINS;
+    console.log("totalWins", totalWins)
+    return {
+        restOfSeasonWins: new Intl.NumberFormat(
+            "en-US",
+            { maximumSignificantDigits: 3 }).format(
+            restOfSeasonWins,
+        ),
+        totalWins: new Intl.NumberFormat(
+            "en-US",
+            { maximumSignificantDigits: 3 }).format(
+            totalWins,
+        )};
+}
+
+const pecotaRos = winsAssumingTrueTalent(PECOTA);
+const vegasRos = winsAssumingTrueTalent(VEGAS);
+const zipsRos = winsAssumingTrueTalent(ZIPS);
+const meRos = winsAssumingTrueTalent(ME);
+const fiveHundredRos = winsAssumingTrueTalent(FIVE_HUNDRED);
+const paceRos = winsAssumingTrueTalent((currentPaceWins));
+const pythagWinPct = (Math.pow(RS, 2)) / (Math.pow(RS, 2) + Math.pow(RA, 2));
+const pythagProjectedWins = pythagWinPct * GAMES_IN_SEASON;
+const pythagProjectedWinsFormatted = new Intl.NumberFormat(
+    "en-US",
+    { maximumSignificantDigits: 3 }).format(
+    pythagProjectedWins,
+);
+const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
+
+---
+<BaseLayout pageTitle={title}>
+
+<AnchoredHeader hLevel="2" text="Wins Required to Beat Projections" />
+    <table>
+        <thead>
+            <tr>
+                <td></td>
+                <td>PECOTA</td>
+                <td>Vegas</td>
+                <td>ZiPS</td>
+                <td>Me</td>
+                <td>.500</td>
+            </tr>
+        </thead>
+        <tr>
+            <td>Projection</td>
+            <td>{PECOTA}</td>
+            <td>{VEGAS}</td>
+            <td>{ZIPS}</td>
+            <td>{ME}</td>
+            <td>{FIVE_HUNDRED}</td>
+        </tr>
+        <tr>
+            <td>Wins To Beat Projection</td>
+            <td>{toExceedPecota.winsRemaining}</td>
+            <td>{toExceedVegas.winsRemaining}</td>
+            <td>{toExceedZips.winsRemaining}</td>
+            <td>{toExceedMe.winsRemaining}</td>
+            <td>{toExceed500.winsRemaining}</td>
+        </tr>
+        <tr>
+            <td>Winning % To Beat</td>
+            <td>{toExceedPecota.winPercentToExceed}</td>
+            <td>{toExceedVegas.winPercentToExceed}</td>
+            <td>{toExceedZips.winPercentToExceed}</td>
+            <td>{toExceedMe.winPercentToExceed}</td>
+            <td>{toExceed500.winPercentToExceed}</td>
+        </tr>
+    </table>
+
+    <AnchoredHeader hLevel="2" text="Wins Assuming True Talent" />
+    <table>
+        <thead>
+            <tr>
+                <td>"True" Talent Wins</td>
+                <td>Rest of Season Wins</td>
+                <td>Total Wins</td>
+            </tr>
+        </thead>
+        <tr>
+            <td>PECOTA ({PECOTA})</td>
+            <td>{pecotaRos.restOfSeasonWins}</td>
+            <td>{pecotaRos.totalWins}</td>
+        </tr>
+        <tr>
+            <td>Vegas ({VEGAS})</td>
+            <td>{vegasRos.restOfSeasonWins}</td>
+            <td>{vegasRos.totalWins}</td>
+        </tr>
+        <tr>
+            <td>ZiPS ({ZIPS})</td>
+            <td>{zipsRos.restOfSeasonWins}</td>
+            <td>{zipsRos.totalWins}</td>
+        </tr>
+        <tr>
+            <td>Me ({ME})</td>
+            <td>{meRos.restOfSeasonWins}</td>
+            <td>{meRos.totalWins}</td>
+        </tr>
+        <tr>
+            <td>.500 ({FIVE_HUNDRED})</td>
+            <td>{fiveHundredRos.restOfSeasonWins}</td>
+            <td>{fiveHundredRos.totalWins}</td>
+        </tr>
+        <tr>
+            <td>Current Pace ({currentPaceWinsFormatted})</td>
+            <td>{paceRos.restOfSeasonWins}</td>
+            <td>{paceRos.totalWins}</td>
+        </tr>
+        <tr>
+            <td>Pythag ({pythagProjectedWinsFormatted})</td>
+            <td>{pythagRos.restOfSeasonWins}</td>
+            <td>{pythagRos.totalWins}</td>
+        </tr>
+
+    </table>
+</BaseLayout>

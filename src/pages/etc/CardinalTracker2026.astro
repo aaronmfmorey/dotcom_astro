@@ -9,6 +9,7 @@ const RS = 192;
 const RA = 187;
 
 const GAMES_IN_SEASON = 162;
+const PYTHAG_EXPONENT = 1.83;
 const PECOTA = 66;
 const VEGAS = 69.5;
 const ZIPS = 76;
@@ -67,7 +68,7 @@ const zipsRos = winsAssumingTrueTalent(ZIPS);
 const meRos = winsAssumingTrueTalent(ME);
 const fiveHundredRos = winsAssumingTrueTalent(FIVE_HUNDRED);
 const paceRos = winsAssumingTrueTalent((currentPaceWins));
-const pythagWinPct = (Math.pow(RS, 2)) / (Math.pow(RS, 2) + Math.pow(RA, 2));
+const pythagWinPct = (Math.pow(RS, PYTHAG_EXPONENT)) / (Math.pow(RS, PYTHAG_EXPONENT) + Math.pow(RA, PYTHAG_EXPONENT));
 const pythagProjectedWins = pythagWinPct * GAMES_IN_SEASON;
 const pythagProjectedWinsFormatted = new Intl.NumberFormat(
     "en-US",

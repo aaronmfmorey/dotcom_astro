@@ -66,7 +66,7 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
     <StatsContainer>
         <StatsOverviewIndividual title="Wins" value={`${WINS}`} backgroundColor="var(--cardinal-red)" />
         <StatsOverviewIndividual title="Losses" value={`${LOSSES}`} backgroundColor="var(--darkest-blue)" />
-        <StatsOverviewIndividual title="Win %" value={`${WINS / (WINS + LOSSES)}`} backgroundColor="var(--darker-green)" />
+        <StatsOverviewIndividual title="Win %" value={`${(WINS / (WINS + LOSSES)).toFixed(3)}`} backgroundColor="var(--darker-green)" />
         <StatsOverviewIndividual title="Runs Scored" value={`${RS}`} backgroundColor="var(--brightest-yellow)" />
         <StatsOverviewIndividual title="Runs Allowed" value={`${RA}`} backgroundColor="var(--lighter-font-color)" />
     </StatsContainer>

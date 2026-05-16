@@ -20,7 +20,7 @@ const FIVE_HUNDRED = 81;
 
 let currentPaceWins = (WINS / (WINS + LOSSES)) * GAMES_IN_SEASON;
 function formatToThreeSigFigs(decimal: number) {
-    return decimal.toFixed(3);
+    return decimal.toFixed(1);
 }
 let currentPaceWinsFormatted = formatToThreeSigFigs(currentPaceWins)
 

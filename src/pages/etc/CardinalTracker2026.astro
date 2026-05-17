@@ -5,11 +5,13 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import StatsContainer from "@components/Stats/StatsContainer.astro";
 import StatsOverviewIndividual from "@components/Stats/StatsOverviewIndividual.astro";
 
+/* Inputs */
 const WINS = 27;
 const LOSSES = 18;
 const RS = 208;
 const RA = 203;
 
+/* Constants */
 const GAMES_IN_SEASON = 162;
 const PYTHAG_EXPONENT = 1.81;
 const PECOTA = 66;
@@ -18,55 +20,79 @@ const ZIPS = 76;
 const ME = 77;
 const FIVE_HUNDRED = 81;
 
-let currentPaceWins = (WINS / (WINS + LOSSES)) * GAMES_IN_SEASON;
-function formatToThreeSigFigs(decimal: number) {
-    return decimal.toFixed(1);
-}
-let currentPaceWinsFormatted = formatToThreeSigFigs(currentPaceWins)
+/* Types */
+type WinningPercentageToExceedResult = {
+    winsRemaining: number;
+    winPercentToExceed: number;
+};
 
-function winningPercentageToExceed(totalToExceed: number) {
-    let winsRemaining = Math.ceil(totalToExceed + 1 - WINS);
+type WinsAssumingTrueTalentResult = {
+    restOfSeasonWins: number;
+    totalWins: number
+};
+
+/* Formulas */
+function winningPercentageToExceed(totalToExceed: number): WinningPercentageToExceedResult {
+    let winsRemaining = Math.floor(totalToExceed) + 1 - WINS;
     let winPercentToExceed = winsRemaining / (GAMES_IN_SEASON - WINS - LOSSES);
     return {
         winsRemaining: winsRemaining,
-        winPercentToExceed: formatToThreeSigFigs(winPercentToExceed)
+        winPercentToExceed: winPercentToExceed
     };
 }
 
+function winsAssumingTrueTalent(trueTalentWins: number): WinsAssumingTrueTalentResult {
+    let trueTalentWinPercent = trueTalentWins / GAMES_IN_SEASON;
+    let restOfSeasonWins = (162 - WINS - LOSSES) * trueTalentWinPercent;
+    let totalWins = restOfSeasonWins + WINS;
+    return {
+        restOfSeasonWins: restOfSeasonWins,
+        totalWins: totalWins
+    };
+}
+
+function pythagWinningPercentage(runsScored: number, runsAllowed: number, exponent: number = 2): number {
+    return 1 / (1 + (runsAllowed / runsScored) * exponent)
+}
+
+function formatToThreePlaces(value) {
+    return value.toFixed(3);
+}
+
+/* Current */
+let currentPaceWins = (WINS / (WINS + LOSSES)) * GAMES_IN_SEASON;
+let currentPaceWinsFormatted = currentPaceWins.toFixed(1);
+
+/* To Exceed the Projection */
 const toExceedPecota = winningPercentageToExceed(PECOTA);
 const toExceedVegas = winningPercentageToExceed(VEGAS);
 const toExceedZips = winningPercentageToExceed(ZIPS);
 const toExceedMe = winningPercentageToExceed(ME);
 const toExceed500 = winningPercentageToExceed(FIVE_HUNDRED);
 
-function winsAssumingTrueTalent(trueTalentWins: number) {
-    let trueTalentWinPercent = trueTalentWins / GAMES_IN_SEASON;
-    let restOfSeasonWins = (162 - WINS - LOSSES) * trueTalentWinPercent;
-    let totalWins = restOfSeasonWins + WINS;
-    return {
-        restOfSeasonWins: formatToThreeSigFigs(restOfSeasonWins),
-        totalWins:formatToThreeSigFigs(totalWins)
-    };
-}
-
+/* Rest of Season Assumptions */
 const pecotaRos = winsAssumingTrueTalent(PECOTA);
 const vegasRos = winsAssumingTrueTalent(VEGAS);
 const zipsRos = winsAssumingTrueTalent(ZIPS);
 const meRos = winsAssumingTrueTalent(ME);
 const fiveHundredRos = winsAssumingTrueTalent(FIVE_HUNDRED);
 const paceRos = winsAssumingTrueTalent((currentPaceWins));
-const pythagWinPct = (Math.pow(RS, PYTHAG_EXPONENT)) / (Math.pow(RS, PYTHAG_EXPONENT) + Math.pow(RA, PYTHAG_EXPONENT));
+const pythagWinPct = pythagWinningPercentage(RA, RS, PYTHAG_EXPONENT);
 const pythagProjectedWins = pythagWinPct * GAMES_IN_SEASON;
-const pythagProjectedWinsFormatted = formatToThreeSigFigs(pythagProjectedWins);
+const pythagProjectedWinsFormatted = pythagProjectedWins.toFixed(1);
 const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
-
 ---
 <BaseLayout pageTitle={title}>
     <AnchoredHeader hLevel="2" text="Actual Record" />
     <StatsContainer>
         <StatsOverviewIndividual title="Wins" value={`${WINS}`} backgroundColor="var(--cardinal-red)" />
         <StatsOverviewIndividual title="Losses" value={`${LOSSES}`} backgroundColor="var(--darkest-blue)" />
-        <StatsOverviewIndividual title="Win %" value={`${(WINS / (WINS + LOSSES)).toFixed(3)}`} backgroundColor="var(--darker-green)" />
+        <StatsOverviewIndividual
+            title="Win %"
+            value={(WINS / (WINS + LOSSES))}
+            backgroundColor="var(--darker-green)"
+            formatter={formatToThreePlaces}
+        />
         <StatsOverviewIndividual title="Runs Scored" value={`${RS}`} backgroundColor="var(--brightest-yellow)" />
         <StatsOverviewIndividual title="Runs Allowed" value={`${RA}`} backgroundColor="var(--lighter-font-color)" />
     </StatsContainer>
@@ -84,31 +110,31 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
             <td>PECOTA</td>
             <td>{PECOTA}</td>
             <td>{toExceedPecota.winsRemaining}</td>
-            <td>{toExceedPecota.winPercentToExceed}</td>
+            <td>{toExceedPecota.winPercentToExceed.toFixed(3)}</td>
         </tr>
         <tr>
             <td>Vegas</td>
             <td>{VEGAS}</td>
             <td>{toExceedVegas.winsRemaining}</td>
-            <td>{toExceedVegas.winPercentToExceed}</td>
+            <td>{toExceedVegas.winPercentToExceed.toFixed(3)}</td>
         </tr>
         <tr>
             <td>ZiPS</td>
             <td>{ZIPS}</td>
             <td>{toExceedZips.winsRemaining}</td>
-            <td>{toExceedZips.winPercentToExceed}</td>
+            <td>{toExceedZips.winPercentToExceed.toFixed(3)}</td>
         </tr>
         <tr>
             <td>Me</td>
             <td>{ME}</td>
             <td>{toExceedMe.winsRemaining}</td>
-            <td>{toExceedMe.winPercentToExceed}</td>
+            <td>{toExceedMe.winPercentToExceed.toFixed(3)}</td>
         </tr>
         <tr>
             <td>.500</td>
             <td>{FIVE_HUNDRED}</td>
             <td>{toExceed500.winsRemaining}</td>
-            <td>{toExceed500.winPercentToExceed}</td>
+            <td>{toExceed500.winPercentToExceed.toFixed(3)}</td>
         </tr>
     </table>
     <details>

@@ -1,11 +1,15 @@
 ---
-const {title, value, backgroundColor} = Astro.props;
+const {title, value, backgroundColor, formatter} = Astro.props;
 ---
 <div class="hflex-item reading-widget">
     <div class="title-field" style={`background-color: ${backgroundColor};`}>
         {title}
     </div>
     <div class="number-field">
-        {new Intl.NumberFormat('en-US').format(value)}
+        {
+            formatter ?
+                formatter(value)
+                : new Intl.NumberFormat('en-US').format(value)
+        }
     </div>
 </div>

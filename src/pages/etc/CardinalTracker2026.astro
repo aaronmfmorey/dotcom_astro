@@ -52,10 +52,14 @@ function winsAssumingTrueTalent(trueTalentWins: number): WinsAssumingTrueTalentR
 }
 
 function pythagWinningPercentage(runsScored: number, runsAllowed: number, exponent: number = 2): number {
-    return 1 / (1 + (runsAllowed / runsScored) * exponent)
+    return 1 / (1 + Math.pow(runsScored / runsAllowed, exponent));
 }
 
-function formatToThreePlaces(value) {
+function formatToOnePlace(value: number) {
+    return value.toFixed(1);
+}
+
+function formatToThreePlaces(value: number) {
     return value.toFixed(3);
 }
 
@@ -78,6 +82,7 @@ const meRos = winsAssumingTrueTalent(ME);
 const fiveHundredRos = winsAssumingTrueTalent(FIVE_HUNDRED);
 const paceRos = winsAssumingTrueTalent((currentPaceWins));
 const pythagWinPct = pythagWinningPercentage(RA, RS, PYTHAG_EXPONENT);
+const pythagWinsCurrent = pythagWinPct * (WINS + LOSSES);
 const pythagProjectedWins = pythagWinPct * GAMES_IN_SEASON;
 const pythagProjectedWinsFormatted = pythagProjectedWins.toFixed(1);
 const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
@@ -95,6 +100,12 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
         />
         <StatsOverviewIndividual title="Runs Scored" value={`${RS}`} backgroundColor="var(--brightest-yellow)" />
         <StatsOverviewIndividual title="Runs Allowed" value={`${RA}`} backgroundColor="var(--lighter-font-color)" />
+        <StatsOverviewIndividual
+            title="Pythag Wins"
+            value={pythagWinsCurrent}
+            backgroundColor="var(--lighter-font-color)"
+            formatter={formatToOnePlace}
+        />
     </StatsContainer>
     <AnchoredHeader hLevel="2" text="Wins Required to Beat Projections" />
     <table>

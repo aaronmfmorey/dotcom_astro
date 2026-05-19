@@ -16,6 +16,8 @@ const jsLines = await getFileLineCount('src/', "*.js");
 const tsLines = await getFileLineCount('src/', "*.ts");
 const cssLines = await getFileLineCount('src/', "*.css");
 const loc = astroLines + jsLines + tsLines + cssLines;
+
+console.log("astroLines + jsLines + tsLines + cssLines", astroLines, jsLines, tsLines, cssLines);
 ---
 <div class="pb-5">
 

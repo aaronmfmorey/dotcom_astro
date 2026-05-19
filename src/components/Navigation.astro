@@ -3,35 +3,38 @@
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.split("/")[1];
 ---
-<div class="flex justify-evenly rounded-sm nav-links full-size-header glassy">
-    <a href="/" aria-label="Home" class={`rounded-full ${currentPath == '' ? 'active' : ''}` }>
-        <span class="icon"><i class="fa-solid fa-house-chimney"></i></span>
-        <span class="full">Home</span>
-    </a>
-    <a href="/about/" aria-label="About" class={`rounded-full ${currentPath == 'about' ? 'active' : ''}`}>
-        <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
-        <span class="full">About</span>
-    </a>
-    <a href="/posts/1" class={`rounded-full ${['posts', 'tags'].includes(currentPath) ? 'active' : ''}`}>
-        <span class="icon"><i class="fa-solid fa-pen-to-square"></i></span>
-        <span class="full">Blog</span>
-    </a>
-    <a href="/micros/" class={`rounded-full ${['micros'].includes(currentPath) ? 'active' : ''}`}>
-        <span class="icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
-        <span class="full">Micros</span>
-    </a>
-    <a href="/reading/" class={`rounded-full ${['reading'].includes(currentPath) ? 'active' : ''}`}>
-        <span class="icon"><i class="fa-solid fa-book-open-reader"></i></span>
-        <span class="full">Reading</span>
-    </a>
-    <a href="/code/" class={`rounded-full ${['code'].includes(currentPath) ? 'active' : ''}`}>
-        <span class="icon"><i class="fa-solid fa-code"></i></span>
-        <span class="full">Code</span>
-    </a>
-    <a href="/etc/" class={`rounded-full ${['etc'].includes(currentPath) ? 'active' : ''}`}>
-        <span class="icon"><i class="fa-solid fa-sink"></i></span>
-        <span class="full">Etc.</span>
-    </a>
-    <pagefind-modal-trigger compact="true" hide-shortcut="true" class="pagefind-modal-trigger"></pagefind-modal-trigger>
-    <pagefind-modal></pagefind-modal>
-</div>
+<details class="relative">
+    <summary class="cursor-pointer p-2 font-medium">Menu</summary>
+    <nav class="absolute top-full left-0 right-0 bg-white border-b border-gray-200 flex flex-col z-50 justify-center">
+        <a href="/" aria-label="Home" class="block text-center">
+            <span><i class="fa-solid fa-house-chimney"></i></span>
+            <span>Home</span>
+        </a>
+        <a href="/about/" aria-label="About" class="block text-center">
+            <span><i class="fa-solid fa-circle-info"></i></span>
+            <span class="full">About</span>
+        </a>
+        <a href="/posts/1" class="block text-center">
+            <span><i class="fa-solid fa-pen-to-square"></i></span>
+            <span>Blog</span>
+        </a>
+        <a href="/micros/" class="block text-center">
+            <span><i class="fa-solid fa-mobile-screen-button"></i></span>
+            <span class="full">Micros</span>
+        </a>
+        <a href="/reading/" class="block text-center">
+            <span><i class="fa-solid fa-book-open-reader"></i></span>
+            <span>Reading</span>
+        </a>
+        <a href="/code/" class="block text-center">
+            <span><i class="fa-solid fa-code"></i></span>
+            <span>Code</span>
+        </a>
+        <a href="/etc/" class="block text-center">
+            <span><i class="fa-solid fa-sink"></i></span>
+            <span>Etc.</span>
+        </a>
+        <pagefind-modal-trigger compact="true" hide-shortcut="true" class="pagefind-modal-trigger"></pagefind-modal-trigger>
+        <pagefind-modal></pagefind-modal>
+    </nav>
+</details>

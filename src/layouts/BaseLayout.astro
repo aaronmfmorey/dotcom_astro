@@ -56,9 +56,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <title>{pageTitle}</title>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 <Header />
-<main
+<main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
     {...(excludeFromStaticSearch ? {} : { 'data-pagefind-body': '' })}
 >
     <h1 class="sign-painted">{pageTitle}</h1>

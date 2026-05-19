@@ -39,16 +39,16 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
     {
         // Make YearRead hang out at the top untli the next comes along?
         yearRead !== previousYearRead
-        ? <h2 class="bg-[#FFCC66] drop-shadow-md z-1 p-2 pt-[1rem] w-16 text-center">{yearRead} ({yearCounts[yearRead]})</h2>
+        ? <h2>{yearRead} ({yearCounts[yearRead]})</h2>
         :""
     }
 <div>
-    <div class="flex flex-row flex-wrap w-full rounded-md drop-shadow-sm bg-white my-5 p-2 items-stretch">
+    <div class="flex flex-row flex-wrap w-full items-stretch">
         {
             coverImageExists(book.isbn)
                 ?  <div class="book-cover-container">
                         <Image
-                            class="h-full object-contain my-shadow"
+                            class="h-full object-contain"
                             src={coverImages[imagePath]()}
                             alt=`Cover image for ${book.title}`
                             width={250}
@@ -61,7 +61,7 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
         }
         <div style="width: 66%;">
             <h3 class="book-title">
-                <span class="italic">{book.title}</span> -
+                <span>{book.title}</span> -
                 {formatPublicationYear(book.original_publication_year)}
                 {
                     1 == book.no_bookshop ?
@@ -81,7 +81,7 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
                     book.number_of_pages ? `${book.number_of_pages.toLocaleString()} pages` : ""
                 }
             </div>
-            <div class="pb-5">
+            <div>
                 <div>{formatDateLong(book.date_read)}
                 {
                     book.running_total && book.running_total > 1 ?
@@ -95,7 +95,6 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
                         ""
                 }
             </div>
-            <!--{JSON.stringify(book, null, 2)}-->
             {
                 !!book.my_review
                     ? <ReviewDialog reviewContents={linkifyHtml(book.my_review)} />
@@ -104,17 +103,3 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
         </div>
     </div>
 </div>
-<style>
-    h2 {
-        position: sticky;
-        top: 0;
-        margin: 0;
-        font-size: 1.5em;
-        width: 100%;
-        padding: 5px;
-    }
-
-    div, h3 {
-        hyphens: auto;
-    }
-</style>

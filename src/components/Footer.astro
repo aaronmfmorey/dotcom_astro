@@ -3,7 +3,7 @@ import Social from './Social.astro';
 const platform = "github";
 const username = "withastro";
 ---
-<footer>
+<footer class="py-8 px-4">
     <div class="footer-divider"></div>
     <div class="footer-content glassy">
         <div class="social-links">
@@ -15,46 +15,3 @@ const username = "withastro";
         </div>
     </div>
 </footer>
-
-<style>
-    footer {
-        margin-top: 3rem;
-        padding-bottom: 2rem;
-    }
-
-    .footer-divider {
-        height: 5px;
-        background: linear-gradient(to right, var(--header-color), var(--link-hover-color));
-        border-radius: 2px;
-        margin-bottom: 1.5rem;
-    }
-
-    .footer-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem;
-        background-color: rgba(1, 41, 95, 0.05);
-        border-radius: 10px;
-    }
-
-    .social-links {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-    }
-
-    .copyright {
-        font-family: var(--ff-sans-serif);
-        font-size: 0.8rem;
-        color: var(--lighter-font-color);
-    }
-
-    @media screen and (width >= 636px) {
-        .footer-content {
-            flex-direction: row;
-            justify-content: space-between;
-        }
-    }
-</style>

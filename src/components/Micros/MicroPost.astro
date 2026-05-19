@@ -25,32 +25,6 @@ const {micro, avatar, singlePage} = Astro.props;
 </div>
 
 <style>
-    div.micro {
-        padding: 10px;
-        margin: 10px;
-        border: 1px solid #eee;
-        border-radius: 5px;
-        background-color: #fff;
-        filter: drop-shadow(3px 3px 3px #eee);
-    }
-
-    div.micro span.timestamp {
-        font-size: smaller;
-        color: #888;
-        font-weight: 400;
-        padding-left: 5px;
-        line-height: 2.5em;
-    }
-
-    div.micro div.name {
-        font-weight: 600;
-        /*vertical-align: top;*/
-    }
-
-    div.micro div.content {
-        font-size: .95rem;
-    }
-
     div.micro div.reacts {
         display: flex;
         flex-direction: row;
@@ -87,12 +61,5 @@ const {micro, avatar, singlePage} = Astro.props;
         height: 3em;
         width: 3em;
         vertical-align: text-bottom;
-    }
-
-    a.timestamp:hover {
-        filter: none;
-        text-decoration: underline;
-        border: none;
-        font-style: normal;
     }
 </style>

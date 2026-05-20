@@ -4,7 +4,7 @@ const {frontmatter, post, showWordCount, showByline} = Astro.props;
 const wordCount = post ? post.body.split(' ').length : null;
 const minutes = Math.ceil(wordCount / 200);
 ---
-<span class="leading-[2rem] text-gray-500 italic pb-0.5 byline-wrapper">
+<spa>
     {
         showByline ?
             <span>
@@ -22,4 +22,4 @@ const minutes = Math.ceil(wordCount / 200);
             </span>
             : ""
     }
-</span>
+</spa>

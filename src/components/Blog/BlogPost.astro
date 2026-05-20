@@ -8,7 +8,7 @@ const detailUrl = `/posts/${post.id}/`;
 const renderedDescription = await renderMarkdown(post.data.description);
 ---
 <div class="">
-    <div style="text-align: center; font-style: italic; color: var(--lighter-font-color)">{humanReadableDate(frontmatter.pubDate.toString())}</div>
+    <div>{humanReadableDate(frontmatter.pubDate.toString())}</div>
     <h2><a href={detailUrl}>{frontmatter.title}</a></h2>
     <PostByline
             frontmatter={frontmatter}

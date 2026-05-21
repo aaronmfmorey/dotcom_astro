@@ -48,6 +48,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet">
     <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
 
+    <script>
+        (function() {
+            // Prevent flash of unstyled color theme
+            // Check localStorage or system preference
+            const storedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            // Apply theme: stored preference > system preference
+            if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+
     {
         indexStatus
             ? <meta name="robots" content={indexStatus} />
@@ -66,7 +82,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 </main>
 <Footer />
 <script>
-    import "../scripts/menu.js";
+    import initTheme from "../scripts/theme-switcher.js";
+    initTheme();
 </script>
 </body>
 </html>

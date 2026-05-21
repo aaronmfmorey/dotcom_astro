@@ -7,17 +7,12 @@ a:hover {
     text-decoration: underline;
 }
 
-li {
-    list-style: circle;
-    margin: revert-layer;
-    padding: revert-layer;
-}
-
 @layer base {
     ul, ol, li {
         list-style: revert-layer;
         margin: revert-layer;
         padding: revert-layer;
+        margin-left: 1.5em;
     }
 }
 

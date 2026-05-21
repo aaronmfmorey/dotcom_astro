@@ -4,3 +4,4 @@
 /* Then import your custom style files */
 @import './typesystem.css';
 @import './design.css';
+@import './layout.css';

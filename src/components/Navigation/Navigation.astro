@@ -8,37 +8,34 @@ const currentPath = pathname.split("/")[1];
     <summary class="cursor-pointer p-2 font-medium">Menu</summary>
     <nav class="absolute top-full left-0 right-0 bg-white border-b border-gray-200 flex flex-col z-50 justify-center">
         <NavigationLink
-            url="/public"
+            url="/"
             label="Home"
             icon="fa-solid fa-house-chimney" />
-        <a href="/public" aria-label="Home" class="block text-center">
-            <span><i class=""></i></span>
-            <span>Home</span>
-        </a>
-        <a href="/about/" aria-label="About" class="block text-center">
-            <span><i class="fa-solid fa-circle-info"></i></span>
-            <span class="full">About</span>
-        </a>
-        <a href="/posts/1" class="block text-center">
-            <span><i class="fa-solid fa-pen-to-square"></i></span>
-            <span>Blog</span>
-        </a>
-        <a href="/micros/" class="block text-center">
-            <span><i class="fa-solid fa-mobile-screen-button"></i></span>
-            <span class="full">Micros</span>
-        </a>
-        <a href="/reading/" class="block text-center">
-            <span><i class="fa-solid fa-book-open-reader"></i></span>
-            <span>Reading</span>
-        </a>
-        <a href="/code/" class="block text-center">
-            <span><i class="fa-solid fa-code"></i></span>
-            <span>Code</span>
-        </a>
-        <a href="/etc/" class="block text-center">
-            <span><i class="fa-solid fa-sink"></i></span>
-            <span>Etc.</span>
-        </a>
+        <NavigationLink
+            url="/about/"
+            label="About"
+            icon="fa-solid fa-circle-info" />
+        <NavigationLink
+            url="/posts/1"
+            label="Blog"
+            icon="fa-solid fa-pen-to-square" />
+        <NavigationLink
+            url="/micros/"
+            label="Micros"
+            icon="fa-solid fa-mobile-screen-button" />
+        <NavigationLink
+            url="/reading/"
+            label="Reading"
+            icon="fa-solid fa-book-open-reader" />
+        <NavigationLink
+            url="/code/"
+            label="Code"
+            icon="fa-solid fa-code" />
+        <NavigationLink
+            url="/etc/"
+            label="Etc."
+            icon="fa-solid fa-sink" />
+
         <pagefind-modal-trigger compact="true" hide-shortcut="true" class="pagefind-modal-trigger"></pagefind-modal-trigger>
         <pagefind-modal></pagefind-modal>
     </nav>

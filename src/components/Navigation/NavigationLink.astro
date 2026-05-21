@@ -1,0 +1,8 @@
+---
+const { url, label, icon } = Astro.props;
+console.log(icon)
+---
+<a href={url} aria-label={label} class="block text-center">
+    <span><i class={`icon ${icon}`}></i></span>
+    <span>{label}</span>
+</a>

@@ -21,7 +21,6 @@ function toggleTheme() {
 // TODO This is a good idea but it's not working yet
 // Listen for system preference changes if no explicit user preference is set
 // window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-//     debugger;
 //     if (!localStorage.getItem('theme')) {
 //         if (e.matches) {
 //             html.classList.add('dark');
@@ -32,7 +31,6 @@ function toggleTheme() {
 // });
 
 export default function initTheme() {
-    debugger;
     if (localStorage.getItem('theme') == 'dark') {
         html.setAttribute('data-theme', 'dark');
     } else {

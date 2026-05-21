@@ -1,0 +1,111 @@
+@font-face {
+    font-family: "Josefin Sans";
+    src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "Josefin Sans";
+    src: url('/fonts/JosefinSans-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "Lora";
+    src: url('/fonts/Lora-VariableFont_wght.ttf') format('truetype');
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "Lora";
+    src: url('/fonts/Lora-Italic-VariableFont_wght.ttf') format('truetype');
+    font-style: italic;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "Google Sans Code";
+    src: url('/fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "Google Sans Code";
+    src: url('/fonts/GoogleSansCode-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: fallback;
+}
+
+:root {
+    /* Fonts */
+    --ff-sans-serif: 'Newsreader' "Bungee", "Fjalla One", "Helvetica", sans-serif;
+    /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
+    --ff-oldstyle: 'Lora', 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052", serif;
+    --ff-subheads: "Josefin Sans", "Fjalla One", "Helvetica", sans-serif;
+    --ff-code: "Google Sans Code", monospace;
+
+    --font-size: 16px;
+    --h6-font-size: calc(calc(var(--font-size * var(--font-size-factor))));
+}
+
+@media screen and (width > 768px) {
+    :root{
+        --font-size-factor: 1.25;
+    }
+}
+
+@media screen and (width < 768px) {
+    :root {
+        --font-size-factor: 1.2;
+    }
+}
+
+html {
+    font-size: var(--font-size);
+    font-family: var(--ff-oldstyle);
+}
+
+h6 {
+    font-size: var(--h6-font-size)
+}
+
+h5 {
+    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 2)));
+}
+
+h4 {
+    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 3)));
+}
+
+h3 {
+    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 4)));
+}
+
+h2 {
+    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 5)));
+}
+
+h1 {
+    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 6)));
+    font-weight: 700;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ff-subheads);
+    letter-spacing: -0.04em; /* Tightens spacing */
+    margin-top: .5em;
+    margin-bottom: .125em;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: var(--ff-subheads);
+    font-weight: 600;
+}

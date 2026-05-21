@@ -1,0 +1,18 @@
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Override for dark mode */
+html[data-theme="dark"] {
+    background-color: black;
+
+    color: white;
+    a {
+        color: red;
+    }
+}

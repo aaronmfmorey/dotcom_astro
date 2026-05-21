@@ -1,1 +1,8 @@
-@import "tailwindcss";
+/* Import Tailwind directives first */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Then import your custom style files */
+@import './typesystem.css';
+@import './design.css';

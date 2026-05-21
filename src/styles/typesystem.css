@@ -53,6 +53,12 @@
     --ff-code: "Google Sans Code", monospace;
 
     --font-size: 16px;
+    --font-size-h6: calc(calc(var(--font-size) * var(--font-size-factor)));
+    --font-size-h5: calc(var(--font-size) * calc(pow(var(--font-size-factor), 2)));
+    --font-size-h4: calc(var(--font-size) * calc(pow(var(--font-size-factor), 3)));
+    --font-size-h3: calc(var(--font-size) * calc(pow(var(--font-size-factor), 4)));
+    --font-size-h2: calc(var(--font-size) * calc(pow(var(--font-size-factor), 5)));
+    --font-size-h1: calc(var(--font-size) * calc(pow(var(--font-size-factor), 6)));
 }
 
 @media screen and (width > 768px) {
@@ -73,27 +79,27 @@ html {
 }
 
 h6 {
-    font-size: calc(calc(var(--font-size) * var(--font-size-factor)));
+    font-size: var(--font-size-h6);
 }
 
 h5 {
-    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 2)));
+    font-size: var(--font-size-h5);
 }
 
 h4 {
-    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 3)));
+    font-size: var(--font-size-h4);
 }
 
 h3 {
-    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 4)));
+    font-size: var(--font-size-h3);
 }
 
 h2 {
-    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 5)));
+    font-size: var(--font-size-h2);
 }
 
 h1 {
-    font-size: calc(var(--font-size) * calc(pow(var(--font-size-factor), 6)));
+    font-size: var(--font-size-h1);
     font-weight: 700;
 }
 

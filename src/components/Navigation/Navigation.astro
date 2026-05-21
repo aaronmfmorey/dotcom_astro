@@ -6,7 +6,7 @@ const currentPath = pathname.split("/")[1];
 ---
 <details class="relative">
     <summary class="cursor-pointer p-2 font-medium">Menu</summary>
-    <nav class="absolute top-full left-0 right-0 bg-white border-b border-gray-200 flex flex-col z-50 justify-center">
+    <nav class="absolute top-full w-full left-0 right-0 bg-white border-b border-gray-200 flex flex-col z-50 justify-center">
         <NavigationLink
             url="/"
             label="Home"
@@ -40,3 +40,33 @@ const currentPath = pathname.split("/")[1];
         <pagefind-modal></pagefind-modal>
     </nav>
 </details>
+
+<style>
+    nav {
+        background-color: white;
+    }
+
+    details {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s ease-out;
+    }
+
+    details > summary::before {
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        content: "\f0c9"; /* down arrow */
+        margin-right: 10px;
+    }
+
+    details[open] > summary::before {
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        content: "\f00d"; /* down arrow */
+        margin-right: 10px;
+    }
+
+    details summary {
+        list-style: none;
+    }
+</style>

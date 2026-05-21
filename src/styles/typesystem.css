@@ -53,7 +53,6 @@
     --ff-code: "Google Sans Code", monospace;
 
     --font-size: 16px;
-    --h6-font-size: calc(calc(var(--font-size * var(--font-size-factor))));
 }
 
 @media screen and (width > 768px) {
@@ -74,7 +73,7 @@ html {
 }
 
 h6 {
-    font-size: var(--h6-font-size)
+    font-size: calc(calc(var(--font-size) * var(--font-size-factor)));
 }
 
 h5 {

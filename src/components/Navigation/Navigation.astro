@@ -1,4 +1,5 @@
 ---
+import NavigationLink from '@components/Navigation/NavigationLink.astro';
 // Credit: https://www.cyishere.dev/blog/astro-active-nav-item
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.split("/")[1];
@@ -6,8 +7,12 @@ const currentPath = pathname.split("/")[1];
 <details class="relative">
     <summary class="cursor-pointer p-2 font-medium">Menu</summary>
     <nav class="absolute top-full left-0 right-0 bg-white border-b border-gray-200 flex flex-col z-50 justify-center">
-        <a href="/" aria-label="Home" class="block text-center">
-            <span><i class="fa-solid fa-house-chimney"></i></span>
+        <NavigationLink
+            url="/public"
+            label="Home"
+            icon="fa-solid fa-house-chimney" />
+        <a href="/public" aria-label="Home" class="block text-center">
+            <span><i class=""></i></span>
             <span>Home</span>
         </a>
         <a href="/about/" aria-label="About" class="block text-center">

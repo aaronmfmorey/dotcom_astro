@@ -1,5 +1,5 @@
 main {
     /*max-width:  calc(var(--font-size) * .5 * 80);*/
-    max-width: clamp(250px, 60ch, 100%);
+    max-width: clamp(250px, 55ch, 100%);
     margin: auto;
 }

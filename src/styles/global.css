@@ -1,6 +1,55 @@
 /* Import Tailwind directives first */
 @tailwind utilities;
 
+:root {
+    /* Fonts */
+    /*--ff-sans-serif: 'Newsreader' "Bungee", "Fjalla One", "Helvetica", sans-serif;*/
+    /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
+    --ff-oldstyle: "Playfair", 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052", serif;
+    --ff-subheads: "Old Standard TT", "Helvetica", sans-serif;
+    --ff-code: "JetBrains Mono", monospace;
+
+    --font-size: 20px;
+    --font-size-h6: calc(calc(var(--font-size) * var(--font-size-factor)));
+    --font-size-h5: calc(var(--font-size) * calc(pow(var(--font-size-factor), 2)));
+    --font-size-h4: calc(var(--font-size) * calc(pow(var(--font-size-factor), 3)));
+    --font-size-h3: calc(var(--font-size) * calc(pow(var(--font-size-factor), 4)));
+    --font-size-h2: calc(var(--font-size) * calc(pow(var(--font-size-factor), 5)));
+    --font-size-h1: calc(var(--font-size) * calc(pow(var(--font-size-factor), 6)));
+
+    /* Colors */
+    /* Youtube Red: https://www.color-hex.com/color-palette/19523 */
+    --catpuccin-peach: #fab387;
+    --red: #d02525;
+    --catpuccin-lavender: #b4befe;
+    --blue: #167ac6;
+    --catpuccin-sapphire: #74c7ec;
+    --catpuccin-teal: #94e2d5;
+    --catpuccin-green: #a6e3a1;
+    --catpuccin-text: #cdd6f4;
+    --catpuccin-subtext0: #a6adc8;
+    --catpuccin-surface0: #313244;
+    --black: #000000;
+    --near-black: #333333;
+    --grey: #595757;
+    --medium-grey: #999;
+    --light-grey: #ebebeb;
+    --white: #fff;
+
+    /* Color Uses */
+    --color-links: var(--red);
+    --color-body-text: var(--near-black);
+
+    /* Dark Theme Color Uses */
+    --dark-background-color: var(--catpuccin-surface0);
+    --dark-color-links: var(--catpuccin-green);
+    --dark-color-body-text: var(--catpuccin-text);
+    --dark-heading-color: var(--catpuccin-peach);
+    --dark-ff-body: var(--ff-code);
+    --dark-blockquote-color: var(--catpuccin-subtext0);
+    --background-color: var(--dark-background-color);
+}
+
 /* Then import your custom style files */
 @import './typesystem.css';
 @import './design.css';

@@ -1,80 +1,57 @@
 @font-face {
-    font-family: "Josefin Sans";
-    src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-family: "Playfair";
+    src: url('/fonts/Playfair-VariableFont_opsz,wdth,wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "Josefin Sans";
-    src: url('/fonts/JosefinSans-Italic-VariableFont_wght.ttf') format('truetype');
+    font-family: "Playfair";
+    src: url('/fonts/Playfair-VariableFont_opsz,wdth,wght.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "Labrada";
-    src: url('/fonts/Labrada_wght.ttf') format('truetype');
+    font-family: "Old Standard TT";
+    src: url('/fonts/OldStandardTT-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "Labrada";
-    src: url('/fonts/Labrada-Italic_wght.ttf') format('truetype');
+    font-family: "Old Standard TT";
+    src: url('/fonts/OldStandardTT-Italic.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "Lora";
-    src: url('/fonts/Lora-VariableFont_wght.ttf') format('truetype');
+    font-family: "Old Standard TT";
+    src: url('/fonts/OldStandardTT-Bold.ttf') format('truetype');
+    font-weight: bold;
     font-style: normal;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "Lora";
-    src: url('/fonts/Lora-Italic-VariableFont_wght.ttf') format('truetype');
-    font-style: italic;
-    font-display: fallback;
-}
-
-@font-face {
-    font-family: "Google Sans Code";
-    src: url('/fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
+    font-family: "JetBrains Mono";
+    src: url('/fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "Google Sans Code";
-    src: url('/fonts/GoogleSansCode-Italic-VariableFont_wght.ttf') format('truetype');
+    font-family: "JetBrains Mono";
+    src: url('/fonts/JetBrainsMono-Italic-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
     font-display: fallback;
-}
-
-:root {
-    /* Fonts */
-    --ff-sans-serif: 'Newsreader' "Bungee", "Fjalla One", "Helvetica", sans-serif;
-    /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: 'Lora', 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052", serif;
-    --ff-subheads: "Labrada",  "Josefin Sans", "Fjalla One", "Helvetica", sans-serif;
-    --ff-code: "Google Sans Code", monospace;
-
-    --font-size: 18px;
-    --font-size-h6: calc(calc(var(--font-size) * var(--font-size-factor)));
-    --font-size-h5: calc(var(--font-size) * calc(pow(var(--font-size-factor), 2)));
-    --font-size-h4: calc(var(--font-size) * calc(pow(var(--font-size-factor), 3)));
-    --font-size-h3: calc(var(--font-size) * calc(pow(var(--font-size-factor), 4)));
-    --font-size-h2: calc(var(--font-size) * calc(pow(var(--font-size-factor), 5)));
-    --font-size-h1: calc(var(--font-size) * calc(pow(var(--font-size-factor), 6)));
 }
 
 @media screen and (width > 768px) {
@@ -85,7 +62,7 @@
 
 @media screen and (width < 768px) {
     :root {
-        --font-size-factor: 1.2;
+        --font-size-factor: 1.15;
     }
 }
 
@@ -129,4 +106,9 @@ h1, h2, h3, h4, h5, h6 {
 h2, h3, h4, h5, h6 {
     font-family: var(--ff-subheads);
     font-weight: 600;
+}
+
+/* Other font styling */
+div.expressive-code {
+    font-variant-ligatures: none;
 }

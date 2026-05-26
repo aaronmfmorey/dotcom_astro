@@ -1,5 +1,10 @@
+html {
+    color: var(--near-black);
+    background-color: var(--white);
+}
+
 a {
-    color: blue;
+    color: var(--color-links);
     text-decoration: none;
 }
 
@@ -7,21 +12,52 @@ a:hover {
     text-decoration: underline;
 }
 
+a.anchor-link {
+    color: var(--light-grey);
+    font-size: .4em;
+    vertical-align: middle;
+    margin-left: .5em;
+}
+
+a.anchor-link:hover {
+    color: var(--medium-grey);
+}
+
 @layer base {
     ul, ol, li {
         list-style: revert-layer;
         margin: revert-layer;
         padding: revert-layer;
-        margin-left: 1.5em;
     }
 }
 
 /* Override for dark mode */
 html[data-theme="dark"] {
-    background-color: black;
+    background-color: var(--black);
+    color: var(--dark-color-body-text);
+    font-family: var(--dark-ff-body);
+    font-size: 18px;
 
-    color: white;
+    main {
+        max-width: clamp(250px, 60sch, 100%);
+    }
+
     a {
-        color: red;
+        color: var(--dark-color-links);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--ff-code);
+        letter-spacing: -0.08em;
+        color: var(--dark-heading-color);
+    }
+
+    blockquote {
+        color: var(--dark-blockquote-color);
+        font-style: italic;
+    }
+
+    blockquote em {
+        font-style: normal;
     }
 }

@@ -8,7 +8,8 @@ import AboutLinks from "@components/AboutLinks.astro";
 const pageTitle = "Aaron Morey";
 
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout>
+	<h1 class="hero-header">Aaron Morey</h1>
 	<div class="flex w-full justify-center">
 		<BitmojiImage src={bookAndLaptop} alt="A caricature of me reading a book in front of a laptop" />
 	</div>
@@ -49,5 +50,10 @@ const pageTitle = "Aaron Morey";
 		0% { opacity: 0 }
 		50% { opacity: 1 }
 		100% { opacity: 0 }
+	}
+
+	.hero-header {
+		font-size: 10ch;
+		font-weight: 800;
 	}
 </style>

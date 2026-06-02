@@ -1,0 +1,45 @@
+---
+const { dividerWidth = "100%" } = Astro.props;
+console.log(dividerWidth)
+---
+<div class="outer">
+    <div class="top-line">&nbsp;</div>
+    <div class="first-line">&nbsp;</div>
+    <div class="second-line">&nbsp;</div>
+</div>
+
+<style define:vars={{dividerWidth}}>
+
+    .outer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 100%;
+    }
+
+    .top-line {
+        width: calc(var(--dividerWidth) * .6184); /* Golden ratio inverted */
+        border-top: 1px solid var(--near-black);
+        line-height: 5px;
+        filter: opacity(80%);
+    }
+
+    .first-line {
+        border: none;
+        border: 1px solid var(--near-black);
+        width: var(--dividerWidth);
+        border-radius: 10px;
+        height: 0px;
+        filter: opacity(80%);
+    }
+
+    .second-line {
+        width: calc(var(--dividerWidth) * .6184); /* Golden ratio inverted */
+        border-bottom: 1px solid var(--near-black);
+        line-height: 5px;
+        filter: opacity(80%);
+    }
+</style>

@@ -31,6 +31,29 @@ a.anchor-link:hover {
     }
 }
 
+table {
+    width: 95%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 5px;
+    padding-left: 10px;
+}
+
+tr {
+    border: 1px black solid;
+}
+
+thead tr {
+    background-color: var(--near-black);
+    color: var(--light-grey);
+    font-family: var(--ff-subheads);
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.1em;
+}
+
 /* Override for dark mode */
 html[data-theme="dark"] {
     background-color: var(--black);

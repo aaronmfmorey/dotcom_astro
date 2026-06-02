@@ -5,6 +5,8 @@ import {formatDateLong, slugify} from '@utils/utils.ts';
 import linkifyHtml from 'linkify-html';
 import {bookshopAffiliateUrl} from "@utils/utils";
 import ReviewDialog from "@components/Reading/ReviewDialog.astro";
+import CoverImageFlipper from "@components/Reading/CoverImageFlipper.astro";
+import Divider from "@components/Divider.astro";
 
 const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
 const authorMatchesTag = function(authorName :string) {
@@ -37,52 +39,62 @@ const bookshopSlug = book.bookshop_slug ?? book.isbn13;
 const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
 ---
     {
-        // Make YearRead hang out at the top untli the next comes along?
-        yearRead !== previousYearRead
-        ? <h2>{yearRead} ({yearCounts[yearRead]})</h2>
-        :""
+        yearRead !== previousYearRead && yearRead !== (new Date()).getFullYear()
+          ? <Divider dividerWidth="61.84%" />
+          : ""
     }
-<div>
+    {
+        yearRead !== previousYearRead
+            ? <h2>{yearRead} ({yearCounts[yearRead]})</h2>
+            :""
+    }
+<div class="book-entry-container">
     <div class="flex flex-row flex-wrap w-full items-stretch">
         {
             coverImageExists(book.isbn)
-                ?  <div class="book-cover-container">
-                        <Image
-                            class="h-full object-contain"
-                            src={coverImages[imagePath]()}
-                            alt=`Cover image for ${book.title}`
-                            width={250}
-                            quality={80}
-                        />
+                ?  <div class="post-wrap book-cover-container flip-card"> <!-- The parent element -->
+                        <div class="flip-card-inner"> <!-- Child element that flips -->
+                            <div class="flip-card-front">
+                                <Image
+                                        class="h-full object-contain"
+                                        src={coverImages[imagePath]()}
+                                        alt=`Cover image for ${book.title}`
+                                        width={200}
+                                        quality={80}
+                                />
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>{formatPublicationYear(book.original_publication_year)}</h3>
+                                <div class="book-info">
+                                    {
+                                        book.number_of_pages ? `${book.number_of_pages.toLocaleString()} pages` : ""
+                                    }
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 : <div class="book-cover-container">
                         <i class="fa-solid fa-book-bookmark" />
                     </div>
         }
-        <div style="width: 66%;">
-            <h3 class="book-title">
-                <span>{book.title}</span> -
-                {formatPublicationYear(book.original_publication_year)}
+        <div class="book-info-container">
+            <h3 class="book-heading">
+                <span>{book.title}</span>
                 {
                     1 == book.no_bookshop ?
                         "":
                         <Fragment set:html={bookshopAffiliateUrl(bookshopSlug)} />
                 }
             </h3>
-            <div class="book-author">
+            <div class="book-info">
                 {
                     authorMatchesTag(book.author)
                         ? <a href=`/tags/${slugify(book.author)}/`>{book.author}</a>
                         : book.author
                 }
             </div>
-            <div class="book-pages">
-                {
-                    book.number_of_pages ? `${book.number_of_pages.toLocaleString()} pages` : ""
-                }
-            </div>
-            <div>
-                <div>{formatDateLong(book.date_read)}
+            <div class="book-info">
+                <div>Finished: {formatDateLong(book.date_read)}
                 {
                     book.running_total && book.running_total > 1 ?
                         <span >(Re-read: {book.running_total})</span>
@@ -103,3 +115,134 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
         </div>
     </div>
 </div>
+
+<style>
+    .book-entry-container {
+        padding-top: 10px;
+    }
+
+    h3.book-heading {
+        font-size: calc(var(--font-size-h3) * .66);
+        font-weight: 800;
+    }
+
+    .book-heading span {
+        font-style: italic;
+    }
+
+    .book-pages {
+        font-size: var(--font-size);
+    }
+
+    .book-cover-container {
+        display: flex;
+        flex: 1;
+        padding: 5px;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+        align-items: center;
+        min-height: 10px;
+    }
+
+    .book-cover-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        align-self: center;
+    }
+
+    .book-info-container {
+        flex: 3;
+        padding: 5px;
+    }
+
+    .book-cover-container i {
+        font-size:100px;
+        color: var(--light-grey);
+        height: 150px;
+        align-self: center;
+        height: 100%;
+    }
+
+    div.book-info {
+        font-size: clamp(14px, 2.5vw, 1em);
+    }
+
+    /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+    .flip-card {
+        background-color: transparent;
+        width: 100%;
+        height: 225px;
+        perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    }
+
+    /* This container is needed to position the front and back side */
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    /* Do an horizontal flip when you move the mouse over the flip box container */
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    /* Position the front and back side */
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+    }
+
+    /* Style the back side */
+    .flip-card-back {
+        background-color: var(--light-grey);
+        color: var(--color-body-text);
+        transform: rotateY(180deg);
+    }
+
+    /*
+    .post-wrap {
+        perspective: 1000px;
+    }
+
+    .post {
+        position: relative; /* Required to absolutely position the child faces * /
+        width: 100%;
+    }
+
+    .post-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+    }
+
+    .post-back {
+        transform: rotateY(180deg);
+    }
+
+    .post-front, .post-back {
+        /* Existing styles here * /
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .post-wrap:hover .post {
+        transform: rotateY(180deg);
+    }
+
+    .post {
+        /* Existing styles here * /
+        transition: transform 1s;
+        transform-style: preserve-3d;
+    }
+     */
+</style>

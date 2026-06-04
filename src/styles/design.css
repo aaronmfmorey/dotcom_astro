@@ -45,6 +45,14 @@ tr {
     border: 1px black solid;
 }
 
+/*
+ * Astro has an overriding specificity on odd numbered tables,
+ * mark as !important to ensure this styling takes precedence.
+ */
+tbody tr.odd {
+    background-color: var(--nearly-white);
+}
+
 thead tr {
     background-color: var(--near-black);
     color: var(--light-grey);

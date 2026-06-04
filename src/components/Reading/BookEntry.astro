@@ -1,7 +1,7 @@
 ---
 import {Image} from "astro:assets";
 import BookStars from "@components/Reading/BookStars.astro";
-import {formatDateLong, slugify} from '@utils/utils.ts';
+import {formatDateLong, slugify, authorMatchesTag} from '@utils/utils.ts';
 import linkifyHtml from 'linkify-html';
 import {bookshopAffiliateUrl} from "@utils/utils";
 import ReviewDialog from "@components/Reading/ReviewDialog.astro";
@@ -9,9 +9,6 @@ import CoverImageFlipper from "@components/Reading/CoverImageFlipper.astro";
 import Divider from "@components/Divider.astro";
 
 const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
-const authorMatchesTag = function(authorName :string) {
-    return uniqueTags.includes(slugify(authorName));
-};
 
 const coverImageExists = function(isbn: string): boolean {
     return (
@@ -88,7 +85,7 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
             </h3>
             <div class="book-info">
                 {
-                    authorMatchesTag(book.author)
+                    authorMatchesTag(book.author, uniqueTags)
                         ? <a href=`/tags/${slugify(book.author)}/`>{book.author}</a>
                         : book.author
                 }
@@ -117,8 +114,12 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
 </div>
 
 <style>
+    @reference 'tailwindcss';
     .book-entry-container {
-        padding-top: 10px;
+        margin-bottom: 10px;
+        background-color: var(--nearly-white);
+        border-radius: 10px;
+        @apply drop-shadow;
     }
 
     h3.book-heading {
@@ -169,7 +170,6 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
         font-size: clamp(14px, 2.5vw, 1em);
     }
 
-    /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
     .flip-card {
         background-color: transparent;
         width: 100%;
@@ -177,7 +177,6 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
         perspective: 1000px; /* Remove this if you don't want the 3D effect */
     }
 
-    /* This container is needed to position the front and back side */
     .flip-card-inner {
         position: relative;
         width: 100%;
@@ -187,62 +186,23 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
         transform-style: preserve-3d;
     }
 
-    /* Do an horizontal flip when you move the mouse over the flip box container */
     .flip-card:hover .flip-card-inner {
         transform: rotateY(180deg);
     }
 
-    /* Position the front and back side */
     .flip-card-front, .flip-card-back {
         position: absolute;
         width: 100%;
         height: 100%;
         -webkit-backface-visibility: hidden; /* Safari */
         backface-visibility: hidden;
+        @apply drop-shadow;
+        border-radius: 5px;
     }
 
-    /* Style the back side */
     .flip-card-back {
-        background-color: var(--light-grey);
+        background-color: var(--very-nearly-white);
         color: var(--color-body-text);
         transform: rotateY(180deg);
     }
-
-    /*
-    .post-wrap {
-        perspective: 1000px;
-    }
-
-    .post {
-        position: relative; /* Required to absolutely position the child faces * /
-        width: 100%;
-    }
-
-    .post-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: white;
-    }
-
-    .post-back {
-        transform: rotateY(180deg);
-    }
-
-    .post-front, .post-back {
-        /* Existing styles here * /
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-    }
-
-    .post-wrap:hover .post {
-        transform: rotateY(180deg);
-    }
-
-    .post {
-        /* Existing styles here * /
-        transition: transform 1s;
-        transform-style: preserve-3d;
-    }
-     */
 </style>

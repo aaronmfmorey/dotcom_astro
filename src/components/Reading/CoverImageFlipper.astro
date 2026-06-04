@@ -1,3 +1,125 @@
 ---
-$END$
+import {Image} from "astro:assets";
+import BookStars from "@components/Reading/BookStars.astro";
+import ReviewDialog from "@components/Reading/ReviewDialog.astro";
+const {book, coverImages} = Astro.props;
+let path = "";
+
+const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
+
+const coverImageExists = function(imagePath:string): boolean {
+    return (
+        Object.keys(coverImages).includes(imagePath)
+    );
+};
+
+const formatPublicationYear = function(year :string) {
+    if (!year) {
+        return "";
+    }
+
+    const iYear:number = parseInt(year);
+    if (iYear < 0) {
+        return Math.abs(iYear) + " BC";
+    } else if (iYear < 100) {
+        return "AD " + iYear;
+    } else {
+        return iYear;
+    }
+};
+
 ---
+{
+    coverImageExists(imagePath)
+        ?  <div class="book-cover-container flip-card"> <!-- The parent element -->
+            <div class="flip-card-inner"> <!-- Child element that flips -->
+                <div class="flip-card-front">
+                    <Image
+                            class="h-full object-contain"
+                            src={coverImages[imagePath]()}
+                            alt=`Cover image for ${book.title}`
+                            width={200}
+                            quality={80}
+                    />
+                </div>
+                <div class="flip-card-back">
+                    <h3>{formatPublicationYear(book.original_publication_year)}</h3>
+                    <div class="book-info">
+                        {
+                            book.number_of_pages ? `${book.number_of_pages.toLocaleString()} pages` : ""
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        : <div class="book-cover-container">
+            <i class="fa-solid fa-book-bookmark" />
+        </div>
+}
+
+<style>
+    @reference 'tailwindcss';
+    .book-cover-container {
+        display: flex;
+        flex: 1;
+        padding: 5px;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+        align-items: center;
+    }
+
+    .book-cover-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        align-self: center;
+    }
+
+    .book-cover-container i {
+        font-size:100px;
+        color: var(--light-grey);
+        align-self: center;
+        height: 100%;
+    }
+
+    div.book-info {
+        font-size: clamp(14px, 2.5vw, 1em);
+    }
+
+    .flip-card {
+        background-color: transparent;
+        width: 100%;
+        height: 225px;
+        perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+        @apply drop-shadow;
+        border-radius: 5px;
+    }
+
+    .flip-card-back {
+        background-color: var(--very-nearly-white);
+        color: var(--color-body-text);
+        transform: rotateY(180deg);
+    }
+</style>

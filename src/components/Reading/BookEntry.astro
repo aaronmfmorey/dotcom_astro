@@ -10,30 +10,11 @@ import Divider from "@components/Divider.astro";
 
 const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
 
-const coverImageExists = function(isbn: string): boolean {
-    return (
-        Object.keys(coverImages).includes("../../assets/images/covers/" + isbn + ".jpg")
-    );
-}
-
-const formatPublicationYear = function(year :string) {
-    if (!year) {
-        return "";
-    } else {
-        const iYear:number = parseInt(year);
-        if (iYear < 0) {
-            return Math.abs(iYear) + " BC";
-        } else {
-            return iYear;
-        }
-    }
-}
-
 const yearRead = new Date(Date.parse(book.date_read)).getFullYear();
 
 const bookshopSlug = book.bookshop_slug ?? book.isbn13;
 
-const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
+
 ---
     {
         yearRead !== previousYearRead && yearRead !== (new Date()).getFullYear()
@@ -47,33 +28,7 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
     }
 <div class="book-entry-container">
     <div class="flex flex-row flex-wrap w-full items-stretch">
-        {
-            coverImageExists(book.isbn)
-                ?  <div class="post-wrap book-cover-container flip-card"> <!-- The parent element -->
-                        <div class="flip-card-inner"> <!-- Child element that flips -->
-                            <div class="flip-card-front">
-                                <Image
-                                        class="h-full object-contain"
-                                        src={coverImages[imagePath]()}
-                                        alt=`Cover image for ${book.title}`
-                                        width={200}
-                                        quality={80}
-                                />
-                            </div>
-                            <div class="flip-card-back">
-                                <h3>{formatPublicationYear(book.original_publication_year)}</h3>
-                                <div class="book-info">
-                                    {
-                                        book.number_of_pages ? `${book.number_of_pages.toLocaleString()} pages` : ""
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                : <div class="book-cover-container">
-                        <i class="fa-solid fa-book-bookmark" />
-                    </div>
-        }
+        <CoverImageFlipper book={book} coverImages={coverImages} />
         <div class="book-info-container">
             <h3 class="book-heading">
                 <span>{book.title}</span>
@@ -131,78 +86,10 @@ const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
         font-style: italic;
     }
 
-    .book-pages {
-        font-size: var(--font-size);
-    }
-
-    .book-cover-container {
-        display: flex;
-        flex: 1;
-        padding: 5px;
-        justify-content: center;
-        justify-items: center;
-        align-content: center;
-        align-items: center;
-        min-height: 10px;
-    }
-
-    .book-cover-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        align-self: center;
-    }
 
     .book-info-container {
         flex: 3;
         padding: 5px;
     }
 
-    .book-cover-container i {
-        font-size:100px;
-        color: var(--light-grey);
-        height: 150px;
-        align-self: center;
-        height: 100%;
-    }
-
-    div.book-info {
-        font-size: clamp(14px, 2.5vw, 1em);
-    }
-
-    .flip-card {
-        background-color: transparent;
-        width: 100%;
-        height: 225px;
-        perspective: 1000px; /* Remove this if you don't want the 3D effect */
-    }
-
-    .flip-card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        transition: transform 0.8s;
-        transform-style: preserve-3d;
-    }
-
-    .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-    }
-
-    .flip-card-front, .flip-card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        -webkit-backface-visibility: hidden; /* Safari */
-        backface-visibility: hidden;
-        @apply drop-shadow;
-        border-radius: 5px;
-    }
-
-    .flip-card-back {
-        background-color: var(--very-nearly-white);
-        color: var(--color-body-text);
-        transform: rotateY(180deg);
-    }
 </style>

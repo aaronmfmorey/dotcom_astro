@@ -3,21 +3,50 @@ const {reviewContents} = Astro.props;
 ---
 <dialog class="review-dialog">
     <div class="review-dialog-content">
+        <button class="close-button" aria-label="Close dialog">
+            <i class="fa-solid fa-close" />
+        </button>
         <div class="review-dialog-body">
             <blockquote>
-                <button class="close-button" aria-label="Close dialog">
-                    <i class="fa-solid fa-close" />
-                </button>
                 <Fragment set:html={reviewContents} />
             </blockquote>
         </div>
     </div>
 </dialog>
 <button class="open-button">
-    <i class="fa-solid fa-maximize"></i> My review
+    My review
+    <i class="fa-solid fa-square-arrow-up-right"></i>
 </button>
 
 <style>
+    .open-button {
+        border: none;
+        background-color: inherit;
+        color: var(--red);
+        padding: 0;
+    }
+
+    .open-button:hover {
+        text-decoration: underline;
+    }
+
+    .open-button i {
+        font-size: .75em;
+    }
+
+    .review-dialog {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 500px; /* or your desired max width */
+    }
+
+    .review-dialog-body blockquote {
+        font-style: italic;
+    }
+
     @keyframes fadeIn {
         from {
             opacity: 0;

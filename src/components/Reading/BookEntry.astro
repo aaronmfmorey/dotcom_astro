@@ -58,12 +58,12 @@ const bookshopSlug = book.bookshop_slug ?? book.isbn13;
                         <BookStars rating={book.my_rating} /> :
                         ""
                 }
+                {
+                    !!book.my_review
+                        ? <ReviewDialog reviewContents={linkifyHtml(book.my_review)} />
+                        : ""
+                }
             </div>
-            {
-                !!book.my_review
-                    ? <ReviewDialog reviewContents={linkifyHtml(book.my_review)} />
-                    : ""
-            }
         </div>
     </div>
 </div>
@@ -75,6 +75,7 @@ const bookshopSlug = book.bookshop_slug ?? book.isbn13;
         background-color: var(--nearly-white);
         border-radius: 10px;
         @apply drop-shadow;
+        line-height: 1.5em;
     }
 
     h3.book-heading {

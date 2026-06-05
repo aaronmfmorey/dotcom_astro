@@ -45,6 +45,11 @@ tr {
     border: 1px black solid;
 }
 
+button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
 /*
  * Astro has an overriding specificity on odd numbered tables,
  * mark as !important to ensure this styling takes precedence.

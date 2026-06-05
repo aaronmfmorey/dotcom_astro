@@ -1,9 +1,10 @@
 ---
+const {book, coverImages} = Astro.props;
 import {Image} from "astro:assets";
+import defaultBookImage from '@fontawesomesubmodule/svgs/solid/book.svg';
 import BookStars from "@components/Reading/BookStars.astro";
 import ReviewDialog from "@components/Reading/ReviewDialog.astro";
-const {book, coverImages} = Astro.props;
-let path = "";
+import BookIcon from "@fontawesomesubmodule/svgs/solid/book.svg";
 
 const imagePath:string = `../../assets/images/covers/${book.isbn}.jpg`;
 
@@ -28,34 +29,34 @@ const formatPublicationYear = function(year :string) {
     }
 };
 
+const imageExists = coverImageExists(imagePath)
+
 ---
-{
-    coverImageExists(imagePath)
-        ?  <div class="book-cover-container flip-card"> <!-- The parent element -->
-            <div class="flip-card-inner"> <!-- Child element that flips -->
-                <div class="flip-card-front">
-                    <Image
-                            class="h-full object-contain"
-                            src={coverImages[imagePath]()}
-                            alt=`Cover image for ${book.title}`
-                            width={200}
-                            quality={80}
+<div class="book-cover-container flip-card"> <!-- The parent element -->
+    <div class="flip-card-inner"> <!-- Child element that flips -->
+        <div class="flip-card-front">
+            {
+                imageExists
+                    ? <Image
+                        class=`h-full object-contain`
+                        src={coverImages[imagePath]()}
+                        alt=`Cover image for ${book.title}`
+                        width={200}
+                        quality={80}
                     />
-                </div>
-                <div class="flip-card-back">
-                    <h3>{formatPublicationYear(book.original_publication_year)}</h3>
-                    <div class="book-info">
-                        {
-                            book.number_of_pages ? `${book.number_of_pages.toLocaleString()} pages` : ""
-                        }
-                    </div>
-                </div>
+                    : <BookIcon />
+            }
+        </div>
+        <div class="flip-card-back">
+            <h3>{formatPublicationYear(book.original_publication_year)}</h3>
+            <div class="book-info">
+                {
+                    book.number_of_pages ? `${book.number_of_pages.toLocaleString()} pages` : ""
+                }
             </div>
         </div>
-        : <div class="book-cover-container">
-            <i class="fa-solid fa-book-bookmark" />
-        </div>
-}
+    </div>
+</div>
 
 <style>
     @reference 'tailwindcss';
@@ -76,11 +77,12 @@ const formatPublicationYear = function(year :string) {
         align-self: center;
     }
 
-    .book-cover-container i {
-        font-size:100px;
-        color: var(--light-grey);
+    .book-cover-container svg {
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
         align-self: center;
-        height: 100%;
+        fill: var(--medium-grey)
     }
 
     div.book-info {

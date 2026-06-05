@@ -44,8 +44,7 @@ let sortedTags = Object.keys(tagDict)
         display: flex;
         flex-direction: row;
         line-height: 1.5em;
-        background-color: var(--glassy-background-opaquer);
-        width: 40ch;
+        width: clamp(50px, 30ch, 600px);
     }
 
     span.tag-table-cell-left {

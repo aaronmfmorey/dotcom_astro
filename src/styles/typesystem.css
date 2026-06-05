@@ -1,14 +1,14 @@
 @font-face {
-    font-family: "Playfair";
-    src: url('/fonts/Playfair-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+    font-family: "Vollkorn";
+    src: url('/fonts/Vollkorn-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "Playfair";
-    src: url('/fonts/Playfair-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+    font-family: "Vollkorn";
+    src: url('/fonts/Vollkorn-Italic-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
     font-display: fallback;
@@ -56,13 +56,13 @@
 
 @media screen and (width > 768px) {
     :root{
-        --font-size-factor: 1.25;
+        --font-size-factor: 1.2;
     }
 }
 
 @media screen and (width < 768px) {
     :root {
-        --font-size-factor: 1.15;
+        --font-size-factor: 1.1;
     }
 }
 

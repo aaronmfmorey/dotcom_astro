@@ -5,9 +5,10 @@
     /* Fonts */
     /*--ff-sans-serif: 'Newsreader' "Bungee", "Fjalla One", "Helvetica", sans-serif;*/
     /* From Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
-    --ff-oldstyle: "Playfair", 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052", serif;
+    --ff-oldstyle: "Vollkorn", 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052", serif;
     --ff-subheads: "Old Standard TT", "Helvetica", sans-serif;
     --ff-code: "JetBrains Mono", monospace;
+    --ec-codeFontFml: "JetBrains Mono", monospace;
 
     --font-size: 20px;
     --font-size-h6: calc(calc(var(--font-size) * var(--font-size-factor)));
@@ -15,7 +16,7 @@
     --font-size-h4: calc(var(--font-size) * calc(pow(var(--font-size-factor), 3)));
     --font-size-h3: calc(var(--font-size) * calc(pow(var(--font-size-factor), 4)));
     --font-size-h2: calc(var(--font-size) * calc(pow(var(--font-size-factor), 5)));
-    --font-size-h1: calc(var(--font-size) * calc(pow(var(--font-size-factor), 6)));
+    --font-size-h1: calc(var(--font-size) * calc(pow(var(--font-size-factor), 6)) * 1.1);
 
     /* Colors */
     /* Youtube Red: https://www.color-hex.com/color-palette/19523 */

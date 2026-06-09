@@ -1,12 +1,19 @@
 ---
-const { dividerWidth = "100%" } = Astro.props;
-console.log(dividerWidth)
+import type {DividerProps} from "@types";
+
+interface Props extends  DividerProps {};
+
+const { dividerWidth = "100%", colorMode = 'light'} = Astro.props as DividerProps;
 ---
-<div class="outer">
-    <div class="top-line">&nbsp;</div>
-    <div class="first-line">&nbsp;</div>
-    <div class="second-line">&nbsp;</div>
-</div>
+{
+        colorMode == 'light'
+        ? <div class="outer">
+            <div class="top-line">&nbsp;</div>
+            <div class="first-line">&nbsp;</div>
+            <div class="second-line">&nbsp;</div>
+        </div>
+        : ""
+}
 
 <style define:vars={{dividerWidth}}>
 

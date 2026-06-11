@@ -35,9 +35,15 @@ a.anchor-link:hover {
     }
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 table {
     width: 95%;
     border-collapse: collapse;
+    white-space: nowrap;
 }
 
 td {
@@ -69,6 +75,21 @@ thead tr {
     font-weight: 800;
     font-style: italic;
     line-height: 1.1em;
+}
+
+thead th {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.table-scroll-container {
+    overflow-x: auto;
+}
+
+.table-scroll-container table {
+    width: 100%;
 }
 
 /* Override for dark mode */

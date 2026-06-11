@@ -5,36 +5,50 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.split("/")[1];
 ---
 <details class="relative">
-    <summary class="cursor-pointer p-2 font-medium">Menu</summary>
-    <nav class="absolute top-full w-full left-0 right-0 border-b border-gray-200 flex flex-col z-50 justify-center">
+    <summary class="cursor-pointer p-2 font-medium">&nbsp;</summary>
+    <nav class="absolute top-full w-full left-0 right-0 flex flex-col z-50 justify-center">
         <NavigationLink
-            url="/"
-            label="Home"
-            icon="fa-solid fa-house-chimney" />
+                url="/"
+                label="Home"
+                icon="fa-solid fa-house-chimney"
+                currentPath={currentPath}
+                itemPath="" />
         <NavigationLink
-            url="/about/"
-            label="About"
-            icon="fa-solid fa-circle-info" />
+                url="/about/"
+                label="About"
+                icon="fa-solid fa-circle-info"
+                currentPath={currentPath}
+                itemPath="about" />
         <NavigationLink
-            url="/posts/1"
-            label="Blog"
-            icon="fa-solid fa-pen-to-square" />
+                url="/posts/1"
+                label="Blog"
+                icon="fa-solid fa-pen-to-square"
+                currentPath={currentPath}
+                itemPath="posts" />
         <NavigationLink
-            url="/micros/"
-            label="Micros"
-            icon="fa-solid fa-mobile-screen-button" />
+                url="/micros/"
+                label="Micros"
+                icon="fa-solid fa-mobile-screen-button"
+                currentPath={currentPath}
+                itemPath="micros" />
         <NavigationLink
-            url="/reading/"
-            label="Reading"
-            icon="fa-solid fa-book-open-reader" />
+                url="/reading/"
+                label="Reading"
+                icon="fa-solid fa-book-open-reader"
+                currentPath={currentPath}
+                itemPath="reading"/>
         <NavigationLink
-            url="/code/"
-            label="Code"
-            icon="fa-solid fa-code" />
+                url="/code/"
+                label="Code"
+                icon="fa-solid fa-code"
+                currentPath={currentPath}
+                itemPath="code" />
         <NavigationLink
-            url="/etc/"
-            label="Etc."
-            icon="fa-solid fa-sink" />
+                url="/etc/"
+                label="Etc."
+                icon="fa-solid fa-sink"
+                currentPath={currentPath}
+                itemPath="etc"/>
 
         <pagefind-modal-trigger compact="true" hide-shortcut="true" class="pagefind-modal-trigger"></pagefind-modal-trigger>
         <pagefind-modal></pagefind-modal>
@@ -43,7 +57,8 @@ const currentPath = pathname.split("/")[1];
 
 <style>
     nav {
-        background-color: white;
+        background-color: var(--nearly-white);
+        z-index: 1000;
     }
 
     details {
@@ -57,6 +72,10 @@ const currentPath = pathname.split("/")[1];
         font-weight: 900;
         content: "\f0c9"; /* down arrow */
         margin-right: 10px;
+    }
+
+    details[open] {
+        background-color: var(--nearly-white);
     }
 
     details[open] > summary::before {

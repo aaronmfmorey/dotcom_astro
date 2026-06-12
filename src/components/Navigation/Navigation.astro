@@ -57,10 +57,14 @@ const currentPath = pathname.split("/")[1];
 
 <style>
     nav {
-        background-color: var(--nearly-white);
-        z-index: 1000;
+        /* From https://css.glass */
+        background: rgba(235 235 235, 0.66);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9.1px);
+        -webkit-backdrop-filter: blur(9.1px);
+        border: 1px solid rgba(255, 255, 255, 1);
     }
-
     details {
         display: grid;
         grid-template-rows: 0fr;
@@ -72,10 +76,6 @@ const currentPath = pathname.split("/")[1];
         font-weight: 900;
         content: "\f0c9"; /* down arrow */
         margin-right: 10px;
-    }
-
-    details[open] {
-        background-color: var(--nearly-white);
     }
 
     details[open] > summary::before {

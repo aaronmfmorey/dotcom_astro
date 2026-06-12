@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 const {post} = Astro.props;
 const frontmatter = post.data;
 const {Content} = await render(post);
+// TODO AMM - Add nav back to the page this came from
 ---
 <MarkdownPostLayout post={post} frontmatter={frontmatter} showByline={true} showWordCount={true}>
     <Content />

@@ -6,7 +6,7 @@ import AnchoredHeader from "@components/AnchoredHeader.astro";
 
 let numPosts = await getFileCount('aaronmoreycom_content/content/posts', "*.md");
 let numPages = await getFileCount('aaronmoreycom_content/content/pages', "*.md");
-let astroComponents = await getFileCount('src/components', "*.astro");
+let astroComponents = await getFileCount('src/', "*.astro");
 
 const postWords = await getFileWordCount('aaronmoreycom_content/content/posts', "*.md");
 const pageWords = await getFileWordCount('aaronmoreycom_content/content/pages', "*.md");
@@ -16,8 +16,6 @@ const jsLines = await getFileLineCount('src/', "*.js");
 const tsLines = await getFileLineCount('src/', "*.ts");
 const cssLines = await getFileLineCount('src/', "*.css");
 const loc = astroLines + jsLines + tsLines + cssLines;
-
-console.log("astroLines + jsLines + tsLines + cssLines", astroLines, jsLines, tsLines, cssLines);
 ---
 <div class="pb-5">
 

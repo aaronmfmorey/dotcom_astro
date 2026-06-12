@@ -8,7 +8,6 @@
     --ff-oldstyle: "Vollkorn", 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052", serif;
     --ff-subheads: "Old Standard TT", "Helvetica", sans-serif;
     --ff-code: "JetBrains Mono", monospace;
-    --ec-codeFontFml: "JetBrains Mono", monospace;
 
     --font-size: 20px;
     --font-size-h6: calc(calc(var(--font-size) * var(--font-size-factor)));

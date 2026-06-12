@@ -8,6 +8,7 @@ micros.sort((a, b) => {
 import MicroPost from "@components/Micros/MicroPost.astro";
 import onTheJohn from "@contentsubmodule/images/OnTheJohn.png";
 const pageTitle = "Micro Posts";
+console.log("Micors Index")
 ---
 <BaseLayout pageTitle={pageTitle}>
     <p>
@@ -22,5 +23,9 @@ const pageTitle = "Micro Posts";
     </div>
 </BaseLayout>
 <style>
-
+    .micro-container {
+        background-color: var(--twitterBlue);
+        padding: 10px;
+        font-family: sans-serif;
+    }
 </style>

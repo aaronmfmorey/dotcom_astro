@@ -1,0 +1,9 @@
+---
+const {jsonFilePath} = Astro.props;
+const data = await import(jsonFilePath);
+---
+<ul>
+{
+    data.links.map(lnk => <li><a href={lnk.url}>{lnk.title}</a></li>)
+}
+</ul>

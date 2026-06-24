@@ -1,0 +1,55 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import LinkList from "@components/LinkList.astro";
+const pageTitle = "Colophon";
+---
+<BaseLayout pageTitle={pageTitle}>
+    <p>This site was created from the ground up by Aaron Morey.
+        It is statically generated using the <strong>Astro web framework</strong>
+        <a href="https://astro.build" target="_blank">
+            <i class="fa-solid fa-up-right-from-square" style="font-size: .66em;"></i>
+        </a>.</p>
+    <h2>Design Notes</h2>
+    <p>
+        The heading font is <span class="heading-font">Old Standard TT.</span>
+        <a href="https://fonts.google.com/specimen/Old+Standard+TT" target="_blank">
+            <i class="fa-solid fa-up-right-from-square" style="font-size: .66em;"></i>
+        </a>
+    </p>
+    <p>
+        The body font is <span class="body-font">Vollkorn</span>.
+        <a href="https://fonts.google.com/specimen/Vollkorn" target="_blank">
+            <i class="fa-solid fa-up-right-from-square" style="font-size: .66em;"></i>
+        </a>
+    </p>
+    <p>
+        The code font is <code>JetBrains Mono</code>.
+        <a href="https://fonts.google.com/specimen/JetBrains+Mono" target="_blank">
+            <i class="fa-solid fa-up-right-from-square" style="font-size: .66em;"></i>
+        </a>
+    </p>
+    <p>All fonts are hosted locally to avoid leaking user data to Google through the font CDN.</p>
+    <p>
+        This is an almost entirely static site, meant to host read-only content: my writing, reading notes,
+        and code. With this purpose in mind, I took inspiration from old broadsheet newspapers. The black on
+        white coloring ensures the text remains the center of attention.
+    </p>
+    <h2>Technical Details</h2>
+    <LinkList jsonFilePath="/aaronmoreycom_content/content/data/technical_details_articles.json" test="A Test"></LinkList>
+</BaseLayout>
+
+<style>
+    .heading-font {
+        font-family: var(--ff-subheads);
+        font-weight: 700;
+        font-size: 1.1em;
+    }
+
+    .body-font {
+        font-weight: 800;
+    }
+
+    code {
+        font-size: .8em;
+    }
+</style>

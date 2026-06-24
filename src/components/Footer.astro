@@ -1,28 +1,133 @@
 ---
 import Social from './Social.astro';
 import Divider from "@components/Divider.astro";
+import NavigationLink from "@components/Navigation/NavigationLink.astro";
 const platform = "github";
 const username = "withastro";
 ---
-<footer class="w-full grid">
-    <Divider dividerWidth="80%" />
+<footer class="footer-grid">
+    <Divider dividerWidth="61%" />
     <div class="copyright">
         &copy; {new Date().getFullYear()} Aaron Morey
+        <br />
+        <Social platform="rss" />
     </div>
-    <div class="learn-more">
-        <h6>Learn More</h6>
-        <div class="social-links">
-            <Social platform="rss" />
-            <br />
-            <Social platform="github" />
+    <div class="column-container">
+        <div class="learn-more">
+            <h6>Site Content:</h6>
+            <div class="social-links">
+                <NavigationLink
+                        url="/"
+                        label="Home"
+                        icon="fa-solid fa-house-chimney"
+                        currentPath={null}
+                        itemPath="" />
+                <NavigationLink
+                        url="/about/"
+                        label="About"
+                        icon="fa-solid fa-circle-info"
+                        currentPath={null}
+                        itemPath="about" />
+                <NavigationLink
+                        url="/posts/1"
+                        label="Blog"
+                        icon="fa-solid fa-pen-to-square"
+                        currentPath={null}
+                        itemPath="posts" />
+                <NavigationLink
+                        url="/micros/"
+                        label="Micros"
+                        icon="fa-solid fa-mobile-screen-button"
+                        currentPath={null}
+                        itemPath="micros" />
+                <NavigationLink
+                        url="/reading/"
+                        label="Reading"
+                        icon="fa-solid fa-book-open-reader"
+                        currentPath={null}
+                        itemPath="reading"/>
+                <NavigationLink
+                        url="/code/"
+                        label="Code"
+                        icon="fa-solid fa-code"
+                        currentPath={null}
+                        itemPath="code" />
+                <NavigationLink
+                        url="/etc/"
+                        label="Etc."
+                        icon="fa-solid fa-sink"
+                        currentPath={null}
+                        itemPath="etc"/>
+
+            </div>
+        </div>
+        <div class="learn-more">
+            <h6>More Fine Content Available At:</h6>
+            <div class="social-links">
+                <Social platform="github" />
+                <Social platform="goodreads" />
+                <Social platform="hevy" />
+                <Social platform="runtastic" />
+            </div>
         </div>
     </div>
 <button id="theme-toggle" style="display:none;">Toggle Theme</button>
 </footer>
 
 <style>
-    .copyright, .learn-more {
-        justify-self: center;
-        justify-content: center;
+
+    /* Footer grid container */
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 0;
+    }
+
+    /* Divider: centered at 80% width */
+    .outer {
+        width: 80%;
+        max-width: 80%;
+    }
+
+    /* Copyright: centered */
+    .copyright {
+        text-align: center;
+        width: 100%;
+    }
+
+    .column-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        width: 80%;
+    }
+
+    /* Center content within each learn-more column */
+    .learn-more {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .learn-more h6 {
+        text-align: center;
+    }
+
+    .learn-more .social-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer > a {
+        font-size: .25rem;
+        color: blue !important;
+    }
+
+    h6 {
+        break-before: column;
     }
 </style>

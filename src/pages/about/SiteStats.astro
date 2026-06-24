@@ -6,7 +6,7 @@ import AnchoredHeader from "@components/AnchoredHeader.astro";
 
 let numPosts = await getFileCount('aaronmoreycom_content/content/posts', "*.md");
 let numPages = await getFileCount('aaronmoreycom_content/content/pages', "*.md");
-let astroComponents = await getFileCount('src/', "*.astro");
+let astroComponents = await getFileCount('src/components', "*.astro");
 
 const postWords = await getFileWordCount('aaronmoreycom_content/content/posts', "*.md");
 const pageWords = await getFileWordCount('aaronmoreycom_content/content/pages', "*.md");
@@ -46,5 +46,5 @@ const loc = astroLines + jsLines + tsLines + cssLines;
             backgroundColor="var(--grey)" />
 </StatsContainer>
 <br />
-Want to see <em>how</em> I built this site? The <a href="/code/writing/site-technical-overview/">technical details</a> are here.
+Want to see <em>how</em> I built this site? The <a href="/about/colophon/"> design and technical details</a> are here.
 </div>

@@ -4,7 +4,7 @@ import PostTagList from "@components/Blog/PostTagList.astro";
 import PostByline from "@components/Blog/PostByline.astro";
 import {humanReadableDate} from "@utils/utils";
 import Divider from "@components/Divider.astro";
-const {post, frontmatter} = Astro.props;
+const {post, frontmatter, isLast = false} = Astro.props;
 const detailUrl = `/posts/${post.id}/`;
 const renderedDescription = await renderMarkdown(post.data.description);
 console.log(post)
@@ -25,7 +25,10 @@ console.log(post)
             : ""
     }
     <div class="separator" style="margin:1em;" />
-    <Divider dividerWidth="64%" />
+    {
+        !isLast
+         ? <Divider dividerWidth="64%" /> : ""
+    }
 </div>
 
 <style>
@@ -33,5 +36,7 @@ console.log(post)
         font-size: var(--font-size-h6);
         margin: auto;
         text-align: center;
+        color: var(--grey);
+        font-style: oblique;
     }
 </style>

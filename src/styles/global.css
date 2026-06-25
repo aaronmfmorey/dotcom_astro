@@ -19,17 +19,8 @@
 
     /* Colors */
     /* Youtube Red: https://www.color-hex.com/color-palette/19523 */
-    --catpuccin-peach: #fab387;
     --red: #d02525;
-    --catpuccin-lavender: #b4befe;
-    --blue: #167ac6;
-    --twitterBlue: #1DA1F2;
-    --catpuccin-sapphire: #74c7ec;
-    --catpuccin-teal: #94e2d5;
-    --catpuccin-green: #a6e3a1;
-    --catpuccin-text: #cdd6f4;
-    --catpuccin-subtext0: #a6adc8;
-    --catpuccin-surface0: #313244;
+    --burgundy: #660033;
     --black: #000000;
     --near-black: #333333;
     --grey: #595757;
@@ -39,8 +30,19 @@
     --very-nearly-white: #fbfbfb;
     --white: #fff;
 
+    --catpuccin-lavender: #b4befe;
+    --blue: #167ac6;
+    --twitterBlue: #1DA1F2;
+    --catpuccin-sapphire: #74c7ec;
+    --catpuccin-teal: #94e2d5;
+    --catpuccin-green: #a6e3a1;
+    --catpuccin-peach: #fab387;
+    --catpuccin-text: #cdd6f4;
+    --catpuccin-subtext0: #a6adc8;
+    --catpuccin-surface0: #313244;
+
     /* Color Uses */
-    --color-links: var(--red);
+    --color-links: var(--blue);
     --color-body-text: var(--near-black);
 
     /* Dark Theme Color Uses */

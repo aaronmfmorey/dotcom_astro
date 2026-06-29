@@ -77,6 +77,18 @@ button {
     font-size: inherit;
 }
 
+blockquote {
+    border-left: 3px solid;
+    border-color: var(--light-grey);
+    color: var(--grey);
+    padding-left: 10px;
+    font-style: italic;
+}
+
+blockquote em {
+    font-style: normal;
+}
+
 /*
  * Astro has an overriding specificity on odd numbered tables,
  * mark as !important to ensure this styling takes precedence.

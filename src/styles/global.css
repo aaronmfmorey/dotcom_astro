@@ -29,10 +29,13 @@
     --nearly-white: #f8f8f8;
     --very-nearly-white: #fbfbfb;
     --white: #fff;
-
-    --catpuccin-lavender: #b4befe;
+    --midnight-blue: #191970;
+    --dark-blue: #00008B;
+    --cobalt: #0047AB;
     --blue: #167ac6;
     --twitterBlue: #1DA1F2;
+
+    --catpuccin-lavender: #b4befe;
     --catpuccin-sapphire: #74c7ec;
     --catpuccin-teal: #94e2d5;
     --catpuccin-green: #a6e3a1;
@@ -42,7 +45,7 @@
     --catpuccin-surface0: #313244;
 
     /* Color Uses */
-    --color-links: var(--blue);
+    --color-links: var(--cobalt);
     --color-body-text: var(--near-black);
 
     /* Dark Theme Color Uses */

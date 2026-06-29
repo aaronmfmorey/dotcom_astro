@@ -1,7 +1,7 @@
 ---
 const { url, label, icon, currentPath, itemPath } = Astro.props;
 ---
-<a href={url} aria-label={label} class=`block text-center ${currentPath == itemPath ? 'active' : ''}`>
+<a href={url} aria-label={label} class=` block text-center ${currentPath == itemPath ? 'active' : ''}`>
     <span><i class={`icon ${icon}`}></i></span>
     <span>{label}</span>
 </a>
@@ -9,16 +9,11 @@ const { url, label, icon, currentPath, itemPath } = Astro.props;
 <style>
     a {
         font-family: var(--ff-subheads);
-        line-height: 1.5;
-        font-size: var(--font-size-h6);
-        font-weight: 800;
-        filter: drop-shadow(0 0 2px var(--nearly-white));
     }
 
     a.active{
-        background-color: var(--color-links);
-        color: var(--nearly-white);
         text-shadow: none;
         border-radius: 1rem;
+        color: var(--near-black);
     }
 </style>

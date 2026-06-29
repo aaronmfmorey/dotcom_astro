@@ -27,6 +27,23 @@ a.anchor-link:hover {
     color: var(--medium-grey);
 }
 
+nav {
+    /* From https://css.glass */
+    background: rgba(235 235 235, 0.66);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.1px);
+    -webkit-backdrop-filter: blur(9.1px);
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
+nav a {
+    line-height: 1.5;
+    font-size: var(--font-size-h6);
+    font-weight: 800;
+    filter: drop-shadow(0 0 2px var(--nearly-white));
+}
+
 @layer base {
     ul, ol, li {
         list-style: revert-layer;

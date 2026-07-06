@@ -33,6 +33,21 @@ export const sortPostsBySubheadAndDate = function (posts:Array<object>): Array<o
     return posts;
 }
 
+export const assignPostsToSubheadBucket = function(posts:Array<object>): object {
+    let postsBySubject = new Map();
+    for (let i = 0; i < posts.length; i++) {
+        let p = posts[i];
+        let subject = p.indexHeading;
+        if (!postsBySubject.has(subject)) {
+            postsBySubject.set(subject, []);
+        }
+        let subjectArray = postsBySubject.get(subject);
+        subjectArray.push(p);
+        postsBySubject.set(subject, subjectArray);
+    }
+    return postsBySubject;
+};
+
 export interface ContentCollectionProps {
     collection: string;
     pageTitle: string;

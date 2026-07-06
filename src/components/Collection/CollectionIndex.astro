@@ -2,31 +2,30 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import AnchoredHeader from '@components/AnchoredHeader.astro';
 import { getCollection } from 'astro:content';
-import {processSubheadLevels, sortPostsBySubheadAndDate} from '@utils/content_collections';
+import {processSubheadLevels, assignPostsToSubheadBucket} from '@utils/content_collections';
+import CollectionIndexSection from "@components/Collection/CollectionIndexSection.astro";
 
 const { collection, pageTitle, introText, includeEntriesHeader = true } = Astro.props;
 const allPosts = await getCollection(collection);
 processSubheadLevels(allPosts);
-const sortedPosts:Array = sortPostsBySubheadAndDate(allPosts);
-let previousPageTitle = null;
+let bucketedPosts = assignPostsToSubheadBucket(allPosts);
 let headingLevel = includeEntriesHeader ? 3 : 2;
 ---
 <BaseLayout pageTitle={pageTitle}>
     <Fragment set:html={introText} />
     {
-        includeEntriesHeader === true ?
+        includeEntriesHeader ?
             <AnchoredHeader hLevel="2" text="Entries" />
             : ""
     }
     {
-        sortedPosts.map(function(post) {
-            const linkFragment:Fragment = <li><a href={`${post.id}/`}>{post.data.title}</a></li>;
-            if (post.indexHeading && post.indexHeading !== previousPageTitle) {
-                previousPageTitle = post.indexHeading;
-                return <AnchoredHeader hLevel={headingLevel} text={post.indexHeading}></AnchoredHeader><li><a href={`${post.id}/`}>{post.data.title}</a></li>;
-            } else {
-                return linkFragment;
-            }
+        Array.from(bucketedPosts, function ([subject, posts])  {
+            console.log("subject", subject);
+            return <CollectionIndexSection
+                hLevel={headingLevel}
+                subjectTitle={subject}
+                posts={posts}
+            />
         })
     }
     <slot />

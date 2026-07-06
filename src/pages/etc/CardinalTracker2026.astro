@@ -108,46 +108,48 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
         />
     </StatsContainer>
     <AnchoredHeader hLevel="2" text="Wins Required to Beat Projections" />
-    <table>
-        <thead style="background-color: white;">
+    <div class="table-scroll-container">
+        <table>
+            <thead style="background-color: white;">
+                <tr>
+                    <td>Projection</td>
+                    <td>Projected Wins</td>
+                    <td>Wins To Beat Projection</td>
+                    <td>Winning %</td>
+                </tr>
+            </thead>
             <tr>
-                <td>Projection</td>
-                <td>Projected Wins</td>
-                <td>Wins To Beat Projection</td>
-                <td>Winning %</td>
+                <td>PECOTA</td>
+                <td>{PECOTA}</td>
+                <td>{toExceedPecota.winsRemaining}</td>
+                <td>{toExceedPecota.winPercentToExceed.toFixed(3)}</td>
             </tr>
-        </thead>
-        <tr>
-            <td>PECOTA</td>
-            <td>{PECOTA}</td>
-            <td>{toExceedPecota.winsRemaining}</td>
-            <td>{toExceedPecota.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-        <tr>
-            <td>Vegas</td>
-            <td>{VEGAS}</td>
-            <td>{toExceedVegas.winsRemaining}</td>
-            <td>{toExceedVegas.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-        <tr>
-            <td>ZiPS</td>
-            <td>{ZIPS}</td>
-            <td>{toExceedZips.winsRemaining}</td>
-            <td>{toExceedZips.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-        <tr>
-            <td>Me</td>
-            <td>{ME}</td>
-            <td>{toExceedMe.winsRemaining}</td>
-            <td>{toExceedMe.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-        <tr>
-            <td>.500</td>
-            <td>{FIVE_HUNDRED}</td>
-            <td>{toExceed500.winsRemaining}</td>
-            <td>{toExceed500.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-    </table>
+            <tr>
+                <td>Vegas</td>
+                <td>{VEGAS}</td>
+                <td>{toExceedVegas.winsRemaining}</td>
+                <td>{toExceedVegas.winPercentToExceed.toFixed(3)}</td>
+            </tr>
+            <tr>
+                <td>ZiPS</td>
+                <td>{ZIPS}</td>
+                <td>{toExceedZips.winsRemaining}</td>
+                <td>{toExceedZips.winPercentToExceed.toFixed(3)}</td>
+            </tr>
+            <tr>
+                <td>Me</td>
+                <td>{ME}</td>
+                <td>{toExceedMe.winsRemaining}</td>
+                <td>{toExceedMe.winPercentToExceed.toFixed(3)}</td>
+            </tr>
+            <tr>
+                <td>.500</td>
+                <td>{FIVE_HUNDRED}</td>
+                <td>{toExceed500.winsRemaining}</td>
+                <td>{toExceed500.winPercentToExceed.toFixed(3)}</td>
+            </tr>
+        </table>
+    </div>
     <details>
         <summary><i class="fa-solid fa-circle-question"></i></summary>
         <div>
@@ -158,50 +160,52 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
     </details>
 
     <AnchoredHeader hLevel="2" text="Wins Assuming True Talent" />
-    <table>
-        <thead style="background-color: var(--cardinal-red);">
+    <div class="table-scroll-container">
+        <table>
+            <thead style="background-color: var(--cardinal-red);">
+                <tr>
+                    <td>True Talent</td>
+                    <td>Rest of Season Wins</td>
+                    <td>Total Wins</td>
+                </tr>
+            </thead>
             <tr>
-                <td>True Talent</td>
-                <td>Rest of Season Wins</td>
-                <td>Total Wins</td>
+                <td>PECOTA ({PECOTA})</td>
+                <td>{pecotaRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{pecotaRos.totalWins.toFixed(1)}</td>
             </tr>
-        </thead>
-        <tr>
-            <td>PECOTA ({PECOTA})</td>
-            <td>{pecotaRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{pecotaRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>Vegas ({VEGAS})</td>
-            <td>{vegasRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{vegasRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>ZiPS ({ZIPS})</td>
-            <td>{zipsRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{zipsRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>Me ({ME})</td>
-            <td>{meRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{meRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>.500 ({FIVE_HUNDRED})</td>
-            <td>{fiveHundredRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{fiveHundredRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>Current Pace ({currentPaceWinsFormatted})</td>
-            <td>{paceRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{paceRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>Pythag ({pythagProjectedWinsFormatted})</td>
-            <td>{pythagRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{pythagRos.totalWins.toFixed(1)}</td>
-        </tr>
-    </table>
+            <tr>
+                <td>Vegas ({VEGAS})</td>
+                <td>{vegasRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{vegasRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>ZiPS ({ZIPS})</td>
+                <td>{zipsRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{zipsRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>Me ({ME})</td>
+                <td>{meRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{meRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>.500 ({FIVE_HUNDRED})</td>
+                <td>{fiveHundredRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{fiveHundredRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>Current Pace ({currentPaceWinsFormatted})</td>
+                <td>{paceRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{paceRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>Pythag ({pythagProjectedWinsFormatted})</td>
+                <td>{pythagRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{pythagRos.totalWins.toFixed(1)}</td>
+            </tr>
+        </table>
+    </div>
     <details>
         <summary><i class="fa-solid fa-circle-question"></i></summary>
         <div>

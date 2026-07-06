@@ -90,20 +90,20 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
 <BaseLayout pageTitle={title}>
     <AnchoredHeader hLevel="2" text="Actual Record" />
     <StatsContainer>
-        <StatsOverviewIndividual title="Wins" value={`${WINS}`} backgroundColor="var(--grey)" />
-        <StatsOverviewIndividual title="Losses" value={`${LOSSES}`} backgroundColor="var(--grey)" />
+        <StatsOverviewIndividual title="Wins" value={`${WINS}`} backgroundColor="var(--red)" />
+        <StatsOverviewIndividual title="Losses" value={`${LOSSES}`} backgroundColor="var(--red)" />
         <StatsOverviewIndividual
             title="Win %"
             value={(WINS / (WINS + LOSSES))}
-            backgroundColor="var(--grey)"
+            backgroundColor="var(--red)"
             formatter={formatToThreePlaces}
         />
-        <StatsOverviewIndividual title="Runs Scored" value={`${RS}`} backgroundColor="var(--grey)" />
-        <StatsOverviewIndividual title="Runs Allowed" value={`${RA}`} backgroundColor="var(--grey)" />
+        <StatsOverviewIndividual title="Runs Scored" value={`${RS}`} backgroundColor="var(--red)" />
+        <StatsOverviewIndividual title="Runs Allowed" value={`${RA}`} backgroundColor="var(--red)" />
         <StatsOverviewIndividual
             title="Pythag Wins"
             value={pythagWinsCurrent}
-            backgroundColor="var(--grey)"
+            backgroundColor="var(--red)"
             formatter={formatToOnePlace}
         />
     </StatsContainer>

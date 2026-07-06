@@ -130,6 +130,26 @@ thead th {
     overflow-y: scroll;
 }
 
+span:has(code) {
+    padding: 5px;
+    border-radius: 5px;
+    /*background-color: var(--darker-font-color);*/
+    color: var(--catpuccin-green);
+    background-color: var(--black);
+    font-family: monospace;
+    font-size: .8em;
+}
+
+p > code {
+    padding: 2px;
+    border-radius: 5px;
+    color: var(--grey);
+    background-color: var(--nearly-white);
+    border: solid 1px var(--light-grey);
+    font-family: monospace;
+    font-size: .8em;
+}
+
 /* Override for dark mode */
 html[data-theme="dark"] {
     background-color: var(--black);

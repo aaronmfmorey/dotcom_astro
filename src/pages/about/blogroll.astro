@@ -1,0 +1,35 @@
+---
+import RenderedMarkdown from '@components/RenderedMarkdown.astro';
+import BaseLayout from "@layouts/BaseLayout.astro";
+const pageTitle = "Blogroll";
+---
+<BaseLayout pageTitle={pageTitle}>
+    <div class="main-sized">
+        <RenderedMarkdown>
+
+            What I'm reading online.
+
+            ### Baseball
+            - [Viva El Birdos](https://www.vivaelbirdos.com/)
+            - [Sam Miller](https://pebblehunting.substack.com/)
+
+            ### Literature
+            - [Alan Jacobs](https://blog.ayjay.org/)
+            - [Wuthering Expectations](https://wutheringexpectations.blogspot.com/)
+            - [Adam Roberts](https://profadamroberts.substack.com/)
+
+            ### Tech
+            - [Julia Evans](https://jvns.ca/blog/)
+            - [Unsung](https://unsung.aresluna.org/)
+            - [Daring Fireball](https://daringfireball.net/)
+            ### Other
+            - [Dave Barry](https://davebarry.substack.com/p/america)
+        </RenderedMarkdown>
+    </div>
+</BaseLayout>
+<style>
+    main {
+        max-width: clamp(250px, 55ch, 100%);
+        margin: auto;
+    }
+</style>

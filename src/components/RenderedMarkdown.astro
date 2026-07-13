@@ -18,7 +18,6 @@ const getFirstIndentedLine = function(lines: Array<string>) {
 
 const stripIndentation = function(slotText:string) {
     const lines = slotText.split("\n");
-    console.log(lines);
 
     // Astro slot returns an empty string on line 0 and no leading space on line 1.
     // Check indentation based on what comes after that.

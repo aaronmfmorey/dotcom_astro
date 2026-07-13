@@ -20,7 +20,6 @@ let headingLevel = includeEntriesHeader ? 3 : 2;
     }
     {
         Array.from(bucketedPosts, function ([subject, posts])  {
-            console.log("subject", subject);
             return <CollectionIndexSection
                 hLevel={headingLevel}
                 subjectTitle={subject}

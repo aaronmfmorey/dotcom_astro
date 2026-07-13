@@ -7,7 +7,6 @@ import Divider from "@components/Divider.astro";
 const {post, frontmatter, isLast = false} = Astro.props;
 const detailUrl = `/posts/${post.id}/`;
 const renderedDescription = await renderMarkdown(post.data.description);
-console.log(post)
 ---
 <div class="">
     <div class="blog-post-date">{humanReadableDate(frontmatter.pubDate.toString())}</div>

@@ -1,6 +1,7 @@
 ---
 const {jsonFilePath} = Astro.props;
-const data = await import(jsonFilePath);
+const dataFiles = import.meta.glob('/aaronmoreycom_content/content/data/*.json', { eager: true });
+const data = dataFiles[jsonFilePath]?.default;
 ---
 <ul>
 {

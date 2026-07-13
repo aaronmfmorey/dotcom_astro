@@ -1,0 +1,48 @@
+---
+interface Props {
+    name: string;
+    link?: string;
+    id?: string;
+    showCaret?: boolean;
+    styles?: string;
+}
+
+const { name, link, id, showCaret = false, styles = '' } = Astro.props;
+---
+
+<a
+        href={link}
+        id={id}
+        class=`mx-2 flex rounded-lg px-3 py-2 font-normal text-slate-200 text-opacity-70 hover:text-opacity-100 transition-color duration-200 max-w-max ${styles}`>
+    <button class="flex">
+        {name}
+        {
+            showCaret && (
+                        <svg
+                                class="caret-icon ml-1 mt-1 h-5 w-5 lg:h-6 lg:w-6"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.1">
+                            <path
+                                    d="M8 9l5 5 5-5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                            />
+                        </svg>
+            )
+        }
+    </button>
+</a>
+<style>
+    .dropdown-active {
+    }
+
+    .caret-icon {
+        transition: transform 0.15s ease-in-out;
+        will-change: transform;
+    }
+    .dropdown-active .caret-icon {
+        transform: rotate(180deg);
+    }
+</style>

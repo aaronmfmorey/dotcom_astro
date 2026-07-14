@@ -140,7 +140,13 @@ span:has(code) {
     font-size: .8em;
 }
 
-p > code {
+p > code,
+h1 > code,
+h2 > code,
+h3 > code,
+h4 > code,
+h5 > code,
+h6 > code {
     padding: 2px;
     border-radius: 5px;
     color: var(--grey);
@@ -148,6 +154,7 @@ p > code {
     border: solid 1px var(--light-grey);
     font-family: monospace;
     font-size: .8em;
+    font-weight: 400;
 }
 
 /* Override for dark mode */

@@ -55,12 +55,11 @@ export default defineConfig({
   integrations: [
     sitemap(),
     expressiveCode({
-      themes: ['material-theme-ocean'],
+      themes: ['catppuccin-latte'],
       styleOverrides: {
         // You can also override styles
         borderRadius: '3px',
-        codeFontSize: '0.75rem',
-        codeFontFamily: '"JetBrains Mono", monospace'
+        codeFontSize: '.75rem'
       },
     }),
     mdx()

@@ -35,12 +35,12 @@ a.anchor-link:hover {
 
 nav {
     /* From https://css.glass */
-    background: rgba(235 235 235, 0.66);
+    background: rgba(235, 235, 235, 66%);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 100%);
     backdrop-filter: blur(9.1px);
     -webkit-backdrop-filter: blur(9.1px);
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 100%);
 }
 
 nav a {
@@ -128,7 +128,7 @@ thead th {
 }
 
 .micro-container {
-    background-color: var(--twitterBlue);
+    background-color: var(--twitter-blue);
     padding: 10px;
     font-family: sans-serif;
     border-radius: 10px;
@@ -139,7 +139,6 @@ thead th {
 span:has(code) {
     padding: 5px;
     border-radius: 5px;
-    /*background-color: var(--darker-font-color);*/
     color: var(--catpuccin-green);
     background-color: var(--black);
     font-family: monospace;

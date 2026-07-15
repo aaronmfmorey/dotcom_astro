@@ -35,12 +35,12 @@ a.anchor-link:hover {
 
 nav {
     /* From https://css.glass */
-    background: rgba(235, 235, 235, 66%);
+    background: rgb(235 235 235 / 66%);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 100%);
+    box-shadow: 0 4px 30px rgb(0 0 0 / 100%);
     backdrop-filter: blur(9.1px);
     -webkit-backdrop-filter: blur(9.1px);
-    border: 1px solid rgba(255, 255, 255, 100%);
+    border: 1px solid rgb(255 255 255 / 100%);
 }
 
 nav a {
@@ -113,10 +113,7 @@ thead tr {
 }
 
 thead th {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px 10px;
 }
 
 .table-scroll-container {

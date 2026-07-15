@@ -29,6 +29,8 @@
     --nearly-white: #f8f8f8;
     --very-nearly-white: #fbfbfb;
     --white: #fff;
+    --charcoal-blue: #4a5981;
+    --darker-charcoal-blue: #132754;
     --midnight-blue: #191970;
     --dark-blue: #00008B;
     --royal-blue: #16348D;
@@ -46,7 +48,8 @@
     --catpuccin-surface0: #313244;
 
     /* Color Uses */
-    --color-links: var(--royal-blue);
+    --color-links: var(--charcoal-blue);
+    --color-links-hover: var(--darker-charcoal-blue);
     --color-body-text: var(--near-black);
 
     /* Dark Theme Color Uses */

@@ -13,6 +13,7 @@ import expressiveCode from 'astro-expressive-code';
 export default defineConfig({
   site: "https://aaronmorey.com",
   trailingSlash: 'ignore',
+  compressHTML: false,
 
   redirects: {
     '/readingcharts/': {

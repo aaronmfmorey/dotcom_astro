@@ -8,12 +8,23 @@ const { url, label, icon, currentPath, itemPath } = Astro.props;
 
 <style>
     a {
-        font-family: var(--ff-subheads);
+        font-family: var(--ff-oldstyle);
+        font-size: .75em;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     a.active{
         text-shadow: none;
         border-radius: 1rem;
         color: var(--near-black);
+        text-decoration: none;
+        cursor: text;
     }
+
+    nav.open {
+        font-size: 1em;
+        border: 2px solid green;
+    }
+
 </style>

@@ -4,79 +4,183 @@ import NavigationLink from '@components/Navigation/NavigationLink.astro';
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.split("/")[1];
 ---
-<details class="relative">
-    <summary class="cursor-pointer p-2 font-medium">&nbsp;</summary>
-    <nav class="absolute top-full w-full left-0 right-0 flex flex-col z-50 justify-center">
-        <NavigationLink
-                url="/"
-                label="Home"
-                icon="fa-solid fa-house-chimney"
-                currentPath={currentPath}
-                itemPath="" />
-        <NavigationLink
-                url="/about/"
-                label="About"
-                icon="fa-solid fa-circle-info"
-                currentPath={currentPath}
-                itemPath="about" />
-        <NavigationLink
-                url="/posts/1"
-                label="Blog"
-                icon="fa-solid fa-pen-to-square"
-                currentPath={currentPath}
-                itemPath="posts" />
-        <NavigationLink
-                url="/micros/"
-                label="Micros"
-                icon="fa-solid fa-mobile-screen-button"
-                currentPath={currentPath}
-                itemPath="micros" />
-        <NavigationLink
-                url="/reading/"
-                label="Reading"
-                icon="fa-solid fa-book-open-reader"
-                currentPath={currentPath}
-                itemPath="reading"/>
-        <NavigationLink
-                url="/code/"
-                label="Code"
-                icon="fa-solid fa-code"
-                currentPath={currentPath}
-                itemPath="code" />
-        <NavigationLink
-                url="/etc/"
-                label="Etc."
-                icon="fa-solid fa-sink"
-                currentPath={currentPath}
-                itemPath="etc"/>
+<div class="navigation-wrapper">
+    <button
+            class="menu-toggle glassy nav-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+    >
+        <i class="fa-solid fa-bars menu-icon menu-icon-open" aria-hidden="true"></i>
+        <i class="fa-solid fa-xmark menu-icon menu-icon-close" aria-hidden="true"></i>
+    </button>
 
-        <pagefind-modal-trigger compact="true" hide-shortcut="true" class="pagefind-modal-trigger"></pagefind-modal-trigger>
-        <pagefind-modal></pagefind-modal>
+    <nav id="primary-nav" class="primary-nav glassy">
+        <div class="nav-links">
+            <NavigationLink
+                    url="/"
+                    label="Home"
+                    icon="fa-solid fa-house-chimney"
+                    currentPath={currentPath}
+                    itemPath="" />
+            <NavigationLink
+                    url="/about/"
+                    label="About"
+                    icon="fa-solid fa-circle-info"
+                    currentPath={currentPath}
+                    itemPath="about" />
+            <NavigationLink
+                    url="/posts/1"
+                    label="Blog"
+                    icon="fa-solid fa-pen-to-square"
+                    currentPath={currentPath}
+                    itemPath="posts" />
+            <NavigationLink
+                    url="/micros/"
+                    label="Micros"
+                    icon="fa-solid fa-mobile-screen-button"
+                    currentPath={currentPath}
+                    itemPath="micros" />
+            <NavigationLink
+                    url="/reading/"
+                    label="Reading"
+                    icon="fa-solid fa-book-open-reader"
+                    currentPath={currentPath}
+                    itemPath="reading"/>
+            <NavigationLink
+                    url="/code/"
+                    label="Code"
+                    icon="fa-solid fa-code"
+                    currentPath={currentPath}
+                    itemPath="code" />
+            <NavigationLink
+                    url="/etc/"
+                    label="Etc."
+                    icon="fa-solid fa-sink"
+                    currentPath={currentPath}
+                    itemPath="etc"/>
+
+            <pagefind-modal-trigger compact="true" hide-shortcut="true" class="pagefind-modal-trigger"></pagefind-modal-trigger>
+            <pagefind-modal></pagefind-modal>
+        </div>
     </nav>
-</details>
+</div>
 
 <style>
-    details {
-        display: grid;
-        grid-template-rows: 0fr;
-        transition: grid-template-rows 0.3s ease-out;
+    @reference '../../styles/utilities.css';
+
+    .navigation-wrapper {
+        position: relative;
     }
 
-    details > summary::before {
-        font-family: "Font Awesome 6 Free";
-        font-weight: 900;
-        content: "\f0c9"; /* down arrow */
-        margin-right: 10px;
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.75rem;
+        font-size: 1.5rem;
+        color: inherit;
+        line-height: 1;
+        position: relative;
+        z-index: 1000;
     }
 
-    details[open] > summary::before {
-        font-family: "Font Awesome 6 Free";
-        font-weight: 900;
-        content: "\f00d"; /* down arrow */
-        margin-right: 10px;
+    .menu-icon {
+        display: block;
     }
 
-    details summary {
-        list-style: none;
+    .menu-icon-close {
+        display: none;
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-icon-open {
+        display: none;
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-icon-close {
+        display: block;
+    }
+
+    .primary-nav {
+        /* Glass effect inherited from design.css nav rule */
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+        .menu-toggle {
+            display: block;
+        }
+
+        .primary-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-out;
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+        }
+
+        .primary-nav.open {
+            transform: translateX(0);
+        }
+
+        .nav-links {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 2rem;
+        }
     }
 </style>
+
+<script>
+    (function() {
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.primary-nav');
+
+        if (!toggle || !nav) return;
+
+        function openMenu() {
+            nav.classList.add('open');
+            toggle.classList.remove('glassy');
+            toggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            nav.classList.remove('open');
+            toggle.classList.add('glassy');
+            toggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        toggle.addEventListener('click', () => {
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('open')) {
+                closeMenu();
+            }
+        });
+    })();
+</script>

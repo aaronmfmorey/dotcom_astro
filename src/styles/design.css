@@ -1,3 +1,5 @@
+@reference './utilities.css';
+
 html {
     color: var(--near-black);
     background-color: var(--white);
@@ -34,13 +36,7 @@ a.anchor-link:hover {
 }
 
 nav {
-    /* From https://css.glass */
-    background: rgb(235 235 235 / 66%);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgb(0 0 0 / 100%);
-    backdrop-filter: blur(9.1px);
-    -webkit-backdrop-filter: blur(9.1px);
-    border: 1px solid rgb(255 255 255 / 100%);
 }
 
 nav a {
@@ -79,8 +75,13 @@ tr {
 }
 
 button {
+    font-family: var(--ff-oldstyle);
+}
+
+button.nav-menu {
     font-family: inherit;
-    font-size: inherit;
+    /*font-size: inherit;*/
+    font-size: .5em;
 }
 
 blockquote {
@@ -157,6 +158,10 @@ h6 > code {
     font-family: monospace;
     font-size: .8em;
     font-weight: 400;
+}
+
+.glassy {
+    @apply glassy;
 }
 
 /* Override for dark mode */

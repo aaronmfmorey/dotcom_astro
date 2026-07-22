@@ -17,7 +17,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.0.15",
     "astro": "^7.0.9",
-    "astro-expressive-code": "^0.41.2",
+    "astro-expressive-code": "^0.44.0",
     "better-sqlite3": "^12.8.0",
     "chart.js": "^4.5.1",
     "linkify-html": "^4.2.0",
@@ -33,6 +33,15 @@
     "@types/better-sqlite3": "^7.6.13",
     "stylelint": "^16.17.0",
     "stylelint-config-standard": "^37.0.0",
-    "wrangler": "^4.72.0"
+    "wrangler": "^4.15.2"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true,
+    "esbuild@0.28.1": true,
+    "sharp@0.35.3": true,
+    "fsevents@2.3.3": true,
+    "esbuild@0.25.4": true,
+    "sharp@0.33.5": true,
+    "workerd@1.20250508.0": true
   }
 }

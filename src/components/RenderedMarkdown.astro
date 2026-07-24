@@ -33,7 +33,6 @@ const stripIndentation = function(slotText:string) {
 };
 
 const slotText = await Astro.slots.render('default');
-console.log('slot text', slotText)
 const indentedSlotText = stripIndentation(slotText);
 const processor = await createMarkdownProcessor();
 const result = await processor.render(indentedSlotText);

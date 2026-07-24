@@ -1,6 +1,5 @@
 ---
-// Inspiration: https://splendidlabz.com/docs/astro/components/markdown/#guide
-import {render} from "astro:content";
+// Inspiration: https://splendidlabz.com/docs/astro/components/markdown/#guide  
 import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 
 const getFirstIndentedLine = function(lines: Array<string>): number {
@@ -18,7 +17,6 @@ const getFirstIndentedLine = function(lines: Array<string>): number {
 
 const stripIndentation = function(slotText:string) {
     const lines = slotText.split("\n");
-    console.log('lines:', lines.length);
 
     // Astro slot returns an empty string on line 0.
     // Check indentation based on what comes after that.
@@ -28,7 +26,6 @@ const stripIndentation = function(slotText:string) {
         (line, index) => index < firstIndentedLine
             ? line
             : line.substring(indentationSize));
-    console.log(unindentedLines);
     return unindentedLines.join("\r\n");
 };
 

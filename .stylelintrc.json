@@ -9,11 +9,14 @@
     "no-invalid-position-at-import-rule": null,
     "color-hex-length": null,
     "property-no-vendor-prefix": null,
+    "color-function-notation": null,
     "at-rule-no-unknown": [
       true,
       {
         "ignoreAtRules": [
-          "tailwind"
+          "tailwind",
+          "reference",
+          "utility"
         ]
       }
     ]

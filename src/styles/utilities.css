@@ -1,9 +1,8 @@
 @utility glassy {
     /* From https://css.glass */
-    background: rgba(235 235 235, 0.66);
-    /*box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);*/
+    background: rgba(235 235 235, 66%);
     backdrop-filter: blur(9.1px);
     -webkit-backdrop-filter: blur(9.1px);
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 100%);
     border-radius: 100%;
 }

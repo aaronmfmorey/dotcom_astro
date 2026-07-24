@@ -16,10 +16,6 @@ export default defineConfig({
   compressHTML: false,
 
   redirects: {
-    '/readingcharts/': {
-      status: 301,
-      destination: '/reading/charts'
-    }
   },
 
   markdown: {

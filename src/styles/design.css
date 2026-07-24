@@ -70,6 +70,10 @@ td {
     padding-left: 10px;
 }
 
+td a {
+    text-decoration: underline;
+}
+
 tr {
     border: 1px black solid;
 }

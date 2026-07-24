@@ -56,11 +56,14 @@ export default defineConfig({
   integrations: [
     sitemap(),
     expressiveCode({
-      themes: ['catppuccin-latte'],
+      defaultProps: {
+        frame: 'terminal',
+      },
+      themes: ['catppuccin-mocha'],
       styleOverrides: {
         // You can also override styles
         borderRadius: '3px',
-        codeFontSize: '.75rem'
+        codeFontSize: '0.75rem'
       },
     }),
     mdx()

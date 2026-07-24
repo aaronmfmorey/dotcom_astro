@@ -134,6 +134,19 @@ thead th {
     overflow-y: scroll;
 }
 
+code {
+    font-family: var(--ff-code);
+    word-spacing: 0;
+    font-size: .8em;
+}
+
+div.expressive-code pre > code {
+    font-family: var(--ff-code);
+    font-weight: 500;
+    word-spacing: -.3em;
+    font-size: .8em;
+}
+
 span:has(code) {
     padding: 5px;
     border-radius: 5px;

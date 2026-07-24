@@ -119,3 +119,7 @@ export const getFileLineCount = async function(
     let trimmedCount = wordsResult.stdout.trim();
     return parseInt(trimmedCount);
 }
+
+export const authorMatchesTag = function(authorName :string, uniqueTags:Array<string>) {
+    return uniqueTags.includes(slugify(authorName));
+};

@@ -1,6 +1,7 @@
 ---
 import {runSqliteQuery, QUERIES} from "@utils/db-operations.ts";
-import {intToOrdinal} from "@utils/utils.ts";
+import {intToOrdinal, authorMatchesTag, slugify} from "@utils/utils.ts";
+const {uniqueTags} = Astro.props;
 const authorResults = runSqliteQuery(QUERIES.BOOKS_BY_AUTHOR);
 ---
 <table>
@@ -21,7 +22,11 @@ const authorResults = runSqliteQuery(QUERIES.BOOKS_BY_AUTHOR);
                 let style = i % 2 == 0 ? 'even' : 'odd';
                 return (
                     <tr class={style}>
-                        <td>{authorRow.author}</td>
+                        <td>{
+                            authorMatchesTag(authorRow.author, uniqueTags)
+                                ? <a href=`/tags/${slugify(authorRow.author)}/`>{authorRow.author}</a>
+                                : authorRow.author
+                        }</td>
                         <td>{authorRow.total_books}</td>
                     </tr>
                 )
@@ -31,13 +36,3 @@ const authorResults = runSqliteQuery(QUERIES.BOOKS_BY_AUTHOR);
     </tbody>
 </table>
 <br />
-<style>
-    thead {
-        background-color: var(--medium-blue);
-        color: var(--nearly-white);
-    }
-    tbody tr.odd {
-        background-color: var(--not-quite-nearly-white);
-    }
-</style>
-

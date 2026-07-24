@@ -6,15 +6,20 @@ import StatsContainer from "@components/Stats/StatsContainer.astro";
 import StatsOverviewIndividual from "@components/Stats/StatsOverviewIndividual.astro";
 
 /* Inputs */
-const WINS = 51;
-const LOSSES = 44;
-const RS = 434;
-const RA = 427;
+const WINS = 52;
+const LOSSES = 50;
+const RS = 454;
+const RA = 458;
 
 const FLAG_DAY_WINS = 38;
 const FLAG_DAY_LOSSES = 31;
 const FLAG_DAY_RS = 319;
 const FLAG_DAY_RA = 307;
+
+const ALL_STAR_WINS = 50;
+const ALL_STAR_LOSSES = 45;
+const ALL_STAR_RS = 429;
+const ALL_STAR_RA = 423;
 
 /* Constants */
 const GAMES_IN_SEASON = 162;
@@ -95,64 +100,66 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
 <BaseLayout pageTitle={title}>
     <AnchoredHeader hLevel="2" text="Actual Record" />
     <StatsContainer>
-        <StatsOverviewIndividual title="Wins" value={`${WINS}`} backgroundColor="var(--cardinal-red)" />
-        <StatsOverviewIndividual title="Losses" value={`${LOSSES}`} backgroundColor="var(--darkest-blue)" />
+        <StatsOverviewIndividual title="Wins" value={`${WINS}`} backgroundColor="var(--red)" />
+        <StatsOverviewIndividual title="Losses" value={`${LOSSES}`} backgroundColor="var(--red)" />
         <StatsOverviewIndividual
             title="Win %"
             value={(WINS / (WINS + LOSSES))}
-            backgroundColor="var(--darker-green)"
+            backgroundColor="var(--red)"
             formatter={formatToThreePlaces}
         />
-        <StatsOverviewIndividual title="Runs Scored" value={`${RS}`} backgroundColor="var(--brightest-yellow)" />
-        <StatsOverviewIndividual title="Runs Allowed" value={`${RA}`} backgroundColor="var(--lighter-font-color)" />
+        <StatsOverviewIndividual title="Runs Scored" value={`${RS}`} backgroundColor="var(--red)" />
+        <StatsOverviewIndividual title="Runs Allowed" value={`${RA}`} backgroundColor="var(--red)" />
         <StatsOverviewIndividual
             title="Pythag Wins"
             value={pythagWinsCurrent}
-            backgroundColor="var(--medium-blue)"
+            backgroundColor="var(--red)"
             formatter={formatToOnePlace}
         />
     </StatsContainer>
     <AnchoredHeader hLevel="2" text="Wins Required to Beat Projections" />
-    <table>
-        <thead style="background-color: var(--cardinal-red);">
+    <div class="table-scroll-container">
+        <table>
+            <thead style="background-color: white;">
+                <tr>
+                    <td>Projection</td>
+                    <td>Projected Wins</td>
+                    <td>Wins To Beat Projection</td>
+                    <td>Winning %</td>
+                </tr>
+            </thead>
             <tr>
-                <td>Projection</td>
-                <td>Projected Wins</td>
-                <td>Wins To Beat Projection</td>
-                <td>Winning %</td>
+                <td>PECOTA</td>
+                <td>{PECOTA}</td>
+                <td>{toExceedPecota.winsRemaining}</td>
+                <td>{toExceedPecota.winPercentToExceed.toFixed(3)}</td>
             </tr>
-        </thead>
-        <tr>
-            <td>PECOTA</td>
-            <td>{PECOTA}</td>
-            <td>{toExceedPecota.winsRemaining}</td>
-            <td>{toExceedPecota.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-        <tr>
-            <td>Vegas</td>
-            <td>{VEGAS}</td>
-            <td>{toExceedVegas.winsRemaining}</td>
-            <td>{toExceedVegas.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-        <tr>
-            <td>ZiPS</td>
-            <td>{ZIPS}</td>
-            <td>{toExceedZips.winsRemaining}</td>
-            <td>{toExceedZips.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-        <tr>
-            <td>Me</td>
-            <td>{ME}</td>
-            <td>{toExceedMe.winsRemaining}</td>
-            <td>{toExceedMe.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-        <tr>
-            <td>.500</td>
-            <td>{FIVE_HUNDRED}</td>
-            <td>{toExceed500.winsRemaining}</td>
-            <td>{toExceed500.winPercentToExceed.toFixed(3)}</td>
-        </tr>
-    </table>
+            <tr>
+                <td>Vegas</td>
+                <td>{VEGAS}</td>
+                <td>{toExceedVegas.winsRemaining}</td>
+                <td>{toExceedVegas.winPercentToExceed.toFixed(3)}</td>
+            </tr>
+            <tr>
+                <td>ZiPS</td>
+                <td>{ZIPS}</td>
+                <td>{toExceedZips.winsRemaining}</td>
+                <td>{toExceedZips.winPercentToExceed.toFixed(3)}</td>
+            </tr>
+            <tr>
+                <td>Me</td>
+                <td>{ME}</td>
+                <td>{toExceedMe.winsRemaining}</td>
+                <td>{toExceedMe.winPercentToExceed.toFixed(3)}</td>
+            </tr>
+            <tr>
+                <td>.500</td>
+                <td>{FIVE_HUNDRED}</td>
+                <td>{toExceed500.winsRemaining}</td>
+                <td>{toExceed500.winPercentToExceed.toFixed(3)}</td>
+            </tr>
+        </table>
+    </div>
     <details>
         <summary><i class="fa-solid fa-circle-question"></i></summary>
         <div>
@@ -163,50 +170,52 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
     </details>
 
     <AnchoredHeader hLevel="2" text="Wins Assuming True Talent" />
-    <table>
-        <thead style="background-color: var(--cardinal-red);">
+    <div class="table-scroll-container">
+        <table>
+            <thead style="background-color: var(--cardinal-red);">
+                <tr>
+                    <td>True Talent</td>
+                    <td>Rest of Season Wins</td>
+                    <td>Total Wins</td>
+                </tr>
+            </thead>
             <tr>
-                <td>True Talent</td>
-                <td>Rest of Season Wins</td>
-                <td>Total Wins</td>
+                <td>PECOTA ({PECOTA})</td>
+                <td>{pecotaRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{pecotaRos.totalWins.toFixed(1)}</td>
             </tr>
-        </thead>
-        <tr>
-            <td>PECOTA ({PECOTA})</td>
-            <td>{pecotaRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{pecotaRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>Vegas ({VEGAS})</td>
-            <td>{vegasRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{vegasRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>ZiPS ({ZIPS})</td>
-            <td>{zipsRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{zipsRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>Me ({ME})</td>
-            <td>{meRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{meRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>.500 ({FIVE_HUNDRED})</td>
-            <td>{fiveHundredRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{fiveHundredRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>Current Pace ({currentPaceWinsFormatted})</td>
-            <td>{paceRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{paceRos.totalWins.toFixed(1)}</td>
-        </tr>
-        <tr>
-            <td>Pythag ({pythagProjectedWinsFormatted})</td>
-            <td>{pythagRos.restOfSeasonWins.toFixed(1)}</td>
-            <td>{pythagRos.totalWins.toFixed(1)}</td>
-        </tr>
-    </table>
+            <tr>
+                <td>Vegas ({VEGAS})</td>
+                <td>{vegasRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{vegasRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>ZiPS ({ZIPS})</td>
+                <td>{zipsRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{zipsRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>Me ({ME})</td>
+                <td>{meRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{meRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>.500 ({FIVE_HUNDRED})</td>
+                <td>{fiveHundredRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{fiveHundredRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>Current Pace ({currentPaceWinsFormatted})</td>
+                <td>{paceRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{paceRos.totalWins.toFixed(1)}</td>
+            </tr>
+            <tr>
+                <td>Pythag ({pythagProjectedWinsFormatted})</td>
+                <td>{pythagRos.restOfSeasonWins.toFixed(1)}</td>
+                <td>{pythagRos.totalWins.toFixed(1)}</td>
+            </tr>
+        </table>
+    </div>
     <details>
         <summary><i class="fa-solid fa-circle-question"></i></summary>
         <div>
@@ -242,3 +251,22 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
     <br />
     &nbsp;
 </BaseLayout>
+
+<style>
+    details > summary {
+        list-style-type: "";
+    }
+
+    details[open]::details-content {
+        background-color: var(--nearly-white);
+        color: var(--color-body-text);
+        padding: 5px;
+        font-size: .75em;
+        border-radius: 5px;
+        border-color: var(--medium-grey);
+        border-style: solid;
+        border-width: 1px;
+        box-shadow: 2px 2px 10px var(--very-nearly-white);
+        width: 98%;
+    }
+</style>

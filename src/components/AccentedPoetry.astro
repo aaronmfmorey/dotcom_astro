@@ -5,3 +5,9 @@ html = html.replaceAll("@@", "<ruby class='stressed-syllable'>").replaceAll("::"
 html = html.replaceAll("///", "<ruby class='unstressed-syllable'>").replaceAll("/:/", "<rt>&cup;</rt></ruby>");
 ---
 <Fragment set:html={html} />
+
+<style>
+    ruby.stressed-syllable {
+        font-style: oblique;
+    }
+</style>

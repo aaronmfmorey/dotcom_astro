@@ -64,6 +64,6 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/i
     <AnchoredHeader hLevel="2" text="Reading Stats" />
     <StatsOverview />
     <BooksAndPagesChart />
-    <BooksByAuthor />
+    <BooksByAuthor uniqueTags={uniqueTagsForAuthorMatch} />
     <BooksByCentury />
 </BaseLayout>

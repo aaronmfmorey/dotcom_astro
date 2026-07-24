@@ -1,0 +1,8 @@
+@utility glassy {
+    /* From https://css.glass */
+    background: rgba(235 235 235, 66%);
+    backdrop-filter: blur(9.1px);
+    -webkit-backdrop-filter: blur(9.1px);
+    border: 1px solid rgba(255, 255, 255, 100%);
+    border-radius: 100%;
+}

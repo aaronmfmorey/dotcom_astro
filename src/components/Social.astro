@@ -12,47 +12,28 @@ const platformConfig = {
         'url': 'https://github.com/aaronmfmorey',
         'title': 'Github'
     },
+    'goodreads': {
+        'icon': 'fa-brands fa-goodreads',
+        'url': 'https://www.goodreads.com/user/show/17419152-aaron',
+        'title': 'GoodReads'
+    },
+    'hevy': {
+        'icon': 'fa-solid fa-dumbbell',
+        'url': 'https://hevy.com/user/aaronmorey',
+        'title': 'Hevy'
+    },
+    'runtastic': {
+        'icon': 'fa-solid fa-person-running',
+        'url': 'https://www.runtastic.com/user/d9bb3c74-88e8-0eeb-05d1-25fdcab71eb8',
+        'title': 'Runtastic'
+    },
 }
 
 const thisPlatform = platformConfig[platform];
 
 ---
-<a href={thisPlatform.url} class="social-link glassy">
-    <i class={thisPlatform.icon}></i>
+<a href={thisPlatform.url} target="_blank">
+    <i class={thisPlatform.icon}></i>&nbsp;
     <span>{thisPlatform.title}</span>
 </a>
 
-<style>
-    .social-link {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        color: var(--link-color);
-        background-color: var(--background-color);
-        border: 2px solid var(--header-color);
-        border-radius: 20px;
-        text-decoration: none;
-        font-family: var(--ff-sans-serif);
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        height: 3.5em;
-    }
-
-    .social-link:hover {
-        color: var(--background-color);
-        border-color: var(--link-hover-color);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        font-style: normal;
-        height: 3.5em;
-    }
-
-    .social-link:hover span {
-        color: var(--link-hover-color);
-        border-bottom: 5px inset var(--lighter-highlight);
-    }
-
-    .social-link:hover i {
-        color: var(--link-color);
-    }
-</style>

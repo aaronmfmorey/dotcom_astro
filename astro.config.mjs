@@ -13,12 +13,9 @@ import expressiveCode from 'astro-expressive-code';
 export default defineConfig({
   site: "https://aaronmorey.com",
   trailingSlash: 'ignore',
+  compressHTML: false,
 
   redirects: {
-    '/readingcharts/': {
-      status: 301,
-      destination: '/reading/charts'
-    }
   },
 
   markdown: {
@@ -55,12 +52,14 @@ export default defineConfig({
   integrations: [
     sitemap(),
     expressiveCode({
-      themes: ['material-theme-ocean'],
+      defaultProps: {
+        frame: 'terminal',
+      },
+      themes: ['catppuccin-mocha'],
       styleOverrides: {
         // You can also override styles
         borderRadius: '3px',
-        codeFontSize: '0.75rem',
-        codeFontFamily: '"Google Sans Code", monospace'
+        codeFontSize: '0.75rem'
       },
     }),
     mdx()

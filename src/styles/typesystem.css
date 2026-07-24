@@ -1,0 +1,114 @@
+@font-face {
+    font-family: Vollkorn;
+    src: url('/fonts/Vollkorn-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: Vollkorn;
+    src: url('/fonts/Vollkorn-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "Old Standard TT";
+    src: url('/fonts/OldStandardTT-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "Old Standard TT";
+    src: url('/fonts/OldStandardTT-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "Old Standard TT";
+    src: url('/fonts/OldStandardTT-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url('/fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url('/fonts/JetBrainsMono-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: fallback;
+}
+
+@media screen and (width > 768px) {
+    :root{
+        --font-size-factor: 1.2;
+    }
+}
+
+@media screen and (width < 768px) {
+    :root {
+        --font-size-factor: 1.1;
+    }
+}
+
+html {
+    font-size: var(--font-size);
+    font-family: var(--ff-oldstyle);
+}
+
+h6 {
+    font-size: var(--font-size-h6);
+}
+
+h5 {
+    font-size: var(--font-size-h5);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    font-weight: 700;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ff-subheads);
+    letter-spacing: -0.04em; /* Tightens spacing */
+    margin-top: .5em;
+    margin-bottom: .125em;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: var(--ff-subheads);
+    font-weight: 600;
+}
+
+/* Other font styling */
+div.expressive-code {
+    font-variant-ligatures: none;
+}

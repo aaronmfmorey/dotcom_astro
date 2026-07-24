@@ -10,6 +10,7 @@
       "@assets/*": ["src/assets/*"],
       "@contentsubmodule/*": ["aaronmoreycom_content/content/*"],
       "@fontawesomesubmodule/*": ["Font-Awesome/*"],
+      "@types/*": ["src/types/*"],
       "@utils/*": ["src/utils/*"],
     }
   }

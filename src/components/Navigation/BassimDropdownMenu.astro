@@ -1,0 +1,47 @@
+---
+interface Link {
+    name: string;
+    url: string;
+}
+
+interface Props {
+    name: string;
+    links: Link[];
+}
+
+const { name = 'Dropdown', links = [] } = Astro.props;
+import Button from '@components/Navigation/BassimButton.astro';
+---
+
+<div class="relative">
+    <Button name={name} id="dropdown-button" showCaret={true} />
+    <div
+            id="dropdown"
+            class="absolute mt-2 hidden text-balance rounded-md p-[0.5px] sm:ml-2 md:w-40">
+        {
+            links.map((link) => (
+                    <a
+                            href={link.url}
+                            class="m-1 block rounded-md px-2 py-2 text-sm text-slate-300/80 transition-colors duration-200 hover:bg-slate-700 hover:text-slate-200/95">
+                        {link.name}
+                    </a>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    const button = document.getElementById('dropdown-button');
+    const dropdown = document.getElementById('dropdown');
+
+    button.addEventListener('click', (event) => {
+        dropdown.classList.toggle('hidden');
+        button.classList.toggle('dropdown-active');
+        event.stopPropagation();
+    });
+
+    document.addEventListener('click', () => {
+        button.classList.remove('dropdown-active');
+        dropdown.classList.add('hidden');
+    });
+</script>

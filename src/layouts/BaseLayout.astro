@@ -7,7 +7,7 @@ import bookAndLaptop from '@assets/images/BookAndLaptopBitmoji.png';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 ---
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -48,6 +48,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet">
     <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
 
+    <script>
+        (function() {
+            // Prevent flash of unstyled color theme
+            // Check localStorage or system preference
+            const storedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            // Apply theme: stored preference > system preference
+            if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+
     {
         indexStatus
             ? <meta name="robots" content={indexStatus} />
@@ -56,9 +72,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <title>{pageTitle}</title>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 <Header />
-<main
+<main class="flex-1 mx-auto px-4 sm:px-6 lg:px-8 py-8"
     {...(excludeFromStaticSearch ? {} : { 'data-pagefind-body': '' })}
 >
     <h1 class="sign-painted">{pageTitle}</h1>
@@ -66,7 +82,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 </main>
 <Footer />
 <script>
-    import "../scripts/menu.js";
+    import initTheme from "../scripts/theme-switcher.js";
+    initTheme();
 </script>
 </body>
 </html>

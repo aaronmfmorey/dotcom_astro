@@ -1,0 +1,39 @@
+---
+// Inspiration: https://splendidlabz.com/docs/astro/components/markdown/#guide  
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+
+const getFirstIndentedLine = function(lines: Array<string>): number {
+    for (let i = 0; i < lines.length; i++) {
+        if (lines[i] == "") {
+            continue;
+        } else if (i < 1) {
+            continue;
+        } else {
+            return i;
+        }
+    }
+    return 0;
+}
+
+const stripIndentation = function(slotText:string) {
+    const lines = slotText.split("\n");
+
+    // Astro slot returns an empty string on line 0.
+    // Check indentation based on what comes after that.
+    const firstIndentedLine = getFirstIndentedLine(lines);
+    const indentationSize = lines[firstIndentedLine].length - lines[firstIndentedLine].trimStart().length;
+    const unindentedLines = lines.map(
+        (line, index) => index < firstIndentedLine
+            ? line
+            : line.substring(indentationSize));
+    return unindentedLines.join("\r\n");
+};
+
+const slotText = await Astro.slots.render('default');
+const indentedSlotText = stripIndentation(slotText);
+const processor = await createMarkdownProcessor();
+const result = await processor.render(indentedSlotText);
+---
+<div class="main-sized flex-1 mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Fragment set:html={result.code} />
+</div>

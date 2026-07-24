@@ -1,0 +1,14 @@
+---
+import AnchoredHeader from "@components/AnchoredHeader.astro";
+import {sortPostsBySubheadAndDate} from '@utils/content_collections';
+
+const { posts, includeEntriesHeader = true, subjectTitle } = Astro.props;
+let headingLevel = includeEntriesHeader ? 3 : 2;
+---
+
+<AnchoredHeader hLevel={headingLevel} text={subjectTitle} />
+<ul>
+    {
+        (sortPostsBySubheadAndDate(posts)).map((p) => <li><a href={`${p.id}/`}>{p.data.title}</a></li>)
+    }
+</ul>

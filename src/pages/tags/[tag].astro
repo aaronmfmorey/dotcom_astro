@@ -33,8 +33,8 @@ return a.data.pubDate < b.data.pubDate ? 1 : -1;
     <p><a href="/tags/">&laquo; All tags</a></p>
     <ul>
         {
-            posts.map((post) => (
-                <BlogPost post={post} frontmatter={post.data} />
+            posts.map((post, index, array) => (
+                <BlogPost post={post} frontmatter={post.data} isLast={index === array.length - 1} />
             ))
         }
     </ul>

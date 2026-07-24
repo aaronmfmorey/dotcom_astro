@@ -1,0 +1,10 @@
+---
+const {jsonFilePath} = Astro.props;
+const dataFiles = import.meta.glob('/aaronmoreycom_content/content/data/*.json', { eager: true });
+const data = dataFiles[jsonFilePath]?.default;
+---
+<ul>
+{
+    data.links.map(lnk => <li><a href={lnk.url}>{lnk.title}</a></li>)
+}
+</ul>

@@ -1,0 +1,208 @@
+@reference './utilities.css';
+
+html {
+    color: var(--near-black);
+    background-color: var(--white);
+}
+
+h1 {
+    font-variant: small-caps;
+}
+
+a {
+    color: var(--color-links);
+    text-decoration: none;
+}
+
+p a {
+    color: var(--color-links);
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--color-links-hover);
+}
+
+a.anchor-link {
+    color: var(--light-grey);
+    font-size: .4em;
+    vertical-align: middle;
+    margin-left: .5em;
+}
+
+a.anchor-link:hover {
+    color: var(--medium-grey);
+}
+
+nav {
+    border-radius: 16px;
+}
+
+nav a {
+    line-height: 1.5;
+    font-size: var(--font-size-h6);
+    font-weight: 800;
+    filter: drop-shadow(0 0 2px var(--nearly-white));
+}
+
+@layer base {
+    ul, ol, li {
+        list-style: revert-layer;
+        margin: revert-layer;
+        padding: revert-layer;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+td {
+    padding: 5px;
+    padding-left: 10px;
+}
+
+tr {
+    border: 1px black solid;
+}
+
+button {
+    font-family: var(--ff-oldstyle);
+}
+
+button.nav-menu {
+    font-family: inherit;
+    font-size: .5em;
+}
+
+blockquote {
+    border-left: 3px solid;
+    border-color: var(--light-grey);
+    color: var(--grey);
+    padding-left: 10px;
+    font-style: italic;
+}
+
+blockquote em {
+    font-style: normal;
+}
+
+/*
+ * Astro has an overriding specificity on odd numbered tables,
+ * mark as !important to ensure this styling takes precedence.
+ */
+tbody tr.odd {
+    background-color: var(--nearly-white);
+}
+
+thead tr {
+    background-color: var(--near-black);
+    color: var(--light-grey);
+    font-family: var(--ff-subheads);
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.1em;
+}
+
+thead th {
+    padding: 5px 10px;
+}
+
+.table-scroll-container {
+    overflow-x: auto;
+}
+
+.table-scroll-container table {
+    width: 100%;
+}
+
+.micro-container {
+    background-color: var(--twitter-blue);
+    padding: 10px;
+    font-family: sans-serif;
+    border-radius: 10px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+code {
+    font-family: var(--ff-code);
+    word-spacing: 0;
+    font-size: .8em;
+}
+
+div.expressive-code pre > code {
+    font-family: var(--ff-code);
+    font-weight: 500;
+    word-spacing: -.3em;
+    font-size: .8em;
+}
+
+span:has(code) {
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--catpuccin-green);
+    background-color: var(--black);
+    font-family: monospace;
+    font-size: .8em;
+}
+
+p > code,
+h1 > code,
+h2 > code,
+h3 > code,
+h4 > code,
+h5 > code,
+h6 > code {
+    padding: 2px;
+    border-radius: 5px;
+    color: var(--grey);
+    background-color: var(--nearly-white);
+    border: solid 1px var(--light-grey);
+    font-family: monospace;
+    font-size: .8em;
+    font-weight: 400;
+}
+
+.glassy {
+    @apply glassy;
+}
+
+/* Override for dark mode */
+html[data-theme="dark"] {
+    background-color: var(--black);
+    color: var(--dark-color-body-text);
+    font-family: var(--dark-ff-body);
+    font-size: 18px;
+
+    main {
+        max-width: clamp(250px, 60sch, 100%);
+    }
+
+    a {
+        color: var(--dark-color-links);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--ff-code);
+        letter-spacing: -0.08em;
+        color: var(--dark-heading-color);
+    }
+
+    blockquote {
+        color: var(--dark-blockquote-color);
+        font-style: italic;
+    }
+
+    blockquote em {
+        font-style: normal;
+    }
+}

@@ -1,0 +1,4 @@
+main {
+    max-width: clamp(250px, 55ch, 100%);
+    margin: auto;
+}

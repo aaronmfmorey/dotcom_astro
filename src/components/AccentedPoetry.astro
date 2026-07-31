@@ -4,13 +4,24 @@ let html = await Astro.slots.render('default')
 html = html.replaceAll("@@", "<ruby class='stressed-syllable'>").replaceAll("::", "<rt>/</rt></ruby>");
 html = html.replaceAll("///", "<ruby class='unstressed-syllable'>").replaceAll("/:/", "<rt>&cup;</rt></ruby>");
 ---
-<Fragment set:html={html} />
+<blockquote class="amm-accented-poetry">
+    <Fragment set:html={html} />
+</blockquote>
 
 <style>
-    ruby {
+    blockquote.amm-accented-poetry {
         font-style: normal;
-    }
-    ruby.stressed-syllable {
-        font-style: oblique;
+        padding-left: calc(1em + 10px);
+        text-indent: -1em;
+
+        ruby.stressed-syllable {
+            font-style: oblique;
+            font-weight: 500;
+        }
+
+        rt {
+            font-weight: 900;
+            font-size: .67em;
+        }
     }
 </style>

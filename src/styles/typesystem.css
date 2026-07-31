@@ -1,7 +1,7 @@
 @font-face {
     font-family: Vollkorn;
     src: url('/fonts/Vollkorn-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 400 900;
     font-style: normal;
     font-display: fallback;
 }
@@ -9,7 +9,7 @@
 @font-face {
     font-family: Vollkorn;
     src: url('/fonts/Vollkorn-Italic-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 400 900;
     font-style: italic;
     font-display: fallback;
 }

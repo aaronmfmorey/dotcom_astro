@@ -180,6 +180,29 @@ h6 > code {
     @apply glassy;
 }
 
+/* Page find */
+.pf-trigger-btn {
+    border: none !important;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-icon {
+    background-color: var(--color-links);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-icon:hover {
+    background-color: var(--color-links-hover);
+}
+
+.open .pf-trigger-btn {
+    background-color: transparent !important;
+    font-size: 1.75em;
+}
+
+#primary-nav.open > div > pagefind-modal-trigger > button > span {
+    width: 1.75em !important;
+    height: 1.75em !important;
+}
+
 /* Override for dark mode */
 html[data-theme="dark"] {
     background-color: var(--black);

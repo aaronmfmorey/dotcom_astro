@@ -24,6 +24,56 @@ const {micro, avatar, singlePage} = Astro.props;
     </div>
 </div>
 
+<script>
+    import gsap from 'gsap';
+
+    document.querySelectorAll('.fa-heart').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            gsap.to(e.currentTarget, {
+                scale: 1.25,
+                duration: .15,
+                yoyo: true,
+                repeat: 3,
+                ease: 'power4.inOut',
+            });
+        });
+    });
+
+    document.querySelectorAll('.fa-retweet').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            gsap.to(e.currentTarget, {
+                rotation: 180,
+                duration: .5,
+                repeat: 1,
+                ease: "none",
+            });
+        });
+    });
+
+    document.querySelectorAll('.fa-comment').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            gsap.to(e.currentTarget, {
+                keyframes: {
+                    rotation: [0, -8, 8, -5, 5, -2, 2, 0],
+                },
+                duration: 1,
+                scale: 1.25,
+                yoyo: true,
+                repeat: 1,
+                ease: "power4.inOut"
+            });
+
+            // gsap.to(e.currentTarget, {
+            //     scale: 1.25,
+            //     duration: .15,
+            //     yoyo: true,
+            //     repeat: 3,
+            //     ease: 'power4.inOut',
+            // })
+        });
+    });
+</script>
+
 <style>
     div.micro {
         padding: 10px;

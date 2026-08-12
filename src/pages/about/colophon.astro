@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import LinkList from "@components/LinkList.astro";
+import AnchoredHeader from "@components/AnchoredHeader.astro";
 const pageTitle = "Colophon";
 ---
 <BaseLayout pageTitle={pageTitle}>
@@ -9,7 +10,7 @@ const pageTitle = "Colophon";
         <a href="https://astro.build" target="_blank">
             <i class="fa-solid fa-up-right-from-square" style="font-size: .66em;"></i>
         </a>.</p>
-    <h2>Design Notes</h2>
+    <AnchoredHeader hLevel="2" text="Design Notes" />
     <p>
         The heading font is <span class="heading-font">Old Standard TT.</span>
         <a href="https://fonts.google.com/specimen/Old+Standard+TT" target="_blank">
@@ -34,7 +35,8 @@ const pageTitle = "Colophon";
         and code. With this purpose in mind, I took inspiration from old broadsheet newspapers. The black on
         white coloring ensures the text remains the center of attention.
     </p>
-    <h2>The Human Touch</h2>
+
+    <AnchoredHeader hLevel="2" text="The Human Touch" />
     <p>
         All of my writing on this site is 100% human-generated. I use these essays to flesh out my own
         thinking, and an AI can't do that for you.
@@ -46,7 +48,7 @@ const pageTitle = "Colophon";
         I don't ask Claude to lift weights for me, or taste whiskey for me, or write my kids' bedtimes stories
         for me. The joy is in doing the thing.  
     </p>
-    <h2>Technical Details</h2>
+    <AnchoredHeader hLevel="2" text="Technical Details" />
     <LinkList jsonFilePath="/aaronmoreycom_content/content/data/technical_details_articles.json" />
 </BaseLayout>
 

@@ -1,12 +1,13 @@
 ---
-import {Image} from "astro:assets";
 import BookStars from "@components/Reading/BookStars.astro";
 import {formatDateLong, slugify, authorMatchesTag} from '@utils/utils.ts';
 import linkifyHtml from 'linkify-html';
 import {bookshopAffiliateUrl} from "@utils/utils";
+import {getYearHeaderTemplate} from "@utils/reading";
 import ReviewDialog from "@components/Reading/ReviewDialog.astro";
 import CoverImageFlipper from "@components/Reading/CoverImageFlipper.astro";
 import Divider from "@components/Divider.astro";
+
 
 const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
 
@@ -23,7 +24,7 @@ const bookshopSlug = book.bookshop_slug ?? book.isbn13;
     }
     {
         yearRead !== previousYearRead
-            ? <h2>{yearRead} ({yearCounts[yearRead]})</h2>
+            ? (<h2 id={getYearHeaderTemplate(yearRead)}>{yearRead} ({yearCounts[yearRead]})<a class="anchor-link" href={"#" + getYearHeaderTemplate(yearRead)}>§</a></h2>)
             :""
     }
 <div class="book-entry-container">

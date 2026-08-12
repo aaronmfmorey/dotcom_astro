@@ -11,6 +11,8 @@ import BooksByCentury from "@components/Reading/BooksByCentury.astro";
 import BooksByAuthor from "@components/Reading/BooksByAuthor.astro";
 import AnchoredHeader from "@components/AnchoredHeader.astro";
 
+import {getYearHeaderTemplate} from "@utils/reading";
+
 let books = runSqliteQuery(QUERIES.BOOKS_FOR_READING_LIST);
 const pageTitle = "Reading";
 const allPosts = await getCollection("blog");
@@ -29,6 +31,8 @@ books.forEach(b => {
     }
 })
 
+const allYears = Object.keys(yearCounts);
+
 const coverImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/images/covers/*.jpg');
 ---
 <BaseLayout pageTitle={pageTitle} excludeFromStaticSearch={true}>
@@ -36,6 +40,12 @@ const coverImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/i
     <p>Images come from <a href="https://openlibrary.org/dev/docs/api/covers">The OpenLibrary Books API</a>,
         freely available images, or my own photos.</p>
     <p><a href="/reading/#reading-stats">&#8595; Reading stats</a></p>
+
+    {
+        allYears.map(function(year) {
+            return (<a href={"#" + getYearHeaderTemplate(year)}>{year}</a><span> </span>);
+        })
+    }
 
     <div class="books-container">
     {

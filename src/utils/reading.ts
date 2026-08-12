@@ -1,0 +1,1 @@
+export const getYearHeaderTemplate = (yearRead: string | number): string => `year-${yearRead}`;

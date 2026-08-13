@@ -1,16 +1,16 @@
 ---
 export interface Props {
     pageTitle: string,
-    excludeFromStaticSearch: boolean,
-    indexStatus: string,
-    pageTitleIsH1: boolean
+    excludeFromStaticSearch?: boolean,
+    indexStatus?: string,
+    pageTitleIsH1?: boolean
 }
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-const { pageTitle, excludeFromStaticSearch, indexStatus, pageTitleIsH1 = true } = Astro.props;
-import bookAndLaptop from '@assets/images/BookAndLaptopBitmoji.png';
+const { pageTitle, excludeFromStaticSearch = false, indexStatus = "index, follow", pageTitleIsH1 = true } = Astro.props;
+import engravedHeadShot from '../assets/images/AaronHeadshotEngraved.png';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 ---
@@ -51,7 +51,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
     <!-- OG Image -->
-    <meta property="og:image" content={Astro.site + bookAndLaptop.src} />
+    <meta property="og:image" content={Astro.site + engravedHeadShot.src} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:url" content={canonicalURL} />
@@ -79,12 +79,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             }
         })();
     </script>
-
-    {
-        indexStatus
-            ? <meta name="robots" content={indexStatus} />
-            : ""
-    }
+    <meta name="robots" content={indexStatus} />
 
     <title>{pageTitle}</title>
 </head>

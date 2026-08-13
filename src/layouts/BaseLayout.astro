@@ -1,8 +1,15 @@
 ---
+export interface Props {
+    pageTitle: string,
+    excludeFromStaticSearch: boolean,
+    indexStatus: string,
+    pageTitleIsH1: boolean
+}
+
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-const { pageTitle, excludeFromStaticSearch, indexStatus } = Astro.props;
+const { pageTitle, excludeFromStaticSearch, indexStatus, pageTitleIsH1 = true } = Astro.props;
 import bookAndLaptop from '@assets/images/BookAndLaptopBitmoji.png';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -13,15 +20,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Font Awesome -->
     <link rel="preload" href="/fonts/Vollkorn-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="/fonts/Vollkorn-Italic-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="/fonts/OldStandardTT-Regular.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="/fonts/OldStandardTT-Italic.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="/fonts/OldStandardTT-Bold.ttf" as="font" type="font/ttf" crossorigin>
-    <link href="/fontawesome/css/fontawesome.css" rel="stylesheet" />
-    <link href="/fontawesome/css/brands.css" rel="stylesheet" />
-    <link href="/fontawesome/css/solid.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="/fontawesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="/fontawesome/css/brands.min.css" rel="stylesheet" />
+    <link href="/fontawesome/css/solid.min.css" rel="stylesheet" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -44,10 +51,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
     <!-- OG Image -->
-    <meta property="og:image" content={bookAndLaptop.src} />
+    <meta property="og:image" content={Astro.site + bookAndLaptop.src} />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="AaronMorey.com" />
     <meta property="og:image:width" content="398"/>
     <meta property="og:image:height" content="398"/>
+    <meta property="og:locale" content="en_US"/>
 
     <!-- PageFind -->
     <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet">
@@ -82,7 +93,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <main class="flex-1 mx-auto px-4 sm:px-6 lg:px-8 py-8"
     {...(excludeFromStaticSearch ? {} : { 'data-pagefind-body': '' })}
 >
-    <h1 class="sign-painted">{pageTitle}</h1>
+    {
+            pageTitleIsH1 ? <h1 class="sign-painted">{pageTitle}</h1> : ""
+    }
     <slot />
 </main>
 <Footer />

@@ -8,7 +8,6 @@ import ReviewDialog from "@components/Reading/ReviewDialog.astro";
 import CoverImageFlipper from "@components/Reading/CoverImageFlipper.astro";
 import Divider from "@components/Divider.astro";
 
-
 const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
 
 const yearRead = new Date(Date.parse(book.date_read)).getFullYear();
@@ -24,7 +23,7 @@ const bookshopSlug = book.bookshop_slug ?? book.isbn13;
     }
     {
         yearRead !== previousYearRead
-            ? (<h2 id={getYearHeaderTemplate(yearRead)}>{yearRead} ({yearCounts[yearRead]})<a class="anchor-link" href={"#" + getYearHeaderTemplate(yearRead)}>§</a></h2>)
+            ? (<h2 id={getYearHeaderTemplate(yearRead)}>{yearRead} ({yearCounts[yearRead]})<i class="fa-solid fa-arrow-up anchor-link" onclick="scrollToTop();"></i><a class="anchor-link"  href={"#" + getYearHeaderTemplate(yearRead)}>§</a></h2>)
             :""
     }
 <div class="book-entry-container">
@@ -95,3 +94,17 @@ const bookshopSlug = book.bookshop_slug ?? book.isbn13;
     }
 
 </style>
+
+<script>
+    function scrollToTop() {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    document.querySelectorAll("h2").forEach((button) => {
+        button.addEventListener('click', () => scrollToTop());
+    });
+</script>

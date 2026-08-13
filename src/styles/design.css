@@ -24,6 +24,7 @@ a:hover {
     color: var(--color-links-hover);
 }
 
+i.anchor-link,
 a.anchor-link {
     color: var(--light-grey);
     font-size: .4em;
@@ -31,6 +32,7 @@ a.anchor-link {
     margin-left: .5em;
 }
 
+i.anchor-link:hover,
 a.anchor-link:hover {
     color: var(--medium-grey);
 }

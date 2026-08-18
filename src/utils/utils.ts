@@ -29,7 +29,7 @@ export const formatDateLong = function(date: Date): String {
 
 export const intToOrdinal = function(i: number): string {
     const rules = new Intl.PluralRules('en', { type: 'ordinal' });
-    const suffixes = { one: 'st', two: 'nd', few: 'rd', other: 'th' };
+    const suffixes = { zero: 'th', one: 'st', two: 'nd', few: 'rd', many: 'th', other: 'th' };
     return i + suffixes[rules.select(i)];
 };
 

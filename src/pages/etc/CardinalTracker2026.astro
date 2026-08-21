@@ -78,6 +78,19 @@ function formatToThreePlaces(value: number) {
     return value.toFixed(3);
 }
 
+function winsToReachGoal(currentWins: number, goalWins: number) {
+    return goalWins - currentWins;
+}
+
+function lossesToReachGoal(currentWins: number, currentLosses: number, goalWins: number) {
+    const gamesRemaining = GAMES_IN_SEASON - (currentWins + currentLosses);
+    return gamesRemaining - goalWins;
+}
+
+function paceToReachGoal(goalWins: number, goalLosses: number) {
+    return 162 * (goalWins / (goalWins + goalLosses));
+}
+
 /* Current */
 let currentPaceWins = (WINS / (WINS + LOSSES)) * GAMES_IN_SEASON;
 let currentPaceWinsFormatted = currentPaceWins.toFixed(1);
@@ -101,6 +114,23 @@ const pythagWinsCurrent = pythagWinPct * (WINS + LOSSES);
 const pythagProjectedWins = pythagWinPct * GAMES_IN_SEASON;
 const pythagProjectedWinsFormatted = pythagProjectedWins.toFixed(1);
 const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
+
+/* Win Thresholds */
+const WINS_TO_81 = winsToReachGoal(WINS, 81);
+const WINS_TO_85 = winsToReachGoal(WINS, 85);
+const WINS_TO_87 = winsToReachGoal(WINS, 87);
+const WINS_TO_90 = winsToReachGoal(WINS, 90);
+
+const LOSSES_TO_81 = lossesToReachGoal(WINS, LOSSES, WINS_TO_81);
+const LOSSES_TO_85 = lossesToReachGoal(WINS, LOSSES, WINS_TO_85);
+const LOSSES_TO_87 = lossesToReachGoal(WINS, LOSSES, WINS_TO_87);
+const LOSSES_TO_90 = lossesToReachGoal(WINS, LOSSES, WINS_TO_90);
+
+const PACE_TO_81 = paceToReachGoal(WINS_TO_81, LOSSES_TO_81);
+const PACE_TO_85 = paceToReachGoal(WINS_TO_85, LOSSES_TO_85);
+const PACE_TO_87 = paceToReachGoal(WINS_TO_87, LOSSES_TO_87);
+const PACE_TO_90 = paceToReachGoal(WINS_TO_90, LOSSES_TO_90);
+
 ---
 <BaseLayout pageTitle={title}>
     <AnchoredHeader hLevel="2" text="Actual Record" />
@@ -122,7 +152,45 @@ const pythagRos = winsAssumingTrueTalent(pythagWinPct * GAMES_IN_SEASON);
             formatter={formatToOnePlace}
         />
     </StatsContainer>
-    <AnchoredHeader hLevel="2" text="Wins Required to Beat Projections" />
+    <AnchoredHeader hLevel="2" text="Wins Reach Milestone" />
+    <div class="table-scroll-container">
+        <table>
+            <thead style="background-color: white;">
+            <tr>
+                <td>Wins Goal</td>
+                <td>Record to Reach</td>
+                <td>Win % To Reach</td>
+            </tr>
+            </thead>
+            <tr>
+                <td>81</td>
+                <td>{WINS_TO_81}-{LOSSES_TO_81}</td>
+                <td>{(WINS_TO_81 / (WINS_TO_81 + LOSSES_TO_81)).toFixed(3)} (Pace: {PACE_TO_81.toFixed(1)})</td>
+            </tr>
+            <tr>
+                <td>85</td>
+                <td>{WINS_TO_85}-{LOSSES_TO_85}</td>
+                <td>{(WINS_TO_85 / (WINS_TO_85 + LOSSES_TO_85)).toFixed(3)} (Pace: {PACE_TO_85.toFixed(1)})</td>
+            </tr>
+            <tr>
+                <td>87</td>
+                <td>{WINS_TO_87}-{LOSSES_TO_87}</td>
+                <td>{(WINS_TO_87 / (WINS_TO_87 + LOSSES_TO_87)).toFixed(3)} (Pace: {PACE_TO_87.toFixed(1)})</td>
+            </tr>
+            <tr>
+                <td>90</td>
+                <td>{WINS_TO_90}-{LOSSES_TO_90}</td>
+                <td>{(WINS_TO_90 / (WINS_TO_90 + LOSSES_TO_90)).toFixed(3)} (Pace: {PACE_TO_90.toFixed(1)})</td>
+            </tr>
+        </table>
+    </div>
+    <details>
+        <summary><i class="fa-solid fa-circle-question"></i></summary>
+        <div>
+            This table shows the record the Cardinals would need to play at to reach each win threshold.
+        </div>
+    </details>
+    <AnchoredHeader hLevel="2" text="Wins to Beat Projections" />
     <div class="table-scroll-container">
         <table>
             <thead style="background-color: white;">

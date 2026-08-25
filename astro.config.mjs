@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 // CREDIT: https://caseyjamesperno.com/blog/astro-header-anchors/
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeTableScroll from './plugins/rehype-table-scroll.j
+import rehypeTableScroll from './plugins/rehype-table-scroll.js';
 import mdx from '@astrojs/mdx';
 
 import expressiveCode from 'astro-expressive-code';

@@ -1,0 +1,55 @@
+---
+export interface Props {
+    postTags: Array<string>
+}
+
+import {type CollectionEntry, getCollection} from "astro:content";
+const {postTags} = Astro.props;
+import {slugify} from "@utils/utils.ts";
+import BlogPost from "@components/Blog/BlogPost.astro";
+
+const allPosts = await getCollection("blog");
+
+let allTaggedPosts = allPosts.filter((post) => {
+    if (postTags.length === 0) {
+        return false;
+    } else {
+        return postsTags.some(pg => post.data.tags.includes(pg));
+    }
+    return true;
+})
+
+
+
+//     const uniqueTags = frontmatter.tags;
+//     console.log("uniqueTags", uniqueTags)
+//
+//     const allTags = uniqueTags.map((tag) => {
+//         const filteredPosts = allPosts.filter((post) =>
+//             (post.data.tags ?? []).includes(tag)
+//         );
+//         const originalTag = tag;
+//         tag = !!tag ? slugify(tag) : tag;
+//         return {
+//             params: { tag },
+//             props: { posts: filteredPosts, originalTag: originalTag },
+//         };
+//     });
+//     console.log("allTags", allTags);
+//     return allTags;
+// }
+
+---
+<hr />
+<h4>Related Articles</h4>
+<div class="related-articles-container">
+    They go here
+</div>
+
+<style>
+    .related-articles-container {
+        border: 2px solid var(--light-grey);
+        border-radius: 5px;
+        background-color: var(--light-grey);
+    }
+</style>

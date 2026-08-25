@@ -205,6 +205,11 @@ h6 > code {
     height: 1.75em !important;
 }
 
+.katex-display * {
+    text-align: left !important;
+    font-family: var(--ff-code);
+}
+
 /* Override for dark mode */
 html[data-theme="dark"] {
     background-color: var(--black);

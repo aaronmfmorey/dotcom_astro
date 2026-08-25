@@ -6,6 +6,7 @@ import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 // CREDIT: https://caseyjamesperno.com/blog/astro-header-anchors/
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeTableScroll from './plugins/rehype-table-scroll.js';
+import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import mdx from '@astrojs/mdx';
 
@@ -20,6 +21,7 @@ export default defineConfig({
   },
 
   markdown: {
+    remarkPlugins: [remarkMath],
     rehypePlugins: [
       rehypeHeadingIds,
       [

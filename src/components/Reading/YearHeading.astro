@@ -9,7 +9,9 @@ const {yearRead, yearCounts} = Astro.props;
 import {getYearHeaderTemplate} from "@utils/reading.ts";
 ---
 <h2 id={getYearHeaderTemplate(yearRead)}>
-    {yearRead} <a class="anchor-link"  href={"#" + getYearHeaderTemplate(yearRead)}>§</a>
+    {yearRead}
+    <i class="fa-solid fa-arrow-up anchor-link" onclick="scrollToTop();"></i>
+    <a class="anchor-link"  href={"#" + getYearHeaderTemplate(yearRead)}>§</a>
 </h2>
 <div class="totals-subhead">
     {yearCounts['count']} Books /

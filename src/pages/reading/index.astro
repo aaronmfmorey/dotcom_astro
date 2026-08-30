@@ -3,7 +3,7 @@ import type { ImageMetadata } from 'astro';
 import {getCollection} from "astro:content";
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { runSqliteQuery, QUERIES } from '@utils/db-operations.ts';
-import {GoodreadsBook} from "@types/components.ts";
+import {GoodreadsBook, BookEntryYearlyTotals} from "@types/components.ts";
 
 import BookEntry from "@components/Reading/BookEntry.astro";
 import BooksAndPagesChart from "@components/Reading/BooksAndPagesChart.astro";
@@ -21,17 +21,15 @@ let allTags = allPosts.map((post) => post.data.tags).flat();
 let uniqueTagsForAuthorMatch = [... new Set(allTags)].filter(tag => tag !== null)
     .map((tag :string) => tag.toLowerCase().replaceAll(" ", ""));
 
-let yearCounts: Record<number, Record<'count'|'pages', number>> = {};
+let yearCounts: Record<number, BookEntryYearlyTotals> = {};
 
 books.forEach(b => {
     const bookYear = new Date(Date.parse(b.date_read)).getFullYear();
     if (!yearCounts[bookYear]) {
-        console.log(bookYear + ": " + b.title + " pages: " + (b.number_of_pages ? b.number_of_pages : 0));
         yearCounts[bookYear] = {'count': 0, 'pages': 0};
         yearCounts[bookYear]['count'] = 1;
         yearCounts[bookYear]['pages'] = b.number_of_pages ? b.number_of_pages : 0;
     } else {
-        console.log(bookYear + ": " + b.title + " pages: " + (b.number_of_pages ? b.number_of_pages : 0));
         yearCounts[bookYear]['count'] = yearCounts[bookYear]['count'] + 1;
         yearCounts[bookYear]['pages'] = yearCounts[bookYear]['pages'] + (b.number_of_pages ?? 0);
     }

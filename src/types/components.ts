@@ -21,3 +21,5 @@ export interface GoodreadsBook {
     no_bookshop: boolean,
     running_total: number
 }
+
+export type BookEntryYearlyTotals = Record<'count'|'pages', number>

@@ -1,12 +1,12 @@
 import path from "path";
 import Database from "better-sqlite3";
 
-export const runSqliteQuery = function(queryText: string) {
+export const runSqliteQuery = function<T>(queryText: string) {
     const dbPath = path.resolve('aaronmoreycom_content/content/data/goodreads.db');
     const db = new Database(dbPath);
 
     // Query to get total pages per year
-    const sqlData = db.prepare(queryText).all();
+    const sqlData = db.prepare(queryText).all() as T;
     db.close();
     return sqlData;
 }

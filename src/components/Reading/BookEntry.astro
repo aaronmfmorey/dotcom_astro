@@ -7,14 +7,11 @@ import {getYearHeaderTemplate} from "@utils/reading";
 import ReviewDialog from "@components/Reading/ReviewDialog.astro";
 import CoverImageFlipper from "@components/Reading/CoverImageFlipper.astro";
 import Divider from "@components/Divider.astro";
+import YearHeading from "@components/Reading/YearHeading.astro";
 
 const {book, uniqueTags, coverImages, previousYearRead, yearCounts} = Astro.props;
-
 const yearRead = new Date(Date.parse(book.date_read)).getFullYear();
-
 const bookshopSlug = book.bookshop_slug ?? book.isbn13;
-
-
 ---
     {
         yearRead !== previousYearRead && yearRead !== (new Date()).getFullYear()
@@ -23,7 +20,7 @@ const bookshopSlug = book.bookshop_slug ?? book.isbn13;
     }
     {
         yearRead !== previousYearRead
-            ? (<h2 id={getYearHeaderTemplate(yearRead)}>{yearRead} ({yearCounts[yearRead]})<i class="fa-solid fa-arrow-up anchor-link" onclick="scrollToTop();"></i><a class="anchor-link"  href={"#" + getYearHeaderTemplate(yearRead)}>§</a></h2>)
+            ? <YearHeading yearRead={yearRead} yearCounts={yearCounts[yearRead]} />
             :""
     }
 <div class="book-entry-container">

@@ -1,0 +1,28 @@
+---
+export interface Props {
+    yearRead: number,
+    yearCounts: BookEntryYearlyTotals
+}
+
+import {type BookEntryYearlyTotals} from "@types/components.ts";
+const {yearRead, yearCounts} = Astro.props;
+import {getYearHeaderTemplate} from "@utils/reading.ts";
+---
+<h2 id={getYearHeaderTemplate(yearRead)}>
+    {yearRead}
+    <i class="fa-solid fa-arrow-up anchor-link" onclick="scrollToTop();"></i>
+    <a class="anchor-link"  href={"#" + getYearHeaderTemplate(yearRead)}>§</a>
+</h2>
+<div class="totals-subhead">
+    {yearCounts['count']} Books /
+    {yearCounts['pages'].toLocaleString('en-US', {maximumFractionDigits: 0 })} Pages
+</div>
+
+<style>
+    .totals-subhead {
+        font-style: italic;
+        color: var(--medium-grey);
+        margin-left: .5em;
+        padding-bottom: 1em;
+    }
+</style>

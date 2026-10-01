@@ -60,7 +60,11 @@ export const QUERIES = {
               g.date_read,
               g.my_rating,
               g.my_review,
-              g.number_of_pages,
+              CASE
+                  WHEN number_of_pages IS NULL OR TRIM(number_of_pages) = ''
+                      THEN 0
+                  ELSE CAST(number_of_pages AS INTEGER)
+              END AS number_of_pages,
               gm.*
           from goodreads g
           left join goodreads_meta gm

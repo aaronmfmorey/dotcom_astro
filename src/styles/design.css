@@ -9,6 +9,10 @@ h1 {
     font-variant: small-caps;
 }
 
+p {
+    text-align: justify;
+}
+
 a {
     color: var(--color-links);
     text-decoration: none;

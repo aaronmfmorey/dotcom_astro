@@ -54,6 +54,10 @@
     font-display: fallback;
 }
 
+p {
+    text-align: justify;
+}
+
 @media screen and (width > 768px) {
     :root{
         --font-size-factor: 1.2;
@@ -63,6 +67,10 @@
 @media screen and (width < 768px) {
     :root {
         --font-size-factor: 1.1;
+    }
+
+    p {
+        text-align: left;
     }
 }
 

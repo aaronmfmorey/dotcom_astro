@@ -55,7 +55,7 @@ export default defineConfig({
       defaultProps: {
         frame: 'terminal',
       },
-      themes: ['catppuccin-mocha'],
+      themes: ['catppuccin-latte'],
       styleOverrides: {
         // You can also override styles
         borderRadius: '3px',

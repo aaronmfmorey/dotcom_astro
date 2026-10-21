@@ -5,7 +5,7 @@
     /* Fonts */
     /* Based on Modern Font Stacks: https://modernfontstacks.com/?stack=system-ui */
     --ff-oldstyle: "Vollkorn", 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', "P052", serif;
-    --ff-subheads: "Old Standard TT", "Helvetica", sans-serif;
+    --ff-subheads: "Source Serif 4", "Old Standard TT", "Helvetica", sans-serif;
     --ff-code: "JetBrains Mono", monospace;
 
     /* Font sizes */

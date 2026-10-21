@@ -205,6 +205,15 @@ h6 > code {
     height: 1.75em !important;
 }
 
+section.footnotes h2 {
+    border-top: 1px solid var(--grey);
+    margin-top: 2em;
+    padding-top: 1em;
+    font-size: var(--font-size-h5);
+    color: var(--grey);
+    font-style: italic;
+}
+
 /* Override for dark mode */
 html[data-theme="dark"] {
     background-color: var(--black);

@@ -95,6 +95,7 @@ blockquote {
     color: var(--grey);
     padding-left: 10px;
     font-style: italic;
+    margin-left: .5em;
 }
 
 blockquote em {
@@ -212,6 +213,14 @@ section.footnotes h2 {
     font-size: var(--font-size-h5);
     color: var(--grey);
     font-style: italic;
+}
+
+.data-footnote-backref {
+    font-size: .66em;
+}
+
+.post-data-wrapper {
+    font-size: .8em;
 }
 
 /* Override for dark mode */

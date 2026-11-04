@@ -1,8 +1,9 @@
 ---
 import {Image} from 'astro:assets';
-import {formatDateLong} from '@utils/utils';
-import linkifyHtml from 'linkify-html';
+import {formatDateWithTime} from '@utils/utils';
+import {render} from "astro:content";
 const {micro, avatar, singlePage} = Astro.props;
+const {Content} = await render(micro);
 ---
 <div class="micro">
     <div class="name">
@@ -10,12 +11,12 @@ const {micro, avatar, singlePage} = Astro.props;
         Aaron Morey (aaronmorey.com)
         {
             singlePage
-                ? <span class="timestamp">{ formatDateLong(micro.data.date) }</span>
-                : <a class="timestamp" href={`/micros/${micro.data.id}`}><span class="timestamp">{ formatDateLong(micro.data.date) }</span></a>
+                ? <span class="timestamp">{ formatDateWithTime(micro.data.date) }</span>
+                : <a class="timestamp" href={`/micros/${micro.data.id}`}><span class="timestamp">{ formatDateWithTime(micro.data.pubDate) }</span></a>
         }
     </div>
     <div class="content">
-        { <Fragment set:html={linkifyHtml(micro.data.body)} /> }
+        <Content />
     </div>
     <div class="reacts">
         <span><i class="fa-regular fa-comment"></i></span>
@@ -87,6 +88,10 @@ const {micro, avatar, singlePage} = Astro.props;
 
     div.micro div.name {
         font-weight: 600;
+    }
+
+    div.micro div.content {
+        text-justify: none;
     }
 
     div.micro div.reacts {

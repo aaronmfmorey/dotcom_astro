@@ -3,7 +3,7 @@ import {getCollection} from "astro:content";
 import MicroPost from "@components/Micros/MicroPost.astro";
 import BaseLayout from '@layouts/BaseLayout.astro';
 import onTheJohn from "@contentsubmodule/images/OnTheJohn.png";
-import {formatDateLong} from "@utils/utils";
+import {formatDateWithTime} from "@utils/utils";
 export async function getStaticPaths() {
     const micros = await getCollection('micros');
     return micros.map(micro => ({
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
     );
 }
 const {micro} = Astro.props;
-const pageTitle = formatDateLong(micro.data.date);
+const pageTitle = formatDateWithTime(micro.data.pubDate);
 ---
 <BaseLayout pageTitle={pageTitle} indexStatus="noindex">
     <div class="micro-container">

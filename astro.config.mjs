@@ -46,7 +46,15 @@ export default defineConfig({
         preserveSymlinks: true
     },
     // @ts-ignore
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    server: {
+      fs: {
+        allow: [
+          '.',                          // project root
+          'aaronmoreycom_content/content/images' // wherever the real file lives
+        ],
+      },
+    },
   },
 
   integrations: [

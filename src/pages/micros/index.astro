@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import {getCollection} from "astro:content";
 const micros = await getCollection("micros");
 micros.sort((a, b) => {
-    return a.data.date > b.data.date ? -1 : 1;
+    return a.data.pubDate > b.data.pubDate ? -1 : 1;
 })
 import MicroPost from "@components/Micros/MicroPost.astro";
 import onTheJohn from "@contentsubmodule/images/OnTheJohn.png";

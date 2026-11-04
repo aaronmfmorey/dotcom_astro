@@ -27,6 +27,18 @@ export const formatDateLong = function(date: Date): String {
     return new Date(date).toLocaleDateString("en-US", dateOptions);
 }
 
+export const formatDateWithTime = function(date: Date): string {
+    const dateOptions: object = {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true // Optional: use 12-hour format
+    };
+    return new Date(date).toLocaleDateString("en-US", dateOptions);
+}
+
 export const intToOrdinal = function(i: number): string {
     const rules = new Intl.PluralRules('en', { type: 'ordinal' });
     const suffixes = { zero: 'th', one: 'st', two: 'nd', few: 'rd', many: 'th', other: 'th' };

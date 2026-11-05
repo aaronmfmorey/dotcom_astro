@@ -1,9 +1,5 @@
 ---
-import Social from './Social.astro';
-import Divider from "@components/Divider.astro";
-import NavigationLink from "@components/Navigation/NavigationLink.astro";
-const platform = "github";
-const username = "withastro";
+const version = process.env.npm_package_version;
 ---
 <footer>
     <div class="footer-container">
@@ -16,6 +12,7 @@ const username = "withastro";
         <div>
             <a href="/about/blogroll/">Blogroll</a>
         </div>
+        <div>v{version}</div>
     </div>
     <!--<button id="theme-toggle" style="display:none;">Toggle Theme</button>-->
 </footer>

@@ -121,7 +121,6 @@ h1 {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--ff-subheads);
-    letter-spacing: -0.04em; /* Tightens spacing */
     margin-top: .5em;
     margin-bottom: .125em;
     font-weight: 700;
@@ -129,6 +128,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h2, h3, h4, h5, h6 {
     font-family: var(--ff-subheads);
+    letter-spacing: -0.02em;
 }
 
 /* Other font styling */

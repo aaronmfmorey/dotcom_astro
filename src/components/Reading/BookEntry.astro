@@ -3,7 +3,6 @@ import BookStars from "@components/Reading/BookStars.astro";
 import {formatDateLong, slugify, authorMatchesTag} from '@utils/utils.ts';
 import linkifyHtml from 'linkify-html';
 import {bookshopAffiliateUrl} from "@utils/utils";
-import {getYearHeaderTemplate} from "@utils/reading";
 import ReviewDialog from "@components/Reading/ReviewDialog.astro";
 import CoverImageFlipper from "@components/Reading/CoverImageFlipper.astro";
 import Divider from "@components/Divider.astro";
@@ -32,7 +31,7 @@ const bookshopSlug = book.bookshop_slug ?? book.isbn13;
                 {
                     1 == book.no_bookshop ?
                         "":
-                        <Fragment set:html={bookshopAffiliateUrl(bookshopSlug)} />
+                        <Fragment set:html={"&nbsp;" + bookshopAffiliateUrl(bookshopSlug)} />
                 }
             </h3>
             <div class="book-info">

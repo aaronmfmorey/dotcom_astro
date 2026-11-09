@@ -19,7 +19,12 @@ export default defineConfig({
   },
 
   security: {
-    csp: true
+    csp:{
+        directives: [
+          "default-src 'self'",
+          "img-src 'self' https://static.cloudflareinsights.com/"
+        ]
+      }
   },
 
   markdown: {

@@ -18,6 +18,10 @@ export default defineConfig({
   redirects: {
   },
 
+  security: {
+    csp: true
+  },
+
   markdown: {
     rehypePlugins: [
       rehypeHeadingIds,

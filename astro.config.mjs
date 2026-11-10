@@ -18,15 +18,6 @@ export default defineConfig({
   redirects: {
   },
 
-  security: {
-    csp:{
-        directives: [
-          "default-src 'self'",
-          "img-src 'self' https://static.cloudflareinsights.com/"
-        ]
-      }
-  },
-
   markdown: {
     rehypePlugins: [
       rehypeHeadingIds,

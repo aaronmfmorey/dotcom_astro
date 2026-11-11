@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 let { posts, originalTag } = Astro.props;
 posts.sort(function (a, b) {
-return a.data.pubDate < b.data.pubDate ? 1 : -1;
+    return a.data.pubDate < b.data.pubDate ? 1 : -1;
 });
 ---
 <BaseLayout pageTitle={originalTag} excludeFromStaticSearch={true}>

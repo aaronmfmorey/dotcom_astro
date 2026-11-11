@@ -45,6 +45,34 @@ export const intToOrdinal = function(i: number): string {
     return i + suffixes[rules.select(i)];
 };
 
+export const formatCenturyForEra = function(
+    century: number,
+    includeAD: boolean = false,
+    includeLiteralCentury:boolean = false
+): string {
+    let era, centuryString  = "";
+    let centuryLiteral = includeLiteralCentury ? "Century" : "";
+    if (century < 0) {
+        centuryString = intToOrdinal(Math.abs(century));
+        era = "BC";
+    } else {
+        centuryString = intToOrdinal(century);
+        era = includeAD ? "AD" : "";
+    }
+
+    return centuryString + " " + centuryLiteral + " " + era;
+}
+
+export const formatYearForEra = function(year: number, includeAD: boolean = false): string {
+    if (year < 0) {
+        return Math.abs(year) + " BC";
+    } else if (includeAD) {
+        return "AD " + year;
+    } else {
+        return year;
+    }
+}
+
 export const getAllTagsForAuthorMatch = function(allPosts: Array<any>): Array<string> {
     let allTags = allPosts.map((post) => post.data.tags).flat();
     return [... new Set(allTags)].filter(tag => tag !== null)

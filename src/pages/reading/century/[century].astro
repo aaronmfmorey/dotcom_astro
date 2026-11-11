@@ -1,0 +1,68 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import {formatYearForEra, formatCenturyForEra} from "@utils/utils.ts";
+import {QUERIES, runSqliteQuery} from "@utils/db-operations.ts";
+import type {GoodreadsBook} from "@types/components.ts";
+
+export async function getStaticPaths() {
+    let books: Array<GoodreadsBook> = await runSqliteQuery(QUERIES.BOOKS_FOR_READING_LIST);
+    let allCenturies = new Map();
+    books.forEach(book => {
+        const getCenturyOfYear = function (year: number) {
+            if (year < 0) {
+                if (year % 100 == 0) {
+                    return year / 100;
+                } else {
+                    return Math.floor(year / 100);
+                }
+            }
+            if (year % 100 === 0) {
+                return year / 100;
+            } else {
+                return Math.floor(year / 100) + 1;
+            }
+        }
+
+        let year = book.original_publication_year;
+        let century = getCenturyOfYear(year);
+
+        if (undefined === allCenturies.get(century)) {
+            allCenturies.set(century, []);
+        }
+        allCenturies.get(century).push(book);
+    });
+
+    let returnVals: any[] = [];
+
+    allCenturies.keys().forEach(function (key:number) {
+        let param = key.toString();
+        returnVals.push({
+           params: { century: param },
+           props: {books: allCenturies.get(key)}
+        });
+    });
+    return returnVals;
+}
+
+const {books} = Astro.props;
+const {century} = Astro.params;
+let pageTitle = formatCenturyForEra(century, false, true);
+
+books.sort(function(a, b) {
+    return a.title < b.title ? -1 : 1;
+});
+
+---
+<BaseLayout pageTitle={pageTitle} excludeFromStaticSearch={true}>
+    <ul>
+        {
+            books.map(function(book) {
+                return (
+                    <li>
+                        <em>{book.title}</em> - {book.author} ({formatYearForEra(book.original_publication_year)})
+                    </li>
+                )
+            })
+        }
+    </ul>
+</BaseLayout>

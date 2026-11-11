@@ -14,7 +14,7 @@ import AnchoredHeader from "@components/AnchoredHeader.astro";
 
 import {getYearHeaderTemplate} from "@utils/reading";
 
-let books = runSqliteQuery<Array<GoodreadsBook>>(QUERIES.BOOKS_FOR_READING_LIST);
+let books = await runSqliteQuery<Array<GoodreadsBook>>(QUERIES.BOOKS_FOR_READING_LIST);
 const pageTitle = "Reading";
 const allPosts = await getCollection("blog");
 let allTags = allPosts.map((post) => post.data.tags).flat();

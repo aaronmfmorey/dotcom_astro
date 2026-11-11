@@ -1,12 +1,12 @@
 import path from "path";
 import Database from "better-sqlite3";
 
-export const runSqliteQuery = function<T>(queryText: string) {
+export const runSqliteQuery = async function<T>(queryText: string, params: object = {}): Promise<T> {
     const dbPath = path.resolve('aaronmoreycom_content/content/data/goodreads.db');
     const db = new Database(dbPath);
 
     // Query to get total pages per year
-    const sqlData = db.prepare(queryText).all() as T;
+    const sqlData = db.prepare(queryText).all(params) as T;
     db.close();
     return sqlData;
 }
@@ -93,7 +93,7 @@ export const QUERIES = {
           ) as all_reads        
         order by all_reads.date_read desc;
     `,
-    BOOKS_BY_CENTURY: `
+    BOOKS_BY_CENTURY_AGGREGATE: `
         select 
             CASE
                WHEN original_publication_year > 0 AND original_publication_year < 100

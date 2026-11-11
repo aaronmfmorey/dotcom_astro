@@ -1,6 +1,6 @@
 ---
 import {runSqliteQuery, QUERIES} from '@utils/db-operations.ts';
-const yearlyData = runSqliteQuery(QUERIES.BOOKS_AND_PAGES_CHART_DATA);
+const yearlyData = await runSqliteQuery(QUERIES.BOOKS_AND_PAGES_CHART_DATA);
 
 // Prepare data for Chart.js
 const chartData = {

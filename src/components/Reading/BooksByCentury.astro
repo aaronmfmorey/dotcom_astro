@@ -1,13 +1,7 @@
 ---
 import {runSqliteQuery, QUERIES} from "@utils/db-operations.ts";
-import {intToOrdinal} from "@utils/utils.ts";
-const centuryDate = runSqliteQuery(QUERIES.BOOKS_BY_CENTURY);
-
-const formatYear = function(year: number): string {
-    return year > 0 ?
-        intToOrdinal(year)
-        : intToOrdinal(year * -1) + " BC";
-}
+import {formatCenturyForEra} from "@utils/utils.ts";
+const centuryDate: Array<object> = await runSqliteQuery(QUERIES.BOOKS_BY_CENTURY_AGGREGATE);
 ---
 <table>
     <thead>
@@ -27,7 +21,11 @@ const formatYear = function(year: number): string {
                 let style = i % 2 == 0 ? 'even' : 'odd';
                 return (
                     <tr class={style}>
-                        <td>{formatYear(centuryRow.century)}</td>
+                        <td>
+                            <a href=`/reading/century/${centuryRow.century}`>
+                                {formatCenturyForEra(centuryRow.century)}
+                            </a>
+                        </td>
                         <td>{centuryRow.total_books}</td>
                     </tr>
                 )

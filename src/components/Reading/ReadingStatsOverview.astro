@@ -2,7 +2,8 @@
 import {runSqliteQuery, QUERIES} from '@utils/db-operations.ts';
 import StatsOverviewIndividual from "@components/Stats/StatsOverviewIndividual.astro";
 import StatsContainer from "@components/Stats/StatsContainer.astro";
-const booksAndPagesSummaryData: any = runSqliteQuery(QUERIES.BOOKS_AND_PAGES_SUMMARY)[0];
+const booksAndPagesSummaryDataRecords: any = await runSqliteQuery(QUERIES.BOOKS_AND_PAGES_SUMMARY);
+const booksAndPagesSummaryData: any = booksAndPagesSummaryDataRecords[0];
 ---
 <StatsContainer>
     <StatsOverviewIndividual
